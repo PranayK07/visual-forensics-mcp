@@ -119,3 +119,23 @@ output:
   include_tile_metrics: true    # include per-tile metrics in page_results
   max_findings_per_page: 200    # safety cap
   round_decimals: 4
+
+# ---------------------------------------------------------------------------
+# Annotated report (PDF mark-up)
+# ---------------------------------------------------------------------------
+report:
+  # Overall fraud-risk score is a transparent weighted blend of the strongest
+  # finding, the number of distinct anomaly types, and the total finding count.
+  # score01 = clamp(w_max_conf*max_conf + w_types*types + w_count*count, 0, 1)
+  risk:
+    w_max_confidence: 0.6
+    w_distinct_types: 0.08
+    w_finding_count: 0.02
+    high_threshold: 66          # score (0-100) at/above this => HIGH
+    medium_threshold: 33        # score (0-100) at/above this => MEDIUM
+  draw:
+    box_width: 2.0              # bounding-box line width (points)
+    label_fontsize: 8.0
+    badge_fontsize: 12.0
+    min_confidence_to_draw: 0.0 # skip findings weaker than this in the mark-up
+    add_cover_page: true        # prepend a summary / legend / risk cover page
