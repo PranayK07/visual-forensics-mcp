@@ -1,0 +1,14 @@
+{
+  "tool": "analyze_document",
+  "arguments": {
+    "document_path": "C:/Users/prana/Documents/Github/New folder/visual-forensics-mcp/examples/sample.pdf",
+    "options": {
+      "render": {
+        "dpi": 200
+      },
+      "features": {
+        "enable_ocr": true
+      }
+    }
+  }
+}

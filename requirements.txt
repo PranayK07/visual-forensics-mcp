@@ -1,0 +1,30 @@
+# Visual Document Forensics MCP Server
+# Python 3.11+
+#
+# All processing is local and deterministic.
+# No LLMs, VLMs, external APIs, embeddings, vector DBs, or cloud services.
+
+# Document loading / rendering / structure
+pymupdf>=1.24
+pikepdf>=8.0
+python-docx>=1.1
+
+# Imaging / numerical
+opencv-python-headless>=4.9
+pillow>=10.0
+numpy>=1.26,<2.3
+
+# OCR (requires the Tesseract binary to be installed separately)
+pytesseract>=0.3.10
+# pytesseract imports pandas at module load time
+pandas>=2.0
+
+# Schemas / config
+pydantic>=2.5
+pyyaml>=6.0
+
+# MCP server
+fastmcp>=2.0
+
+# Testing
+pytest>=8.0

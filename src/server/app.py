@@ -1,0 +1,67 @@
+"""FastMCP server exposing the ``analyze_document`` tool.
+
+Run with stdio transport (the default), which is what UiPath and other MCP
+clients use to launch and talk to a local server:
+
+    python -m src.server.app
+
+All work is local and deterministic. No network access is performed.
+"""
+
+from __future__ import annotations
+
+from typing import Any, Optional
+
+from fastmcp import FastMCP
+
+from ..tools.analyze import analyze_document as _analyze_document
+from ..utils.logging import get_logger
+
+logger = get_logger("server")
+
+mcp = FastMCP(
+    name="visual-forensics-mcp",
+    instructions=(
+        "Deterministic visual and structural forensics for PDF and DOCX "
+        "documents. Call `analyze_document` with a local file path to obtain "
+        "measurable visual evidence (blur, OCR confidence, effective DPI, image "
+        "stretch, font usage, structural anomalies). This server never makes "
+        "fraud judgements; it returns metrics and measurable anomalies for an "
+        "agent to reason over."
+    ),
+)
+
+
+@mcp.tool(
+    name="analyze_document",
+    description=(
+        "Analyze a local PDF or DOCX file and return deterministic visual and "
+        "structural forensic evidence as JSON. `document_path` is an absolute or "
+        "relative path on the machine running this server. `options` optionally "
+        "overrides configuration (e.g. {'render': {'dpi': 300}, 'features': "
+        "{'enable_ocr': false}}). Returns document_id, document_type, summary, "
+        "page_results, document_findings, warnings, and errors."
+    ),
+)
+def analyze_document(
+    document_path: str,
+    options: Optional[dict[str, Any]] = None,
+) -> dict[str, Any]:
+    """MCP tool entry point. Delegates to the deterministic pipeline."""
+    logger.info("analyze_document called: %s", document_path)
+    return _analyze_document(document_path, options)
+
+
+def build_server() -> FastMCP:
+    """Return the configured FastMCP instance (useful for tests/embedding)."""
+    return mcp
+
+
+def main() -> None:
+    """Console entry point: run the server over stdio."""
+    mcp.run(transport="streamable-http", host="0.0.0.0", port=8765)
+
+
+
+if __name__ == "__main__":
+    main()

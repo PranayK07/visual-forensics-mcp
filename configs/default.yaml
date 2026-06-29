@@ -1,0 +1,121 @@
+# Visual Document Forensics MCP - default configuration
+#
+# Every threshold and tunable parameter lives here. There are NO hardcoded
+# thresholds anywhere in the analysis or detection code. Override any subset of
+# these values by passing an `options` dict to the `analyze_document` MCP tool,
+# or by pointing the server at a different YAML file via the
+# VISUAL_FORENSICS_CONFIG environment variable.
+
+# ---------------------------------------------------------------------------
+# Rendering
+# ---------------------------------------------------------------------------
+render:
+  dpi: 400                 # render resolution for every page
+  max_pages: 0             # 0 = render all pages; >0 caps the page count
+  colorspace: "rgb"       # "gray" or "rgb" for the analysis raster
+  max_pixels: 40000000     # safety cap on rendered pixels per page
+
+# ---------------------------------------------------------------------------
+# Tiling
+# ---------------------------------------------------------------------------
+tiling:
+  tile_size: 512           # square tile edge length in pixels
+  tile_overlap: 0.20       # fractional overlap between neighbouring tiles
+  min_tile_fraction: 0.30  # drop trailing tiles smaller than this fraction
+  blank_std_threshold: 3.0 # tiles with intensity std below this are "blank"
+
+# ---------------------------------------------------------------------------
+# Feature toggles
+# ---------------------------------------------------------------------------
+features:
+  enable_ocr: true
+  enable_pdf_analysis: true
+  enable_visual_analysis: true
+  enable_detectors: true
+
+# ---------------------------------------------------------------------------
+# OCR
+# ---------------------------------------------------------------------------
+ocr:
+  language: "eng"
+  tesseract_cmd: ""        # absolute path to tesseract.exe; "" = use PATH
+  psm: 6                   # Tesseract page segmentation mode
+  oem: 3                   # OCR engine mode
+  min_word_confidence: 0   # words below this confidence are ignored
+  timeout: 20              # per-tile OCR timeout (seconds)
+
+# ---------------------------------------------------------------------------
+# Analyzer parameters (how raw metrics are computed)
+# ---------------------------------------------------------------------------
+analyzers:
+  edge_density:
+    canny_low: 50
+    canny_high: 150
+  entropy:
+    histogram_bins: 256
+  noise:
+    median_kernel: 3
+  text_density:
+    binarization_block: 35
+    binarization_c: 10
+
+# ---------------------------------------------------------------------------
+# Detector thresholds (how anomalies are flagged)
+# ---------------------------------------------------------------------------
+detectors:
+  # Blur anomaly: tile blur far below the page distribution.
+  blur:
+    enabled: true
+    min_text_density: 0.02      # ignore near-empty tiles
+    z_threshold: 2.0            # std devs below the page mean
+    absolute_floor: 0.0         # optional absolute Laplacian-variance floor
+    min_neighbors: 4            # min tiles on a page before z-scoring
+
+  # OCR confidence anomaly: tile OCR confidence far below page mean.
+  ocr_confidence:
+    enabled: true
+    min_text_density: 0.05
+    z_threshold: 2.0
+    absolute_floor: 40.0        # confidence (0-100) considered low regardless
+    min_neighbors: 4
+
+  # Resolution / DPI anomaly: embedded image rendered far below page DPI.
+  dpi:
+    enabled: true
+    ratio_threshold: 0.5        # effective_dpi / render_dpi below this is low
+    absolute_min_dpi: 150.0     # absolute effective-DPI floor
+
+  # Font mismatch: rare fonts / many font families.
+  font:
+    enabled: true
+    rare_font_max_share: 0.05   # fonts used on <= this share of spans are rare
+    max_expected_families: 4    # more distinct families than this is flagged
+    min_spans: 20               # need this many spans before judging
+
+  # Stretch anomaly: non-uniform image scaling.
+  stretch:
+    enabled: true
+    ratio_threshold: 0.10       # |sx-sy| / max(sx,sy) above this is non-uniform
+    min_display_px: 16          # ignore tiny placed images
+
+  # Compression-artifact anomaly: tile noise/entropy unlike its neighbours.
+  compression:
+    enabled: true
+    min_text_density: 0.02
+    z_threshold: 2.5
+    min_neighbors: 4
+
+  # Structure anomaly: raster region inside an otherwise vector page, overlaps.
+  structure:
+    enabled: true
+    raster_coverage_min: 0.02   # raster area share that counts as "present"
+    raster_coverage_max: 0.85   # above this the page is simply image-based
+    overlap_iou_threshold: 0.6  # image overlap IoU considered "stacked"
+
+# ---------------------------------------------------------------------------
+# Output
+# ---------------------------------------------------------------------------
+output:
+  include_tile_metrics: true    # include per-tile metrics in page_results
+  max_findings_per_page: 200    # safety cap
+  round_decimals: 4

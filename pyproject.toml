@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "visual-forensics-mcp"
+version = "1.0.0"
+description = "Deterministic visual & structural document forensics MCP server for UiPath"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "pymupdf>=1.24",
+    "pikepdf>=8.0",
+    "opencv-python-headless>=4.9",
+    "pillow>=10.0",
+    "numpy>=1.26,<2.3",
+    "pytesseract>=0.3.10",
+    "pandas>=2.0",
+    "python-docx>=1.1",
+    "pydantic>=2.5",
+    "pyyaml>=6.0",
+    "fastmcp>=2.0",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8.0"]
+
+[project.scripts]
+visual-forensics-mcp = "src.server.app:main"
+
+[tool.setuptools]
+packages = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+filterwarnings = ["ignore::DeprecationWarning"]

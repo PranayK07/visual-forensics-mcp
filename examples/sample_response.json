@@ -1,0 +1,612 @@
+{
+  "document_id": "5f34550e05450828",
+  "document_type": "pdf",
+  "summary": {
+    "page_count": 1,
+    "tile_count": 20,
+    "finding_count": 4,
+    "findings_by_type": {
+      "resolution_anomaly": 1,
+      "image_stretch": 1,
+      "raster_in_vector_anomaly": 1,
+      "font_mismatch": 1
+    },
+    "ocr_available": false,
+    "pdf_structure_available": true,
+    "config_digest": {
+      "dpi": 200,
+      "tile_size": 512,
+      "tile_overlap": 0.2,
+      "enable_ocr": true,
+      "enable_pdf_analysis": true
+    }
+  },
+  "page_results": [
+    {
+      "page": 1,
+      "width": 1700,
+      "height": 2200,
+      "dpi": 200.0,
+      "is_vector": true,
+      "tiles": [
+        {
+          "tile_id": 0,
+          "page": 1,
+          "bbox": [
+            0.0,
+            0.0,
+            512.0,
+            512.0
+          ],
+          "blank": false,
+          "metrics": {
+            "blur_score": 3476.2223,
+            "sharpness_tenengrad": 60638.7299,
+            "sharpness_mean_gradient": 73.1844,
+            "contrast_rms": 49.8412,
+            "contrast_michelson": 1.0,
+            "entropy": 0.7044,
+            "edge_density": 0.0387,
+            "noise_sigma": 1.8497,
+            "noise_median_residual": 11.9454,
+            "text_density": 0.0549,
+            "ocr_confidence": null,
+            "ocr_word_count": 0,
+            "ocr_char_count": 0
+          }
+        },
+        {
+          "tile_id": 1,
+          "page": 1,
+          "bbox": [
+            410.0,
+            0.0,
+            922.0,
+            512.0
+          ],
+          "blank": false,
+          "metrics": {
+            "blur_score": 5741.1398,
+            "sharpness_tenengrad": 100478.8187,
+            "sharpness_mean_gradient": 121.0175,
+            "contrast_rms": 63.1227,
+            "contrast_michelson": 1.0,
+            "entropy": 1.1245,
+            "edge_density": 0.065,
+            "noise_sigma": 3.3065,
+            "noise_median_residual": 14.0695,
+            "text_density": 0.0908,
+            "ocr_confidence": null,
+            "ocr_word_count": 0,
+            "ocr_char_count": 0
+          }
+        },
+        {
+          "tile_id": 2,
+          "page": 1,
+          "bbox": [
+            820.0,
+            0.0,
+            1332.0,
+            512.0
+          ],
+          "blank": false,
+          "metrics": {
+            "blur_score": 1718.1023,
+            "sharpness_tenengrad": 29719.8239,
+            "sharpness_mean_gradient": 35.7591,
+            "contrast_rms": 35.3732,
+            "contrast_michelson": 1.0,
+            "entropy": 0.3866,
+            "edge_density": 0.0192,
+            "noise_sigma": 1.004,
+            "noise_median_residual": 7.0471,
+            "text_density": 0.0269,
+            "ocr_confidence": null,
+            "ocr_word_count": 0,
+            "ocr_char_count": 0
+          }
+        },
+        {
+          "tile_id": 3,
+          "page": 1,
+          "bbox": [
+            1188.0,
+            0.0,
+            1700.0,
+            512.0
+          ],
+          "blank": true,
+          "metrics": {
+            "blank": true
+          }
+        },
+        {
+          "tile_id": 4,
+          "page": 1,
+          "bbox": [
+            0.0,
+            410.0,
+            512.0,
+            922.0
+          ],
+          "blank": false,
+          "metrics": {
+            "blur_score": 5559.1293,
+            "sharpness_tenengrad": 98613.9184,
+            "sharpness_mean_gradient": 118.8704,
+            "contrast_rms": 62.5228,
+            "contrast_michelson": 1.0,
+            "entropy": 1.0612,
+            "edge_density": 0.0629,
+            "noise_sigma": 2.8823,
+            "noise_median_residual": 14.8127,
+            "text_density": 0.089,
+            "ocr_confidence": null,
+            "ocr_word_count": 0,
+            "ocr_char_count": 0
+          }
+        },
+        {
+          "tile_id": 5,
+          "page": 1,
+          "bbox": [
+            410.0,
+            410.0,
+            922.0,
+            922.0
+          ],
+          "blank": false,
+          "metrics": {
+            "blur_score": 9281.2597,
+            "sharpness_tenengrad": 162864.3919,
+            "sharpness_mean_gradient": 196.0009,
+            "contrast_rms": 77.8977,
+            "contrast_michelson": 1.0,
+            "entropy": 1.7674,
+            "edge_density": 0.1056,
+            "noise_sigma": 5.2103,
+            "noise_median_residual": 17.645,
+            "text_density": 0.1473,
+            "ocr_confidence": null,
+            "ocr_word_count": 0,
+            "ocr_char_count": 0
+          }
+        },
+        {
+          "tile_id": 6,
+          "page": 1,
+          "bbox": [
+            820.0,
+            410.0,
+            1332.0,
+            922.0
+          ],
+          "blank": false,
+          "metrics": {
+            "blur_score": 2597.2451,
+            "sharpness_tenengrad": 45107.6798,
+            "sharpness_mean_gradient": 54.5264,
+            "contrast_rms": 43.5746,
+            "contrast_michelson": 1.0,
+            "entropy": 1.1538,
+            "edge_density": 0.0291,
+            "noise_sigma": 1.4991,
+            "noise_median_residual": 8.9611,
+            "text_density": 0.0438,
+            "ocr_confidence": null,
+            "ocr_word_count": 0,
+            "ocr_char_count": 0
+          }
+        },
+        {
+          "tile_id": 7,
+          "page": 1,
+          "bbox": [
+            1188.0,
+            410.0,
+            1700.0,
+            922.0
+          ],
+          "blank": false,
+          "metrics": {
+            "blur_score": 1.6546,
+            "sharpness_tenengrad": 26.3405,
+            "sharpness_mean_gradient": 0.2636,
+            "contrast_rms": 7.0552,
+            "contrast_michelson": 0.0515,
+            "entropy": 0.4272,
+            "edge_density": 0.0,
+            "noise_sigma": 0.0001,
+            "noise_median_residual": 0.0488,
+            "text_density": 0.0027,
+            "ocr_confidence": null,
+            "ocr_word_count": 0,
+            "ocr_char_count": 0
+          }
+        },
+        {
+          "tile_id": 8,
+          "page": 1,
+          "bbox": [
+            0.0,
+            820.0,
+            512.0,
+            1332.0
+          ],
+          "blank": false,
+          "metrics": {
+            "blur_score": 5407.3799,
+            "sharpness_tenengrad": 94912.4695,
+            "sharpness_mean_gradient": 114.5088,
+            "contrast_rms": 61.3323,
+            "contrast_michelson": 1.0,
+            "entropy": 1.0276,
+            "edge_density": 0.0607,
+            "noise_sigma": 2.8567,
+            "noise_median_residual": 14.8441,
+            "text_density": 0.0857,
+            "ocr_confidence": null,
+            "ocr_word_count": 0,
+            "ocr_char_count": 0
+          }
+        },
+        {
+          "tile_id": 9,
+          "page": 1,
+          "bbox": [
+            410.0,
+            820.0,
+            922.0,
+            1332.0
+          ],
+          "blank": false,
+          "metrics": {
+            "blur_score": 8679.4944,
+            "sharpness_tenengrad": 150619.5576,
+            "sharpness_mean_gradient": 181.572,
+            "contrast_rms": 75.0231,
+            "contrast_michelson": 1.0,
+            "entropy": 1.8171,
+            "edge_density": 0.0978,
+            "noise_sigma": 4.9186,
+            "noise_median_residual": 17.5609,
+            "text_density": 0.1368,
+            "ocr_confidence": null,
+            "ocr_word_count": 0,
+            "ocr_char_count": 0
+          }
+        },
+        {
+          "tile_id": 10,
+          "page": 1,
+          "bbox": [
+            820.0,
+            820.0,
+            1332.0,
+            1332.0
+          ],
+          "blank": false,
+          "metrics": {
+            "blur_score": 1721.7982,
+            "sharpness_tenengrad": 29167.3674,
+            "sharpness_mean_gradient": 35.7404,
+            "contrast_rms": 35.1625,
+            "contrast_michelson": 1.0,
+            "entropy": 1.3221,
+            "edge_density": 0.0188,
+            "noise_sigma": 1.0038,
+            "noise_median_residual": 7.9103,
+            "text_density": 0.0324,
+            "ocr_confidence": null,
+            "ocr_word_count": 0,
+            "ocr_char_count": 0
+          }
+        },
+        {
+          "tile_id": 11,
+          "page": 1,
+          "bbox": [
+            1188.0,
+            820.0,
+            1700.0,
+            1332.0
+          ],
+          "blank": false,
+          "metrics": {
+            "blur_score": 4.0531,
+            "sharpness_tenengrad": 64.5828,
+            "sharpness_mean_gradient": 0.6462,
+            "contrast_rms": 11.732,
+            "contrast_michelson": 0.0515,
+            "entropy": 0.9123,
+            "edge_density": 0.0,
+            "noise_sigma": 0.0002,
+            "noise_median_residual": 0.0691,
+            "text_density": 0.0066,
+            "ocr_confidence": null,
+            "ocr_word_count": 0,
+            "ocr_char_count": 0
+          }
+        },
+        {
+          "tile_id": 12,
+          "page": 1,
+          "bbox": [
+            0.0,
+            1230.0,
+            512.0,
+            1742.0
+          ],
+          "blank": false,
+          "metrics": {
+            "blur_score": 2227.4555,
+            "sharpness_tenengrad": 36153.2237,
+            "sharpness_mean_gradient": 44.0404,
+            "contrast_rms": 38.7373,
+            "contrast_michelson": 1.0,
+            "entropy": 0.4674,
+            "edge_density": 0.0243,
+            "noise_sigma": 1.2027,
+            "noise_median_residual": 9.6167,
+            "text_density": 0.0328,
+            "ocr_confidence": null,
+            "ocr_word_count": 0,
+            "ocr_char_count": 0
+          }
+        },
+        {
+          "tile_id": 13,
+          "page": 1,
+          "bbox": [
+            410.0,
+            1230.0,
+            922.0,
+            1742.0
+          ],
+          "blank": false,
+          "metrics": {
+            "blur_score": 2846.3528,
+            "sharpness_tenengrad": 48772.1127,
+            "sharpness_mean_gradient": 58.794,
+            "contrast_rms": 44.9634,
+            "contrast_michelson": 1.0,
+            "entropy": 0.6057,
+            "edge_density": 0.0319,
+            "noise_sigma": 1.5851,
+            "noise_median_residual": 10.0053,
+            "text_density": 0.0441,
+            "ocr_confidence": null,
+            "ocr_word_count": 0,
+            "ocr_char_count": 0
+          }
+        },
+        {
+          "tile_id": 14,
+          "page": 1,
+          "bbox": [
+            820.0,
+            1230.0,
+            1332.0,
+            1742.0
+          ],
+          "blank": false,
+          "metrics": {
+            "blur_score": 858.9383,
+            "sharpness_tenengrad": 15003.2382,
+            "sharpness_mean_gradient": 18.0208,
+            "contrast_rms": 25.318,
+            "contrast_michelson": 1.0,
+            "entropy": 0.2097,
+            "edge_density": 0.0096,
+            "noise_sigma": 0.4958,
+            "noise_median_residual": 5.3496,
+            "text_density": 0.0136,
+            "ocr_confidence": null,
+            "ocr_word_count": 0,
+            "ocr_char_count": 0
+          }
+        },
+        {
+          "tile_id": 15,
+          "page": 1,
+          "bbox": [
+            1188.0,
+            1230.0,
+            1700.0,
+            1742.0
+          ],
+          "blank": true,
+          "metrics": {
+            "blank": true
+          }
+        },
+        {
+          "tile_id": 16,
+          "page": 1,
+          "bbox": [
+            0.0,
+            1640.0,
+            512.0,
+            2152.0
+          ],
+          "blank": true,
+          "metrics": {
+            "blank": true
+          }
+        },
+        {
+          "tile_id": 17,
+          "page": 1,
+          "bbox": [
+            410.0,
+            1640.0,
+            922.0,
+            2152.0
+          ],
+          "blank": true,
+          "metrics": {
+            "blank": true
+          }
+        },
+        {
+          "tile_id": 18,
+          "page": 1,
+          "bbox": [
+            820.0,
+            1640.0,
+            1332.0,
+            2152.0
+          ],
+          "blank": true,
+          "metrics": {
+            "blank": true
+          }
+        },
+        {
+          "tile_id": 19,
+          "page": 1,
+          "bbox": [
+            1188.0,
+            1640.0,
+            1700.0,
+            2152.0
+          ],
+          "blank": true,
+          "metrics": {
+            "blank": true
+          }
+        }
+      ],
+      "page_metrics": {
+        "blur_score": 2221.3527,
+        "contrast_rms": 40.4878,
+        "contrast_michelson": 1.0,
+        "entropy": 0.7734,
+        "edge_density": 0.0251,
+        "text_density": 0.0358
+      },
+      "embedded_images": [
+        {
+          "xref": 32,
+          "original_width": 40,
+          "original_height": 40,
+          "display_width": 200.0,
+          "display_height": 120.0,
+          "bbox": [
+            888.8888888888889,
+            833.3333333333333,
+            1444.4444444444443,
+            1166.6666666666665
+          ],
+          "scale_x": 5.0,
+          "scale_y": 3.0,
+          "effective_dpi_x": 14.4,
+          "effective_dpi_y": 24.0,
+          "colorspace": "ICCBased(RGB,Artifex Software sRGB ICC Profile)",
+          "bpc": 8,
+          "image_filter": null
+        }
+      ],
+      "fonts": [
+        {
+          "name": "Helvetica",
+          "span_count": 24,
+          "sizes": [
+            11.0
+          ]
+        },
+        {
+          "name": "Times-Roman",
+          "span_count": 1,
+          "sizes": [
+            11.0
+          ]
+        }
+      ],
+      "findings": [
+        {
+          "type": "resolution_anomaly",
+          "page": 1,
+          "bbox": [
+            888.8888888888889,
+            833.3333333333333,
+            1444.4444444444443,
+            1166.6666666666665
+          ],
+          "metrics": {
+            "effective_dpi_x": 14.4,
+            "effective_dpi_y": 24.0,
+            "render_dpi": 200.0,
+            "dpi_ratio": 0.072,
+            "xref": 32
+          },
+          "confidence": 0.904,
+          "explanation": "Embedded image effective resolution is significantly lower than the surrounding document resolution."
+        },
+        {
+          "type": "image_stretch",
+          "page": 1,
+          "bbox": [
+            888.8888888888889,
+            833.3333333333333,
+            1444.4444444444443,
+            1166.6666666666665
+          ],
+          "metrics": {
+            "scale_x": 5.0,
+            "scale_y": 3.0,
+            "stretch_ratio": 0.4,
+            "xref": 32
+          },
+          "confidence": 0.4,
+          "explanation": "Embedded image is scaled non-uniformly (horizontal and vertical scale factors differ), distorting the image."
+        },
+        {
+          "type": "raster_in_vector_anomaly",
+          "page": 1,
+          "bbox": [
+            888.8888888888889,
+            833.3333333333333,
+            1444.4444444444443,
+            1166.6666666666665
+          ],
+          "metrics": {
+            "raster_coverage": 0.0528,
+            "span_count": 25,
+            "image_count": 1,
+            "xref": 32
+          },
+          "confidence": 0.4528,
+          "explanation": "A raster image region is embedded inside an otherwise vector/text page, which can indicate a pasted insert."
+        }
+      ]
+    }
+  ],
+  "document_findings": [
+    {
+      "type": "font_mismatch",
+      "page": 0,
+      "bbox": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "metrics": {
+        "font": "Times-Roman",
+        "span_count": 1,
+        "share": 0.04,
+        "sizes": [
+          11.0
+        ]
+      },
+      "confidence": 0.6,
+      "explanation": "A font family is used on only a small fraction of text spans, an unusual change versus the dominant fonts."
+    }
+  ],
+  "warnings": [
+    "Tesseract OCR binary not available; OCR metrics and the OCR-confidence detector are disabled for this run."
+  ],
+  "errors": []
+}

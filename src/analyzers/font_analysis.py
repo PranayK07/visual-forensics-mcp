@@ -1,0 +1,82 @@
+"""Font analysis for PDF (and converted DOCX) pages.
+
+Extracts font families, per-font span counts, and the set of sizes used, both
+per page and aggregated across the document. The detector layer decides whether
+the distribution is anomalous; this module only measures.
+"""
+
+from __future__ import annotations
+
+from collections import defaultdict
+from typing import Any
+
+import fitz  # PyMuPDF
+
+from ..utils.logging import get_logger
+
+logger = get_logger("font_analysis")
+
+
+def _normalise_font_name(raw: str) -> str:
+    """Strip PDF subset prefixes like ``ABCDEF+Arial`` -> ``Arial``."""
+    if not raw:
+        return "(unknown)"
+    if "+" in raw and len(raw.split("+", 1)[0]) == 6:
+        return raw.split("+", 1)[1]
+    return raw
+
+
+def analyze_page_fonts(page: "fitz.Page") -> dict[str, Any]:
+    """Return font usage for a single page.
+
+    Shape::
+
+        {
+          "fonts": [{"name": "Arial", "span_count": 10, "sizes": [11.0, 12.0]}],
+          "span_count": 42,
+        }
+    """
+    spans = 0
+    counts: dict[str, int] = defaultdict(int)
+    sizes: dict[str, set] = defaultdict(set)
+
+    try:
+        data = page.get_text("dict")
+    except Exception as exc:  # pragma: no cover - defensive
+        logger.warning("get_text failed on page: %s", exc)
+        return {"fonts": [], "span_count": 0}
+
+    for block in data.get("blocks", []):
+        for line in block.get("lines", []):
+            for span in line.get("spans", []):
+                name = _normalise_font_name(span.get("font", ""))
+                counts[name] += 1
+                spans += 1
+                size = span.get("size")
+                if size is not None:
+                    sizes[name].add(round(float(size), 2))
+
+    fonts = [
+        {
+            "name": name,
+            "span_count": count,
+            "sizes": sorted(sizes.get(name, set())),
+        }
+        for name, count in sorted(counts.items(), key=lambda kv: kv[1], reverse=True)
+    ]
+    return {"fonts": fonts, "span_count": spans}
+
+
+def aggregate_fonts(page_font_lists: list[list[dict[str, Any]]]) -> list[dict[str, Any]]:
+    """Merge per-page font lists into a document-level list."""
+    counts: dict[str, int] = defaultdict(int)
+    sizes: dict[str, set] = defaultdict(set)
+    for page_fonts in page_font_lists:
+        for font in page_fonts:
+            counts[font["name"]] += int(font.get("span_count", 0))
+            for s in font.get("sizes", []):
+                sizes[font["name"]].add(s)
+    return [
+        {"name": name, "span_count": count, "sizes": sorted(sizes.get(name, set()))}
+        for name, count in sorted(counts.items(), key=lambda kv: kv[1], reverse=True)
+    ]
