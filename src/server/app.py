@@ -23,11 +23,11 @@ mcp = FastMCP(
     name="visual-forensics-mcp",
     instructions=(
         "Deterministic visual and structural forensics for PDF and DOCX "
-        "documents. Call `analyze_document` with a local file path to obtain "
-        "measurable visual evidence (blur, OCR confidence, effective DPI, image "
-        "stretch, font usage, structural anomalies). This server never makes "
-        "fraud judgements; it returns metrics and measurable anomalies for an "
-        "agent to reason over."
+        "documents. Call `analyze_document` with one or more local file paths "
+        "to obtain measurable visual evidence (blur, OCR confidence, effective "
+        "DPI, image stretch, font usage, structural anomalies). This server "
+        "never makes fraud judgements; it returns metrics and measurable "
+        "anomalies for an agent to reason over."
     ),
 )
 
@@ -35,21 +35,22 @@ mcp = FastMCP(
 @mcp.tool(
     name="analyze_document",
     description=(
-        "Analyze a local PDF or DOCX file and return deterministic visual and "
-        "structural forensic evidence as JSON. `document_path` is an absolute or "
-        "relative path on the machine running this server. `options` optionally "
-        "overrides configuration (e.g. {'render': {'dpi': 300}, 'features': "
-        "{'enable_ocr': false}}). Returns document_id, document_type, summary, "
-        "page_results, document_findings, warnings, and errors."
+        "Analyze one or more local PDF or DOCX files and return deterministic "
+        "visual and structural forensic evidence as JSON. `document_paths` is "
+        "an array of absolute or relative paths on the machine running this "
+        "server. `options` optionally overrides configuration (e.g. "
+        "{'render': {'dpi': 300}, 'features': {'enable_ocr': false}}). Returns "
+        "a `results` array; each element has document_id, document_type, "
+        "summary, page_results, document_findings, warnings, and errors."
     ),
 )
 def analyze_document(
-    document_path: str,
+    document_paths: list[str],
     options: Optional[dict[str, Any]] = None,
 ) -> dict[str, Any]:
     """MCP tool entry point. Delegates to the deterministic pipeline."""
-    logger.info("analyze_document called: %s", document_path)
-    return _analyze_document(document_path, options)
+    logger.info("analyze_document called: %d document(s)", len(document_paths))
+    return _analyze_document(document_paths, options)
 
 
 def build_server() -> FastMCP:

@@ -42,15 +42,18 @@ def test_mcp_analyze_document_invocation(sample_pdf, fast_options):
         async with Client(mcp) as client:
             result = await client.call_tool(
                 "analyze_document",
-                {"document_path": sample_pdf, "options": fast_options},
+                {"document_paths": [sample_pdf], "options": fast_options},
             )
             return _extract_payload(result)
 
     payload = asyncio.run(_run())
-    assert payload["document_type"] == "pdf"
-    assert payload["document_id"]
-    assert payload["summary"]["page_count"] >= 1
-    assert "page_results" in payload
-    assert isinstance(payload["warnings"], list)
-    assert isinstance(payload["errors"], list)
-    assert payload["errors"] == []
+    assert "results" in payload
+    assert len(payload["results"]) == 1
+    result = payload["results"][0]
+    assert result["document_type"] == "pdf"
+    assert result["document_id"]
+    assert result["summary"]["page_count"] >= 1
+    assert "page_results" in result
+    assert isinstance(result["warnings"], list)
+    assert isinstance(result["errors"], list)
+    assert result["errors"] == []

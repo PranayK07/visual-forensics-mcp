@@ -57,10 +57,19 @@ def _document_id(path: str) -> str:
 
 
 def analyze_document(
+    document_paths: list[str],
+    options: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Run the full forensic pipeline for each document and return results."""
+    results = [_analyze_single_document(path, options) for path in document_paths]
+    return {"results": results}
+
+
+def _analyze_single_document(
     document_path: str,
     options: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    """Run the full forensic pipeline and return a schema-valid dict."""
+    """Run the full forensic pipeline for one document and return a schema-valid dict."""
     warnings: list[str] = []
     errors: list[str] = []
 
