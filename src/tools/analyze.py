@@ -21,6 +21,7 @@ from ..detectors import (
     compression_detector,
     dpi_detector,
     font_detector,
+    font_outlier_detector,
     ocr_confidence_detector,
     stretch_detector,
     structure_detector,
@@ -179,6 +180,31 @@ def analyze_document(
             )
         except Exception as exc:
             warnings.append(f"Font detector failed: {exc}")
+
+        # Located font outliers need the document-wide dominant font, so they
+        # run as a second pass once every page's fonts have been aggregated.
+        if pdf_doc is not None:
+            for page_result in page_results:
+                idx = page_result.page - 1
+                if idx < 0 or idx >= pdf_doc.page_count:
+                    continue
+                try:
+                    pts_to_px = page_result.dpi / 72.0
+                    spans = font_analysis.extract_font_spans(
+                        pdf_doc[idx], pts_to_px
+                    )
+                    page_result.findings.extend(
+                        font_outlier_detector.detect(
+                            spans, aggregated_fonts, page_result.page,
+                            pts_to_px, config,
+                        )
+                    )
+                    page_result.findings = page_result.findings[:max_findings]
+                except Exception as exc:
+                    warnings.append(
+                        f"Font outlier detection failed on page "
+                        f"{page_result.page}: {exc}"
+                    )
 
     # ---- summary -----------------------------------------------------------
     finding_count = sum(len(p.findings) for p in page_results) + len(document_findings)
