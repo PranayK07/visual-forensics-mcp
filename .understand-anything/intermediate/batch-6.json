@@ -1,0 +1,54 @@
+{
+  "nodes": [
+    {
+      "id": "document:README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "README.md",
+      "summary": "Project documentation: architecture, installation, MCP usage, UiPath integration.",
+      "tags": [
+        "docs"
+      ],
+      "complexity": "complex",
+      "language": "markdown"
+    },
+    {
+      "id": "config:claim_result.json",
+      "type": "config",
+      "name": "claim_result.json",
+      "filePath": "claim_result.json",
+      "summary": "{",
+      "tags": [
+        "module"
+      ],
+      "complexity": "complex",
+      "language": "json"
+    },
+    {
+      "id": "config:pyproject.toml",
+      "type": "config",
+      "name": "pyproject.toml",
+      "filePath": "pyproject.toml",
+      "summary": "[build-system]",
+      "tags": [
+        "module"
+      ],
+      "complexity": "simple",
+      "language": "toml"
+    },
+    {
+      "id": "document:requirements.txt",
+      "type": "document",
+      "name": "requirements.txt",
+      "filePath": "requirements.txt",
+      "summary": "pymupdf>=1.24",
+      "tags": [
+        "module"
+      ],
+      "complexity": "simple",
+      "language": "txt"
+    }
+  ],
+  "edges": [],
+  "batchIndex": 6
+}

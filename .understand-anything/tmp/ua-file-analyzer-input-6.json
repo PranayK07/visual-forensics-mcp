@@ -1,0 +1,35 @@
+{
+  "projectRoot": "c:\\\\Users\\\\prana\\\\Documents\\\\Github\\\\New folder\\\\visual-forensics-mcp",
+  "batchFiles": [
+    {
+      "path": "README.md",
+      "language": "markdown",
+      "sizeLines": 362,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "claim_result.json",
+      "language": "json",
+      "sizeLines": 4612,
+      "fileCategory": "config"
+    },
+    {
+      "path": "pyproject.toml",
+      "language": "toml",
+      "sizeLines": 37,
+      "fileCategory": "config"
+    },
+    {
+      "path": "requirements.txt",
+      "language": "txt",
+      "sizeLines": 30,
+      "fileCategory": "docs"
+    }
+  ],
+  "batchImportData": {
+    "README.md": [],
+    "claim_result.json": [],
+    "pyproject.toml": [],
+    "requirements.txt": []
+  }
+}

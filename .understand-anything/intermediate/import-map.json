@@ -1,0 +1,255 @@
+{
+  "scriptCompleted": true,
+  "stats": {
+    "filesScanned": 62,
+    "filesWithImports": 46,
+    "totalEdges": 137
+  },
+  "importMap": {
+    ".understand-anything/.understandignore": [],
+    "annotate_report.py": [
+      "src/report/annotator.py",
+      "src/tools/analyze.py",
+      "src/utils/config.py"
+    ],
+    "claim_result.json": [],
+    "configs/default.yaml": [],
+    "examples/example_request.json": [],
+    "examples/generate_examples.py": [
+      "src/tools/analyze.py",
+      "tests/builders.py"
+    ],
+    "examples/sample_response.json": [],
+    "pyproject.toml": [],
+    "README.md": [],
+    "requirements.txt": [],
+    "src/__init__.py": [],
+    "src/analyzers/__init__.py": [
+      "src/analyzers/blur.py",
+      "src/analyzers/contrast.py",
+      "src/analyzers/edge_density.py",
+      "src/analyzers/entropy.py",
+      "src/analyzers/font_analysis.py",
+      "src/analyzers/image_scaling.py",
+      "src/analyzers/noise.py",
+      "src/analyzers/ocr.py",
+      "src/analyzers/pdf_structure.py",
+      "src/analyzers/sharpness.py",
+      "src/analyzers/visual_engine.py"
+    ],
+    "src/analyzers/blur.py": [
+      "src/utils/image_ops.py"
+    ],
+    "src/analyzers/contrast.py": [
+      "src/utils/image_ops.py"
+    ],
+    "src/analyzers/edge_density.py": [
+      "src/utils/config.py",
+      "src/utils/image_ops.py"
+    ],
+    "src/analyzers/entropy.py": [
+      "src/utils/config.py",
+      "src/utils/image_ops.py"
+    ],
+    "src/analyzers/font_analysis.py": [
+      "src/utils/logging.py"
+    ],
+    "src/analyzers/image_scaling.py": [],
+    "src/analyzers/noise.py": [
+      "src/utils/config.py",
+      "src/utils/image_ops.py"
+    ],
+    "src/analyzers/ocr.py": [
+      "src/utils/config.py",
+      "src/utils/image_ops.py",
+      "src/utils/logging.py"
+    ],
+    "src/analyzers/pdf_structure.py": [
+      "src/analyzers/font_analysis.py",
+      "src/analyzers/image_scaling.py",
+      "src/utils/config.py",
+      "src/utils/geometry.py",
+      "src/utils/logging.py"
+    ],
+    "src/analyzers/sharpness.py": [
+      "src/utils/image_ops.py"
+    ],
+    "src/analyzers/visual_engine.py": [
+      "src/analyzers/blur.py",
+      "src/analyzers/contrast.py",
+      "src/analyzers/edge_density.py",
+      "src/analyzers/entropy.py",
+      "src/analyzers/noise.py",
+      "src/analyzers/ocr.py",
+      "src/analyzers/sharpness.py",
+      "src/utils/config.py",
+      "src/utils/image_ops.py"
+    ],
+    "src/detectors/__init__.py": [
+      "src/detectors/blur_detector.py",
+      "src/detectors/compression_detector.py",
+      "src/detectors/dpi_detector.py",
+      "src/detectors/font_detector.py",
+      "src/detectors/ocr_confidence_detector.py",
+      "src/detectors/stretch_detector.py",
+      "src/detectors/structure_detector.py"
+    ],
+    "src/detectors/_common.py": [
+      "src/schemas/models.py"
+    ],
+    "src/detectors/blur_detector.py": [
+      "src/detectors/_common.py",
+      "src/schemas/models.py",
+      "src/utils/config.py"
+    ],
+    "src/detectors/compression_detector.py": [
+      "src/detectors/_common.py",
+      "src/schemas/models.py",
+      "src/utils/config.py"
+    ],
+    "src/detectors/dpi_detector.py": [
+      "src/schemas/models.py",
+      "src/utils/config.py"
+    ],
+    "src/detectors/font_detector.py": [
+      "src/schemas/models.py",
+      "src/utils/config.py"
+    ],
+    "src/detectors/ocr_confidence_detector.py": [
+      "src/detectors/_common.py",
+      "src/schemas/models.py",
+      "src/utils/config.py"
+    ],
+    "src/detectors/stretch_detector.py": [
+      "src/schemas/models.py",
+      "src/utils/config.py"
+    ],
+    "src/detectors/structure_detector.py": [
+      "src/schemas/models.py",
+      "src/utils/config.py"
+    ],
+    "src/render/__init__.py": [
+      "src/render/loader.py",
+      "src/render/pdf_renderer.py"
+    ],
+    "src/render/docx_renderer.py": [
+      "src/utils/logging.py"
+    ],
+    "src/render/loader.py": [
+      "src/utils/config.py",
+      "src/utils/logging.py"
+    ],
+    "src/render/pdf_renderer.py": [
+      "src/utils/config.py",
+      "src/utils/image_ops.py",
+      "src/utils/logging.py"
+    ],
+    "src/report/__init__.py": [
+      "src/report/annotator.py"
+    ],
+    "src/report/annotator.py": [
+      "src/utils/config.py",
+      "src/utils/logging.py"
+    ],
+    "src/schemas/__init__.py": [
+      "src/schemas/models.py"
+    ],
+    "src/schemas/models.py": [],
+    "src/server/__init__.py": [],
+    "src/server/__main__.py": [
+      "src/server/app.py"
+    ],
+    "src/server/app.py": [
+      "src/tools/analyze.py",
+      "src/utils/logging.py"
+    ],
+    "src/tiling/__init__.py": [
+      "src/tiling/tiler.py"
+    ],
+    "src/tiling/tiler.py": [
+      "src/utils/config.py"
+    ],
+    "src/tools/__init__.py": [
+      "src/tools/analyze.py"
+    ],
+    "src/tools/analyze.py": [
+      "src/analyzers/__init__.py",
+      "src/analyzers/font_analysis.py",
+      "src/analyzers/ocr.py",
+      "src/analyzers/pdf_structure.py",
+      "src/analyzers/visual_engine.py",
+      "src/detectors/__init__.py",
+      "src/detectors/blur_detector.py",
+      "src/detectors/compression_detector.py",
+      "src/detectors/dpi_detector.py",
+      "src/detectors/font_detector.py",
+      "src/detectors/ocr_confidence_detector.py",
+      "src/detectors/stretch_detector.py",
+      "src/detectors/structure_detector.py",
+      "src/render/__init__.py",
+      "src/render/docx_renderer.py",
+      "src/render/pdf_renderer.py",
+      "src/schemas/models.py",
+      "src/tiling/__init__.py",
+      "src/utils/config.py",
+      "src/utils/logging.py"
+    ],
+    "src/utils/__init__.py": [
+      "src/utils/config.py",
+      "src/utils/logging.py"
+    ],
+    "src/utils/config.py": [],
+    "src/utils/geometry.py": [],
+    "src/utils/image_ops.py": [],
+    "src/utils/logging.py": [
+      "src/utils/logging.py"
+    ],
+    "tests/builders.py": [],
+    "tests/conftest.py": [
+      "tests/builders.py"
+    ],
+    "tests/test_analyzers.py": [
+      "src/analyzers/__init__.py",
+      "src/analyzers/blur.py",
+      "src/analyzers/edge_density.py",
+      "src/analyzers/entropy.py",
+      "src/analyzers/font_analysis.py",
+      "src/analyzers/image_scaling.py",
+      "src/analyzers/ocr.py",
+      "src/render/__init__.py",
+      "src/utils/config.py"
+    ],
+    "tests/test_detectors.py": [
+      "src/detectors/__init__.py",
+      "src/detectors/blur_detector.py",
+      "src/detectors/dpi_detector.py",
+      "src/detectors/font_detector.py",
+      "src/detectors/stretch_detector.py",
+      "src/schemas/models.py",
+      "src/utils/config.py"
+    ],
+    "tests/test_docx.py": [
+      "src/render/__init__.py",
+      "src/render/docx_renderer.py",
+      "src/utils/config.py"
+    ],
+    "tests/test_end_to_end.py": [
+      "src/schemas/models.py",
+      "src/tools/analyze.py"
+    ],
+    "tests/test_mcp.py": [
+      "src/server/app.py"
+    ],
+    "tests/test_rendering.py": [
+      "src/render/__init__.py",
+      "src/utils/config.py"
+    ],
+    "tests/test_schema.py": [
+      "src/schemas/models.py"
+    ],
+    "tests/test_tiling.py": [
+      "src/tiling/__init__.py",
+      "src/utils/config.py"
+    ]
+  }
+}

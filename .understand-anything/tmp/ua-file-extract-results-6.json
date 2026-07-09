@@ -1,0 +1,208 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 4,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "README.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 362,
+      "nonEmptyLines": 293,
+      "sections": [
+        {
+          "heading": "Visual Document Forensics MCP Server",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Guarantees",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Architecture",
+          "level": 2,
+          "line": 29
+        },
+        {
+          "heading": "Project layout",
+          "level": 3,
+          "line": 54
+        },
+        {
+          "heading": "Analyzer & detector modules",
+          "level": 3,
+          "line": 75
+        },
+        {
+          "heading": "Installation",
+          "level": 2,
+          "line": 92
+        },
+        {
+          "heading": "Tesseract OCR (optional but recommended)",
+          "level": 3,
+          "line": 108
+        },
+        {
+          "heading": "Configuration",
+          "level": 2,
+          "line": 124
+        },
+        {
+          "heading": "Running the MCP server",
+          "level": 2,
+          "line": 153
+        },
+        {
+          "heading": "MCP usage",
+          "level": 2,
+          "line": 170
+        },
+        {
+          "heading": "Finding types produced",
+          "level": 3,
+          "line": 209
+        },
+        {
+          "heading": "UiPath integration",
+          "level": 2,
+          "line": 224
+        },
+        {
+          "heading": "Example request",
+          "level": 3,
+          "line": 256
+        },
+        {
+          "heading": "Example response (abridged)",
+          "level": 3,
+          "line": 268
+        },
+        {
+          "heading": "Testing",
+          "level": 2,
+          "line": 332
+        },
+        {
+          "heading": "How metrics are computed (deterministic definitions)",
+          "level": 2,
+          "line": 345
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 16
+      }
+    },
+    {
+      "path": "claim_result.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 4613,
+      "nonEmptyLines": 4613,
+      "sections": [
+        {
+          "heading": "document_id",
+          "level": 1,
+          "line": 2
+        },
+        {
+          "heading": "document_type",
+          "level": 1,
+          "line": 3
+        },
+        {
+          "heading": "summary",
+          "level": 1,
+          "line": 4
+        },
+        {
+          "heading": "page_results",
+          "level": 1,
+          "line": 24
+        },
+        {
+          "heading": "document_findings",
+          "level": 1,
+          "line": 4521
+        },
+        {
+          "heading": "warnings",
+          "level": 1,
+          "line": 4609
+        },
+        {
+          "heading": "errors",
+          "level": 1,
+          "line": 4612
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 7
+      }
+    },
+    {
+      "path": "pyproject.toml",
+      "language": "toml",
+      "fileCategory": "config",
+      "totalLines": 37,
+      "nonEmptyLines": 32,
+      "sections": [
+        {
+          "heading": "build-system",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "project",
+          "level": 1,
+          "line": 5
+        },
+        {
+          "heading": "project.optional-dependencies",
+          "level": 2,
+          "line": 25
+        },
+        {
+          "heading": "project.scripts",
+          "level": 2,
+          "line": 28
+        },
+        {
+          "heading": "tool.setuptools",
+          "level": 2,
+          "line": 31
+        },
+        {
+          "heading": "tool.pytest.ini_options",
+          "level": 3,
+          "line": 34
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 6
+      }
+    },
+    {
+      "path": "requirements.txt",
+      "language": "txt",
+      "fileCategory": "docs",
+      "totalLines": 30,
+      "nonEmptyLines": 24,
+      "metrics": {}
+    }
+  ]
+}

@@ -1,0 +1,601 @@
+{
+  "nodes": [
+    {
+      "id": "file:src/analyzers/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "src/analyzers/__init__.py",
+      "summary": "Package barrel that re-exports all visual and document analyzers (blur, contrast, entropy, OCR, visual engine, etc.) for use by the analysis pipeline.",
+      "tags": [
+        "entry-point",
+        "barrel",
+        "analyzers"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Python package __init__ aggregating analyzer submodules."
+    },
+    {
+      "id": "file:src/analyzers/blur.py",
+      "type": "file",
+      "name": "blur.py",
+      "filePath": "src/analyzers/blur.py",
+      "summary": "Computes blur metrics via Laplacian variance on grayscale images, exposing a standard analyze() wrapper for the visual engine.",
+      "tags": [
+        "utility",
+        "image-analysis",
+        "blur-detection"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/analyzers/contrast.py",
+      "type": "file",
+      "name": "contrast.py",
+      "filePath": "src/analyzers/contrast.py",
+      "summary": "Measures image contrast using RMS and Michelson formulas, returning both metrics through a unified analyze() interface.",
+      "tags": [
+        "utility",
+        "image-analysis",
+        "contrast"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/analyzers/edge_density.py",
+      "type": "file",
+      "name": "edge_density.py",
+      "filePath": "src/analyzers/edge_density.py",
+      "summary": "Estimates edge pixel density with Canny edge detection, reading low/high thresholds from runtime config.",
+      "tags": [
+        "utility",
+        "image-analysis",
+        "edge-detection"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/analyzers/entropy.py",
+      "type": "file",
+      "name": "entropy.py",
+      "filePath": "src/analyzers/entropy.py",
+      "summary": "Computes Shannon entropy of grayscale histograms to quantify image information content, with configurable bin count.",
+      "tags": [
+        "utility",
+        "image-analysis",
+        "entropy"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/analyzers/image_scaling.py",
+      "type": "file",
+      "name": "image_scaling.py",
+      "filePath": "src/analyzers/image_scaling.py",
+      "summary": "Detects non-uniform scaling of embedded images by comparing original pixel dimensions to PDF display points.",
+      "tags": [
+        "utility",
+        "pdf-analysis",
+        "scaling-detection"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/analyzers/blur.py:laplacian_variance",
+      "type": "function",
+      "name": "laplacian_variance",
+      "filePath": "src/analyzers/blur.py",
+      "lineRange": [
+        15,
+        21
+      ],
+      "summary": "Computes Laplacian variance on a grayscale image as a blur sharpness indicator.",
+      "tags": [
+        "utility",
+        "blur-detection",
+        "opencv"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/analyzers/blur.py:analyze",
+      "type": "function",
+      "name": "analyze",
+      "filePath": "src/analyzers/blur.py",
+      "lineRange": [
+        24,
+        26
+      ],
+      "summary": "Standard analyzer entry point returning laplacian_variance for a tile image.",
+      "tags": [
+        "api-handler",
+        "blur-detection"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/analyzers/contrast.py:rms_contrast",
+      "type": "function",
+      "name": "rms_contrast",
+      "filePath": "src/analyzers/contrast.py",
+      "lineRange": [
+        14,
+        18
+      ],
+      "summary": "Calculates root-mean-square contrast from grayscale pixel standard deviation.",
+      "tags": [
+        "utility",
+        "contrast",
+        "statistics"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/analyzers/contrast.py:michelson_contrast",
+      "type": "function",
+      "name": "michelson_contrast",
+      "filePath": "src/analyzers/contrast.py",
+      "lineRange": [
+        21,
+        30
+      ],
+      "summary": "Computes Michelson contrast from min/max grayscale intensities with zero-range guard.",
+      "tags": [
+        "utility",
+        "contrast",
+        "statistics"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/analyzers/contrast.py:analyze",
+      "type": "function",
+      "name": "analyze",
+      "filePath": "src/analyzers/contrast.py",
+      "lineRange": [
+        33,
+        37
+      ],
+      "summary": "Returns both RMS and Michelson contrast metrics for a tile image.",
+      "tags": [
+        "api-handler",
+        "contrast"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/analyzers/edge_density.py:edge_density",
+      "type": "function",
+      "name": "edge_density",
+      "filePath": "src/analyzers/edge_density.py",
+      "lineRange": [
+        12,
+        17
+      ],
+      "summary": "Runs Canny edge detection and returns the fraction of edge pixels in the image.",
+      "tags": [
+        "utility",
+        "edge-detection",
+        "opencv"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/analyzers/edge_density.py:analyze",
+      "type": "function",
+      "name": "analyze",
+      "filePath": "src/analyzers/edge_density.py",
+      "lineRange": [
+        20,
+        25
+      ],
+      "summary": "Reads Canny thresholds from config and returns edge density for a tile.",
+      "tags": [
+        "api-handler",
+        "edge-detection"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/analyzers/entropy.py:shannon_entropy",
+      "type": "function",
+      "name": "shannon_entropy",
+      "filePath": "src/analyzers/entropy.py",
+      "lineRange": [
+        11,
+        21
+      ],
+      "summary": "Computes Shannon entropy from a grayscale histogram with configurable bin count.",
+      "tags": [
+        "utility",
+        "entropy",
+        "statistics"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/analyzers/entropy.py:analyze",
+      "type": "function",
+      "name": "analyze",
+      "filePath": "src/analyzers/entropy.py",
+      "lineRange": [
+        24,
+        28
+      ],
+      "summary": "Returns Shannon entropy using histogram bin count from config.",
+      "tags": [
+        "api-handler",
+        "entropy"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/analyzers/image_scaling.py:compute_scaling",
+      "type": "function",
+      "name": "compute_scaling",
+      "filePath": "src/analyzers/image_scaling.py",
+      "lineRange": [
+        20,
+        46
+      ],
+      "summary": "Compares original image pixels to PDF display dimensions and flags stretch or non-uniform scaling.",
+      "tags": [
+        "utility",
+        "scaling-detection",
+        "pdf-analysis"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:src/analyzers/__init__.py",
+      "target": "file:src/analyzers/blur.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/__init__.py",
+      "target": "file:src/analyzers/contrast.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/__init__.py",
+      "target": "file:src/analyzers/edge_density.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/__init__.py",
+      "target": "file:src/analyzers/entropy.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/__init__.py",
+      "target": "file:src/analyzers/font_analysis.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/__init__.py",
+      "target": "file:src/analyzers/image_scaling.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/__init__.py",
+      "target": "file:src/analyzers/noise.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/__init__.py",
+      "target": "file:src/analyzers/ocr.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/__init__.py",
+      "target": "file:src/analyzers/pdf_structure.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/__init__.py",
+      "target": "file:src/analyzers/sharpness.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/__init__.py",
+      "target": "file:src/analyzers/visual_engine.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/blur.py",
+      "target": "file:src/utils/image_ops.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/contrast.py",
+      "target": "file:src/utils/image_ops.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/edge_density.py",
+      "target": "file:src/utils/config.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/edge_density.py",
+      "target": "file:src/utils/image_ops.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/entropy.py",
+      "target": "file:src/utils/config.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/entropy.py",
+      "target": "file:src/utils/image_ops.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/blur.py",
+      "target": "function:src/analyzers/blur.py:laplacian_variance",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/analyzers/blur.py",
+      "target": "function:src/analyzers/blur.py:analyze",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/analyzers/blur.py",
+      "target": "function:src/analyzers/blur.py:laplacian_variance",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/analyzers/blur.py",
+      "target": "function:src/analyzers/blur.py:analyze",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/analyzers/contrast.py",
+      "target": "function:src/analyzers/contrast.py:rms_contrast",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/analyzers/contrast.py",
+      "target": "function:src/analyzers/contrast.py:michelson_contrast",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/analyzers/contrast.py",
+      "target": "function:src/analyzers/contrast.py:analyze",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/analyzers/contrast.py",
+      "target": "function:src/analyzers/contrast.py:rms_contrast",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/analyzers/contrast.py",
+      "target": "function:src/analyzers/contrast.py:michelson_contrast",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/analyzers/contrast.py",
+      "target": "function:src/analyzers/contrast.py:analyze",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/analyzers/edge_density.py",
+      "target": "function:src/analyzers/edge_density.py:edge_density",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/analyzers/edge_density.py",
+      "target": "function:src/analyzers/edge_density.py:analyze",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/analyzers/edge_density.py",
+      "target": "function:src/analyzers/edge_density.py:edge_density",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/analyzers/edge_density.py",
+      "target": "function:src/analyzers/edge_density.py:analyze",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/analyzers/entropy.py",
+      "target": "function:src/analyzers/entropy.py:shannon_entropy",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/analyzers/entropy.py",
+      "target": "function:src/analyzers/entropy.py:analyze",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/analyzers/entropy.py",
+      "target": "function:src/analyzers/entropy.py:shannon_entropy",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/analyzers/entropy.py",
+      "target": "function:src/analyzers/entropy.py:analyze",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/analyzers/image_scaling.py",
+      "target": "function:src/analyzers/image_scaling.py:compute_scaling",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/analyzers/image_scaling.py",
+      "target": "function:src/analyzers/image_scaling.py:compute_scaling",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/analyzers/blur.py:laplacian_variance",
+      "target": "function:src/utils/image_ops.py:ensure_gray",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/analyzers/blur.py:analyze",
+      "target": "function:src/analyzers/blur.py:laplacian_variance",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/analyzers/contrast.py:rms_contrast",
+      "target": "function:src/utils/image_ops.py:ensure_gray",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/analyzers/contrast.py:analyze",
+      "target": "function:src/analyzers/contrast.py:rms_contrast",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/analyzers/contrast.py:analyze",
+      "target": "function:src/analyzers/contrast.py:michelson_contrast",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/analyzers/edge_density.py:edge_density",
+      "target": "function:src/utils/image_ops.py:ensure_gray",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/analyzers/edge_density.py:analyze",
+      "target": "function:src/analyzers/edge_density.py:edge_density",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/analyzers/entropy.py:shannon_entropy",
+      "target": "function:src/utils/image_ops.py:ensure_gray",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/analyzers/entropy.py:analyze",
+      "target": "function:src/analyzers/entropy.py:shannon_entropy",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/analyzers/blur.py",
+      "target": "file:tests/test_analyzers.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/analyzers/edge_density.py",
+      "target": "file:tests/test_analyzers.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/analyzers/entropy.py",
+      "target": "file:tests/test_analyzers.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/analyzers/image_scaling.py",
+      "target": "file:tests/test_analyzers.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

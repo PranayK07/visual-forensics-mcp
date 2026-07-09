@@ -1,0 +1,1249 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 9,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "src/analyzers/font_analysis.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 82,
+      "nonEmptyLines": 65,
+      "functions": [
+        {
+          "name": "_normalise_font_name",
+          "startLine": 20,
+          "endLine": 26,
+          "params": [
+            "raw"
+          ]
+        },
+        {
+          "name": "analyze_page_fonts",
+          "startLine": 29,
+          "endLine": 67,
+          "params": [
+            "page"
+          ]
+        },
+        {
+          "name": "aggregate_fonts",
+          "startLine": 70,
+          "endLine": 82,
+          "params": [
+            "page_font_lists"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "_normalise_font_name",
+          "line": 20,
+          "isDefault": false
+        },
+        {
+          "name": "analyze_page_fonts",
+          "line": 29,
+          "isDefault": false
+        },
+        {
+          "name": "aggregate_fonts",
+          "line": 70,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_normalise_font_name",
+          "callee": "len",
+          "lineNumber": 24
+        },
+        {
+          "caller": "_normalise_font_name",
+          "callee": "raw.split",
+          "lineNumber": 24
+        },
+        {
+          "caller": "_normalise_font_name",
+          "callee": "raw.split",
+          "lineNumber": 25
+        },
+        {
+          "caller": "analyze_page_fonts",
+          "callee": "defaultdict",
+          "lineNumber": 40
+        },
+        {
+          "caller": "analyze_page_fonts",
+          "callee": "defaultdict",
+          "lineNumber": 41
+        },
+        {
+          "caller": "analyze_page_fonts",
+          "callee": "page.get_text",
+          "lineNumber": 44
+        },
+        {
+          "caller": "analyze_page_fonts",
+          "callee": "logger.warning",
+          "lineNumber": 46
+        },
+        {
+          "caller": "analyze_page_fonts",
+          "callee": "data.get",
+          "lineNumber": 49
+        },
+        {
+          "caller": "analyze_page_fonts",
+          "callee": "block.get",
+          "lineNumber": 50
+        },
+        {
+          "caller": "analyze_page_fonts",
+          "callee": "line.get",
+          "lineNumber": 51
+        },
+        {
+          "caller": "analyze_page_fonts",
+          "callee": "_normalise_font_name",
+          "lineNumber": 52
+        },
+        {
+          "caller": "analyze_page_fonts",
+          "callee": "span.get",
+          "lineNumber": 52
+        },
+        {
+          "caller": "analyze_page_fonts",
+          "callee": "span.get",
+          "lineNumber": 55
+        },
+        {
+          "caller": "analyze_page_fonts",
+          "callee": "sizes[name].add",
+          "lineNumber": 57
+        },
+        {
+          "caller": "analyze_page_fonts",
+          "callee": "round",
+          "lineNumber": 57
+        },
+        {
+          "caller": "analyze_page_fonts",
+          "callee": "float",
+          "lineNumber": 57
+        },
+        {
+          "caller": "analyze_page_fonts",
+          "callee": "sorted",
+          "lineNumber": 63
+        },
+        {
+          "caller": "analyze_page_fonts",
+          "callee": "sizes.get",
+          "lineNumber": 63
+        },
+        {
+          "caller": "analyze_page_fonts",
+          "callee": "set",
+          "lineNumber": 63
+        },
+        {
+          "caller": "analyze_page_fonts",
+          "callee": "sorted",
+          "lineNumber": 65
+        },
+        {
+          "caller": "analyze_page_fonts",
+          "callee": "counts.items",
+          "lineNumber": 65
+        },
+        {
+          "caller": "aggregate_fonts",
+          "callee": "defaultdict",
+          "lineNumber": 72
+        },
+        {
+          "caller": "aggregate_fonts",
+          "callee": "defaultdict",
+          "lineNumber": 73
+        },
+        {
+          "caller": "aggregate_fonts",
+          "callee": "int",
+          "lineNumber": 76
+        },
+        {
+          "caller": "aggregate_fonts",
+          "callee": "font.get",
+          "lineNumber": 76
+        },
+        {
+          "caller": "aggregate_fonts",
+          "callee": "font.get",
+          "lineNumber": 77
+        },
+        {
+          "caller": "aggregate_fonts",
+          "callee": "sizes[font[\"name\"]].add",
+          "lineNumber": 78
+        },
+        {
+          "caller": "aggregate_fonts",
+          "callee": "sorted",
+          "lineNumber": 80
+        },
+        {
+          "caller": "aggregate_fonts",
+          "callee": "sizes.get",
+          "lineNumber": 80
+        },
+        {
+          "caller": "aggregate_fonts",
+          "callee": "set",
+          "lineNumber": 80
+        },
+        {
+          "caller": "aggregate_fonts",
+          "callee": "sorted",
+          "lineNumber": 81
+        },
+        {
+          "caller": "aggregate_fonts",
+          "callee": "counts.items",
+          "lineNumber": 81
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/analyzers/pdf_structure.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 194,
+      "nonEmptyLines": 165,
+      "functions": [
+        {
+          "name": "_union_coverage",
+          "startLine": 35,
+          "endLine": 54,
+          "params": [
+            "rects_pts",
+            "page_w",
+            "page_h",
+            "grid"
+          ]
+        },
+        {
+          "name": "analyze_page_structure",
+          "startLine": 57,
+          "endLine": 157,
+          "params": [
+            "page",
+            "render_dpi",
+            "config"
+          ]
+        },
+        {
+          "name": "pikepdf_object_summary",
+          "startLine": 160,
+          "endLine": 194,
+          "params": [
+            "path"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "_union_coverage",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "analyze_page_structure",
+          "line": 57,
+          "isDefault": false
+        },
+        {
+          "name": "pikepdf_object_summary",
+          "line": 160,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_union_coverage",
+          "callee": "np.zeros",
+          "lineNumber": 44
+        },
+        {
+          "caller": "_union_coverage",
+          "callee": "max",
+          "lineNumber": 48
+        },
+        {
+          "caller": "_union_coverage",
+          "callee": "min",
+          "lineNumber": 48
+        },
+        {
+          "caller": "_union_coverage",
+          "callee": "int",
+          "lineNumber": 48
+        },
+        {
+          "caller": "_union_coverage",
+          "callee": "np.floor",
+          "lineNumber": 48
+        },
+        {
+          "caller": "_union_coverage",
+          "callee": "max",
+          "lineNumber": 49
+        },
+        {
+          "caller": "_union_coverage",
+          "callee": "min",
+          "lineNumber": 49
+        },
+        {
+          "caller": "_union_coverage",
+          "callee": "int",
+          "lineNumber": 49
+        },
+        {
+          "caller": "_union_coverage",
+          "callee": "np.ceil",
+          "lineNumber": 49
+        },
+        {
+          "caller": "_union_coverage",
+          "callee": "max",
+          "lineNumber": 50
+        },
+        {
+          "caller": "_union_coverage",
+          "callee": "min",
+          "lineNumber": 50
+        },
+        {
+          "caller": "_union_coverage",
+          "callee": "int",
+          "lineNumber": 50
+        },
+        {
+          "caller": "_union_coverage",
+          "callee": "np.floor",
+          "lineNumber": 50
+        },
+        {
+          "caller": "_union_coverage",
+          "callee": "max",
+          "lineNumber": 51
+        },
+        {
+          "caller": "_union_coverage",
+          "callee": "min",
+          "lineNumber": 51
+        },
+        {
+          "caller": "_union_coverage",
+          "callee": "int",
+          "lineNumber": 51
+        },
+        {
+          "caller": "_union_coverage",
+          "callee": "np.ceil",
+          "lineNumber": 51
+        },
+        {
+          "caller": "_union_coverage",
+          "callee": "float",
+          "lineNumber": 54
+        },
+        {
+          "caller": "_union_coverage",
+          "callee": "mask.sum",
+          "lineNumber": 54
+        },
+        {
+          "caller": "_union_coverage",
+          "callee": "float",
+          "lineNumber": 54
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "float",
+          "lineNumber": 65
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "float",
+          "lineNumber": 65
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "page.get_image_info",
+          "lineNumber": 71
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "logger.warning",
+          "lineNumber": 73
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "info.get",
+          "lineNumber": 77
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "max",
+          "lineNumber": 81
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "float",
+          "lineNumber": 81
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "float",
+          "lineNumber": 81
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "max",
+          "lineNumber": 82
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "float",
+          "lineNumber": 82
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "float",
+          "lineNumber": 82
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "int",
+          "lineNumber": 83
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "info.get",
+          "lineNumber": 83
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "int",
+          "lineNumber": 84
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "info.get",
+          "lineNumber": 84
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "image_scaling.compute_scaling",
+          "lineNumber": 88
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "raster_rects.append",
+          "lineNumber": 91
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "float",
+          "lineNumber": 91
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "float",
+          "lineNumber": 91
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "float",
+          "lineNumber": 91
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "float",
+          "lineNumber": 91
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "embedded.append",
+          "lineNumber": 93
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "int",
+          "lineNumber": 95
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "info.get",
+          "lineNumber": 95
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "round",
+          "lineNumber": 98
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "round",
+          "lineNumber": 99
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "float",
+          "lineNumber": 101
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "float",
+          "lineNumber": 102
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "float",
+          "lineNumber": 103
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "float",
+          "lineNumber": 104
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "info.get",
+          "lineNumber": 110
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "info.get",
+          "lineNumber": 111
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "combinations",
+          "lineNumber": 118
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "range",
+          "lineNumber": 118
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "len",
+          "lineNumber": 118
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "iou",
+          "lineNumber": 119
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "overlaps.append",
+          "lineNumber": 121
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "round",
+          "lineNumber": 125
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "_union_coverage",
+          "lineNumber": 130
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "page.get_drawings",
+          "lineNumber": 134
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "len",
+          "lineNumber": 135
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "font_analysis.analyze_page_fonts",
+          "lineNumber": 139
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "fonts.get",
+          "lineNumber": 140
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "len",
+          "lineNumber": 148
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "round",
+          "lineNumber": 149
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "fonts.get",
+          "lineNumber": 152
+        },
+        {
+          "caller": "analyze_page_structure",
+          "callee": "bool",
+          "lineNumber": 153
+        },
+        {
+          "caller": "pikepdf_object_summary",
+          "callee": "pikepdf.open",
+          "lineNumber": 170
+        },
+        {
+          "caller": "pikepdf_object_summary",
+          "callee": "page.get",
+          "lineNumber": 174
+        },
+        {
+          "caller": "pikepdf_object_summary",
+          "callee": "resources.get",
+          "lineNumber": 177
+        },
+        {
+          "caller": "pikepdf_object_summary",
+          "callee": "xobjects.values",
+          "lineNumber": 180
+        },
+        {
+          "caller": "pikepdf_object_summary",
+          "callee": "obj.get",
+          "lineNumber": 182
+        },
+        {
+          "caller": "pikepdf_object_summary",
+          "callee": "obj.get",
+          "lineNumber": 184
+        },
+        {
+          "caller": "pikepdf_object_summary",
+          "callee": "str",
+          "lineNumber": 186
+        },
+        {
+          "caller": "pikepdf_object_summary",
+          "callee": "filters.get",
+          "lineNumber": 187
+        },
+        {
+          "caller": "pikepdf_object_summary",
+          "callee": "logger.warning",
+          "lineNumber": 193
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/render/docx_renderer.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 99,
+      "nonEmptyLines": 84,
+      "functions": [
+        {
+          "name": "extract_docx_formatting",
+          "startLine": 18,
+          "endLine": 99,
+          "params": [
+            "docx_obj"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "extract_docx_formatting",
+          "line": 18,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "extract_docx_formatting",
+          "callee": "defaultdict",
+          "lineNumber": 37
+        },
+        {
+          "caller": "extract_docx_formatting",
+          "callee": "defaultdict",
+          "lineNumber": 38
+        },
+        {
+          "caller": "extract_docx_formatting",
+          "callee": "font_sizes[name].add",
+          "lineNumber": 56
+        },
+        {
+          "caller": "extract_docx_formatting",
+          "callee": "round",
+          "lineNumber": 56
+        },
+        {
+          "caller": "extract_docx_formatting",
+          "callee": "float",
+          "lineNumber": 56
+        },
+        {
+          "caller": "extract_docx_formatting",
+          "callee": "font_sizes[name].add",
+          "lineNumber": 71
+        },
+        {
+          "caller": "extract_docx_formatting",
+          "callee": "round",
+          "lineNumber": 72
+        },
+        {
+          "caller": "extract_docx_formatting",
+          "callee": "float",
+          "lineNumber": 72
+        },
+        {
+          "caller": "extract_docx_formatting",
+          "callee": "logger.warning",
+          "lineNumber": 77
+        },
+        {
+          "caller": "extract_docx_formatting",
+          "callee": "sum",
+          "lineNumber": 82
+        },
+        {
+          "caller": "extract_docx_formatting",
+          "callee": "rels.values",
+          "lineNumber": 83
+        },
+        {
+          "caller": "extract_docx_formatting",
+          "callee": "sorted",
+          "lineNumber": 93
+        },
+        {
+          "caller": "extract_docx_formatting",
+          "callee": "font_sizes.get",
+          "lineNumber": 93
+        },
+        {
+          "caller": "extract_docx_formatting",
+          "callee": "set",
+          "lineNumber": 93
+        },
+        {
+          "caller": "extract_docx_formatting",
+          "callee": "sorted",
+          "lineNumber": 95
+        },
+        {
+          "caller": "extract_docx_formatting",
+          "callee": "font_spans.items",
+          "lineNumber": 96
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/server/__main__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 5,
+      "nonEmptyLines": 3,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/server/app.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 67,
+      "nonEmptyLines": 49,
+      "functions": [
+        {
+          "name": "analyze_document",
+          "startLine": 46,
+          "endLine": 52,
+          "params": [
+            "document_path",
+            "options"
+          ]
+        },
+        {
+          "name": "build_server",
+          "startLine": 55,
+          "endLine": 57,
+          "params": []
+        },
+        {
+          "name": "main",
+          "startLine": 60,
+          "endLine": 62,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "analyze_document",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "build_server",
+          "line": 55,
+          "isDefault": false
+        },
+        {
+          "name": "main",
+          "line": 60,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "analyze_document",
+          "callee": "logger.info",
+          "lineNumber": 51
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "_analyze_document",
+          "lineNumber": 52
+        },
+        {
+          "caller": "main",
+          "callee": "mcp.run",
+          "lineNumber": 62
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/utils/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 6,
+      "nonEmptyLines": 4,
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/utils/geometry.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 35,
+      "nonEmptyLines": 24,
+      "functions": [
+        {
+          "name": "area",
+          "startLine": 6,
+          "endLine": 9,
+          "params": [
+            "bbox"
+          ]
+        },
+        {
+          "name": "intersection",
+          "startLine": 12,
+          "endLine": 19,
+          "params": [
+            "a",
+            "b"
+          ]
+        },
+        {
+          "name": "iou",
+          "startLine": 22,
+          "endLine": 27,
+          "params": [
+            "a",
+            "b"
+          ]
+        },
+        {
+          "name": "center",
+          "startLine": 30,
+          "endLine": 31,
+          "params": [
+            "bbox"
+          ]
+        },
+        {
+          "name": "scale_bbox",
+          "startLine": 34,
+          "endLine": 35,
+          "params": [
+            "bbox",
+            "sx",
+            "sy"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "area",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "intersection",
+          "line": 12,
+          "isDefault": false
+        },
+        {
+          "name": "iou",
+          "line": 22,
+          "isDefault": false
+        },
+        {
+          "name": "center",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "scale_bbox",
+          "line": 34,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "area",
+          "callee": "max",
+          "lineNumber": 7
+        },
+        {
+          "caller": "area",
+          "callee": "max",
+          "lineNumber": 8
+        },
+        {
+          "caller": "intersection",
+          "callee": "max",
+          "lineNumber": 13
+        },
+        {
+          "caller": "intersection",
+          "callee": "max",
+          "lineNumber": 14
+        },
+        {
+          "caller": "intersection",
+          "callee": "min",
+          "lineNumber": 15
+        },
+        {
+          "caller": "intersection",
+          "callee": "min",
+          "lineNumber": 16
+        },
+        {
+          "caller": "iou",
+          "callee": "intersection",
+          "lineNumber": 23
+        },
+        {
+          "caller": "iou",
+          "callee": "area",
+          "lineNumber": 26
+        },
+        {
+          "caller": "iou",
+          "callee": "area",
+          "lineNumber": 26
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/utils/logging.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 33,
+      "nonEmptyLines": 25,
+      "functions": [
+        {
+          "name": "_configure_root",
+          "startLine": 15,
+          "endLine": 27,
+          "params": []
+        },
+        {
+          "name": "get_logger",
+          "startLine": 30,
+          "endLine": 33,
+          "params": [
+            "name"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "_configure_root",
+          "line": 15,
+          "isDefault": false
+        },
+        {
+          "name": "get_logger",
+          "line": 30,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_configure_root",
+          "callee": "logging.StreamHandler",
+          "lineNumber": 19
+        },
+        {
+          "caller": "_configure_root",
+          "callee": "handler.setFormatter",
+          "lineNumber": 20
+        },
+        {
+          "caller": "_configure_root",
+          "callee": "logging.Formatter",
+          "lineNumber": 21
+        },
+        {
+          "caller": "_configure_root",
+          "callee": "logging.getLogger",
+          "lineNumber": 23
+        },
+        {
+          "caller": "_configure_root",
+          "callee": "root.addHandler",
+          "lineNumber": 24
+        },
+        {
+          "caller": "_configure_root",
+          "callee": "root.setLevel",
+          "lineNumber": 25
+        },
+        {
+          "caller": "get_logger",
+          "callee": "_configure_root",
+          "lineNumber": 32
+        },
+        {
+          "caller": "get_logger",
+          "callee": "logging.getLogger",
+          "lineNumber": 33
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tests/test_mcp.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 56,
+      "nonEmptyLines": 44,
+      "functions": [
+        {
+          "name": "_extract_payload",
+          "startLine": 13,
+          "endLine": 27,
+          "params": [
+            "call_result"
+          ]
+        },
+        {
+          "name": "test_tool_registered",
+          "startLine": 30,
+          "endLine": 37,
+          "params": []
+        },
+        {
+          "name": "test_mcp_analyze_document_invocation",
+          "startLine": 40,
+          "endLine": 56,
+          "params": [
+            "sample_pdf",
+            "fast_options"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "_extract_payload",
+          "line": 13,
+          "isDefault": false
+        },
+        {
+          "name": "test_tool_registered",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "test_mcp_analyze_document_invocation",
+          "line": 40,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_extract_payload",
+          "callee": "getattr",
+          "lineNumber": 15
+        },
+        {
+          "caller": "_extract_payload",
+          "callee": "isinstance",
+          "lineNumber": 16
+        },
+        {
+          "caller": "_extract_payload",
+          "callee": "getattr",
+          "lineNumber": 18
+        },
+        {
+          "caller": "_extract_payload",
+          "callee": "isinstance",
+          "lineNumber": 19
+        },
+        {
+          "caller": "_extract_payload",
+          "callee": "structured.get",
+          "lineNumber": 21
+        },
+        {
+          "caller": "_extract_payload",
+          "callee": "getattr",
+          "lineNumber": 22
+        },
+        {
+          "caller": "_extract_payload",
+          "callee": "getattr",
+          "lineNumber": 24
+        },
+        {
+          "caller": "_extract_payload",
+          "callee": "json.loads",
+          "lineNumber": 26
+        },
+        {
+          "caller": "_extract_payload",
+          "callee": "AssertionError",
+          "lineNumber": 27
+        },
+        {
+          "caller": "_run",
+          "callee": "Client",
+          "lineNumber": 32
+        },
+        {
+          "caller": "_run",
+          "callee": "client.list_tools",
+          "lineNumber": 33
+        },
+        {
+          "caller": "test_tool_registered",
+          "callee": "asyncio.run",
+          "lineNumber": 36
+        },
+        {
+          "caller": "test_tool_registered",
+          "callee": "_run",
+          "lineNumber": 36
+        },
+        {
+          "caller": "_run",
+          "callee": "Client",
+          "lineNumber": 42
+        },
+        {
+          "caller": "_run",
+          "callee": "client.call_tool",
+          "lineNumber": 43
+        },
+        {
+          "caller": "_run",
+          "callee": "_extract_payload",
+          "lineNumber": 47
+        },
+        {
+          "caller": "test_mcp_analyze_document_invocation",
+          "callee": "asyncio.run",
+          "lineNumber": 49
+        },
+        {
+          "caller": "test_mcp_analyze_document_invocation",
+          "callee": "_run",
+          "lineNumber": 49
+        },
+        {
+          "caller": "test_mcp_analyze_document_invocation",
+          "callee": "isinstance",
+          "lineNumber": 54
+        },
+        {
+          "caller": "test_mcp_analyze_document_invocation",
+          "callee": "isinstance",
+          "lineNumber": 55
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    }
+  ]
+}

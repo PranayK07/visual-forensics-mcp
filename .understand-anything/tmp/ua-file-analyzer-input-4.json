@@ -1,0 +1,47 @@
+{
+  "projectRoot": "c:\\Users\\prana\\Documents\\Github\\New folder\\visual-forensics-mcp",
+  "batchFiles": [
+    {"path": "src/analyzers/font_analysis.py", "language": "python", "sizeLines": 82, "fileCategory": "code"},
+    {"path": "src/analyzers/pdf_structure.py", "language": "python", "sizeLines": 194, "fileCategory": "code"},
+    {"path": "src/render/docx_renderer.py", "language": "python", "sizeLines": 99, "fileCategory": "code"},
+    {"path": "src/server/__main__.py", "language": "python", "sizeLines": 5, "fileCategory": "code"},
+    {"path": "src/server/app.py", "language": "python", "sizeLines": 67, "fileCategory": "code"},
+    {"path": "src/utils/__init__.py", "language": "python", "sizeLines": 6, "fileCategory": "code"},
+    {"path": "src/utils/geometry.py", "language": "python", "sizeLines": 35, "fileCategory": "code"},
+    {"path": "src/utils/logging.py", "language": "python", "sizeLines": 33, "fileCategory": "code"},
+    {"path": "tests/test_mcp.py", "language": "python", "sizeLines": 56, "fileCategory": "code"}
+  ],
+  "batchImportData": {
+    "src/analyzers/font_analysis.py": [
+      "src/utils/logging.py"
+    ],
+    "src/analyzers/pdf_structure.py": [
+      "src/analyzers/font_analysis.py",
+      "src/analyzers/image_scaling.py",
+      "src/utils/config.py",
+      "src/utils/geometry.py",
+      "src/utils/logging.py"
+    ],
+    "src/render/docx_renderer.py": [
+      "src/utils/logging.py"
+    ],
+    "src/server/__main__.py": [
+      "src/server/app.py"
+    ],
+    "src/server/app.py": [
+      "src/tools/analyze.py",
+      "src/utils/logging.py"
+    ],
+    "src/utils/__init__.py": [
+      "src/utils/config.py",
+      "src/utils/logging.py"
+    ],
+    "src/utils/geometry.py": [],
+    "src/utils/logging.py": [
+      "src/utils/logging.py"
+    ],
+    "tests/test_mcp.py": [
+      "src/server/app.py"
+    ]
+  }
+}

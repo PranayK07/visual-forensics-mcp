@@ -1,0 +1,1056 @@
+{
+  "nodes": [
+    {
+      "id": "file:src/analyzers/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "src/analyzers/__init__.py",
+      "summary": "Computes deterministic per-tile or per-page visual/structure metrics.",
+      "tags": [
+        "analyzer",
+        "metrics"
+      ],
+      "complexity": "simple",
+      "language": "python"
+    },
+    {
+      "id": "file:src/analyzers/blur.py",
+      "type": "file",
+      "name": "blur.py",
+      "filePath": "src/analyzers/blur.py",
+      "summary": "Computes deterministic per-tile or per-page visual/structure metrics.",
+      "tags": [
+        "analyzer",
+        "metrics"
+      ],
+      "complexity": "simple",
+      "language": "python"
+    },
+    {
+      "id": "function:src/analyzers/blur.py:laplacian_variance",
+      "type": "function",
+      "name": "laplacian_variance",
+      "filePath": "src/analyzers/blur.py",
+      "summary": "Function `laplacian_variance` in src/analyzers/blur.py.",
+      "tags": [
+        "analyzer",
+        "metrics",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 15,
+      "endLine": 21
+    },
+    {
+      "id": "function:src/analyzers/blur.py:analyze",
+      "type": "function",
+      "name": "analyze",
+      "filePath": "src/analyzers/blur.py",
+      "summary": "Function `analyze` in src/analyzers/blur.py.",
+      "tags": [
+        "analyzer",
+        "metrics",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 24,
+      "endLine": 26
+    },
+    {
+      "id": "file:src/analyzers/contrast.py",
+      "type": "file",
+      "name": "contrast.py",
+      "filePath": "src/analyzers/contrast.py",
+      "summary": "Computes deterministic per-tile or per-page visual/structure metrics.",
+      "tags": [
+        "analyzer",
+        "metrics"
+      ],
+      "complexity": "simple",
+      "language": "python"
+    },
+    {
+      "id": "function:src/analyzers/contrast.py:rms_contrast",
+      "type": "function",
+      "name": "rms_contrast",
+      "filePath": "src/analyzers/contrast.py",
+      "summary": "Function `rms_contrast` in src/analyzers/contrast.py.",
+      "tags": [
+        "analyzer",
+        "metrics",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 14,
+      "endLine": 18
+    },
+    {
+      "id": "function:src/analyzers/contrast.py:michelson_contrast",
+      "type": "function",
+      "name": "michelson_contrast",
+      "filePath": "src/analyzers/contrast.py",
+      "summary": "Function `michelson_contrast` in src/analyzers/contrast.py.",
+      "tags": [
+        "analyzer",
+        "metrics",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 21,
+      "endLine": 30
+    },
+    {
+      "id": "function:src/analyzers/contrast.py:analyze",
+      "type": "function",
+      "name": "analyze",
+      "filePath": "src/analyzers/contrast.py",
+      "summary": "Function `analyze` in src/analyzers/contrast.py.",
+      "tags": [
+        "analyzer",
+        "metrics",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 33,
+      "endLine": 37
+    },
+    {
+      "id": "file:src/analyzers/edge_density.py",
+      "type": "file",
+      "name": "edge_density.py",
+      "filePath": "src/analyzers/edge_density.py",
+      "summary": "Computes deterministic per-tile or per-page visual/structure metrics.",
+      "tags": [
+        "analyzer",
+        "metrics"
+      ],
+      "complexity": "simple",
+      "language": "python"
+    },
+    {
+      "id": "function:src/analyzers/edge_density.py:edge_density",
+      "type": "function",
+      "name": "edge_density",
+      "filePath": "src/analyzers/edge_density.py",
+      "summary": "Function `edge_density` in src/analyzers/edge_density.py.",
+      "tags": [
+        "analyzer",
+        "metrics",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 12,
+      "endLine": 17
+    },
+    {
+      "id": "function:src/analyzers/edge_density.py:analyze",
+      "type": "function",
+      "name": "analyze",
+      "filePath": "src/analyzers/edge_density.py",
+      "summary": "Function `analyze` in src/analyzers/edge_density.py.",
+      "tags": [
+        "analyzer",
+        "metrics",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 20,
+      "endLine": 25
+    },
+    {
+      "id": "file:src/analyzers/entropy.py",
+      "type": "file",
+      "name": "entropy.py",
+      "filePath": "src/analyzers/entropy.py",
+      "summary": "Computes deterministic per-tile or per-page visual/structure metrics.",
+      "tags": [
+        "analyzer",
+        "metrics"
+      ],
+      "complexity": "simple",
+      "language": "python"
+    },
+    {
+      "id": "function:src/analyzers/entropy.py:shannon_entropy",
+      "type": "function",
+      "name": "shannon_entropy",
+      "filePath": "src/analyzers/entropy.py",
+      "summary": "Function `shannon_entropy` in src/analyzers/entropy.py.",
+      "tags": [
+        "analyzer",
+        "metrics",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 11,
+      "endLine": 21
+    },
+    {
+      "id": "function:src/analyzers/entropy.py:analyze",
+      "type": "function",
+      "name": "analyze",
+      "filePath": "src/analyzers/entropy.py",
+      "summary": "Function `analyze` in src/analyzers/entropy.py.",
+      "tags": [
+        "analyzer",
+        "metrics",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 24,
+      "endLine": 28
+    },
+    {
+      "id": "file:src/analyzers/image_scaling.py",
+      "type": "file",
+      "name": "image_scaling.py",
+      "filePath": "src/analyzers/image_scaling.py",
+      "summary": "Computes deterministic per-tile or per-page visual/structure metrics.",
+      "tags": [
+        "analyzer",
+        "metrics"
+      ],
+      "complexity": "simple",
+      "language": "python"
+    },
+    {
+      "id": "function:src/analyzers/image_scaling.py:compute_scaling",
+      "type": "function",
+      "name": "compute_scaling",
+      "filePath": "src/analyzers/image_scaling.py",
+      "summary": "Function `compute_scaling` in src/analyzers/image_scaling.py.",
+      "tags": [
+        "analyzer",
+        "metrics",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 20,
+      "endLine": 46
+    },
+    {
+      "id": "file:src/analyzers/noise.py",
+      "type": "file",
+      "name": "noise.py",
+      "filePath": "src/analyzers/noise.py",
+      "summary": "Computes deterministic per-tile or per-page visual/structure metrics.",
+      "tags": [
+        "analyzer",
+        "metrics"
+      ],
+      "complexity": "simple",
+      "language": "python"
+    },
+    {
+      "id": "function:src/analyzers/noise.py:noise_sigma",
+      "type": "function",
+      "name": "noise_sigma",
+      "filePath": "src/analyzers/noise.py",
+      "summary": "Function `noise_sigma` in src/analyzers/noise.py.",
+      "tags": [
+        "analyzer",
+        "metrics",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 20,
+      "endLine": 32
+    },
+    {
+      "id": "function:src/analyzers/noise.py:noise_median_residual",
+      "type": "function",
+      "name": "noise_median_residual",
+      "filePath": "src/analyzers/noise.py",
+      "summary": "Function `noise_median_residual` in src/analyzers/noise.py.",
+      "tags": [
+        "analyzer",
+        "metrics",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 35,
+      "endLine": 42
+    },
+    {
+      "id": "function:src/analyzers/noise.py:analyze",
+      "type": "function",
+      "name": "analyze",
+      "filePath": "src/analyzers/noise.py",
+      "summary": "Function `analyze` in src/analyzers/noise.py.",
+      "tags": [
+        "analyzer",
+        "metrics",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 45,
+      "endLine": 52
+    },
+    {
+      "id": "file:src/analyzers/ocr.py",
+      "type": "file",
+      "name": "ocr.py",
+      "filePath": "src/analyzers/ocr.py",
+      "summary": "Computes deterministic per-tile or per-page visual/structure metrics.",
+      "tags": [
+        "analyzer",
+        "metrics"
+      ],
+      "complexity": "moderate",
+      "language": "python"
+    },
+    {
+      "id": "function:src/analyzers/ocr.py:__init__",
+      "type": "function",
+      "name": "__init__",
+      "filePath": "src/analyzers/ocr.py",
+      "summary": "Function `__init__` in src/analyzers/ocr.py.",
+      "tags": [
+        "analyzer",
+        "metrics",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 34,
+      "endLine": 54
+    },
+    {
+      "id": "function:src/analyzers/ocr.py:analyze",
+      "type": "function",
+      "name": "analyze",
+      "filePath": "src/analyzers/ocr.py",
+      "summary": "Function `analyze` in src/analyzers/ocr.py.",
+      "tags": [
+        "analyzer",
+        "metrics",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 59,
+      "endLine": 106
+    },
+    {
+      "id": "class:src/analyzers/ocr.py:OCRResult",
+      "type": "class",
+      "name": "OCRResult",
+      "filePath": "src/analyzers/ocr.py",
+      "summary": "Class `OCRResult` in src/analyzers/ocr.py.",
+      "tags": [
+        "analyzer",
+        "metrics",
+        "class"
+      ],
+      "complexity": "moderate",
+      "startLine": 24,
+      "endLine": 28
+    },
+    {
+      "id": "class:src/analyzers/ocr.py:OCREngine",
+      "type": "class",
+      "name": "OCREngine",
+      "filePath": "src/analyzers/ocr.py",
+      "summary": "Class `OCREngine` in src/analyzers/ocr.py.",
+      "tags": [
+        "analyzer",
+        "metrics",
+        "class"
+      ],
+      "complexity": "moderate",
+      "startLine": 31,
+      "endLine": 106
+    },
+    {
+      "id": "file:src/analyzers/sharpness.py",
+      "type": "file",
+      "name": "sharpness.py",
+      "filePath": "src/analyzers/sharpness.py",
+      "summary": "Computes deterministic per-tile or per-page visual/structure metrics.",
+      "tags": [
+        "analyzer",
+        "metrics"
+      ],
+      "complexity": "simple",
+      "language": "python"
+    },
+    {
+      "id": "function:src/analyzers/sharpness.py:tenengrad",
+      "type": "function",
+      "name": "tenengrad",
+      "filePath": "src/analyzers/sharpness.py",
+      "summary": "Function `tenengrad` in src/analyzers/sharpness.py.",
+      "tags": [
+        "analyzer",
+        "metrics",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 15,
+      "endLine": 22
+    },
+    {
+      "id": "function:src/analyzers/sharpness.py:mean_gradient",
+      "type": "function",
+      "name": "mean_gradient",
+      "filePath": "src/analyzers/sharpness.py",
+      "summary": "Function `mean_gradient` in src/analyzers/sharpness.py.",
+      "tags": [
+        "analyzer",
+        "metrics",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 25,
+      "endLine": 32
+    },
+    {
+      "id": "function:src/analyzers/sharpness.py:analyze",
+      "type": "function",
+      "name": "analyze",
+      "filePath": "src/analyzers/sharpness.py",
+      "summary": "Function `analyze` in src/analyzers/sharpness.py.",
+      "tags": [
+        "analyzer",
+        "metrics",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 35,
+      "endLine": 39
+    },
+    {
+      "id": "file:src/analyzers/visual_engine.py",
+      "type": "file",
+      "name": "visual_engine.py",
+      "filePath": "src/analyzers/visual_engine.py",
+      "summary": "Computes deterministic per-tile or per-page visual/structure metrics.",
+      "tags": [
+        "analyzer",
+        "metrics"
+      ],
+      "complexity": "moderate",
+      "language": "python"
+    },
+    {
+      "id": "function:src/analyzers/visual_engine.py:text_density",
+      "type": "function",
+      "name": "text_density",
+      "filePath": "src/analyzers/visual_engine.py",
+      "summary": "Function `text_density` in src/analyzers/visual_engine.py.",
+      "tags": [
+        "analyzer",
+        "metrics",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 21,
+      "endLine": 48
+    },
+    {
+      "id": "function:src/analyzers/visual_engine.py:compute_tile_metrics",
+      "type": "function",
+      "name": "compute_tile_metrics",
+      "filePath": "src/analyzers/visual_engine.py",
+      "summary": "Function `compute_tile_metrics` in src/analyzers/visual_engine.py.",
+      "tags": [
+        "analyzer",
+        "metrics",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 51,
+      "endLine": 87
+    },
+    {
+      "id": "function:src/analyzers/visual_engine.py:compute_page_metrics",
+      "type": "function",
+      "name": "compute_page_metrics",
+      "filePath": "src/analyzers/visual_engine.py",
+      "summary": "Function `compute_page_metrics` in src/analyzers/visual_engine.py.",
+      "tags": [
+        "analyzer",
+        "metrics",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 90,
+      "endLine": 102
+    },
+    {
+      "id": "file:src/utils/image_ops.py",
+      "type": "file",
+      "name": "image_ops.py",
+      "filePath": "src/utils/image_ops.py",
+      "summary": "All functions are deterministic and operate on numpy arrays. Inputs are",
+      "tags": [
+        "module"
+      ],
+      "complexity": "simple",
+      "language": "python"
+    },
+    {
+      "id": "function:src/utils/image_ops.py:ensure_gray",
+      "type": "function",
+      "name": "ensure_gray",
+      "filePath": "src/utils/image_ops.py",
+      "summary": "Function `ensure_gray` in src/utils/image_ops.py.",
+      "tags": [
+        "module",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 17,
+      "endLine": 40
+    },
+    {
+      "id": "function:src/utils/image_ops.py:safe_round",
+      "type": "function",
+      "name": "safe_round",
+      "filePath": "src/utils/image_ops.py",
+      "summary": "Function `safe_round` in src/utils/image_ops.py.",
+      "tags": [
+        "module",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 43,
+      "endLine": 50
+    },
+    {
+      "id": "function:src/utils/image_ops.py:robust_zscores",
+      "type": "function",
+      "name": "robust_zscores",
+      "filePath": "src/utils/image_ops.py",
+      "summary": "Function `robust_zscores` in src/utils/image_ops.py.",
+      "tags": [
+        "module",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 53,
+      "endLine": 65
+    },
+    {
+      "id": "file:tests/test_analyzers.py",
+      "type": "file",
+      "name": "test_analyzers.py",
+      "filePath": "tests/test_analyzers.py",
+      "summary": "Computes deterministic per-tile or per-page visual/structure metrics.",
+      "tags": [
+        "test",
+        "pytest"
+      ],
+      "complexity": "moderate",
+      "language": "python"
+    },
+    {
+      "id": "function:tests/test_analyzers.py:test_blur_computation_sharp_vs_blurred",
+      "type": "function",
+      "name": "test_blur_computation_sharp_vs_blurred",
+      "filePath": "tests/test_analyzers.py",
+      "summary": "Function `test_blur_computation_sharp_vs_blurred` in tests/test_analyzers.py.",
+      "tags": [
+        "test",
+        "pytest",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 20,
+      "endLine": 26
+    },
+    {
+      "id": "function:tests/test_analyzers.py:test_image_scaling_detection",
+      "type": "function",
+      "name": "test_image_scaling_detection",
+      "filePath": "tests/test_analyzers.py",
+      "summary": "Function `test_image_scaling_detection` in tests/test_analyzers.py.",
+      "tags": [
+        "test",
+        "pytest",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 29,
+      "endLine": 41
+    },
+    {
+      "id": "function:tests/test_analyzers.py:test_font_extraction_from_pdf",
+      "type": "function",
+      "name": "test_font_extraction_from_pdf",
+      "filePath": "tests/test_analyzers.py",
+      "summary": "Function `test_font_extraction_from_pdf` in tests/test_analyzers.py.",
+      "tags": [
+        "test",
+        "pytest",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 44,
+      "endLine": 56
+    },
+    {
+      "id": "function:tests/test_analyzers.py:test_entropy_and_edge_density_ranges",
+      "type": "function",
+      "name": "test_entropy_and_edge_density_ranges",
+      "filePath": "tests/test_analyzers.py",
+      "summary": "Function `test_entropy_and_edge_density_ranges` in tests/test_analyzers.py.",
+      "tags": [
+        "test",
+        "pytest",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 59,
+      "endLine": 68
+    },
+    {
+      "id": "function:tests/test_analyzers.py:test_ocr_confidence_extraction_graceful",
+      "type": "function",
+      "name": "test_ocr_confidence_extraction_graceful",
+      "filePath": "tests/test_analyzers.py",
+      "summary": "Function `test_ocr_confidence_extraction_graceful` in tests/test_analyzers.py.",
+      "tags": [
+        "test",
+        "pytest",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 71,
+      "endLine": 84
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:src/analyzers/__init__.py",
+      "target": "file:src/analyzers/blur.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/__init__.py",
+      "target": "file:src/analyzers/contrast.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/__init__.py",
+      "target": "file:src/analyzers/edge_density.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/__init__.py",
+      "target": "file:src/analyzers/entropy.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/__init__.py",
+      "target": "file:src/analyzers/font_analysis.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/__init__.py",
+      "target": "file:src/analyzers/image_scaling.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/__init__.py",
+      "target": "file:src/analyzers/noise.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/__init__.py",
+      "target": "file:src/analyzers/ocr.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/__init__.py",
+      "target": "file:src/analyzers/pdf_structure.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/__init__.py",
+      "target": "file:src/analyzers/sharpness.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/__init__.py",
+      "target": "file:src/analyzers/visual_engine.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/blur.py",
+      "target": "function:src/analyzers/blur.py:laplacian_variance",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/analyzers/blur.py",
+      "target": "function:src/analyzers/blur.py:analyze",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/analyzers/blur.py",
+      "target": "file:src/utils/image_ops.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/contrast.py",
+      "target": "function:src/analyzers/contrast.py:rms_contrast",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/analyzers/contrast.py",
+      "target": "function:src/analyzers/contrast.py:michelson_contrast",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/analyzers/contrast.py",
+      "target": "function:src/analyzers/contrast.py:analyze",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/analyzers/contrast.py",
+      "target": "file:src/utils/image_ops.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/edge_density.py",
+      "target": "function:src/analyzers/edge_density.py:edge_density",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/analyzers/edge_density.py",
+      "target": "function:src/analyzers/edge_density.py:analyze",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/analyzers/edge_density.py",
+      "target": "file:src/utils/config.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/edge_density.py",
+      "target": "file:src/utils/image_ops.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/entropy.py",
+      "target": "function:src/analyzers/entropy.py:shannon_entropy",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/analyzers/entropy.py",
+      "target": "function:src/analyzers/entropy.py:analyze",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/analyzers/entropy.py",
+      "target": "file:src/utils/config.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/entropy.py",
+      "target": "file:src/utils/image_ops.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/image_scaling.py",
+      "target": "function:src/analyzers/image_scaling.py:compute_scaling",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/analyzers/noise.py",
+      "target": "function:src/analyzers/noise.py:noise_sigma",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/analyzers/noise.py",
+      "target": "function:src/analyzers/noise.py:noise_median_residual",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/analyzers/noise.py",
+      "target": "function:src/analyzers/noise.py:analyze",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/analyzers/noise.py",
+      "target": "file:src/utils/config.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/noise.py",
+      "target": "file:src/utils/image_ops.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/ocr.py",
+      "target": "function:src/analyzers/ocr.py:__init__",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/analyzers/ocr.py",
+      "target": "function:src/analyzers/ocr.py:analyze",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/analyzers/ocr.py",
+      "target": "class:src/analyzers/ocr.py:OCRResult",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/analyzers/ocr.py",
+      "target": "class:src/analyzers/ocr.py:OCREngine",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/analyzers/ocr.py",
+      "target": "file:src/utils/config.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/ocr.py",
+      "target": "file:src/utils/image_ops.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/ocr.py",
+      "target": "file:src/utils/logging.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/sharpness.py",
+      "target": "function:src/analyzers/sharpness.py:tenengrad",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/analyzers/sharpness.py",
+      "target": "function:src/analyzers/sharpness.py:mean_gradient",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/analyzers/sharpness.py",
+      "target": "function:src/analyzers/sharpness.py:analyze",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/analyzers/sharpness.py",
+      "target": "file:src/utils/image_ops.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/visual_engine.py",
+      "target": "function:src/analyzers/visual_engine.py:text_density",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/analyzers/visual_engine.py",
+      "target": "function:src/analyzers/visual_engine.py:compute_tile_metrics",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/analyzers/visual_engine.py",
+      "target": "function:src/analyzers/visual_engine.py:compute_page_metrics",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/analyzers/visual_engine.py",
+      "target": "file:src/analyzers/blur.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/visual_engine.py",
+      "target": "file:src/analyzers/contrast.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/visual_engine.py",
+      "target": "file:src/analyzers/edge_density.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/visual_engine.py",
+      "target": "file:src/analyzers/entropy.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/visual_engine.py",
+      "target": "file:src/analyzers/noise.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/visual_engine.py",
+      "target": "file:src/analyzers/ocr.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/visual_engine.py",
+      "target": "file:src/analyzers/sharpness.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/visual_engine.py",
+      "target": "file:src/utils/config.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/visual_engine.py",
+      "target": "file:src/utils/image_ops.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/utils/image_ops.py",
+      "target": "function:src/utils/image_ops.py:ensure_gray",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/utils/image_ops.py",
+      "target": "function:src/utils/image_ops.py:safe_round",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/utils/image_ops.py",
+      "target": "function:src/utils/image_ops.py:robust_zscores",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/test_analyzers.py",
+      "target": "function:tests/test_analyzers.py:test_blur_computation_sharp_vs_blurred",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/test_analyzers.py",
+      "target": "function:tests/test_analyzers.py:test_image_scaling_detection",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/test_analyzers.py",
+      "target": "function:tests/test_analyzers.py:test_font_extraction_from_pdf",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/test_analyzers.py",
+      "target": "function:tests/test_analyzers.py:test_entropy_and_edge_density_ranges",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/test_analyzers.py",
+      "target": "function:tests/test_analyzers.py:test_ocr_confidence_extraction_graceful",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/test_analyzers.py",
+      "target": "file:src/analyzers/__init__.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tests/test_analyzers.py",
+      "target": "file:src/analyzers/blur.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tests/test_analyzers.py",
+      "target": "file:src/analyzers/edge_density.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tests/test_analyzers.py",
+      "target": "file:src/analyzers/entropy.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tests/test_analyzers.py",
+      "target": "file:src/analyzers/font_analysis.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tests/test_analyzers.py",
+      "target": "file:src/analyzers/image_scaling.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tests/test_analyzers.py",
+      "target": "file:src/analyzers/ocr.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tests/test_analyzers.py",
+      "target": "file:src/render/__init__.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tests/test_analyzers.py",
+      "target": "file:src/utils/config.py",
+      "type": "imports",
+      "weight": 0.7
+    }
+  ],
+  "batchIndex": 3
+}

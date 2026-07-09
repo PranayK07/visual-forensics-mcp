@@ -1,0 +1,846 @@
+{
+  "nodes": [
+    {
+      "id": "file:annotate_report.py",
+      "type": "file",
+      "name": "annotate_report.py",
+      "filePath": "annotate_report.py",
+      "summary": "Usage:",
+      "tags": [
+        "module"
+      ],
+      "complexity": "simple",
+      "language": "python"
+    },
+    {
+      "id": "function:annotate_report.py:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "annotate_report.py",
+      "summary": "Function `main` in annotate_report.py.",
+      "tags": [
+        "module",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 29,
+      "endLine": 67
+    },
+    {
+      "id": "file:src/render/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "src/render/__init__.py",
+      "summary": "from .pdf_renderer import RenderedPage, render_document",
+      "tags": [
+        "render",
+        "loader"
+      ],
+      "complexity": "simple",
+      "language": "python"
+    },
+    {
+      "id": "file:src/render/loader.py",
+      "type": "file",
+      "name": "loader.py",
+      "filePath": "src/render/loader.py",
+      "summary": "Detects the document type and opens the resources needed downstream:",
+      "tags": [
+        "render",
+        "loader"
+      ],
+      "complexity": "moderate",
+      "language": "python"
+    },
+    {
+      "id": "function:src/render/loader.py:detect_type",
+      "type": "function",
+      "name": "detect_type",
+      "filePath": "src/render/loader.py",
+      "summary": "Function `detect_type` in src/render/loader.py.",
+      "tags": [
+        "render",
+        "loader",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 50,
+      "endLine": 67
+    },
+    {
+      "id": "function:src/render/loader.py:load_document",
+      "type": "function",
+      "name": "load_document",
+      "filePath": "src/render/loader.py",
+      "summary": "Function `load_document` in src/render/loader.py.",
+      "tags": [
+        "render",
+        "loader",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 70,
+      "endLine": 116
+    },
+    {
+      "id": "function:src/render/loader.py:close",
+      "type": "function",
+      "name": "close",
+      "filePath": "src/render/loader.py",
+      "summary": "Function `close` in src/render/loader.py.",
+      "tags": [
+        "render",
+        "loader",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 41,
+      "endLine": 47
+    },
+    {
+      "id": "class:src/render/loader.py:LoadedDocument",
+      "type": "class",
+      "name": "LoadedDocument",
+      "filePath": "src/render/loader.py",
+      "summary": "Class `LoadedDocument` in src/render/loader.py.",
+      "tags": [
+        "render",
+        "loader",
+        "class"
+      ],
+      "complexity": "moderate",
+      "startLine": 31,
+      "endLine": 47
+    },
+    {
+      "id": "file:src/render/pdf_renderer.py",
+      "type": "file",
+      "name": "pdf_renderer.py",
+      "filePath": "src/render/pdf_renderer.py",
+      "summary": "Renders every page of a fitz document to a deterministic raster at a",
+      "tags": [
+        "render",
+        "loader"
+      ],
+      "complexity": "moderate",
+      "language": "python"
+    },
+    {
+      "id": "function:src/render/pdf_renderer.py:render_document",
+      "type": "function",
+      "name": "render_document",
+      "filePath": "src/render/pdf_renderer.py",
+      "summary": "Function `render_document` in src/render/pdf_renderer.py.",
+      "tags": [
+        "render",
+        "loader",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 42,
+      "endLine": 98
+    },
+    {
+      "id": "class:src/render/pdf_renderer.py:RenderedPage",
+      "type": "class",
+      "name": "RenderedPage",
+      "filePath": "src/render/pdf_renderer.py",
+      "summary": "Class `RenderedPage` in src/render/pdf_renderer.py.",
+      "tags": [
+        "render",
+        "loader",
+        "class"
+      ],
+      "complexity": "moderate",
+      "startLine": 24,
+      "endLine": 34
+    },
+    {
+      "id": "file:src/report/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "src/report/__init__.py",
+      "summary": "from .annotator import annotate_document, compute_fraud_risk",
+      "tags": [
+        "report",
+        "pdf-annotation"
+      ],
+      "complexity": "simple",
+      "language": "python"
+    },
+    {
+      "id": "file:src/report/annotator.py",
+      "type": "file",
+      "name": "annotator.py",
+      "filePath": "src/report/annotator.py",
+      "summary": "Draws bounding boxes and fraud-risk badges on annotated PDF copies.",
+      "tags": [
+        "report",
+        "pdf-annotation"
+      ],
+      "complexity": "complex",
+      "language": "python"
+    },
+    {
+      "id": "function:src/report/annotator.py:compute_fraud_risk",
+      "type": "function",
+      "name": "compute_fraud_risk",
+      "filePath": "src/report/annotator.py",
+      "summary": "Function `compute_fraud_risk` in src/report/annotator.py.",
+      "tags": [
+        "report",
+        "pdf-annotation",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 108,
+      "endLine": 154
+    },
+    {
+      "id": "function:src/report/annotator.py:annotate_document",
+      "type": "function",
+      "name": "annotate_document",
+      "filePath": "src/report/annotator.py",
+      "summary": "Function `annotate_document` in src/report/annotator.py.",
+      "tags": [
+        "report",
+        "pdf-annotation",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 351,
+      "endLine": 418
+    },
+    {
+      "id": "file:src/tiling/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "src/tiling/__init__.py",
+      "summary": "from .tiler import Tile, generate_tiles",
+      "tags": [
+        "module"
+      ],
+      "complexity": "simple",
+      "language": "python"
+    },
+    {
+      "id": "file:src/tiling/tiler.py",
+      "type": "file",
+      "name": "tiler.py",
+      "filePath": "src/tiling/tiler.py",
+      "summary": "Tiles are produced left-to-right, top-to-bottom with a configurable size and",
+      "tags": [
+        "module"
+      ],
+      "complexity": "moderate",
+      "language": "python"
+    },
+    {
+      "id": "function:src/tiling/tiler.py:generate_tiles",
+      "type": "function",
+      "name": "generate_tiles",
+      "filePath": "src/tiling/tiler.py",
+      "summary": "Function `generate_tiles` in src/tiling/tiler.py.",
+      "tags": [
+        "module",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 54,
+      "endLine": 97
+    },
+    {
+      "id": "class:src/tiling/tiler.py:Tile",
+      "type": "class",
+      "name": "Tile",
+      "filePath": "src/tiling/tiler.py",
+      "summary": "Class `Tile` in src/tiling/tiler.py.",
+      "tags": [
+        "module",
+        "class"
+      ],
+      "complexity": "moderate",
+      "startLine": 18,
+      "endLine": 26
+    },
+    {
+      "id": "file:src/utils/config.py",
+      "type": "file",
+      "name": "config.py",
+      "filePath": "src/utils/config.py",
+      "summary": "The configuration is a plain nested dict loaded from ``configs/default.yaml``.",
+      "tags": [
+        "module"
+      ],
+      "complexity": "moderate",
+      "language": "python"
+    },
+    {
+      "id": "function:src/utils/config.py:deep_merge",
+      "type": "function",
+      "name": "deep_merge",
+      "filePath": "src/utils/config.py",
+      "summary": "Function `deep_merge` in src/utils/config.py.",
+      "tags": [
+        "module",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 23,
+      "endLine": 39
+    },
+    {
+      "id": "function:src/utils/config.py:load_config",
+      "type": "function",
+      "name": "load_config",
+      "filePath": "src/utils/config.py",
+      "summary": "Function `load_config` in src/utils/config.py.",
+      "tags": [
+        "module",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 82,
+      "endLine": 105
+    },
+    {
+      "id": "function:src/utils/config.py:__init__",
+      "type": "function",
+      "name": "__init__",
+      "filePath": "src/utils/config.py",
+      "summary": "Function `__init__` in src/utils/config.py.",
+      "tags": [
+        "module",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 45,
+      "endLine": 46
+    },
+    {
+      "id": "function:src/utils/config.py:data",
+      "type": "function",
+      "name": "data",
+      "filePath": "src/utils/config.py",
+      "summary": "Function `data` in src/utils/config.py.",
+      "tags": [
+        "module",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 49,
+      "endLine": 50
+    },
+    {
+      "id": "function:src/utils/config.py:get",
+      "type": "function",
+      "name": "get",
+      "filePath": "src/utils/config.py",
+      "summary": "Function `get` in src/utils/config.py.",
+      "tags": [
+        "module",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 52,
+      "endLine": 60
+    },
+    {
+      "id": "function:src/utils/config.py:section",
+      "type": "function",
+      "name": "section",
+      "filePath": "src/utils/config.py",
+      "summary": "Function `section` in src/utils/config.py.",
+      "tags": [
+        "module",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 62,
+      "endLine": 64
+    },
+    {
+      "id": "function:src/utils/config.py:with_overrides",
+      "type": "function",
+      "name": "with_overrides",
+      "filePath": "src/utils/config.py",
+      "summary": "Function `with_overrides` in src/utils/config.py.",
+      "tags": [
+        "module",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 66,
+      "endLine": 69
+    },
+    {
+      "id": "function:src/utils/config.py:digest",
+      "type": "function",
+      "name": "digest",
+      "filePath": "src/utils/config.py",
+      "summary": "Function `digest` in src/utils/config.py.",
+      "tags": [
+        "module",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 71,
+      "endLine": 79
+    },
+    {
+      "id": "class:src/utils/config.py:Config",
+      "type": "class",
+      "name": "Config",
+      "filePath": "src/utils/config.py",
+      "summary": "Class `Config` in src/utils/config.py.",
+      "tags": [
+        "module",
+        "class"
+      ],
+      "complexity": "moderate",
+      "startLine": 42,
+      "endLine": 79
+    },
+    {
+      "id": "file:tests/test_docx.py",
+      "type": "file",
+      "name": "test_docx.py",
+      "filePath": "tests/test_docx.py",
+      "summary": "Automated test module validating pipeline behavior (test_docx.py).",
+      "tags": [
+        "test",
+        "pytest"
+      ],
+      "complexity": "simple",
+      "language": "python"
+    },
+    {
+      "id": "function:tests/test_docx.py:test_docx_loads_and_renders",
+      "type": "function",
+      "name": "test_docx_loads_and_renders",
+      "filePath": "tests/test_docx.py",
+      "summary": "Function `test_docx_loads_and_renders` in tests/test_docx.py.",
+      "tags": [
+        "test",
+        "pytest",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 10,
+      "endLine": 20
+    },
+    {
+      "id": "function:tests/test_docx.py:test_docx_font_extraction",
+      "type": "function",
+      "name": "test_docx_font_extraction",
+      "filePath": "tests/test_docx.py",
+      "summary": "Function `test_docx_font_extraction` in tests/test_docx.py.",
+      "tags": [
+        "test",
+        "pytest",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 23,
+      "endLine": 34
+    },
+    {
+      "id": "function:tests/test_docx.py:test_docx_converts_to_pdf_for_structure",
+      "type": "function",
+      "name": "test_docx_converts_to_pdf_for_structure",
+      "filePath": "tests/test_docx.py",
+      "summary": "Function `test_docx_converts_to_pdf_for_structure` in tests/test_docx.py.",
+      "tags": [
+        "test",
+        "pytest",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 37,
+      "endLine": 45
+    },
+    {
+      "id": "file:tests/test_rendering.py",
+      "type": "file",
+      "name": "test_rendering.py",
+      "filePath": "tests/test_rendering.py",
+      "summary": "Automated test module validating pipeline behavior (test_rendering.py).",
+      "tags": [
+        "test",
+        "pytest"
+      ],
+      "complexity": "simple",
+      "language": "python"
+    },
+    {
+      "id": "function:tests/test_rendering.py:test_pdf_renders_pages",
+      "type": "function",
+      "name": "test_pdf_renders_pages",
+      "filePath": "tests/test_rendering.py",
+      "summary": "Function `test_pdf_renders_pages` in tests/test_rendering.py.",
+      "tags": [
+        "test",
+        "pytest",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 11,
+      "endLine": 29
+    },
+    {
+      "id": "function:tests/test_rendering.py:test_dpi_scales_resolution",
+      "type": "function",
+      "name": "test_dpi_scales_resolution",
+      "filePath": "tests/test_rendering.py",
+      "summary": "Function `test_dpi_scales_resolution` in tests/test_rendering.py.",
+      "tags": [
+        "test",
+        "pytest",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 32,
+      "endLine": 44
+    },
+    {
+      "id": "file:tests/test_tiling.py",
+      "type": "file",
+      "name": "test_tiling.py",
+      "filePath": "tests/test_tiling.py",
+      "summary": "Automated test module validating pipeline behavior (test_tiling.py).",
+      "tags": [
+        "test",
+        "pytest"
+      ],
+      "complexity": "simple",
+      "language": "python"
+    },
+    {
+      "id": "function:tests/test_tiling.py:test_tiles_cover_page_with_overlap",
+      "type": "function",
+      "name": "test_tiles_cover_page_with_overlap",
+      "filePath": "tests/test_tiling.py",
+      "summary": "Function `test_tiles_cover_page_with_overlap` in tests/test_tiling.py.",
+      "tags": [
+        "test",
+        "pytest",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 16,
+      "endLine": 41
+    },
+    {
+      "id": "function:tests/test_tiling.py:test_blank_tile_flagged",
+      "type": "function",
+      "name": "test_blank_tile_flagged",
+      "filePath": "tests/test_tiling.py",
+      "summary": "Function `test_blank_tile_flagged` in tests/test_tiling.py.",
+      "tags": [
+        "test",
+        "pytest",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 44,
+      "endLine": 50
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:annotate_report.py",
+      "target": "function:annotate_report.py:main",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:annotate_report.py",
+      "target": "file:src/report/annotator.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:annotate_report.py",
+      "target": "file:src/tools/analyze.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:annotate_report.py",
+      "target": "file:src/utils/config.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/render/__init__.py",
+      "target": "file:src/render/loader.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/render/__init__.py",
+      "target": "file:src/render/pdf_renderer.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/render/loader.py",
+      "target": "function:src/render/loader.py:detect_type",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/render/loader.py",
+      "target": "function:src/render/loader.py:load_document",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/render/loader.py",
+      "target": "function:src/render/loader.py:close",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/render/loader.py",
+      "target": "class:src/render/loader.py:LoadedDocument",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/render/loader.py",
+      "target": "file:src/utils/config.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/render/loader.py",
+      "target": "file:src/utils/logging.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/render/pdf_renderer.py",
+      "target": "function:src/render/pdf_renderer.py:render_document",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/render/pdf_renderer.py",
+      "target": "class:src/render/pdf_renderer.py:RenderedPage",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/render/pdf_renderer.py",
+      "target": "file:src/utils/config.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/render/pdf_renderer.py",
+      "target": "file:src/utils/image_ops.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/render/pdf_renderer.py",
+      "target": "file:src/utils/logging.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/report/__init__.py",
+      "target": "file:src/report/annotator.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/report/annotator.py",
+      "target": "function:src/report/annotator.py:compute_fraud_risk",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/report/annotator.py",
+      "target": "function:src/report/annotator.py:annotate_document",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/report/annotator.py",
+      "target": "file:src/utils/config.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/report/annotator.py",
+      "target": "file:src/utils/logging.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/tiling/__init__.py",
+      "target": "file:src/tiling/tiler.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/tiling/tiler.py",
+      "target": "function:src/tiling/tiler.py:generate_tiles",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/tiling/tiler.py",
+      "target": "class:src/tiling/tiler.py:Tile",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/tiling/tiler.py",
+      "target": "file:src/utils/config.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/utils/config.py",
+      "target": "function:src/utils/config.py:deep_merge",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/utils/config.py",
+      "target": "function:src/utils/config.py:load_config",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/utils/config.py",
+      "target": "function:src/utils/config.py:__init__",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/utils/config.py",
+      "target": "function:src/utils/config.py:data",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/utils/config.py",
+      "target": "function:src/utils/config.py:get",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/utils/config.py",
+      "target": "function:src/utils/config.py:section",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/utils/config.py",
+      "target": "function:src/utils/config.py:with_overrides",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/utils/config.py",
+      "target": "function:src/utils/config.py:digest",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/utils/config.py",
+      "target": "class:src/utils/config.py:Config",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/test_docx.py",
+      "target": "function:tests/test_docx.py:test_docx_loads_and_renders",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/test_docx.py",
+      "target": "function:tests/test_docx.py:test_docx_font_extraction",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/test_docx.py",
+      "target": "function:tests/test_docx.py:test_docx_converts_to_pdf_for_structure",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/test_docx.py",
+      "target": "file:src/render/__init__.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tests/test_docx.py",
+      "target": "file:src/render/docx_renderer.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tests/test_docx.py",
+      "target": "file:src/utils/config.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tests/test_rendering.py",
+      "target": "function:tests/test_rendering.py:test_pdf_renders_pages",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/test_rendering.py",
+      "target": "function:tests/test_rendering.py:test_dpi_scales_resolution",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/test_rendering.py",
+      "target": "file:src/render/__init__.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tests/test_rendering.py",
+      "target": "file:src/utils/config.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tests/test_tiling.py",
+      "target": "function:tests/test_tiling.py:test_tiles_cover_page_with_overlap",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/test_tiling.py",
+      "target": "function:tests/test_tiling.py:test_blank_tile_flagged",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/test_tiling.py",
+      "target": "file:src/tiling/__init__.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tests/test_tiling.py",
+      "target": "file:src/utils/config.py",
+      "type": "imports",
+      "weight": 0.7
+    }
+  ],
+  "batchIndex": 2
+}

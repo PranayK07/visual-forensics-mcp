@@ -1,0 +1,19 @@
+{
+  "projectRoot": "c:\\Users\\prana\\Documents\\Github\\New folder\\visual-forensics-mcp",
+  "batchFiles": [
+    {"path": ".understand-anything/.understandignore", "language": "unknown", "sizeLines": 44, "fileCategory": "code"},
+    {"path": "configs/default.yaml", "language": "yaml", "sizeLines": 141, "fileCategory": "config"},
+    {"path": "examples/example_request.json", "language": "json", "sizeLines": 13, "fileCategory": "config"},
+    {"path": "examples/sample_response.json", "language": "json", "sizeLines": 611, "fileCategory": "config"},
+    {"path": "src/__init__.py", "language": "python", "sizeLines": 8, "fileCategory": "code"},
+    {"path": "src/server/__init__.py", "language": "python", "sizeLines": 1, "fileCategory": "code"}
+  ],
+  "batchImportData": {
+    ".understand-anything/.understandignore": [],
+    "configs/default.yaml": [],
+    "examples/example_request.json": [],
+    "examples/sample_response.json": [],
+    "src/__init__.py": [],
+    "src/server/__init__.py": []
+  }
+}

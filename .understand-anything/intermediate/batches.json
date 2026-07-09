@@ -1,0 +1,1673 @@
+{
+  "schemaVersion": 1,
+  "algorithm": "louvain",
+  "totalFiles": 62,
+  "totalBatches": 7,
+  "exportsByPath": {
+    ".understand-anything/.understandignore": [],
+    "annotate_report.py": [
+      "main"
+    ],
+    "examples/generate_examples.py": [
+      "main"
+    ],
+    "src/__init__.py": [],
+    "src/analyzers/__init__.py": [],
+    "src/analyzers/blur.py": [
+      "laplacian_variance",
+      "analyze"
+    ],
+    "src/analyzers/contrast.py": [
+      "rms_contrast",
+      "michelson_contrast",
+      "analyze"
+    ],
+    "src/analyzers/edge_density.py": [
+      "edge_density",
+      "analyze"
+    ],
+    "src/analyzers/entropy.py": [
+      "shannon_entropy",
+      "analyze"
+    ],
+    "src/analyzers/font_analysis.py": [
+      "_normalise_font_name",
+      "analyze_page_fonts",
+      "aggregate_fonts"
+    ],
+    "src/analyzers/image_scaling.py": [
+      "compute_scaling"
+    ],
+    "src/analyzers/noise.py": [
+      "noise_sigma",
+      "noise_median_residual",
+      "analyze"
+    ],
+    "src/analyzers/ocr.py": [
+      "OCRResult",
+      "OCREngine"
+    ],
+    "src/analyzers/pdf_structure.py": [
+      "_union_coverage",
+      "analyze_page_structure",
+      "pikepdf_object_summary"
+    ],
+    "src/analyzers/sharpness.py": [
+      "tenengrad",
+      "mean_gradient",
+      "analyze"
+    ],
+    "src/analyzers/visual_engine.py": [
+      "text_density",
+      "compute_tile_metrics",
+      "compute_page_metrics"
+    ],
+    "src/detectors/__init__.py": [],
+    "src/detectors/_common.py": [
+      "zscore_confidence",
+      "collect_metric",
+      "low_side_zscore_findings",
+      "two_sided_zscore_findings",
+      "_make_finding"
+    ],
+    "src/detectors/blur_detector.py": [
+      "detect"
+    ],
+    "src/detectors/compression_detector.py": [
+      "detect"
+    ],
+    "src/detectors/dpi_detector.py": [
+      "detect"
+    ],
+    "src/detectors/font_detector.py": [
+      "detect"
+    ],
+    "src/detectors/ocr_confidence_detector.py": [
+      "detect"
+    ],
+    "src/detectors/stretch_detector.py": [
+      "detect"
+    ],
+    "src/detectors/structure_detector.py": [
+      "detect"
+    ],
+    "src/render/__init__.py": [],
+    "src/render/docx_renderer.py": [
+      "extract_docx_formatting"
+    ],
+    "src/render/loader.py": [
+      "LoadedDocument",
+      "detect_type",
+      "load_document"
+    ],
+    "src/render/pdf_renderer.py": [
+      "RenderedPage",
+      "_matrix_for_dpi",
+      "render_document"
+    ],
+    "src/report/__init__.py": [],
+    "src/report/annotator.py": [
+      "_fmt_value",
+      "_metric_lines",
+      "_pretty_type",
+      "compute_fraud_risk",
+      "_page_scale",
+      "_draw_label_block",
+      "_draw_risk_badge",
+      "_group_findings",
+      "_add_cover_page",
+      "annotate_document"
+    ],
+    "src/schemas/__init__.py": [],
+    "src/schemas/models.py": [
+      "Finding",
+      "TileResult",
+      "EmbeddedImageInfo",
+      "FontInfo",
+      "PageResult",
+      "AnalysisSummary",
+      "AnalysisResult"
+    ],
+    "src/server/__init__.py": [],
+    "src/server/__main__.py": [],
+    "src/server/app.py": [
+      "analyze_document",
+      "build_server",
+      "main"
+    ],
+    "src/tiling/__init__.py": [],
+    "src/tiling/tiler.py": [
+      "Tile",
+      "_axis_starts",
+      "generate_tiles"
+    ],
+    "src/tools/__init__.py": [],
+    "src/tools/analyze.py": [
+      "_document_id",
+      "analyze_document",
+      "_process_page"
+    ],
+    "src/utils/__init__.py": [],
+    "src/utils/config.py": [
+      "deep_merge",
+      "Config",
+      "load_config"
+    ],
+    "src/utils/geometry.py": [
+      "area",
+      "intersection",
+      "iou",
+      "center",
+      "scale_bbox"
+    ],
+    "src/utils/image_ops.py": [
+      "ensure_gray",
+      "safe_round",
+      "robust_zscores"
+    ],
+    "src/utils/logging.py": [
+      "_configure_root",
+      "get_logger"
+    ],
+    "tests/builders.py": [
+      "_png_bytes",
+      "_checker",
+      "build_sample_pdf",
+      "build_scanned_like_pdf",
+      "build_sample_docx"
+    ],
+    "tests/conftest.py": [
+      "sample_pdf",
+      "scanned_pdf",
+      "sample_docx",
+      "fast_options"
+    ],
+    "tests/test_analyzers.py": [
+      "_text_like_image",
+      "test_blur_computation_sharp_vs_blurred",
+      "test_image_scaling_detection",
+      "test_font_extraction_from_pdf",
+      "test_entropy_and_edge_density_ranges",
+      "test_ocr_confidence_extraction_graceful"
+    ],
+    "tests/test_detectors.py": [
+      "_tile",
+      "test_blur_detector_flags_outlier",
+      "test_blur_detector_no_false_positive_uniform",
+      "test_stretch_detector",
+      "test_dpi_detector",
+      "test_font_detector_rare_font"
+    ],
+    "tests/test_docx.py": [
+      "test_docx_loads_and_renders",
+      "test_docx_font_extraction",
+      "test_docx_converts_to_pdf_for_structure"
+    ],
+    "tests/test_end_to_end.py": [
+      "_validate_findings",
+      "test_end_to_end_pdf",
+      "test_end_to_end_docx",
+      "test_end_to_end_scanned_pdf"
+    ],
+    "tests/test_mcp.py": [
+      "_extract_payload",
+      "test_tool_registered",
+      "test_mcp_analyze_document_invocation"
+    ],
+    "tests/test_rendering.py": [
+      "test_pdf_renders_pages",
+      "test_dpi_scales_resolution"
+    ],
+    "tests/test_schema.py": [
+      "test_finding_requires_four_element_bbox",
+      "test_finding_confidence_bounds",
+      "test_analysis_result_roundtrip"
+    ],
+    "tests/test_tiling.py": [
+      "_gradient_image",
+      "test_tiles_cover_page_with_overlap",
+      "test_blank_tile_flagged"
+    ]
+  },
+  "batches": [
+    {
+      "batchIndex": 1,
+      "files": [
+        {
+          "path": "src/detectors/__init__.py",
+          "language": "python",
+          "sizeLines": 26,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/detectors/_common.py",
+          "language": "python",
+          "sizeLines": 163,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/detectors/blur_detector.py",
+          "language": "python",
+          "sizeLines": 33,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/detectors/compression_detector.py",
+          "language": "python",
+          "sizeLines": 31,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/detectors/dpi_detector.py",
+          "language": "python",
+          "sizeLines": 61,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/detectors/font_detector.py",
+          "language": "python",
+          "sizeLines": 77,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/detectors/ocr_confidence_detector.py",
+          "language": "python",
+          "sizeLines": 34,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/detectors/stretch_detector.py",
+          "language": "python",
+          "sizeLines": 59,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/detectors/structure_detector.py",
+          "language": "python",
+          "sizeLines": 78,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/schemas/__init__.py",
+          "language": "python",
+          "sizeLines": 23,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/schemas/models.py",
+          "language": "python",
+          "sizeLines": 136,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/tools/__init__.py",
+          "language": "python",
+          "sizeLines": 5,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/tools/analyze.py",
+          "language": "python",
+          "sizeLines": 305,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tests/test_detectors.py",
+          "language": "python",
+          "sizeLines": 78,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tests/test_end_to_end.py",
+          "language": "python",
+          "sizeLines": 70,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tests/test_schema.py",
+          "language": "python",
+          "sizeLines": 53,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "src/detectors/__init__.py": [
+          "src/detectors/blur_detector.py",
+          "src/detectors/compression_detector.py",
+          "src/detectors/dpi_detector.py",
+          "src/detectors/font_detector.py",
+          "src/detectors/ocr_confidence_detector.py",
+          "src/detectors/stretch_detector.py",
+          "src/detectors/structure_detector.py"
+        ],
+        "src/detectors/_common.py": [
+          "src/schemas/models.py"
+        ],
+        "src/detectors/blur_detector.py": [
+          "src/detectors/_common.py",
+          "src/schemas/models.py",
+          "src/utils/config.py"
+        ],
+        "src/detectors/compression_detector.py": [
+          "src/detectors/_common.py",
+          "src/schemas/models.py",
+          "src/utils/config.py"
+        ],
+        "src/detectors/dpi_detector.py": [
+          "src/schemas/models.py",
+          "src/utils/config.py"
+        ],
+        "src/detectors/font_detector.py": [
+          "src/schemas/models.py",
+          "src/utils/config.py"
+        ],
+        "src/detectors/ocr_confidence_detector.py": [
+          "src/detectors/_common.py",
+          "src/schemas/models.py",
+          "src/utils/config.py"
+        ],
+        "src/detectors/stretch_detector.py": [
+          "src/schemas/models.py",
+          "src/utils/config.py"
+        ],
+        "src/detectors/structure_detector.py": [
+          "src/schemas/models.py",
+          "src/utils/config.py"
+        ],
+        "src/schemas/__init__.py": [
+          "src/schemas/models.py"
+        ],
+        "src/schemas/models.py": [],
+        "src/tools/__init__.py": [
+          "src/tools/analyze.py"
+        ],
+        "src/tools/analyze.py": [
+          "src/analyzers/__init__.py",
+          "src/analyzers/font_analysis.py",
+          "src/analyzers/ocr.py",
+          "src/analyzers/pdf_structure.py",
+          "src/analyzers/visual_engine.py",
+          "src/detectors/__init__.py",
+          "src/detectors/blur_detector.py",
+          "src/detectors/compression_detector.py",
+          "src/detectors/dpi_detector.py",
+          "src/detectors/font_detector.py",
+          "src/detectors/ocr_confidence_detector.py",
+          "src/detectors/stretch_detector.py",
+          "src/detectors/structure_detector.py",
+          "src/render/__init__.py",
+          "src/render/docx_renderer.py",
+          "src/render/pdf_renderer.py",
+          "src/schemas/models.py",
+          "src/tiling/__init__.py",
+          "src/utils/config.py",
+          "src/utils/logging.py"
+        ],
+        "tests/test_detectors.py": [
+          "src/detectors/__init__.py",
+          "src/detectors/blur_detector.py",
+          "src/detectors/dpi_detector.py",
+          "src/detectors/font_detector.py",
+          "src/detectors/stretch_detector.py",
+          "src/schemas/models.py",
+          "src/utils/config.py"
+        ],
+        "tests/test_end_to_end.py": [
+          "src/schemas/models.py",
+          "src/tools/analyze.py"
+        ],
+        "tests/test_schema.py": [
+          "src/schemas/models.py"
+        ]
+      },
+      "neighborMap": {
+        "src/detectors/blur_detector.py": [
+          {
+            "path": "src/utils/config.py",
+            "batchIndex": 2,
+            "symbols": [
+              "deep_merge",
+              "Config",
+              "load_config"
+            ]
+          }
+        ],
+        "src/detectors/compression_detector.py": [
+          {
+            "path": "src/utils/config.py",
+            "batchIndex": 2,
+            "symbols": [
+              "deep_merge",
+              "Config",
+              "load_config"
+            ]
+          }
+        ],
+        "src/detectors/dpi_detector.py": [
+          {
+            "path": "src/utils/config.py",
+            "batchIndex": 2,
+            "symbols": [
+              "deep_merge",
+              "Config",
+              "load_config"
+            ]
+          }
+        ],
+        "src/detectors/font_detector.py": [
+          {
+            "path": "src/utils/config.py",
+            "batchIndex": 2,
+            "symbols": [
+              "deep_merge",
+              "Config",
+              "load_config"
+            ]
+          }
+        ],
+        "src/detectors/ocr_confidence_detector.py": [
+          {
+            "path": "src/utils/config.py",
+            "batchIndex": 2,
+            "symbols": [
+              "deep_merge",
+              "Config",
+              "load_config"
+            ]
+          }
+        ],
+        "src/detectors/stretch_detector.py": [
+          {
+            "path": "src/utils/config.py",
+            "batchIndex": 2,
+            "symbols": [
+              "deep_merge",
+              "Config",
+              "load_config"
+            ]
+          }
+        ],
+        "src/detectors/structure_detector.py": [
+          {
+            "path": "src/utils/config.py",
+            "batchIndex": 2,
+            "symbols": [
+              "deep_merge",
+              "Config",
+              "load_config"
+            ]
+          }
+        ],
+        "src/tools/analyze.py": [
+          {
+            "path": "src/analyzers/__init__.py",
+            "batchIndex": 3,
+            "symbols": []
+          },
+          {
+            "path": "src/analyzers/font_analysis.py",
+            "batchIndex": 4,
+            "symbols": [
+              "_normalise_font_name",
+              "analyze_page_fonts",
+              "aggregate_fonts"
+            ]
+          },
+          {
+            "path": "src/analyzers/ocr.py",
+            "batchIndex": 3,
+            "symbols": [
+              "OCRResult",
+              "OCREngine"
+            ]
+          },
+          {
+            "path": "src/analyzers/pdf_structure.py",
+            "batchIndex": 4,
+            "symbols": [
+              "_union_coverage",
+              "analyze_page_structure",
+              "pikepdf_object_summary"
+            ]
+          },
+          {
+            "path": "src/analyzers/visual_engine.py",
+            "batchIndex": 3,
+            "symbols": [
+              "text_density",
+              "compute_tile_metrics",
+              "compute_page_metrics"
+            ]
+          },
+          {
+            "path": "src/render/__init__.py",
+            "batchIndex": 2,
+            "symbols": []
+          },
+          {
+            "path": "src/render/docx_renderer.py",
+            "batchIndex": 4,
+            "symbols": [
+              "extract_docx_formatting"
+            ]
+          },
+          {
+            "path": "src/render/pdf_renderer.py",
+            "batchIndex": 2,
+            "symbols": [
+              "RenderedPage",
+              "_matrix_for_dpi",
+              "render_document"
+            ]
+          },
+          {
+            "path": "src/tiling/__init__.py",
+            "batchIndex": 2,
+            "symbols": []
+          },
+          {
+            "path": "src/utils/config.py",
+            "batchIndex": 2,
+            "symbols": [
+              "deep_merge",
+              "Config",
+              "load_config"
+            ]
+          },
+          {
+            "path": "src/utils/logging.py",
+            "batchIndex": 4,
+            "symbols": [
+              "_configure_root",
+              "get_logger"
+            ]
+          },
+          {
+            "path": "annotate_report.py",
+            "batchIndex": 2,
+            "symbols": [
+              "main"
+            ]
+          },
+          {
+            "path": "examples/generate_examples.py",
+            "batchIndex": 5,
+            "symbols": [
+              "main"
+            ]
+          },
+          {
+            "path": "src/server/app.py",
+            "batchIndex": 4,
+            "symbols": [
+              "analyze_document",
+              "build_server",
+              "main"
+            ]
+          }
+        ],
+        "tests/test_detectors.py": [
+          {
+            "path": "src/utils/config.py",
+            "batchIndex": 2,
+            "symbols": [
+              "deep_merge",
+              "Config",
+              "load_config"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 2,
+      "files": [
+        {
+          "path": "annotate_report.py",
+          "language": "python",
+          "sizeLines": 71,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/render/__init__.py",
+          "language": "python",
+          "sizeLines": 11,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/render/loader.py",
+          "language": "python",
+          "sizeLines": 116,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/render/pdf_renderer.py",
+          "language": "python",
+          "sizeLines": 98,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/report/__init__.py",
+          "language": "python",
+          "sizeLines": 5,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/report/annotator.py",
+          "language": "python",
+          "sizeLines": 418,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/tiling/__init__.py",
+          "language": "python",
+          "sizeLines": 5,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/tiling/tiler.py",
+          "language": "python",
+          "sizeLines": 97,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/utils/config.py",
+          "language": "python",
+          "sizeLines": 105,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tests/test_docx.py",
+          "language": "python",
+          "sizeLines": 45,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tests/test_rendering.py",
+          "language": "python",
+          "sizeLines": 44,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tests/test_tiling.py",
+          "language": "python",
+          "sizeLines": 50,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "annotate_report.py": [
+          "src/report/annotator.py",
+          "src/tools/analyze.py",
+          "src/utils/config.py"
+        ],
+        "src/render/__init__.py": [
+          "src/render/loader.py",
+          "src/render/pdf_renderer.py"
+        ],
+        "src/render/loader.py": [
+          "src/utils/config.py",
+          "src/utils/logging.py"
+        ],
+        "src/render/pdf_renderer.py": [
+          "src/utils/config.py",
+          "src/utils/image_ops.py",
+          "src/utils/logging.py"
+        ],
+        "src/report/__init__.py": [
+          "src/report/annotator.py"
+        ],
+        "src/report/annotator.py": [
+          "src/utils/config.py",
+          "src/utils/logging.py"
+        ],
+        "src/tiling/__init__.py": [
+          "src/tiling/tiler.py"
+        ],
+        "src/tiling/tiler.py": [
+          "src/utils/config.py"
+        ],
+        "src/utils/config.py": [],
+        "tests/test_docx.py": [
+          "src/render/__init__.py",
+          "src/render/docx_renderer.py",
+          "src/utils/config.py"
+        ],
+        "tests/test_rendering.py": [
+          "src/render/__init__.py",
+          "src/utils/config.py"
+        ],
+        "tests/test_tiling.py": [
+          "src/tiling/__init__.py",
+          "src/utils/config.py"
+        ]
+      },
+      "neighborMap": {
+        "annotate_report.py": [
+          {
+            "path": "src/tools/analyze.py",
+            "batchIndex": 1,
+            "symbols": [
+              "_document_id",
+              "analyze_document",
+              "_process_page"
+            ]
+          }
+        ],
+        "src/render/__init__.py": [
+          {
+            "path": "src/tools/analyze.py",
+            "batchIndex": 1,
+            "symbols": [
+              "_document_id",
+              "analyze_document",
+              "_process_page"
+            ]
+          },
+          {
+            "path": "tests/test_analyzers.py",
+            "batchIndex": 3,
+            "symbols": [
+              "_text_like_image",
+              "test_blur_computation_sharp_vs_blurred",
+              "test_image_scaling_detection",
+              "test_font_extraction_from_pdf",
+              "test_entropy_and_edge_density_ranges",
+              "test_ocr_confidence_extraction_graceful"
+            ]
+          }
+        ],
+        "src/render/loader.py": [
+          {
+            "path": "src/utils/logging.py",
+            "batchIndex": 4,
+            "symbols": [
+              "_configure_root",
+              "get_logger"
+            ]
+          }
+        ],
+        "src/render/pdf_renderer.py": [
+          {
+            "path": "src/utils/image_ops.py",
+            "batchIndex": 3,
+            "symbols": [
+              "ensure_gray",
+              "safe_round",
+              "robust_zscores"
+            ]
+          },
+          {
+            "path": "src/utils/logging.py",
+            "batchIndex": 4,
+            "symbols": [
+              "_configure_root",
+              "get_logger"
+            ]
+          },
+          {
+            "path": "src/tools/analyze.py",
+            "batchIndex": 1,
+            "symbols": [
+              "_document_id",
+              "analyze_document",
+              "_process_page"
+            ]
+          }
+        ],
+        "src/report/annotator.py": [
+          {
+            "path": "src/utils/logging.py",
+            "batchIndex": 4,
+            "symbols": [
+              "_configure_root",
+              "get_logger"
+            ]
+          }
+        ],
+        "src/tiling/__init__.py": [
+          {
+            "path": "src/tools/analyze.py",
+            "batchIndex": 1,
+            "symbols": [
+              "_document_id",
+              "analyze_document",
+              "_process_page"
+            ]
+          }
+        ],
+        "src/utils/config.py": [
+          {
+            "path": "src/analyzers/edge_density.py",
+            "batchIndex": 3,
+            "symbols": [
+              "edge_density",
+              "analyze"
+            ]
+          },
+          {
+            "path": "src/analyzers/entropy.py",
+            "batchIndex": 3,
+            "symbols": [
+              "shannon_entropy",
+              "analyze"
+            ]
+          },
+          {
+            "path": "src/analyzers/noise.py",
+            "batchIndex": 3,
+            "symbols": [
+              "noise_sigma",
+              "noise_median_residual",
+              "analyze"
+            ]
+          },
+          {
+            "path": "src/analyzers/ocr.py",
+            "batchIndex": 3,
+            "symbols": [
+              "OCRResult",
+              "OCREngine"
+            ]
+          },
+          {
+            "path": "src/analyzers/pdf_structure.py",
+            "batchIndex": 4,
+            "symbols": [
+              "_union_coverage",
+              "analyze_page_structure",
+              "pikepdf_object_summary"
+            ]
+          },
+          {
+            "path": "src/analyzers/visual_engine.py",
+            "batchIndex": 3,
+            "symbols": [
+              "text_density",
+              "compute_tile_metrics",
+              "compute_page_metrics"
+            ]
+          },
+          {
+            "path": "src/detectors/blur_detector.py",
+            "batchIndex": 1,
+            "symbols": [
+              "detect"
+            ]
+          },
+          {
+            "path": "src/detectors/compression_detector.py",
+            "batchIndex": 1,
+            "symbols": [
+              "detect"
+            ]
+          },
+          {
+            "path": "src/detectors/dpi_detector.py",
+            "batchIndex": 1,
+            "symbols": [
+              "detect"
+            ]
+          },
+          {
+            "path": "src/detectors/font_detector.py",
+            "batchIndex": 1,
+            "symbols": [
+              "detect"
+            ]
+          },
+          {
+            "path": "src/detectors/ocr_confidence_detector.py",
+            "batchIndex": 1,
+            "symbols": [
+              "detect"
+            ]
+          },
+          {
+            "path": "src/detectors/stretch_detector.py",
+            "batchIndex": 1,
+            "symbols": [
+              "detect"
+            ]
+          },
+          {
+            "path": "src/detectors/structure_detector.py",
+            "batchIndex": 1,
+            "symbols": [
+              "detect"
+            ]
+          },
+          {
+            "path": "src/tools/analyze.py",
+            "batchIndex": 1,
+            "symbols": [
+              "_document_id",
+              "analyze_document",
+              "_process_page"
+            ]
+          },
+          {
+            "path": "src/utils/__init__.py",
+            "batchIndex": 4,
+            "symbols": []
+          },
+          {
+            "path": "tests/test_analyzers.py",
+            "batchIndex": 3,
+            "symbols": [
+              "_text_like_image",
+              "test_blur_computation_sharp_vs_blurred",
+              "test_image_scaling_detection",
+              "test_font_extraction_from_pdf",
+              "test_entropy_and_edge_density_ranges",
+              "test_ocr_confidence_extraction_graceful"
+            ]
+          },
+          {
+            "path": "tests/test_detectors.py",
+            "batchIndex": 1,
+            "symbols": [
+              "_tile",
+              "test_blur_detector_flags_outlier",
+              "test_blur_detector_no_false_positive_uniform",
+              "test_stretch_detector",
+              "test_dpi_detector",
+              "test_font_detector_rare_font"
+            ]
+          }
+        ],
+        "tests/test_docx.py": [
+          {
+            "path": "src/render/docx_renderer.py",
+            "batchIndex": 4,
+            "symbols": [
+              "extract_docx_formatting"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 3,
+      "files": [
+        {
+          "path": "src/analyzers/__init__.py",
+          "language": "python",
+          "sizeLines": 35,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/analyzers/blur.py",
+          "language": "python",
+          "sizeLines": 26,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/analyzers/contrast.py",
+          "language": "python",
+          "sizeLines": 37,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/analyzers/edge_density.py",
+          "language": "python",
+          "sizeLines": 25,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/analyzers/entropy.py",
+          "language": "python",
+          "sizeLines": 28,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/analyzers/image_scaling.py",
+          "language": "python",
+          "sizeLines": 46,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/analyzers/noise.py",
+          "language": "python",
+          "sizeLines": 52,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/analyzers/ocr.py",
+          "language": "python",
+          "sizeLines": 106,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/analyzers/sharpness.py",
+          "language": "python",
+          "sizeLines": 39,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/analyzers/visual_engine.py",
+          "language": "python",
+          "sizeLines": 102,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/utils/image_ops.py",
+          "language": "python",
+          "sizeLines": 65,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tests/test_analyzers.py",
+          "language": "python",
+          "sizeLines": 84,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "src/analyzers/__init__.py": [
+          "src/analyzers/blur.py",
+          "src/analyzers/contrast.py",
+          "src/analyzers/edge_density.py",
+          "src/analyzers/entropy.py",
+          "src/analyzers/font_analysis.py",
+          "src/analyzers/image_scaling.py",
+          "src/analyzers/noise.py",
+          "src/analyzers/ocr.py",
+          "src/analyzers/pdf_structure.py",
+          "src/analyzers/sharpness.py",
+          "src/analyzers/visual_engine.py"
+        ],
+        "src/analyzers/blur.py": [
+          "src/utils/image_ops.py"
+        ],
+        "src/analyzers/contrast.py": [
+          "src/utils/image_ops.py"
+        ],
+        "src/analyzers/edge_density.py": [
+          "src/utils/config.py",
+          "src/utils/image_ops.py"
+        ],
+        "src/analyzers/entropy.py": [
+          "src/utils/config.py",
+          "src/utils/image_ops.py"
+        ],
+        "src/analyzers/image_scaling.py": [],
+        "src/analyzers/noise.py": [
+          "src/utils/config.py",
+          "src/utils/image_ops.py"
+        ],
+        "src/analyzers/ocr.py": [
+          "src/utils/config.py",
+          "src/utils/image_ops.py",
+          "src/utils/logging.py"
+        ],
+        "src/analyzers/sharpness.py": [
+          "src/utils/image_ops.py"
+        ],
+        "src/analyzers/visual_engine.py": [
+          "src/analyzers/blur.py",
+          "src/analyzers/contrast.py",
+          "src/analyzers/edge_density.py",
+          "src/analyzers/entropy.py",
+          "src/analyzers/noise.py",
+          "src/analyzers/ocr.py",
+          "src/analyzers/sharpness.py",
+          "src/utils/config.py",
+          "src/utils/image_ops.py"
+        ],
+        "src/utils/image_ops.py": [],
+        "tests/test_analyzers.py": [
+          "src/analyzers/__init__.py",
+          "src/analyzers/blur.py",
+          "src/analyzers/edge_density.py",
+          "src/analyzers/entropy.py",
+          "src/analyzers/font_analysis.py",
+          "src/analyzers/image_scaling.py",
+          "src/analyzers/ocr.py",
+          "src/render/__init__.py",
+          "src/utils/config.py"
+        ]
+      },
+      "neighborMap": {
+        "src/analyzers/__init__.py": [
+          {
+            "path": "src/analyzers/font_analysis.py",
+            "batchIndex": 4,
+            "symbols": [
+              "_normalise_font_name",
+              "analyze_page_fonts",
+              "aggregate_fonts"
+            ]
+          },
+          {
+            "path": "src/analyzers/pdf_structure.py",
+            "batchIndex": 4,
+            "symbols": [
+              "_union_coverage",
+              "analyze_page_structure",
+              "pikepdf_object_summary"
+            ]
+          },
+          {
+            "path": "src/tools/analyze.py",
+            "batchIndex": 1,
+            "symbols": [
+              "_document_id",
+              "analyze_document",
+              "_process_page"
+            ]
+          }
+        ],
+        "src/analyzers/edge_density.py": [
+          {
+            "path": "src/utils/config.py",
+            "batchIndex": 2,
+            "symbols": [
+              "deep_merge",
+              "Config",
+              "load_config"
+            ]
+          }
+        ],
+        "src/analyzers/entropy.py": [
+          {
+            "path": "src/utils/config.py",
+            "batchIndex": 2,
+            "symbols": [
+              "deep_merge",
+              "Config",
+              "load_config"
+            ]
+          }
+        ],
+        "src/analyzers/image_scaling.py": [
+          {
+            "path": "src/analyzers/pdf_structure.py",
+            "batchIndex": 4,
+            "symbols": [
+              "_union_coverage",
+              "analyze_page_structure",
+              "pikepdf_object_summary"
+            ]
+          }
+        ],
+        "src/analyzers/noise.py": [
+          {
+            "path": "src/utils/config.py",
+            "batchIndex": 2,
+            "symbols": [
+              "deep_merge",
+              "Config",
+              "load_config"
+            ]
+          }
+        ],
+        "src/analyzers/ocr.py": [
+          {
+            "path": "src/utils/config.py",
+            "batchIndex": 2,
+            "symbols": [
+              "deep_merge",
+              "Config",
+              "load_config"
+            ]
+          },
+          {
+            "path": "src/utils/logging.py",
+            "batchIndex": 4,
+            "symbols": [
+              "_configure_root",
+              "get_logger"
+            ]
+          },
+          {
+            "path": "src/tools/analyze.py",
+            "batchIndex": 1,
+            "symbols": [
+              "_document_id",
+              "analyze_document",
+              "_process_page"
+            ]
+          }
+        ],
+        "src/analyzers/visual_engine.py": [
+          {
+            "path": "src/utils/config.py",
+            "batchIndex": 2,
+            "symbols": [
+              "deep_merge",
+              "Config",
+              "load_config"
+            ]
+          },
+          {
+            "path": "src/tools/analyze.py",
+            "batchIndex": 1,
+            "symbols": [
+              "_document_id",
+              "analyze_document",
+              "_process_page"
+            ]
+          }
+        ],
+        "src/utils/image_ops.py": [
+          {
+            "path": "src/render/pdf_renderer.py",
+            "batchIndex": 2,
+            "symbols": [
+              "RenderedPage",
+              "_matrix_for_dpi",
+              "render_document"
+            ]
+          }
+        ],
+        "tests/test_analyzers.py": [
+          {
+            "path": "src/analyzers/font_analysis.py",
+            "batchIndex": 4,
+            "symbols": [
+              "_normalise_font_name",
+              "analyze_page_fonts",
+              "aggregate_fonts"
+            ]
+          },
+          {
+            "path": "src/render/__init__.py",
+            "batchIndex": 2,
+            "symbols": []
+          },
+          {
+            "path": "src/utils/config.py",
+            "batchIndex": 2,
+            "symbols": [
+              "deep_merge",
+              "Config",
+              "load_config"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 4,
+      "files": [
+        {
+          "path": "src/analyzers/font_analysis.py",
+          "language": "python",
+          "sizeLines": 82,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/analyzers/pdf_structure.py",
+          "language": "python",
+          "sizeLines": 194,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/render/docx_renderer.py",
+          "language": "python",
+          "sizeLines": 99,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/server/__main__.py",
+          "language": "python",
+          "sizeLines": 5,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/server/app.py",
+          "language": "python",
+          "sizeLines": 67,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/utils/__init__.py",
+          "language": "python",
+          "sizeLines": 6,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/utils/geometry.py",
+          "language": "python",
+          "sizeLines": 35,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/utils/logging.py",
+          "language": "python",
+          "sizeLines": 33,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tests/test_mcp.py",
+          "language": "python",
+          "sizeLines": 56,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "src/analyzers/font_analysis.py": [
+          "src/utils/logging.py"
+        ],
+        "src/analyzers/pdf_structure.py": [
+          "src/analyzers/font_analysis.py",
+          "src/analyzers/image_scaling.py",
+          "src/utils/config.py",
+          "src/utils/geometry.py",
+          "src/utils/logging.py"
+        ],
+        "src/render/docx_renderer.py": [
+          "src/utils/logging.py"
+        ],
+        "src/server/__main__.py": [
+          "src/server/app.py"
+        ],
+        "src/server/app.py": [
+          "src/tools/analyze.py",
+          "src/utils/logging.py"
+        ],
+        "src/utils/__init__.py": [
+          "src/utils/config.py",
+          "src/utils/logging.py"
+        ],
+        "src/utils/geometry.py": [],
+        "src/utils/logging.py": [
+          "src/utils/logging.py"
+        ],
+        "tests/test_mcp.py": [
+          "src/server/app.py"
+        ]
+      },
+      "neighborMap": {
+        "src/analyzers/font_analysis.py": [
+          {
+            "path": "src/analyzers/__init__.py",
+            "batchIndex": 3,
+            "symbols": []
+          },
+          {
+            "path": "src/tools/analyze.py",
+            "batchIndex": 1,
+            "symbols": [
+              "_document_id",
+              "analyze_document",
+              "_process_page"
+            ]
+          },
+          {
+            "path": "tests/test_analyzers.py",
+            "batchIndex": 3,
+            "symbols": [
+              "_text_like_image",
+              "test_blur_computation_sharp_vs_blurred",
+              "test_image_scaling_detection",
+              "test_font_extraction_from_pdf",
+              "test_entropy_and_edge_density_ranges",
+              "test_ocr_confidence_extraction_graceful"
+            ]
+          }
+        ],
+        "src/analyzers/pdf_structure.py": [
+          {
+            "path": "src/analyzers/image_scaling.py",
+            "batchIndex": 3,
+            "symbols": [
+              "compute_scaling"
+            ]
+          },
+          {
+            "path": "src/utils/config.py",
+            "batchIndex": 2,
+            "symbols": [
+              "deep_merge",
+              "Config",
+              "load_config"
+            ]
+          },
+          {
+            "path": "src/analyzers/__init__.py",
+            "batchIndex": 3,
+            "symbols": []
+          },
+          {
+            "path": "src/tools/analyze.py",
+            "batchIndex": 1,
+            "symbols": [
+              "_document_id",
+              "analyze_document",
+              "_process_page"
+            ]
+          }
+        ],
+        "src/render/docx_renderer.py": [
+          {
+            "path": "src/tools/analyze.py",
+            "batchIndex": 1,
+            "symbols": [
+              "_document_id",
+              "analyze_document",
+              "_process_page"
+            ]
+          },
+          {
+            "path": "tests/test_docx.py",
+            "batchIndex": 2,
+            "symbols": [
+              "test_docx_loads_and_renders",
+              "test_docx_font_extraction",
+              "test_docx_converts_to_pdf_for_structure"
+            ]
+          }
+        ],
+        "src/server/app.py": [
+          {
+            "path": "src/tools/analyze.py",
+            "batchIndex": 1,
+            "symbols": [
+              "_document_id",
+              "analyze_document",
+              "_process_page"
+            ]
+          }
+        ],
+        "src/utils/__init__.py": [
+          {
+            "path": "src/utils/config.py",
+            "batchIndex": 2,
+            "symbols": [
+              "deep_merge",
+              "Config",
+              "load_config"
+            ]
+          }
+        ],
+        "src/utils/logging.py": [
+          {
+            "path": "src/analyzers/ocr.py",
+            "batchIndex": 3,
+            "symbols": [
+              "OCRResult",
+              "OCREngine"
+            ]
+          },
+          {
+            "path": "src/render/loader.py",
+            "batchIndex": 2,
+            "symbols": [
+              "LoadedDocument",
+              "detect_type",
+              "load_document"
+            ]
+          },
+          {
+            "path": "src/render/pdf_renderer.py",
+            "batchIndex": 2,
+            "symbols": [
+              "RenderedPage",
+              "_matrix_for_dpi",
+              "render_document"
+            ]
+          },
+          {
+            "path": "src/report/annotator.py",
+            "batchIndex": 2,
+            "symbols": [
+              "_fmt_value",
+              "_metric_lines",
+              "_pretty_type",
+              "compute_fraud_risk",
+              "_page_scale",
+              "_draw_label_block",
+              "_draw_risk_badge",
+              "_group_findings",
+              "_add_cover_page",
+              "annotate_document"
+            ]
+          },
+          {
+            "path": "src/tools/analyze.py",
+            "batchIndex": 1,
+            "symbols": [
+              "_document_id",
+              "analyze_document",
+              "_process_page"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 5,
+      "files": [
+        {
+          "path": "examples/generate_examples.py",
+          "language": "python",
+          "sizeLines": 68,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tests/builders.py",
+          "language": "python",
+          "sizeLines": 101,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tests/conftest.py",
+          "language": "python",
+          "sizeLines": 43,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "examples/generate_examples.py": [
+          "src/tools/analyze.py",
+          "tests/builders.py"
+        ],
+        "tests/builders.py": [],
+        "tests/conftest.py": [
+          "tests/builders.py"
+        ]
+      },
+      "neighborMap": {
+        "examples/generate_examples.py": [
+          {
+            "path": "src/tools/analyze.py",
+            "batchIndex": 1,
+            "symbols": [
+              "_document_id",
+              "analyze_document",
+              "_process_page"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 6,
+      "files": [
+        {
+          "path": "README.md",
+          "language": "markdown",
+          "sizeLines": 362,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "claim_result.json",
+          "language": "json",
+          "sizeLines": 4612,
+          "fileCategory": "config"
+        },
+        {
+          "path": "pyproject.toml",
+          "language": "toml",
+          "sizeLines": 37,
+          "fileCategory": "config"
+        },
+        {
+          "path": "requirements.txt",
+          "language": "txt",
+          "sizeLines": 30,
+          "fileCategory": "docs"
+        }
+      ],
+      "batchImportData": {
+        "README.md": [],
+        "claim_result.json": [],
+        "pyproject.toml": [],
+        "requirements.txt": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 7,
+      "files": [
+        {
+          "path": ".understand-anything/.understandignore",
+          "language": "unknown",
+          "sizeLines": 44,
+          "fileCategory": "code"
+        },
+        {
+          "path": "configs/default.yaml",
+          "language": "yaml",
+          "sizeLines": 141,
+          "fileCategory": "config"
+        },
+        {
+          "path": "examples/example_request.json",
+          "language": "json",
+          "sizeLines": 13,
+          "fileCategory": "config"
+        },
+        {
+          "path": "examples/sample_response.json",
+          "language": "json",
+          "sizeLines": 611,
+          "fileCategory": "config"
+        },
+        {
+          "path": "src/__init__.py",
+          "language": "python",
+          "sizeLines": 8,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/server/__init__.py",
+          "language": "python",
+          "sizeLines": 1,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        ".understand-anything/.understandignore": [],
+        "configs/default.yaml": [],
+        "examples/example_request.json": [],
+        "examples/sample_response.json": [],
+        "src/__init__.py": [],
+        "src/server/__init__.py": []
+      },
+      "neighborMap": {}
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "projectRoot": "c:\\Users\\prana\\Documents\\Github\\New folder\\visual-forensics-mcp",
+  "batchFiles": [
+    {"path": "annotate_report.py", "language": "python", "sizeLines": 71, "fileCategory": "code"},
+    {"path": "src/render/__init__.py", "language": "python", "sizeLines": 11, "fileCategory": "code"},
+    {"path": "src/render/loader.py", "language": "python", "sizeLines": 116, "fileCategory": "code"},
+    {"path": "src/render/pdf_renderer.py", "language": "python", "sizeLines": 98, "fileCategory": "code"},
+    {"path": "src/report/__init__.py", "language": "python", "sizeLines": 5, "fileCategory": "code"},
+    {"path": "src/report/annotator.py", "language": "python", "sizeLines": 418, "fileCategory": "code"},
+    {"path": "src/tiling/__init__.py", "language": "python", "sizeLines": 5, "fileCategory": "code"},
+    {"path": "src/tiling/tiler.py", "language": "python", "sizeLines": 97, "fileCategory": "code"},
+    {"path": "src/utils/config.py", "language": "python", "sizeLines": 105, "fileCategory": "code"},
+    {"path": "tests/test_docx.py", "language": "python", "sizeLines": 45, "fileCategory": "code"},
+    {"path": "tests/test_rendering.py", "language": "python", "sizeLines": 44, "fileCategory": "code"},
+    {"path": "tests/test_tiling.py", "language": "python", "sizeLines": 50, "fileCategory": "code"}
+  ],
+  "batchImportData": {
+    "annotate_report.py": [
+      "src/report/annotator.py",
+      "src/tools/analyze.py",
+      "src/utils/config.py"
+    ],
+    "src/render/__init__.py": [
+      "src/render/loader.py",
+      "src/render/pdf_renderer.py"
+    ],
+    "src/render/loader.py": [
+      "src/utils/config.py",
+      "src/utils/logging.py"
+    ],
+    "src/render/pdf_renderer.py": [
+      "src/utils/config.py",
+      "src/utils/image_ops.py",
+      "src/utils/logging.py"
+    ],
+    "src/report/__init__.py": [
+      "src/report/annotator.py"
+    ],
+    "src/report/annotator.py": [
+      "src/utils/config.py",
+      "src/utils/logging.py"
+    ],
+    "src/tiling/__init__.py": [
+      "src/tiling/tiler.py"
+    ],
+    "src/tiling/tiler.py": [
+      "src/utils/config.py"
+    ],
+    "src/utils/config.py": [],
+    "tests/test_docx.py": [
+      "src/render/__init__.py",
+      "src/render/docx_renderer.py",
+      "src/utils/config.py"
+    ],
+    "tests/test_rendering.py": [
+      "src/render/__init__.py",
+      "src/utils/config.py"
+    ],
+    "tests/test_tiling.py": [
+      "src/tiling/__init__.py",
+      "src/utils/config.py"
+    ]
+  }
+}

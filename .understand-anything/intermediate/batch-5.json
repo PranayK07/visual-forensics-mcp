@@ -1,0 +1,230 @@
+{
+  "nodes": [
+    {
+      "id": "file:examples/generate_examples.py",
+      "type": "file",
+      "name": "generate_examples.py",
+      "filePath": "examples/generate_examples.py",
+      "summary": "Run from the project root:",
+      "tags": [
+        "module"
+      ],
+      "complexity": "simple",
+      "language": "python"
+    },
+    {
+      "id": "function:examples/generate_examples.py:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "examples/generate_examples.py",
+      "summary": "Function `main` in examples/generate_examples.py.",
+      "tags": [
+        "module",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 32,
+      "endLine": 64
+    },
+    {
+      "id": "file:tests/builders.py",
+      "type": "file",
+      "name": "builders.py",
+      "filePath": "tests/builders.py",
+      "summary": "Automated test module validating pipeline behavior (builders.py).",
+      "tags": [
+        "test",
+        "pytest"
+      ],
+      "complexity": "moderate",
+      "language": "python"
+    },
+    {
+      "id": "function:tests/builders.py:build_sample_pdf",
+      "type": "function",
+      "name": "build_sample_pdf",
+      "filePath": "tests/builders.py",
+      "summary": "Function `build_sample_pdf` in tests/builders.py.",
+      "tags": [
+        "test",
+        "pytest",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 36,
+      "endLine": 63
+    },
+    {
+      "id": "function:tests/builders.py:build_scanned_like_pdf",
+      "type": "function",
+      "name": "build_scanned_like_pdf",
+      "filePath": "tests/builders.py",
+      "summary": "Function `build_scanned_like_pdf` in tests/builders.py.",
+      "tags": [
+        "test",
+        "pytest",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 66,
+      "endLine": 74
+    },
+    {
+      "id": "function:tests/builders.py:build_sample_docx",
+      "type": "function",
+      "name": "build_sample_docx",
+      "filePath": "tests/builders.py",
+      "summary": "Function `build_sample_docx` in tests/builders.py.",
+      "tags": [
+        "test",
+        "pytest",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 77,
+      "endLine": 101
+    },
+    {
+      "id": "file:tests/conftest.py",
+      "type": "file",
+      "name": "conftest.py",
+      "filePath": "tests/conftest.py",
+      "summary": "Automated test module validating pipeline behavior (conftest.py).",
+      "tags": [
+        "test",
+        "pytest"
+      ],
+      "complexity": "simple",
+      "language": "python"
+    },
+    {
+      "id": "function:tests/conftest.py:sample_pdf",
+      "type": "function",
+      "name": "sample_pdf",
+      "filePath": "tests/conftest.py",
+      "summary": "Function `sample_pdf` in tests/conftest.py.",
+      "tags": [
+        "test",
+        "pytest",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 23,
+      "endLine": 25
+    },
+    {
+      "id": "function:tests/conftest.py:scanned_pdf",
+      "type": "function",
+      "name": "scanned_pdf",
+      "filePath": "tests/conftest.py",
+      "summary": "Function `scanned_pdf` in tests/conftest.py.",
+      "tags": [
+        "test",
+        "pytest",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 29,
+      "endLine": 31
+    },
+    {
+      "id": "function:tests/conftest.py:sample_docx",
+      "type": "function",
+      "name": "sample_docx",
+      "filePath": "tests/conftest.py",
+      "summary": "Function `sample_docx` in tests/conftest.py.",
+      "tags": [
+        "test",
+        "pytest",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 35,
+      "endLine": 37
+    },
+    {
+      "id": "function:tests/conftest.py:fast_options",
+      "type": "function",
+      "name": "fast_options",
+      "filePath": "tests/conftest.py",
+      "summary": "Function `fast_options` in tests/conftest.py.",
+      "tags": [
+        "test",
+        "pytest",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 41,
+      "endLine": 43
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:examples/generate_examples.py",
+      "target": "function:examples/generate_examples.py:main",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:examples/generate_examples.py",
+      "target": "file:src/tools/analyze.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:examples/generate_examples.py",
+      "target": "file:tests/builders.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tests/builders.py",
+      "target": "function:tests/builders.py:build_sample_pdf",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/builders.py",
+      "target": "function:tests/builders.py:build_scanned_like_pdf",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/builders.py",
+      "target": "function:tests/builders.py:build_sample_docx",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/conftest.py",
+      "target": "function:tests/conftest.py:sample_pdf",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/conftest.py",
+      "target": "function:tests/conftest.py:scanned_pdf",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/conftest.py",
+      "target": "function:tests/conftest.py:sample_docx",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/conftest.py",
+      "target": "function:tests/conftest.py:fast_options",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/conftest.py",
+      "target": "file:tests/builders.py",
+      "type": "imports",
+      "weight": 0.7
+    }
+  ],
+  "batchIndex": 5
+}

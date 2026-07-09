@@ -1,0 +1,33 @@
+{
+  "projectRoot": "c:\\\\Users\\\\prana\\\\Documents\\\\Github\\\\New folder\\\\visual-forensics-mcp",
+  "batchFiles": [
+    {
+      "path": "examples/generate_examples.py",
+      "language": "python",
+      "sizeLines": 68,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/builders.py",
+      "language": "python",
+      "sizeLines": 101,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/conftest.py",
+      "language": "python",
+      "sizeLines": 43,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "examples/generate_examples.py": [
+      "src/tools/analyze.py",
+      "tests/builders.py"
+    ],
+    "tests/builders.py": [],
+    "tests/conftest.py": [
+      "tests/builders.py"
+    ]
+  }
+}

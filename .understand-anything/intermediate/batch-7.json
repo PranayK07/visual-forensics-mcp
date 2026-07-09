@@ -1,0 +1,81 @@
+{
+  "nodes": [
+    {
+      "id": "file:.understand-anything/.understandignore",
+      "type": "file",
+      "name": ".understandignore",
+      "filePath": ".understand-anything/.understandignore",
+      "summary": "Module .understand-anything/.understandignore",
+      "tags": [
+        "module"
+      ],
+      "complexity": "simple",
+      "language": null
+    },
+    {
+      "id": "config:configs/default.yaml",
+      "type": "config",
+      "name": "default.yaml",
+      "filePath": "configs/default.yaml",
+      "summary": "Central YAML configuration for DPI, tiling, analyzers, detectors, and report output.",
+      "tags": [
+        "config",
+        "yaml"
+      ],
+      "complexity": "moderate",
+      "language": "yaml"
+    },
+    {
+      "id": "config:examples/example_request.json",
+      "type": "config",
+      "name": "example_request.json",
+      "filePath": "examples/example_request.json",
+      "summary": "{",
+      "tags": [
+        "module"
+      ],
+      "complexity": "simple",
+      "language": "json"
+    },
+    {
+      "id": "config:examples/sample_response.json",
+      "type": "config",
+      "name": "sample_response.json",
+      "filePath": "examples/sample_response.json",
+      "summary": "{",
+      "tags": [
+        "module"
+      ],
+      "complexity": "complex",
+      "language": "json"
+    },
+    {
+      "id": "file:src/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "src/__init__.py",
+      "summary": "Deterministic, local-only visual and structural analysis of PDF and DOCX",
+      "tags": [
+        "module"
+      ],
+      "complexity": "simple",
+      "language": "python"
+    },
+    {
+      "id": "file:src/server/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "src/server/__init__.py",
+      "summary": "FastMCP server entry exposing the analyze_document tool over stdio/SSE.",
+      "tags": [
+        "mcp",
+        "entry-point",
+        "fastmcp"
+      ],
+      "complexity": "simple",
+      "language": "python"
+    }
+  ],
+  "edges": [],
+  "batchIndex": 7
+}

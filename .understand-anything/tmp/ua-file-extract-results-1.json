@@ -1,0 +1,2654 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 16,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "src/detectors/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 26,
+      "nonEmptyLines": 23,
+      "metrics": {
+        "importCount": 7,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/detectors/_common.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 163,
+      "nonEmptyLines": 146,
+      "functions": [
+        {
+          "name": "zscore_confidence",
+          "startLine": 12,
+          "endLine": 20,
+          "params": [
+            "z",
+            "z_threshold"
+          ]
+        },
+        {
+          "name": "collect_metric",
+          "startLine": 23,
+          "endLine": 46,
+          "params": [
+            "tiles",
+            "metric_key",
+            "text_density_min"
+          ]
+        },
+        {
+          "name": "low_side_zscore_findings",
+          "startLine": 49,
+          "endLine": 97,
+          "params": [
+            "tiles",
+            "metric_key",
+            "page",
+            "finding_type",
+            "z_threshold",
+            "text_density_min",
+            "min_neighbors",
+            "absolute_floor",
+            "explanation",
+            "extra_metrics"
+          ]
+        },
+        {
+          "name": "two_sided_zscore_findings",
+          "startLine": 100,
+          "endLine": 131,
+          "params": [
+            "tiles",
+            "metric_key",
+            "page",
+            "finding_type",
+            "z_threshold",
+            "text_density_min",
+            "min_neighbors",
+            "explanation"
+          ]
+        },
+        {
+          "name": "_make_finding",
+          "startLine": 134,
+          "endLine": 163,
+          "params": [
+            "tile",
+            "metric_key",
+            "value",
+            "page",
+            "finding_type",
+            "confidence",
+            "explanation",
+            "extra_metrics",
+            "page_mean",
+            "zscore"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "zscore_confidence",
+          "line": 12,
+          "isDefault": false
+        },
+        {
+          "name": "collect_metric",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "low_side_zscore_findings",
+          "line": 49,
+          "isDefault": false
+        },
+        {
+          "name": "two_sided_zscore_findings",
+          "line": 100,
+          "isDefault": false
+        },
+        {
+          "name": "_make_finding",
+          "line": 134,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "zscore_confidence",
+          "callee": "abs",
+          "lineNumber": 19
+        },
+        {
+          "caller": "zscore_confidence",
+          "callee": "float",
+          "lineNumber": 20
+        },
+        {
+          "caller": "zscore_confidence",
+          "callee": "min",
+          "lineNumber": 20
+        },
+        {
+          "caller": "zscore_confidence",
+          "callee": "max",
+          "lineNumber": 20
+        },
+        {
+          "caller": "zscore_confidence",
+          "callee": "abs",
+          "lineNumber": 20
+        },
+        {
+          "caller": "collect_metric",
+          "callee": "enumerate",
+          "lineNumber": 35
+        },
+        {
+          "caller": "collect_metric",
+          "callee": "tile.metrics.get",
+          "lineNumber": 38
+        },
+        {
+          "caller": "collect_metric",
+          "callee": "tile.metrics.get",
+          "lineNumber": 41
+        },
+        {
+          "caller": "collect_metric",
+          "callee": "idx.append",
+          "lineNumber": 44
+        },
+        {
+          "caller": "collect_metric",
+          "callee": "vals.append",
+          "lineNumber": 45
+        },
+        {
+          "caller": "collect_metric",
+          "callee": "float",
+          "lineNumber": 45
+        },
+        {
+          "caller": "collect_metric",
+          "callee": "np.asarray",
+          "lineNumber": 46
+        },
+        {
+          "caller": "low_side_zscore_findings",
+          "callee": "collect_metric",
+          "lineNumber": 63
+        },
+        {
+          "caller": "low_side_zscore_findings",
+          "callee": "float",
+          "lineNumber": 69
+        },
+        {
+          "caller": "low_side_zscore_findings",
+          "callee": "tiles[i].metrics.get",
+          "lineNumber": 69
+        },
+        {
+          "caller": "low_side_zscore_findings",
+          "callee": "findings.append",
+          "lineNumber": 71
+        },
+        {
+          "caller": "low_side_zscore_findings",
+          "callee": "_make_finding",
+          "lineNumber": 72
+        },
+        {
+          "caller": "low_side_zscore_findings",
+          "callee": "float",
+          "lineNumber": 81
+        },
+        {
+          "caller": "low_side_zscore_findings",
+          "callee": "vals.mean",
+          "lineNumber": 81
+        },
+        {
+          "caller": "low_side_zscore_findings",
+          "callee": "float",
+          "lineNumber": 82
+        },
+        {
+          "caller": "low_side_zscore_findings",
+          "callee": "vals.std",
+          "lineNumber": 82
+        },
+        {
+          "caller": "low_side_zscore_findings",
+          "callee": "enumerate",
+          "lineNumber": 83
+        },
+        {
+          "caller": "low_side_zscore_findings",
+          "callee": "zscore_confidence",
+          "lineNumber": 89
+        },
+        {
+          "caller": "low_side_zscore_findings",
+          "callee": "findings.append",
+          "lineNumber": 90
+        },
+        {
+          "caller": "low_side_zscore_findings",
+          "callee": "_make_finding",
+          "lineNumber": 91
+        },
+        {
+          "caller": "two_sided_zscore_findings",
+          "callee": "collect_metric",
+          "lineNumber": 112
+        },
+        {
+          "caller": "two_sided_zscore_findings",
+          "callee": "float",
+          "lineNumber": 116
+        },
+        {
+          "caller": "two_sided_zscore_findings",
+          "callee": "vals.mean",
+          "lineNumber": 116
+        },
+        {
+          "caller": "two_sided_zscore_findings",
+          "callee": "float",
+          "lineNumber": 117
+        },
+        {
+          "caller": "two_sided_zscore_findings",
+          "callee": "vals.std",
+          "lineNumber": 117
+        },
+        {
+          "caller": "two_sided_zscore_findings",
+          "callee": "enumerate",
+          "lineNumber": 120
+        },
+        {
+          "caller": "two_sided_zscore_findings",
+          "callee": "abs",
+          "lineNumber": 123
+        },
+        {
+          "caller": "two_sided_zscore_findings",
+          "callee": "findings.append",
+          "lineNumber": 124
+        },
+        {
+          "caller": "two_sided_zscore_findings",
+          "callee": "_make_finding",
+          "lineNumber": 125
+        },
+        {
+          "caller": "two_sided_zscore_findings",
+          "callee": "zscore_confidence",
+          "lineNumber": 127
+        },
+        {
+          "caller": "_make_finding",
+          "callee": "round",
+          "lineNumber": 147
+        },
+        {
+          "caller": "_make_finding",
+          "callee": "float",
+          "lineNumber": 147
+        },
+        {
+          "caller": "_make_finding",
+          "callee": "round",
+          "lineNumber": 149
+        },
+        {
+          "caller": "_make_finding",
+          "callee": "float",
+          "lineNumber": 149
+        },
+        {
+          "caller": "_make_finding",
+          "callee": "round",
+          "lineNumber": 151
+        },
+        {
+          "caller": "_make_finding",
+          "callee": "float",
+          "lineNumber": 151
+        },
+        {
+          "caller": "_make_finding",
+          "callee": "metrics.setdefault",
+          "lineNumber": 153
+        },
+        {
+          "caller": "_make_finding",
+          "callee": "metrics.update",
+          "lineNumber": 155
+        },
+        {
+          "caller": "_make_finding",
+          "callee": "extra_metrics",
+          "lineNumber": 155
+        },
+        {
+          "caller": "_make_finding",
+          "callee": "Finding",
+          "lineNumber": 156
+        },
+        {
+          "caller": "_make_finding",
+          "callee": "list",
+          "lineNumber": 159
+        },
+        {
+          "caller": "_make_finding",
+          "callee": "round",
+          "lineNumber": 161
+        },
+        {
+          "caller": "_make_finding",
+          "callee": "float",
+          "lineNumber": 161
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/detectors/blur_detector.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 33,
+      "nonEmptyLines": 28,
+      "functions": [
+        {
+          "name": "detect",
+          "startLine": 14,
+          "endLine": 33,
+          "params": [
+            "tiles",
+            "page",
+            "config"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "detect",
+          "line": 14,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "detect",
+          "callee": "config.section(\"detectors\").get",
+          "lineNumber": 15
+        },
+        {
+          "caller": "detect",
+          "callee": "config.section",
+          "lineNumber": 15
+        },
+        {
+          "caller": "detect",
+          "callee": "cfg.get",
+          "lineNumber": 16
+        },
+        {
+          "caller": "detect",
+          "callee": "cfg.get",
+          "lineNumber": 18
+        },
+        {
+          "caller": "detect",
+          "callee": "float",
+          "lineNumber": 19
+        },
+        {
+          "caller": "detect",
+          "callee": "low_side_zscore_findings",
+          "lineNumber": 20
+        },
+        {
+          "caller": "detect",
+          "callee": "float",
+          "lineNumber": 25
+        },
+        {
+          "caller": "detect",
+          "callee": "cfg.get",
+          "lineNumber": 25
+        },
+        {
+          "caller": "detect",
+          "callee": "float",
+          "lineNumber": 26
+        },
+        {
+          "caller": "detect",
+          "callee": "cfg.get",
+          "lineNumber": 26
+        },
+        {
+          "caller": "detect",
+          "callee": "int",
+          "lineNumber": 27
+        },
+        {
+          "caller": "detect",
+          "callee": "cfg.get",
+          "lineNumber": 27
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/detectors/compression_detector.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 31,
+      "nonEmptyLines": 26,
+      "functions": [
+        {
+          "name": "detect",
+          "startLine": 15,
+          "endLine": 31,
+          "params": [
+            "tiles",
+            "page",
+            "config"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "detect",
+          "line": 15,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "detect",
+          "callee": "config.section(\"detectors\").get",
+          "lineNumber": 16
+        },
+        {
+          "caller": "detect",
+          "callee": "config.section",
+          "lineNumber": 16
+        },
+        {
+          "caller": "detect",
+          "callee": "cfg.get",
+          "lineNumber": 17
+        },
+        {
+          "caller": "detect",
+          "callee": "two_sided_zscore_findings",
+          "lineNumber": 19
+        },
+        {
+          "caller": "detect",
+          "callee": "float",
+          "lineNumber": 24
+        },
+        {
+          "caller": "detect",
+          "callee": "cfg.get",
+          "lineNumber": 24
+        },
+        {
+          "caller": "detect",
+          "callee": "float",
+          "lineNumber": 25
+        },
+        {
+          "caller": "detect",
+          "callee": "cfg.get",
+          "lineNumber": 25
+        },
+        {
+          "caller": "detect",
+          "callee": "int",
+          "lineNumber": 26
+        },
+        {
+          "caller": "detect",
+          "callee": "cfg.get",
+          "lineNumber": 26
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/detectors/dpi_detector.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 61,
+      "nonEmptyLines": 54,
+      "functions": [
+        {
+          "name": "detect",
+          "startLine": 16,
+          "endLine": 61,
+          "params": [
+            "embedded_images",
+            "page",
+            "render_dpi",
+            "config"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "detect",
+          "line": 16,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "detect",
+          "callee": "config.section(\"detectors\").get",
+          "lineNumber": 22
+        },
+        {
+          "caller": "detect",
+          "callee": "config.section",
+          "lineNumber": 22
+        },
+        {
+          "caller": "detect",
+          "callee": "cfg.get",
+          "lineNumber": 23
+        },
+        {
+          "caller": "detect",
+          "callee": "float",
+          "lineNumber": 25
+        },
+        {
+          "caller": "detect",
+          "callee": "cfg.get",
+          "lineNumber": 25
+        },
+        {
+          "caller": "detect",
+          "callee": "float",
+          "lineNumber": 26
+        },
+        {
+          "caller": "detect",
+          "callee": "cfg.get",
+          "lineNumber": 26
+        },
+        {
+          "caller": "detect",
+          "callee": "float",
+          "lineNumber": 30
+        },
+        {
+          "caller": "detect",
+          "callee": "img.get",
+          "lineNumber": 30
+        },
+        {
+          "caller": "detect",
+          "callee": "float",
+          "lineNumber": 31
+        },
+        {
+          "caller": "detect",
+          "callee": "img.get",
+          "lineNumber": 31
+        },
+        {
+          "caller": "detect",
+          "callee": "min",
+          "lineNumber": 32
+        },
+        {
+          "caller": "detect",
+          "callee": "max",
+          "lineNumber": 40
+        },
+        {
+          "caller": "detect",
+          "callee": "min",
+          "lineNumber": 40
+        },
+        {
+          "caller": "detect",
+          "callee": "max",
+          "lineNumber": 40
+        },
+        {
+          "caller": "detect",
+          "callee": "max",
+          "lineNumber": 41
+        },
+        {
+          "caller": "detect",
+          "callee": "findings.append",
+          "lineNumber": 42
+        },
+        {
+          "caller": "detect",
+          "callee": "Finding",
+          "lineNumber": 43
+        },
+        {
+          "caller": "detect",
+          "callee": "list",
+          "lineNumber": 46
+        },
+        {
+          "caller": "detect",
+          "callee": "img.get",
+          "lineNumber": 46
+        },
+        {
+          "caller": "detect",
+          "callee": "round",
+          "lineNumber": 48
+        },
+        {
+          "caller": "detect",
+          "callee": "round",
+          "lineNumber": 49
+        },
+        {
+          "caller": "detect",
+          "callee": "round",
+          "lineNumber": 50
+        },
+        {
+          "caller": "detect",
+          "callee": "float",
+          "lineNumber": 50
+        },
+        {
+          "caller": "detect",
+          "callee": "round",
+          "lineNumber": 51
+        },
+        {
+          "caller": "detect",
+          "callee": "img.get",
+          "lineNumber": 52
+        },
+        {
+          "caller": "detect",
+          "callee": "round",
+          "lineNumber": 54
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/detectors/font_detector.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 77,
+      "nonEmptyLines": 67,
+      "functions": [
+        {
+          "name": "detect",
+          "startLine": 18,
+          "endLine": 77,
+          "params": [
+            "aggregated_fonts",
+            "config"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "detect",
+          "line": 18,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "detect",
+          "callee": "config.section(\"detectors\").get",
+          "lineNumber": 22
+        },
+        {
+          "caller": "detect",
+          "callee": "config.section",
+          "lineNumber": 22
+        },
+        {
+          "caller": "detect",
+          "callee": "cfg.get",
+          "lineNumber": 23
+        },
+        {
+          "caller": "detect",
+          "callee": "float",
+          "lineNumber": 25
+        },
+        {
+          "caller": "detect",
+          "callee": "cfg.get",
+          "lineNumber": 25
+        },
+        {
+          "caller": "detect",
+          "callee": "int",
+          "lineNumber": 26
+        },
+        {
+          "caller": "detect",
+          "callee": "cfg.get",
+          "lineNumber": 26
+        },
+        {
+          "caller": "detect",
+          "callee": "int",
+          "lineNumber": 27
+        },
+        {
+          "caller": "detect",
+          "callee": "cfg.get",
+          "lineNumber": 27
+        },
+        {
+          "caller": "detect",
+          "callee": "sum",
+          "lineNumber": 29
+        },
+        {
+          "caller": "detect",
+          "callee": "int",
+          "lineNumber": 29
+        },
+        {
+          "caller": "detect",
+          "callee": "f.get",
+          "lineNumber": 29
+        },
+        {
+          "caller": "detect",
+          "callee": "len",
+          "lineNumber": 34
+        },
+        {
+          "caller": "detect",
+          "callee": "min",
+          "lineNumber": 36
+        },
+        {
+          "caller": "detect",
+          "callee": "max",
+          "lineNumber": 36
+        },
+        {
+          "caller": "detect",
+          "callee": "findings.append",
+          "lineNumber": 37
+        },
+        {
+          "caller": "detect",
+          "callee": "Finding",
+          "lineNumber": 38
+        },
+        {
+          "caller": "detect",
+          "callee": "round",
+          "lineNumber": 47
+        },
+        {
+          "caller": "detect",
+          "callee": "max",
+          "lineNumber": 47
+        },
+        {
+          "caller": "detect",
+          "callee": "int",
+          "lineNumber": 56
+        },
+        {
+          "caller": "detect",
+          "callee": "font.get",
+          "lineNumber": 56
+        },
+        {
+          "caller": "detect",
+          "callee": "min",
+          "lineNumber": 58
+        },
+        {
+          "caller": "detect",
+          "callee": "findings.append",
+          "lineNumber": 59
+        },
+        {
+          "caller": "detect",
+          "callee": "Finding",
+          "lineNumber": 60
+        },
+        {
+          "caller": "detect",
+          "callee": "int",
+          "lineNumber": 66
+        },
+        {
+          "caller": "detect",
+          "callee": "font.get",
+          "lineNumber": 66
+        },
+        {
+          "caller": "detect",
+          "callee": "round",
+          "lineNumber": 67
+        },
+        {
+          "caller": "detect",
+          "callee": "font.get",
+          "lineNumber": 68
+        },
+        {
+          "caller": "detect",
+          "callee": "round",
+          "lineNumber": 70
+        },
+        {
+          "caller": "detect",
+          "callee": "min",
+          "lineNumber": 70
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/detectors/ocr_confidence_detector.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 34,
+      "nonEmptyLines": 29,
+      "functions": [
+        {
+          "name": "detect",
+          "startLine": 14,
+          "endLine": 34,
+          "params": [
+            "tiles",
+            "page",
+            "config"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "detect",
+          "line": 14,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "detect",
+          "callee": "config.section(\"detectors\").get",
+          "lineNumber": 15
+        },
+        {
+          "caller": "detect",
+          "callee": "config.section",
+          "lineNumber": 15
+        },
+        {
+          "caller": "detect",
+          "callee": "cfg.get",
+          "lineNumber": 16
+        },
+        {
+          "caller": "detect",
+          "callee": "cfg.get",
+          "lineNumber": 19
+        },
+        {
+          "caller": "detect",
+          "callee": "float",
+          "lineNumber": 20
+        },
+        {
+          "caller": "detect",
+          "callee": "low_side_zscore_findings",
+          "lineNumber": 21
+        },
+        {
+          "caller": "detect",
+          "callee": "float",
+          "lineNumber": 26
+        },
+        {
+          "caller": "detect",
+          "callee": "cfg.get",
+          "lineNumber": 26
+        },
+        {
+          "caller": "detect",
+          "callee": "float",
+          "lineNumber": 27
+        },
+        {
+          "caller": "detect",
+          "callee": "cfg.get",
+          "lineNumber": 27
+        },
+        {
+          "caller": "detect",
+          "callee": "int",
+          "lineNumber": 28
+        },
+        {
+          "caller": "detect",
+          "callee": "cfg.get",
+          "lineNumber": 28
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/detectors/stretch_detector.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 59,
+      "nonEmptyLines": 50,
+      "functions": [
+        {
+          "name": "detect",
+          "startLine": 15,
+          "endLine": 59,
+          "params": [
+            "embedded_images",
+            "page",
+            "config"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "detect",
+          "line": 15,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "detect",
+          "callee": "config.section(\"detectors\").get",
+          "lineNumber": 20
+        },
+        {
+          "caller": "detect",
+          "callee": "config.section",
+          "lineNumber": 20
+        },
+        {
+          "caller": "detect",
+          "callee": "cfg.get",
+          "lineNumber": 21
+        },
+        {
+          "caller": "detect",
+          "callee": "float",
+          "lineNumber": 23
+        },
+        {
+          "caller": "detect",
+          "callee": "cfg.get",
+          "lineNumber": 23
+        },
+        {
+          "caller": "detect",
+          "callee": "float",
+          "lineNumber": 24
+        },
+        {
+          "caller": "detect",
+          "callee": "cfg.get",
+          "lineNumber": 24
+        },
+        {
+          "caller": "detect",
+          "callee": "float",
+          "lineNumber": 28
+        },
+        {
+          "caller": "detect",
+          "callee": "img.get",
+          "lineNumber": 28
+        },
+        {
+          "caller": "detect",
+          "callee": "float",
+          "lineNumber": 29
+        },
+        {
+          "caller": "detect",
+          "callee": "img.get",
+          "lineNumber": 29
+        },
+        {
+          "caller": "detect",
+          "callee": "max",
+          "lineNumber": 30
+        },
+        {
+          "caller": "detect",
+          "callee": "abs",
+          "lineNumber": 30
+        },
+        {
+          "caller": "detect",
+          "callee": "abs",
+          "lineNumber": 30
+        },
+        {
+          "caller": "detect",
+          "callee": "abs",
+          "lineNumber": 31
+        },
+        {
+          "caller": "detect",
+          "callee": "img.get",
+          "lineNumber": 33
+        },
+        {
+          "caller": "detect",
+          "callee": "abs",
+          "lineNumber": 34
+        },
+        {
+          "caller": "detect",
+          "callee": "abs",
+          "lineNumber": 35
+        },
+        {
+          "caller": "detect",
+          "callee": "max",
+          "lineNumber": 40
+        },
+        {
+          "caller": "detect",
+          "callee": "min",
+          "lineNumber": 40
+        },
+        {
+          "caller": "detect",
+          "callee": "findings.append",
+          "lineNumber": 41
+        },
+        {
+          "caller": "detect",
+          "callee": "Finding",
+          "lineNumber": 42
+        },
+        {
+          "caller": "detect",
+          "callee": "list",
+          "lineNumber": 45
+        },
+        {
+          "caller": "detect",
+          "callee": "round",
+          "lineNumber": 47
+        },
+        {
+          "caller": "detect",
+          "callee": "round",
+          "lineNumber": 48
+        },
+        {
+          "caller": "detect",
+          "callee": "round",
+          "lineNumber": 49
+        },
+        {
+          "caller": "detect",
+          "callee": "img.get",
+          "lineNumber": 50
+        },
+        {
+          "caller": "detect",
+          "callee": "round",
+          "lineNumber": 52
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/detectors/structure_detector.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 78,
+      "nonEmptyLines": 68,
+      "functions": [
+        {
+          "name": "detect",
+          "startLine": 18,
+          "endLine": 78,
+          "params": [
+            "page_structure",
+            "page",
+            "config"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "detect",
+          "line": 18,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "detect",
+          "callee": "config.section(\"detectors\").get",
+          "lineNumber": 23
+        },
+        {
+          "caller": "detect",
+          "callee": "config.section",
+          "lineNumber": 23
+        },
+        {
+          "caller": "detect",
+          "callee": "cfg.get",
+          "lineNumber": 24
+        },
+        {
+          "caller": "detect",
+          "callee": "float",
+          "lineNumber": 26
+        },
+        {
+          "caller": "detect",
+          "callee": "cfg.get",
+          "lineNumber": 26
+        },
+        {
+          "caller": "detect",
+          "callee": "float",
+          "lineNumber": 27
+        },
+        {
+          "caller": "detect",
+          "callee": "cfg.get",
+          "lineNumber": 27
+        },
+        {
+          "caller": "detect",
+          "callee": "float",
+          "lineNumber": 28
+        },
+        {
+          "caller": "detect",
+          "callee": "cfg.get",
+          "lineNumber": 28
+        },
+        {
+          "caller": "detect",
+          "callee": "float",
+          "lineNumber": 31
+        },
+        {
+          "caller": "detect",
+          "callee": "page_structure.get",
+          "lineNumber": 31
+        },
+        {
+          "caller": "detect",
+          "callee": "bool",
+          "lineNumber": 32
+        },
+        {
+          "caller": "detect",
+          "callee": "page_structure.get",
+          "lineNumber": 32
+        },
+        {
+          "caller": "detect",
+          "callee": "int",
+          "lineNumber": 33
+        },
+        {
+          "caller": "detect",
+          "callee": "page_structure.get",
+          "lineNumber": 33
+        },
+        {
+          "caller": "detect",
+          "callee": "page_structure.get",
+          "lineNumber": 34
+        },
+        {
+          "caller": "detect",
+          "callee": "findings.append",
+          "lineNumber": 39
+        },
+        {
+          "caller": "detect",
+          "callee": "Finding",
+          "lineNumber": 40
+        },
+        {
+          "caller": "detect",
+          "callee": "list",
+          "lineNumber": 43
+        },
+        {
+          "caller": "detect",
+          "callee": "img.get",
+          "lineNumber": 43
+        },
+        {
+          "caller": "detect",
+          "callee": "round",
+          "lineNumber": 45
+        },
+        {
+          "caller": "detect",
+          "callee": "page_structure.get",
+          "lineNumber": 47
+        },
+        {
+          "caller": "detect",
+          "callee": "img.get",
+          "lineNumber": 48
+        },
+        {
+          "caller": "detect",
+          "callee": "round",
+          "lineNumber": 50
+        },
+        {
+          "caller": "detect",
+          "callee": "min",
+          "lineNumber": 50
+        },
+        {
+          "caller": "detect",
+          "callee": "page_structure.get",
+          "lineNumber": 59
+        },
+        {
+          "caller": "detect",
+          "callee": "float",
+          "lineNumber": 60
+        },
+        {
+          "caller": "detect",
+          "callee": "ov.get",
+          "lineNumber": 60
+        },
+        {
+          "caller": "detect",
+          "callee": "findings.append",
+          "lineNumber": 61
+        },
+        {
+          "caller": "detect",
+          "callee": "Finding",
+          "lineNumber": 62
+        },
+        {
+          "caller": "detect",
+          "callee": "list",
+          "lineNumber": 65
+        },
+        {
+          "caller": "detect",
+          "callee": "ov.get",
+          "lineNumber": 65
+        },
+        {
+          "caller": "detect",
+          "callee": "ov.get",
+          "lineNumber": 67
+        },
+        {
+          "caller": "detect",
+          "callee": "ov.get",
+          "lineNumber": 68
+        },
+        {
+          "caller": "detect",
+          "callee": "ov.get",
+          "lineNumber": 69
+        },
+        {
+          "caller": "detect",
+          "callee": "round",
+          "lineNumber": 71
+        },
+        {
+          "caller": "detect",
+          "callee": "min",
+          "lineNumber": 71
+        },
+        {
+          "caller": "detect",
+          "callee": "float",
+          "lineNumber": 71
+        },
+        {
+          "caller": "detect",
+          "callee": "ov.get",
+          "lineNumber": 71
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/schemas/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 23,
+      "nonEmptyLines": 21,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/schemas/models.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 136,
+      "nonEmptyLines": 106,
+      "classes": [
+        {
+          "name": "Finding",
+          "startLine": 28,
+          "endLine": 54,
+          "methods": [
+            "_bbox_len"
+          ],
+          "properties": [
+            "type",
+            "page",
+            "bbox",
+            "metrics",
+            "confidence",
+            "explanation"
+          ]
+        },
+        {
+          "name": "TileResult",
+          "startLine": 57,
+          "endLine": 71,
+          "methods": [
+            "_bbox_len"
+          ],
+          "properties": [
+            "tile_id",
+            "page",
+            "bbox",
+            "blank",
+            "metrics"
+          ]
+        },
+        {
+          "name": "EmbeddedImageInfo",
+          "startLine": 74,
+          "endLine": 89,
+          "methods": [],
+          "properties": [
+            "xref",
+            "original_width",
+            "original_height",
+            "display_width",
+            "display_height",
+            "bbox",
+            "scale_x",
+            "scale_y",
+            "effective_dpi_x",
+            "effective_dpi_y",
+            "colorspace",
+            "bpc",
+            "image_filter"
+          ]
+        },
+        {
+          "name": "FontInfo",
+          "startLine": 92,
+          "endLine": 97,
+          "methods": [],
+          "properties": [
+            "name",
+            "span_count",
+            "sizes"
+          ]
+        },
+        {
+          "name": "PageResult",
+          "startLine": 100,
+          "endLine": 112,
+          "methods": [],
+          "properties": [
+            "page",
+            "width",
+            "height",
+            "dpi",
+            "is_vector",
+            "tiles",
+            "page_metrics",
+            "embedded_images",
+            "fonts",
+            "findings"
+          ]
+        },
+        {
+          "name": "AnalysisSummary",
+          "startLine": 115,
+          "endLine": 124,
+          "methods": [],
+          "properties": [
+            "page_count",
+            "tile_count",
+            "finding_count",
+            "findings_by_type",
+            "ocr_available",
+            "pdf_structure_available",
+            "config_digest"
+          ]
+        },
+        {
+          "name": "AnalysisResult",
+          "startLine": 127,
+          "endLine": 136,
+          "methods": [],
+          "properties": [
+            "document_id",
+            "document_type",
+            "summary",
+            "page_results",
+            "document_findings",
+            "warnings",
+            "errors"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Finding",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "TileResult",
+          "line": 57,
+          "isDefault": false
+        },
+        {
+          "name": "EmbeddedImageInfo",
+          "line": 74,
+          "isDefault": false
+        },
+        {
+          "name": "FontInfo",
+          "line": 92,
+          "isDefault": false
+        },
+        {
+          "name": "PageResult",
+          "line": 100,
+          "isDefault": false
+        },
+        {
+          "name": "AnalysisSummary",
+          "line": 115,
+          "isDefault": false
+        },
+        {
+          "name": "AnalysisResult",
+          "line": 127,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_bbox_len",
+          "callee": "len",
+          "lineNumber": 52
+        },
+        {
+          "caller": "_bbox_len",
+          "callee": "ValueError",
+          "lineNumber": 53
+        },
+        {
+          "caller": "_bbox_len",
+          "callee": "float",
+          "lineNumber": 54
+        },
+        {
+          "caller": "_bbox_len",
+          "callee": "len",
+          "lineNumber": 69
+        },
+        {
+          "caller": "_bbox_len",
+          "callee": "ValueError",
+          "lineNumber": 70
+        },
+        {
+          "caller": "_bbox_len",
+          "callee": "float",
+          "lineNumber": 71
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 7,
+        "functionCount": 0,
+        "classCount": 7
+      }
+    },
+    {
+      "path": "src/tools/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 5,
+      "nonEmptyLines": 3,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/tools/analyze.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 305,
+      "nonEmptyLines": 273,
+      "functions": [
+        {
+          "name": "_document_id",
+          "startLine": 47,
+          "endLine": 56,
+          "params": [
+            "path"
+          ]
+        },
+        {
+          "name": "analyze_document",
+          "startLine": 59,
+          "endLine": 213,
+          "params": [
+            "document_path",
+            "options"
+          ]
+        },
+        {
+          "name": "_process_page",
+          "startLine": 216,
+          "endLine": 305,
+          "params": [
+            "rp",
+            "pdf_doc",
+            "config",
+            "ocr_engine",
+            "enable_visual",
+            "enable_pdf",
+            "enable_detectors",
+            "include_tile_metrics",
+            "max_findings",
+            "warnings"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "_document_id",
+          "line": 47,
+          "isDefault": false
+        },
+        {
+          "name": "analyze_document",
+          "line": 59,
+          "isDefault": false
+        },
+        {
+          "name": "_process_page",
+          "line": 216,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_document_id",
+          "callee": "hashlib.sha1",
+          "lineNumber": 49
+        },
+        {
+          "caller": "_document_id",
+          "callee": "open",
+          "lineNumber": 51
+        },
+        {
+          "caller": "_document_id",
+          "callee": "iter",
+          "lineNumber": 52
+        },
+        {
+          "caller": "_document_id",
+          "callee": "fh.read",
+          "lineNumber": 52
+        },
+        {
+          "caller": "_document_id",
+          "callee": "h.update",
+          "lineNumber": 53
+        },
+        {
+          "caller": "_document_id",
+          "callee": "h.update",
+          "lineNumber": 55
+        },
+        {
+          "caller": "_document_id",
+          "callee": "os.path.abspath(path).encode",
+          "lineNumber": 55
+        },
+        {
+          "caller": "_document_id",
+          "callee": "os.path.abspath",
+          "lineNumber": 55
+        },
+        {
+          "caller": "_document_id",
+          "callee": "h.hexdigest",
+          "lineNumber": 56
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "(options or {}).get",
+          "lineNumber": 68
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "dict",
+          "lineNumber": 69
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "overrides.pop",
+          "lineNumber": 70
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "load_config",
+          "lineNumber": 72
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "AnalysisResult(\r\n            document_id=\"\",\r\n            document_type=\"unknown\",\r\n            errors=[f\"Failed to load configuration: {exc}\"],\r\n        ).model_dump",
+          "lineNumber": 74
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "AnalysisResult",
+          "lineNumber": 74
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "_document_id",
+          "lineNumber": 80
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "load_document",
+          "lineNumber": 84
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "logger.exception",
+          "lineNumber": 86
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "AnalysisResult(\r\n            document_id=doc_id,\r\n            document_type=\"unknown\",\r\n            errors=[f\"Failed to load document: {exc}\"],\r\n        ).model_dump",
+          "lineNumber": 87
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "AnalysisResult",
+          "lineNumber": 87
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "warnings.extend",
+          "lineNumber": 93
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "bool",
+          "lineNumber": 94
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "config.get",
+          "lineNumber": 94
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "bool",
+          "lineNumber": 95
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "config.get",
+          "lineNumber": 95
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "bool",
+          "lineNumber": 96
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "config.get",
+          "lineNumber": 96
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "bool",
+          "lineNumber": 97
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "config.get",
+          "lineNumber": 97
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "bool",
+          "lineNumber": 98
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "config.get",
+          "lineNumber": 98
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "int",
+          "lineNumber": 99
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "config.get",
+          "lineNumber": 99
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "OCREngine",
+          "lineNumber": 104
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "warnings.append",
+          "lineNumber": 106
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "render_document",
+          "lineNumber": 118
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "logger.exception",
+          "lineNumber": 120
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "loaded.close",
+          "lineNumber": 121
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "AnalysisResult(\r\n            document_id=doc_id,\r\n            document_type=loaded.doc_type,\r\n            warnings=warnings,\r\n            errors=[f\"Failed to render document: {exc}\"],\r\n        ).model_dump",
+          "lineNumber": 122
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "AnalysisResult",
+          "lineNumber": 122
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "_process_page",
+          "lineNumber": 134
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "all_page_fonts.append",
+          "lineNumber": 146
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "f.model_dump",
+          "lineNumber": 146
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "len",
+          "lineNumber": 147
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "page_results.append",
+          "lineNumber": 148
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "logger.exception",
+          "lineNumber": 150
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "errors.append",
+          "lineNumber": 151
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "extract_docx_formatting",
+          "lineNumber": 157
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "docx_fmt.get",
+          "lineNumber": 158
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "all_page_fonts.append",
+          "lineNumber": 159
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "warnings.append",
+          "lineNumber": 161
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "pdf_structure.pikepdf_object_summary",
+          "lineNumber": 165
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "pike.get",
+          "lineNumber": 166
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "logger.info",
+          "lineNumber": 167
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "pike.get",
+          "lineNumber": 169
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "warnings.append",
+          "lineNumber": 172
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "font_analysis.aggregate_fonts",
+          "lineNumber": 174
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "document_findings.extend",
+          "lineNumber": 177
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "font_detector.detect",
+          "lineNumber": 178
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "warnings.append",
+          "lineNumber": 181
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "sum",
+          "lineNumber": 184
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "len",
+          "lineNumber": 184
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "len",
+          "lineNumber": 184
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "by_type.get",
+          "lineNumber": 188
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "by_type.get",
+          "lineNumber": 190
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "AnalysisSummary",
+          "lineNumber": 192
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "len",
+          "lineNumber": 193
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "bool",
+          "lineNumber": 197
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "config.digest",
+          "lineNumber": 199
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "loaded.close",
+          "lineNumber": 202
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "AnalysisResult",
+          "lineNumber": 204
+        },
+        {
+          "caller": "analyze_document",
+          "callee": "result.model_dump",
+          "lineNumber": 213
+        },
+        {
+          "caller": "_process_page",
+          "callee": "PageResult",
+          "lineNumber": 231
+        },
+        {
+          "caller": "_process_page",
+          "callee": "generate_tiles",
+          "lineNumber": 241
+        },
+        {
+          "caller": "_process_page",
+          "callee": "compute_tile_metrics",
+          "lineNumber": 246
+        },
+        {
+          "caller": "_process_page",
+          "callee": "tile_results.append",
+          "lineNumber": 249
+        },
+        {
+          "caller": "_process_page",
+          "callee": "TileResult",
+          "lineNumber": 250
+        },
+        {
+          "caller": "_process_page",
+          "callee": "compute_page_metrics",
+          "lineNumber": 258
+        },
+        {
+          "caller": "_process_page",
+          "callee": "pdf_structure.analyze_page_structure",
+          "lineNumber": 264
+        },
+        {
+          "caller": "_process_page",
+          "callee": "bool",
+          "lineNumber": 267
+        },
+        {
+          "caller": "_process_page",
+          "callee": "page_structure.get",
+          "lineNumber": 267
+        },
+        {
+          "caller": "_process_page",
+          "callee": "EmbeddedImageInfo",
+          "lineNumber": 269
+        },
+        {
+          "caller": "_process_page",
+          "callee": "page_structure.get",
+          "lineNumber": 270
+        },
+        {
+          "caller": "_process_page",
+          "callee": "FontInfo",
+          "lineNumber": 273
+        },
+        {
+          "caller": "_process_page",
+          "callee": "page_structure.get",
+          "lineNumber": 273
+        },
+        {
+          "caller": "_process_page",
+          "callee": "warnings.append",
+          "lineNumber": 276
+        },
+        {
+          "caller": "_process_page",
+          "callee": "findings.extend",
+          "lineNumber": 282
+        },
+        {
+          "caller": "_process_page",
+          "callee": "blur_detector.detect",
+          "lineNumber": 282
+        },
+        {
+          "caller": "_process_page",
+          "callee": "findings.extend",
+          "lineNumber": 283
+        },
+        {
+          "caller": "_process_page",
+          "callee": "compression_detector.detect",
+          "lineNumber": 284
+        },
+        {
+          "caller": "_process_page",
+          "callee": "findings.extend",
+          "lineNumber": 287
+        },
+        {
+          "caller": "_process_page",
+          "callee": "ocr_confidence_detector.detect",
+          "lineNumber": 288
+        },
+        {
+          "caller": "_process_page",
+          "callee": "page_structure.get",
+          "lineNumber": 291
+        },
+        {
+          "caller": "_process_page",
+          "callee": "findings.extend",
+          "lineNumber": 292
+        },
+        {
+          "caller": "_process_page",
+          "callee": "dpi_detector.detect",
+          "lineNumber": 293
+        },
+        {
+          "caller": "_process_page",
+          "callee": "findings.extend",
+          "lineNumber": 295
+        },
+        {
+          "caller": "_process_page",
+          "callee": "stretch_detector.detect",
+          "lineNumber": 295
+        },
+        {
+          "caller": "_process_page",
+          "callee": "findings.extend",
+          "lineNumber": 296
+        },
+        {
+          "caller": "_process_page",
+          "callee": "structure_detector.detect",
+          "lineNumber": 297
+        }
+      ],
+      "metrics": {
+        "importCount": 20,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tests/test_detectors.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 78,
+      "nonEmptyLines": 64,
+      "functions": [
+        {
+          "name": "_tile",
+          "startLine": 15,
+          "endLine": 22,
+          "params": [
+            "tid",
+            "blur_score",
+            "td"
+          ]
+        },
+        {
+          "name": "test_blur_detector_flags_outlier",
+          "startLine": 25,
+          "endLine": 33,
+          "params": []
+        },
+        {
+          "name": "test_blur_detector_no_false_positive_uniform",
+          "startLine": 36,
+          "endLine": 40,
+          "params": []
+        },
+        {
+          "name": "test_stretch_detector",
+          "startLine": 43,
+          "endLine": 54,
+          "params": []
+        },
+        {
+          "name": "test_dpi_detector",
+          "startLine": 57,
+          "endLine": 68,
+          "params": []
+        },
+        {
+          "name": "test_font_detector_rare_font",
+          "startLine": 71,
+          "endLine": 78,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "_tile",
+          "line": 15,
+          "isDefault": false
+        },
+        {
+          "name": "test_blur_detector_flags_outlier",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "test_blur_detector_no_false_positive_uniform",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "test_stretch_detector",
+          "line": 43,
+          "isDefault": false
+        },
+        {
+          "name": "test_dpi_detector",
+          "line": 57,
+          "isDefault": false
+        },
+        {
+          "name": "test_font_detector_rare_font",
+          "line": 71,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_tile",
+          "callee": "TileResult",
+          "lineNumber": 16
+        },
+        {
+          "caller": "_tile",
+          "callee": "float",
+          "lineNumber": 19
+        },
+        {
+          "caller": "_tile",
+          "callee": "float",
+          "lineNumber": 19
+        },
+        {
+          "caller": "test_blur_detector_flags_outlier",
+          "callee": "load_config",
+          "lineNumber": 26
+        },
+        {
+          "caller": "test_blur_detector_flags_outlier",
+          "callee": "_tile",
+          "lineNumber": 27
+        },
+        {
+          "caller": "test_blur_detector_flags_outlier",
+          "callee": "range",
+          "lineNumber": 27
+        },
+        {
+          "caller": "test_blur_detector_flags_outlier",
+          "callee": "tiles.append",
+          "lineNumber": 28
+        },
+        {
+          "caller": "test_blur_detector_flags_outlier",
+          "callee": "_tile",
+          "lineNumber": 28
+        },
+        {
+          "caller": "test_blur_detector_flags_outlier",
+          "callee": "blur_detector.detect",
+          "lineNumber": 29
+        },
+        {
+          "caller": "test_blur_detector_flags_outlier",
+          "callee": "any",
+          "lineNumber": 30
+        },
+        {
+          "caller": "test_blur_detector_flags_outlier",
+          "callee": "all",
+          "lineNumber": 32
+        },
+        {
+          "caller": "test_blur_detector_flags_outlier",
+          "callee": "all",
+          "lineNumber": 33
+        },
+        {
+          "caller": "test_blur_detector_flags_outlier",
+          "callee": "len",
+          "lineNumber": 33
+        },
+        {
+          "caller": "test_blur_detector_no_false_positive_uniform",
+          "callee": "load_config",
+          "lineNumber": 37
+        },
+        {
+          "caller": "test_blur_detector_no_false_positive_uniform",
+          "callee": "_tile",
+          "lineNumber": 38
+        },
+        {
+          "caller": "test_blur_detector_no_false_positive_uniform",
+          "callee": "range",
+          "lineNumber": 38
+        },
+        {
+          "caller": "test_blur_detector_no_false_positive_uniform",
+          "callee": "blur_detector.detect",
+          "lineNumber": 39
+        },
+        {
+          "caller": "test_stretch_detector",
+          "callee": "load_config",
+          "lineNumber": 44
+        },
+        {
+          "caller": "test_stretch_detector",
+          "callee": "stretch_detector.detect",
+          "lineNumber": 53
+        },
+        {
+          "caller": "test_stretch_detector",
+          "callee": "any",
+          "lineNumber": 54
+        },
+        {
+          "caller": "test_dpi_detector",
+          "callee": "load_config",
+          "lineNumber": 58
+        },
+        {
+          "caller": "test_dpi_detector",
+          "callee": "dpi_detector.detect",
+          "lineNumber": 67
+        },
+        {
+          "caller": "test_dpi_detector",
+          "callee": "any",
+          "lineNumber": 68
+        },
+        {
+          "caller": "test_font_detector_rare_font",
+          "callee": "load_config",
+          "lineNumber": 72
+        },
+        {
+          "caller": "test_font_detector_rare_font",
+          "callee": "font_detector.detect",
+          "lineNumber": 77
+        },
+        {
+          "caller": "test_font_detector_rare_font",
+          "callee": "any",
+          "lineNumber": 78
+        },
+        {
+          "caller": "test_font_detector_rare_font",
+          "callee": "f.metrics.get",
+          "lineNumber": 78
+        }
+      ],
+      "metrics": {
+        "importCount": 7,
+        "exportCount": 6,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tests/test_end_to_end.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 70,
+      "nonEmptyLines": 56,
+      "functions": [
+        {
+          "name": "_validate_findings",
+          "startLine": 9,
+          "endLine": 19,
+          "params": [
+            "result"
+          ]
+        },
+        {
+          "name": "test_end_to_end_pdf",
+          "startLine": 22,
+          "endLine": 49,
+          "params": [
+            "sample_pdf",
+            "fast_options"
+          ]
+        },
+        {
+          "name": "test_end_to_end_docx",
+          "startLine": 52,
+          "endLine": 59,
+          "params": [
+            "sample_docx",
+            "fast_options"
+          ]
+        },
+        {
+          "name": "test_end_to_end_scanned_pdf",
+          "startLine": 62,
+          "endLine": 70,
+          "params": [
+            "scanned_pdf",
+            "fast_options"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "_validate_findings",
+          "line": 9,
+          "isDefault": false
+        },
+        {
+          "name": "test_end_to_end_pdf",
+          "line": 22,
+          "isDefault": false
+        },
+        {
+          "name": "test_end_to_end_docx",
+          "line": 52,
+          "isDefault": false
+        },
+        {
+          "name": "test_end_to_end_scanned_pdf",
+          "line": 62,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_validate_findings",
+          "callee": "list",
+          "lineNumber": 11
+        },
+        {
+          "caller": "_validate_findings",
+          "callee": "findings.extend",
+          "lineNumber": 13
+        },
+        {
+          "caller": "_validate_findings",
+          "callee": "set",
+          "lineNumber": 15
+        },
+        {
+          "caller": "_validate_findings",
+          "callee": "set",
+          "lineNumber": 15
+        },
+        {
+          "caller": "_validate_findings",
+          "callee": "len",
+          "lineNumber": 16
+        },
+        {
+          "caller": "_validate_findings",
+          "callee": "isinstance",
+          "lineNumber": 18
+        },
+        {
+          "caller": "test_end_to_end_pdf",
+          "callee": "analyze_document",
+          "lineNumber": 23
+        },
+        {
+          "caller": "test_end_to_end_pdf",
+          "callee": "AnalysisResult.model_validate",
+          "lineNumber": 26
+        },
+        {
+          "caller": "test_end_to_end_pdf",
+          "callee": "len",
+          "lineNumber": 36
+        },
+        {
+          "caller": "test_end_to_end_pdf",
+          "callee": "_validate_findings",
+          "lineNumber": 44
+        },
+        {
+          "caller": "test_end_to_end_docx",
+          "callee": "analyze_document",
+          "lineNumber": 53
+        },
+        {
+          "caller": "test_end_to_end_docx",
+          "callee": "AnalysisResult.model_validate",
+          "lineNumber": 54
+        },
+        {
+          "caller": "test_end_to_end_docx",
+          "callee": "_validate_findings",
+          "lineNumber": 59
+        },
+        {
+          "caller": "test_end_to_end_scanned_pdf",
+          "callee": "analyze_document",
+          "lineNumber": 64
+        },
+        {
+          "caller": "test_end_to_end_scanned_pdf",
+          "callee": "AnalysisResult.model_validate",
+          "lineNumber": 65
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tests/test_schema.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 53,
+      "nonEmptyLines": 43,
+      "functions": [
+        {
+          "name": "test_finding_requires_four_element_bbox",
+          "startLine": 11,
+          "endLine": 13,
+          "params": []
+        },
+        {
+          "name": "test_finding_confidence_bounds",
+          "startLine": 16,
+          "endLine": 18,
+          "params": []
+        },
+        {
+          "name": "test_analysis_result_roundtrip",
+          "startLine": 21,
+          "endLine": 53,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "test_finding_requires_four_element_bbox",
+          "line": 11,
+          "isDefault": false
+        },
+        {
+          "name": "test_finding_confidence_bounds",
+          "line": 16,
+          "isDefault": false
+        },
+        {
+          "name": "test_analysis_result_roundtrip",
+          "line": 21,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "test_finding_requires_four_element_bbox",
+          "callee": "pytest.raises",
+          "lineNumber": 12
+        },
+        {
+          "caller": "test_finding_requires_four_element_bbox",
+          "callee": "Finding",
+          "lineNumber": 13
+        },
+        {
+          "caller": "test_finding_confidence_bounds",
+          "callee": "pytest.raises",
+          "lineNumber": 17
+        },
+        {
+          "caller": "test_finding_confidence_bounds",
+          "callee": "Finding",
+          "lineNumber": 18
+        },
+        {
+          "caller": "test_analysis_result_roundtrip",
+          "callee": "AnalysisResult",
+          "lineNumber": 22
+        },
+        {
+          "caller": "test_analysis_result_roundtrip",
+          "callee": "PageResult",
+          "lineNumber": 25
+        },
+        {
+          "caller": "test_analysis_result_roundtrip",
+          "callee": "Finding",
+          "lineNumber": 27
+        },
+        {
+          "caller": "test_analysis_result_roundtrip",
+          "callee": "result.model_dump",
+          "lineNumber": 37
+        },
+        {
+          "caller": "test_analysis_result_roundtrip",
+          "callee": "AnalysisResult.model_validate",
+          "lineNumber": 51
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,2376 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 12,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "annotate_report.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 71,
+      "nonEmptyLines": 55,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 29,
+          "endLine": 67,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 29,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "argparse.ArgumentParser",
+          "lineNumber": 30
+        },
+        {
+          "caller": "main",
+          "callee": "parser.add_argument",
+          "lineNumber": 31
+        },
+        {
+          "caller": "main",
+          "callee": "parser.add_argument",
+          "lineNumber": 32
+        },
+        {
+          "caller": "main",
+          "callee": "parser.add_argument",
+          "lineNumber": 33
+        },
+        {
+          "caller": "main",
+          "callee": "parser.add_argument",
+          "lineNumber": 35
+        },
+        {
+          "caller": "main",
+          "callee": "parser.parse_args",
+          "lineNumber": 36
+        },
+        {
+          "caller": "main",
+          "callee": "os.path.exists",
+          "lineNumber": 38
+        },
+        {
+          "caller": "main",
+          "callee": "SystemExit",
+          "lineNumber": 39
+        },
+        {
+          "caller": "main",
+          "callee": "open",
+          "lineNumber": 46
+        },
+        {
+          "caller": "main",
+          "callee": "json.load",
+          "lineNumber": 47
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 48
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 50
+        },
+        {
+          "caller": "main",
+          "callee": "analyze_document",
+          "lineNumber": 51
+        },
+        {
+          "caller": "main",
+          "callee": "os.path.splitext",
+          "lineNumber": 52
+        },
+        {
+          "caller": "main",
+          "callee": "open",
+          "lineNumber": 53
+        },
+        {
+          "caller": "main",
+          "callee": "json.dump",
+          "lineNumber": 54
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 55
+        },
+        {
+          "caller": "main",
+          "callee": "result.get",
+          "lineNumber": 57
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 58
+        },
+        {
+          "caller": "main",
+          "callee": "load_config",
+          "lineNumber": 60
+        },
+        {
+          "caller": "main",
+          "callee": "compute_fraud_risk",
+          "lineNumber": 61
+        },
+        {
+          "caller": "main",
+          "callee": "annotate_document",
+          "lineNumber": 62
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 64
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 65
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 66
+        },
+        {
+          "caller": "main",
+          "callee": "result.get('summary', {}).get",
+          "lineNumber": 66
+        },
+        {
+          "caller": "main",
+          "callee": "result.get",
+          "lineNumber": 66
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 67
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/render/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 11,
+      "nonEmptyLines": 9,
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/render/loader.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 116,
+      "nonEmptyLines": 91,
+      "functions": [
+        {
+          "name": "detect_type",
+          "startLine": 50,
+          "endLine": 67,
+          "params": [
+            "path"
+          ]
+        },
+        {
+          "name": "load_document",
+          "startLine": 70,
+          "endLine": 116,
+          "params": [
+            "path",
+            "config"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "LoadedDocument",
+          "startLine": 31,
+          "endLine": 47,
+          "methods": [
+            "close"
+          ],
+          "properties": [
+            "path",
+            "doc_type",
+            "render_doc",
+            "pdf_doc",
+            "docx_obj",
+            "warnings"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "LoadedDocument",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "detect_type",
+          "line": 50,
+          "isDefault": false
+        },
+        {
+          "name": "load_document",
+          "line": 70,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "close",
+          "callee": "doc.close",
+          "lineNumber": 45
+        },
+        {
+          "caller": "detect_type",
+          "callee": "os.path.splitext(path)[1].lower",
+          "lineNumber": 51
+        },
+        {
+          "caller": "detect_type",
+          "callee": "os.path.splitext",
+          "lineNumber": 51
+        },
+        {
+          "caller": "detect_type",
+          "callee": "open",
+          "lineNumber": 58
+        },
+        {
+          "caller": "detect_type",
+          "callee": "fh.read",
+          "lineNumber": 59
+        },
+        {
+          "caller": "detect_type",
+          "callee": "head.startswith",
+          "lineNumber": 60
+        },
+        {
+          "caller": "detect_type",
+          "callee": "head.startswith",
+          "lineNumber": 62
+        },
+        {
+          "caller": "detect_type",
+          "callee": "ValueError",
+          "lineNumber": 67
+        },
+        {
+          "caller": "load_document",
+          "callee": "os.path.exists",
+          "lineNumber": 75
+        },
+        {
+          "caller": "load_document",
+          "callee": "FileNotFoundError",
+          "lineNumber": 76
+        },
+        {
+          "caller": "load_document",
+          "callee": "os.path.isfile",
+          "lineNumber": 77
+        },
+        {
+          "caller": "load_document",
+          "callee": "ValueError",
+          "lineNumber": 78
+        },
+        {
+          "caller": "load_document",
+          "callee": "detect_type",
+          "lineNumber": 80
+        },
+        {
+          "caller": "load_document",
+          "callee": "logger.info",
+          "lineNumber": 81
+        },
+        {
+          "caller": "load_document",
+          "callee": "fitz.open",
+          "lineNumber": 84
+        },
+        {
+          "caller": "load_document",
+          "callee": "LoadedDocument",
+          "lineNumber": 85
+        },
+        {
+          "caller": "load_document",
+          "callee": "fitz.open",
+          "lineNumber": 93
+        },
+        {
+          "caller": "load_document",
+          "callee": "LoadedDocument",
+          "lineNumber": 94
+        },
+        {
+          "caller": "load_document",
+          "callee": "config.get",
+          "lineNumber": 97
+        },
+        {
+          "caller": "load_document",
+          "callee": "render_doc.convert_to_pdf",
+          "lineNumber": 99
+        },
+        {
+          "caller": "load_document",
+          "callee": "fitz.open",
+          "lineNumber": 100
+        },
+        {
+          "caller": "load_document",
+          "callee": "loaded.warnings.append",
+          "lineNumber": 102
+        },
+        {
+          "caller": "load_document",
+          "callee": "logger.warning",
+          "lineNumber": 105
+        },
+        {
+          "caller": "load_document",
+          "callee": "docx.Document",
+          "lineNumber": 111
+        },
+        {
+          "caller": "load_document",
+          "callee": "loaded.warnings.append",
+          "lineNumber": 113
+        },
+        {
+          "caller": "load_document",
+          "callee": "logger.warning",
+          "lineNumber": 114
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 3,
+        "functionCount": 2,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "src/render/pdf_renderer.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 98,
+      "nonEmptyLines": 77,
+      "functions": [
+        {
+          "name": "_matrix_for_dpi",
+          "startLine": 37,
+          "endLine": 39,
+          "params": [
+            "dpi"
+          ]
+        },
+        {
+          "name": "render_document",
+          "startLine": 42,
+          "endLine": 98,
+          "params": [
+            "doc",
+            "config"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "RenderedPage",
+          "startLine": 24,
+          "endLine": 34,
+          "methods": [],
+          "properties": [
+            "page_number",
+            "image_gray",
+            "image_rgb",
+            "width",
+            "height",
+            "dpi",
+            "pdf_width",
+            "pdf_height"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "RenderedPage",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "_matrix_for_dpi",
+          "line": 37,
+          "isDefault": false
+        },
+        {
+          "name": "render_document",
+          "line": 42,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_matrix_for_dpi",
+          "callee": "fitz.Matrix",
+          "lineNumber": 39
+        },
+        {
+          "caller": "render_document",
+          "callee": "float",
+          "lineNumber": 44
+        },
+        {
+          "caller": "render_document",
+          "callee": "config.get",
+          "lineNumber": 44
+        },
+        {
+          "caller": "render_document",
+          "callee": "int",
+          "lineNumber": 45
+        },
+        {
+          "caller": "render_document",
+          "callee": "config.get",
+          "lineNumber": 45
+        },
+        {
+          "caller": "render_document",
+          "callee": "int",
+          "lineNumber": 46
+        },
+        {
+          "caller": "render_document",
+          "callee": "config.get",
+          "lineNumber": 46
+        },
+        {
+          "caller": "render_document",
+          "callee": "min",
+          "lineNumber": 50
+        },
+        {
+          "caller": "render_document",
+          "callee": "_matrix_for_dpi",
+          "lineNumber": 52
+        },
+        {
+          "caller": "render_document",
+          "callee": "range",
+          "lineNumber": 55
+        },
+        {
+          "caller": "render_document",
+          "callee": "max",
+          "lineNumber": 64
+        },
+        {
+          "caller": "render_document",
+          "callee": "_matrix_for_dpi",
+          "lineNumber": 65
+        },
+        {
+          "caller": "render_document",
+          "callee": "logger.warning",
+          "lineNumber": 66
+        },
+        {
+          "caller": "render_document",
+          "callee": "_matrix_for_dpi",
+          "lineNumber": 72
+        },
+        {
+          "caller": "render_document",
+          "callee": "page.get_pixmap",
+          "lineNumber": 75
+        },
+        {
+          "caller": "render_document",
+          "callee": "np.frombuffer(pix.samples, dtype=np.uint8).reshape",
+          "lineNumber": 76
+        },
+        {
+          "caller": "render_document",
+          "callee": "np.frombuffer",
+          "lineNumber": 76
+        },
+        {
+          "caller": "render_document",
+          "callee": "np.ascontiguousarray",
+          "lineNumber": 81
+        },
+        {
+          "caller": "render_document",
+          "callee": "ensure_gray",
+          "lineNumber": 82
+        },
+        {
+          "caller": "render_document",
+          "callee": "pages.append",
+          "lineNumber": 84
+        },
+        {
+          "caller": "render_document",
+          "callee": "RenderedPage",
+          "lineNumber": 85
+        },
+        {
+          "caller": "render_document",
+          "callee": "float",
+          "lineNumber": 91
+        },
+        {
+          "caller": "render_document",
+          "callee": "float",
+          "lineNumber": 92
+        },
+        {
+          "caller": "render_document",
+          "callee": "float",
+          "lineNumber": 93
+        },
+        {
+          "caller": "render_document",
+          "callee": "logger.info",
+          "lineNumber": 97
+        },
+        {
+          "caller": "render_document",
+          "callee": "len",
+          "lineNumber": 97
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 3,
+        "functionCount": 2,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "src/report/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 5,
+      "nonEmptyLines": 3,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/report/annotator.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 418,
+      "nonEmptyLines": 356,
+      "functions": [
+        {
+          "name": "_fmt_value",
+          "startLine": 86,
+          "endLine": 89,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "_metric_lines",
+          "startLine": 92,
+          "endLine": 101,
+          "params": [
+            "finding"
+          ]
+        },
+        {
+          "name": "_pretty_type",
+          "startLine": 104,
+          "endLine": 105,
+          "params": [
+            "t"
+          ]
+        },
+        {
+          "name": "compute_fraud_risk",
+          "startLine": 108,
+          "endLine": 154,
+          "params": [
+            "result",
+            "config"
+          ]
+        },
+        {
+          "name": "_page_scale",
+          "startLine": 157,
+          "endLine": 173,
+          "params": [
+            "page",
+            "page_result"
+          ]
+        },
+        {
+          "name": "_draw_label_block",
+          "startLine": 176,
+          "endLine": 220,
+          "params": [
+            "page",
+            "anchor",
+            "header",
+            "body",
+            "color",
+            "fontsize"
+          ]
+        },
+        {
+          "name": "_draw_risk_badge",
+          "startLine": 223,
+          "endLine": 252,
+          "params": [
+            "page",
+            "risk",
+            "fontsize"
+          ]
+        },
+        {
+          "name": "_group_findings",
+          "startLine": 255,
+          "endLine": 264,
+          "params": [
+            "findings"
+          ]
+        },
+        {
+          "name": "_add_cover_page",
+          "startLine": 267,
+          "endLine": 348,
+          "params": [
+            "doc",
+            "result",
+            "risk",
+            "badge_fontsize"
+          ]
+        },
+        {
+          "name": "annotate_document",
+          "startLine": 351,
+          "endLine": 418,
+          "params": [
+            "input_pdf_path",
+            "result",
+            "output_path",
+            "config"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "_fmt_value",
+          "line": 86,
+          "isDefault": false
+        },
+        {
+          "name": "_metric_lines",
+          "line": 92,
+          "isDefault": false
+        },
+        {
+          "name": "_pretty_type",
+          "line": 104,
+          "isDefault": false
+        },
+        {
+          "name": "compute_fraud_risk",
+          "line": 108,
+          "isDefault": false
+        },
+        {
+          "name": "_page_scale",
+          "line": 157,
+          "isDefault": false
+        },
+        {
+          "name": "_draw_label_block",
+          "line": 176,
+          "isDefault": false
+        },
+        {
+          "name": "_draw_risk_badge",
+          "line": 223,
+          "isDefault": false
+        },
+        {
+          "name": "_group_findings",
+          "line": 255,
+          "isDefault": false
+        },
+        {
+          "name": "_add_cover_page",
+          "line": 267,
+          "isDefault": false
+        },
+        {
+          "name": "annotate_document",
+          "line": 351,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_fmt_value",
+          "callee": "isinstance",
+          "lineNumber": 87
+        },
+        {
+          "caller": "_fmt_value",
+          "callee": "str",
+          "lineNumber": 89
+        },
+        {
+          "caller": "_metric_lines",
+          "callee": "finding.get",
+          "lineNumber": 94
+        },
+        {
+          "caller": "_metric_lines",
+          "callee": "_TYPE_METRICS.get",
+          "lineNumber": 95
+        },
+        {
+          "caller": "_metric_lines",
+          "callee": "list",
+          "lineNumber": 95
+        },
+        {
+          "caller": "_metric_lines",
+          "callee": "metrics.keys",
+          "lineNumber": 95
+        },
+        {
+          "caller": "_metric_lines",
+          "callee": "_METRIC_LABELS.get",
+          "lineNumber": 99
+        },
+        {
+          "caller": "_metric_lines",
+          "callee": "lines.append",
+          "lineNumber": 100
+        },
+        {
+          "caller": "_metric_lines",
+          "callee": "_fmt_value",
+          "lineNumber": 100
+        },
+        {
+          "caller": "_pretty_type",
+          "callee": "t.replace(\"_\", \" \").title",
+          "lineNumber": 105
+        },
+        {
+          "caller": "_pretty_type",
+          "callee": "t.replace",
+          "lineNumber": 105
+        },
+        {
+          "caller": "compute_fraud_risk",
+          "callee": "config.get",
+          "lineNumber": 115
+        },
+        {
+          "caller": "compute_fraud_risk",
+          "callee": "float",
+          "lineNumber": 116
+        },
+        {
+          "caller": "compute_fraud_risk",
+          "callee": "risk_cfg.get",
+          "lineNumber": 116
+        },
+        {
+          "caller": "compute_fraud_risk",
+          "callee": "float",
+          "lineNumber": 117
+        },
+        {
+          "caller": "compute_fraud_risk",
+          "callee": "risk_cfg.get",
+          "lineNumber": 117
+        },
+        {
+          "caller": "compute_fraud_risk",
+          "callee": "float",
+          "lineNumber": 118
+        },
+        {
+          "caller": "compute_fraud_risk",
+          "callee": "risk_cfg.get",
+          "lineNumber": 118
+        },
+        {
+          "caller": "compute_fraud_risk",
+          "callee": "float",
+          "lineNumber": 119
+        },
+        {
+          "caller": "compute_fraud_risk",
+          "callee": "risk_cfg.get",
+          "lineNumber": 119
+        },
+        {
+          "caller": "compute_fraud_risk",
+          "callee": "float",
+          "lineNumber": 120
+        },
+        {
+          "caller": "compute_fraud_risk",
+          "callee": "risk_cfg.get",
+          "lineNumber": 120
+        },
+        {
+          "caller": "compute_fraud_risk",
+          "callee": "result.get",
+          "lineNumber": 123
+        },
+        {
+          "caller": "compute_fraud_risk",
+          "callee": "findings.extend",
+          "lineNumber": 124
+        },
+        {
+          "caller": "compute_fraud_risk",
+          "callee": "page.get",
+          "lineNumber": 124
+        },
+        {
+          "caller": "compute_fraud_risk",
+          "callee": "findings.extend",
+          "lineNumber": 125
+        },
+        {
+          "caller": "compute_fraud_risk",
+          "callee": "result.get",
+          "lineNumber": 125
+        },
+        {
+          "caller": "compute_fraud_risk",
+          "callee": "max",
+          "lineNumber": 131
+        },
+        {
+          "caller": "compute_fraud_risk",
+          "callee": "float",
+          "lineNumber": 131
+        },
+        {
+          "caller": "compute_fraud_risk",
+          "callee": "f.get",
+          "lineNumber": 131
+        },
+        {
+          "caller": "compute_fraud_risk",
+          "callee": "len",
+          "lineNumber": 132
+        },
+        {
+          "caller": "compute_fraud_risk",
+          "callee": "f.get",
+          "lineNumber": 132
+        },
+        {
+          "caller": "compute_fraud_risk",
+          "callee": "len",
+          "lineNumber": 133
+        },
+        {
+          "caller": "compute_fraud_risk",
+          "callee": "max",
+          "lineNumber": 136
+        },
+        {
+          "caller": "compute_fraud_risk",
+          "callee": "min",
+          "lineNumber": 136
+        },
+        {
+          "caller": "compute_fraud_risk",
+          "callee": "round",
+          "lineNumber": 137
+        },
+        {
+          "caller": "compute_fraud_risk",
+          "callee": "round",
+          "lineNumber": 150
+        },
+        {
+          "caller": "_page_scale",
+          "callee": "float",
+          "lineNumber": 160
+        },
+        {
+          "caller": "_page_scale",
+          "callee": "page_result.get",
+          "lineNumber": 160
+        },
+        {
+          "caller": "_page_scale",
+          "callee": "float",
+          "lineNumber": 161
+        },
+        {
+          "caller": "_page_scale",
+          "callee": "page_result.get",
+          "lineNumber": 161
+        },
+        {
+          "caller": "_page_scale",
+          "callee": "float",
+          "lineNumber": 162
+        },
+        {
+          "caller": "_page_scale",
+          "callee": "page_result.get",
+          "lineNumber": 162
+        },
+        {
+          "caller": "_page_scale",
+          "callee": "abs",
+          "lineNumber": 168
+        },
+        {
+          "caller": "_page_scale",
+          "callee": "max",
+          "lineNumber": 168
+        },
+        {
+          "caller": "_page_scale",
+          "callee": "abs",
+          "lineNumber": 170
+        },
+        {
+          "caller": "_page_scale",
+          "callee": "max",
+          "lineNumber": 170
+        },
+        {
+          "caller": "_draw_label_block",
+          "callee": "max",
+          "lineNumber": 188
+        },
+        {
+          "caller": "_draw_label_block",
+          "callee": "fitz.get_text_length",
+          "lineNumber": 189
+        },
+        {
+          "caller": "_draw_label_block",
+          "callee": "len",
+          "lineNumber": 193
+        },
+        {
+          "caller": "_draw_label_block",
+          "callee": "max",
+          "lineNumber": 196
+        },
+        {
+          "caller": "_draw_label_block",
+          "callee": "min",
+          "lineNumber": 196
+        },
+        {
+          "caller": "_draw_label_block",
+          "callee": "max",
+          "lineNumber": 197
+        },
+        {
+          "caller": "_draw_label_block",
+          "callee": "min",
+          "lineNumber": 197
+        },
+        {
+          "caller": "_draw_label_block",
+          "callee": "fitz.Rect",
+          "lineNumber": 200
+        },
+        {
+          "caller": "_draw_label_block",
+          "callee": "page.draw_rect",
+          "lineNumber": 201
+        },
+        {
+          "caller": "_draw_label_block",
+          "callee": "fitz.Rect",
+          "lineNumber": 203
+        },
+        {
+          "caller": "_draw_label_block",
+          "callee": "page.draw_rect",
+          "lineNumber": 204
+        },
+        {
+          "caller": "_draw_label_block",
+          "callee": "page.insert_text",
+          "lineNumber": 206
+        },
+        {
+          "caller": "_draw_label_block",
+          "callee": "enumerate",
+          "lineNumber": 213
+        },
+        {
+          "caller": "_draw_label_block",
+          "callee": "page.insert_text",
+          "lineNumber": 214
+        },
+        {
+          "caller": "_draw_risk_badge",
+          "callee": "RISK_COLORS.get",
+          "lineNumber": 226
+        },
+        {
+          "caller": "_draw_risk_badge",
+          "callee": "max",
+          "lineNumber": 230
+        },
+        {
+          "caller": "_draw_risk_badge",
+          "callee": "fitz.get_text_length",
+          "lineNumber": 231
+        },
+        {
+          "caller": "_draw_risk_badge",
+          "callee": "fitz.get_text_length",
+          "lineNumber": 232
+        },
+        {
+          "caller": "_draw_risk_badge",
+          "callee": "fitz.Rect",
+          "lineNumber": 237
+        },
+        {
+          "caller": "_draw_risk_badge",
+          "callee": "page.draw_rect",
+          "lineNumber": 238
+        },
+        {
+          "caller": "_draw_risk_badge",
+          "callee": "page.insert_text",
+          "lineNumber": 239
+        },
+        {
+          "caller": "_draw_risk_badge",
+          "callee": "page.insert_text",
+          "lineNumber": 246
+        },
+        {
+          "caller": "_group_findings",
+          "callee": "f.get",
+          "lineNumber": 259
+        },
+        {
+          "caller": "_group_findings",
+          "callee": "len",
+          "lineNumber": 260
+        },
+        {
+          "caller": "_group_findings",
+          "callee": "tuple",
+          "lineNumber": 262
+        },
+        {
+          "caller": "_group_findings",
+          "callee": "round",
+          "lineNumber": 262
+        },
+        {
+          "caller": "_group_findings",
+          "callee": "groups.setdefault(key, []).append",
+          "lineNumber": 263
+        },
+        {
+          "caller": "_group_findings",
+          "callee": "groups.setdefault",
+          "lineNumber": 263
+        },
+        {
+          "caller": "_add_cover_page",
+          "callee": "doc.new_page",
+          "lineNumber": 275
+        },
+        {
+          "caller": "_add_cover_page",
+          "callee": "page.insert_text",
+          "lineNumber": 279
+        },
+        {
+          "caller": "_add_cover_page",
+          "callee": "_draw_risk_badge",
+          "lineNumber": 282
+        },
+        {
+          "caller": "_add_cover_page",
+          "callee": "page.insert_text",
+          "lineNumber": 285
+        },
+        {
+          "caller": "_add_cover_page",
+          "callee": "result.get",
+          "lineNumber": 285
+        },
+        {
+          "caller": "_add_cover_page",
+          "callee": "page.insert_text",
+          "lineNumber": 288
+        },
+        {
+          "caller": "_add_cover_page",
+          "callee": "result.get",
+          "lineNumber": 288
+        },
+        {
+          "caller": "_add_cover_page",
+          "callee": "result.get('summary', {}).get",
+          "lineNumber": 289
+        },
+        {
+          "caller": "_add_cover_page",
+          "callee": "result.get",
+          "lineNumber": 289
+        },
+        {
+          "caller": "_add_cover_page",
+          "callee": "result.get('summary', {}).get",
+          "lineNumber": 290
+        },
+        {
+          "caller": "_add_cover_page",
+          "callee": "result.get",
+          "lineNumber": 290
+        },
+        {
+          "caller": "_add_cover_page",
+          "callee": "risk.get",
+          "lineNumber": 293
+        },
+        {
+          "caller": "_add_cover_page",
+          "callee": "page.insert_text",
+          "lineNumber": 294
+        },
+        {
+          "caller": "_add_cover_page",
+          "callee": "factors.get",
+          "lineNumber": 296
+        },
+        {
+          "caller": "_add_cover_page",
+          "callee": "factors.get",
+          "lineNumber": 297
+        },
+        {
+          "caller": "_add_cover_page",
+          "callee": "factors.get",
+          "lineNumber": 298
+        },
+        {
+          "caller": "_add_cover_page",
+          "callee": "page.insert_text",
+          "lineNumber": 304
+        },
+        {
+          "caller": "_add_cover_page",
+          "callee": "result.get(\"summary\", {}).get",
+          "lineNumber": 307
+        },
+        {
+          "caller": "_add_cover_page",
+          "callee": "result.get",
+          "lineNumber": 307
+        },
+        {
+          "caller": "_add_cover_page",
+          "callee": "by_type.items",
+          "lineNumber": 308
+        },
+        {
+          "caller": "_add_cover_page",
+          "callee": "TYPE_COLORS.get",
+          "lineNumber": 309
+        },
+        {
+          "caller": "_add_cover_page",
+          "callee": "fitz.Rect",
+          "lineNumber": 310
+        },
+        {
+          "caller": "_add_cover_page",
+          "callee": "page.draw_rect",
+          "lineNumber": 311
+        },
+        {
+          "caller": "_add_cover_page",
+          "callee": "page.insert_text",
+          "lineNumber": 312
+        },
+        {
+          "caller": "_add_cover_page",
+          "callee": "_pretty_type",
+          "lineNumber": 312
+        },
+        {
+          "caller": "_add_cover_page",
+          "callee": "result.get",
+          "lineNumber": 317
+        },
+        {
+          "caller": "_add_cover_page",
+          "callee": "page.insert_text",
+          "lineNumber": 320
+        },
+        {
+          "caller": "_add_cover_page",
+          "callee": "_pretty_type",
+          "lineNumber": 324
+        },
+        {
+          "caller": "_add_cover_page",
+          "callee": "f.get",
+          "lineNumber": 324
+        },
+        {
+          "caller": "_add_cover_page",
+          "callee": "page.insert_text",
+          "lineNumber": 325
+        },
+        {
+          "caller": "_add_cover_page",
+          "callee": "_metric_lines",
+          "lineNumber": 328
+        },
+        {
+          "caller": "_add_cover_page",
+          "callee": "page.insert_text",
+          "lineNumber": 329
+        },
+        {
+          "caller": "_add_cover_page",
+          "callee": "f.get",
+          "lineNumber": 332
+        },
+        {
+          "caller": "_add_cover_page",
+          "callee": "page.insert_textbox",
+          "lineNumber": 334
+        },
+        {
+          "caller": "_add_cover_page",
+          "callee": "fitz.Rect",
+          "lineNumber": 335
+        },
+        {
+          "caller": "_add_cover_page",
+          "callee": "page.insert_text",
+          "lineNumber": 343
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "load_config",
+          "lineNumber": 359
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "config.get",
+          "lineNumber": 361
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "float",
+          "lineNumber": 362
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "draw_cfg.get",
+          "lineNumber": 362
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "float",
+          "lineNumber": 363
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "draw_cfg.get",
+          "lineNumber": 363
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "float",
+          "lineNumber": 364
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "draw_cfg.get",
+          "lineNumber": 364
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "float",
+          "lineNumber": 365
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "draw_cfg.get",
+          "lineNumber": 365
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "bool",
+          "lineNumber": 366
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "draw_cfg.get",
+          "lineNumber": 366
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "os.path.splitext",
+          "lineNumber": 369
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "fitz.open",
+          "lineNumber": 372
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "compute_fraud_risk",
+          "lineNumber": 373
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "result.get",
+          "lineNumber": 375
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "page_results.items",
+          "lineNumber": 378
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "_page_scale",
+          "lineNumber": 383
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "page_result.get",
+          "lineNumber": 386
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "float",
+          "lineNumber": 387
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "f.get",
+          "lineNumber": 387
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "_group_findings",
+          "lineNumber": 389
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "groups.items",
+          "lineNumber": 391
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "fitz.Rect",
+          "lineNumber": 393
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "max",
+          "lineNumber": 395
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "float",
+          "lineNumber": 395
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "f.get",
+          "lineNumber": 395
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "TYPE_COLORS.get",
+          "lineNumber": 396
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "page.draw_rect",
+          "lineNumber": 397
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "_pretty_type",
+          "lineNumber": 399
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "top.get",
+          "lineNumber": 399
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "body.append",
+          "lineNumber": 403
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "_pretty_type",
+          "lineNumber": 403
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "f.get",
+          "lineNumber": 403
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "_metric_lines",
+          "lineNumber": 404
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "body.append",
+          "lineNumber": 405
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "max",
+          "lineNumber": 407
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "len",
+          "lineNumber": 407
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "_draw_label_block",
+          "lineNumber": 408
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "_draw_risk_badge",
+          "lineNumber": 410
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "_add_cover_page",
+          "lineNumber": 413
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "doc.save",
+          "lineNumber": 415
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "doc.close",
+          "lineNumber": 416
+        },
+        {
+          "caller": "annotate_document",
+          "callee": "logger.info",
+          "lineNumber": 417
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 10,
+        "functionCount": 10,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/tiling/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 5,
+      "nonEmptyLines": 3,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/tiling/tiler.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 97,
+      "nonEmptyLines": 81,
+      "functions": [
+        {
+          "name": "_axis_starts",
+          "startLine": 29,
+          "endLine": 51,
+          "params": [
+            "length",
+            "tile",
+            "step",
+            "min_keep"
+          ]
+        },
+        {
+          "name": "generate_tiles",
+          "startLine": 54,
+          "endLine": 97,
+          "params": [
+            "page",
+            "image_gray",
+            "image_rgb",
+            "config"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "Tile",
+          "startLine": 18,
+          "endLine": 26,
+          "methods": [],
+          "properties": [
+            "page",
+            "tile_id",
+            "bbox",
+            "image",
+            "image_rgb",
+            "blank"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Tile",
+          "line": 17,
+          "isDefault": false
+        },
+        {
+          "name": "_axis_starts",
+          "line": 29,
+          "isDefault": false
+        },
+        {
+          "name": "generate_tiles",
+          "line": 54,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_axis_starts",
+          "callee": "starts.append",
+          "lineNumber": 39
+        },
+        {
+          "caller": "_axis_starts",
+          "callee": "starts.append",
+          "lineNumber": 41
+        },
+        {
+          "caller": "_axis_starts",
+          "callee": "set",
+          "lineNumber": 44
+        },
+        {
+          "caller": "_axis_starts",
+          "callee": "max",
+          "lineNumber": 47
+        },
+        {
+          "caller": "_axis_starts",
+          "callee": "seen.add",
+          "lineNumber": 49
+        },
+        {
+          "caller": "_axis_starts",
+          "callee": "unique.append",
+          "lineNumber": 50
+        },
+        {
+          "caller": "generate_tiles",
+          "callee": "int",
+          "lineNumber": 61
+        },
+        {
+          "caller": "generate_tiles",
+          "callee": "config.get",
+          "lineNumber": 61
+        },
+        {
+          "caller": "generate_tiles",
+          "callee": "float",
+          "lineNumber": 62
+        },
+        {
+          "caller": "generate_tiles",
+          "callee": "config.get",
+          "lineNumber": 62
+        },
+        {
+          "caller": "generate_tiles",
+          "callee": "float",
+          "lineNumber": 63
+        },
+        {
+          "caller": "generate_tiles",
+          "callee": "config.get",
+          "lineNumber": 63
+        },
+        {
+          "caller": "generate_tiles",
+          "callee": "float",
+          "lineNumber": 64
+        },
+        {
+          "caller": "generate_tiles",
+          "callee": "config.get",
+          "lineNumber": 64
+        },
+        {
+          "caller": "generate_tiles",
+          "callee": "min",
+          "lineNumber": 66
+        },
+        {
+          "caller": "generate_tiles",
+          "callee": "max",
+          "lineNumber": 66
+        },
+        {
+          "caller": "generate_tiles",
+          "callee": "max",
+          "lineNumber": 67
+        },
+        {
+          "caller": "generate_tiles",
+          "callee": "int",
+          "lineNumber": 67
+        },
+        {
+          "caller": "generate_tiles",
+          "callee": "round",
+          "lineNumber": 67
+        },
+        {
+          "caller": "generate_tiles",
+          "callee": "max",
+          "lineNumber": 68
+        },
+        {
+          "caller": "generate_tiles",
+          "callee": "int",
+          "lineNumber": 68
+        },
+        {
+          "caller": "generate_tiles",
+          "callee": "round",
+          "lineNumber": 68
+        },
+        {
+          "caller": "generate_tiles",
+          "callee": "_axis_starts",
+          "lineNumber": 71
+        },
+        {
+          "caller": "generate_tiles",
+          "callee": "_axis_starts",
+          "lineNumber": 72
+        },
+        {
+          "caller": "generate_tiles",
+          "callee": "min",
+          "lineNumber": 77
+        },
+        {
+          "caller": "generate_tiles",
+          "callee": "min",
+          "lineNumber": 79
+        },
+        {
+          "caller": "generate_tiles",
+          "callee": "float",
+          "lineNumber": 84
+        },
+        {
+          "caller": "generate_tiles",
+          "callee": "np.std",
+          "lineNumber": 84
+        },
+        {
+          "caller": "generate_tiles",
+          "callee": "tiles.append",
+          "lineNumber": 85
+        },
+        {
+          "caller": "generate_tiles",
+          "callee": "Tile",
+          "lineNumber": 86
+        },
+        {
+          "caller": "generate_tiles",
+          "callee": "float",
+          "lineNumber": 89
+        },
+        {
+          "caller": "generate_tiles",
+          "callee": "float",
+          "lineNumber": 89
+        },
+        {
+          "caller": "generate_tiles",
+          "callee": "float",
+          "lineNumber": 89
+        },
+        {
+          "caller": "generate_tiles",
+          "callee": "float",
+          "lineNumber": 89
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 3,
+        "functionCount": 2,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "src/utils/config.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 105,
+      "nonEmptyLines": 82,
+      "functions": [
+        {
+          "name": "deep_merge",
+          "startLine": 23,
+          "endLine": 39,
+          "params": [
+            "base",
+            "override"
+          ]
+        },
+        {
+          "name": "load_config",
+          "startLine": 82,
+          "endLine": 105,
+          "params": [
+            "path",
+            "overrides"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "Config",
+          "startLine": 42,
+          "endLine": 79,
+          "methods": [
+            "__init__",
+            "data",
+            "get",
+            "section",
+            "with_overrides",
+            "digest"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "deep_merge",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "Config",
+          "line": 42,
+          "isDefault": false
+        },
+        {
+          "name": "load_config",
+          "line": 82,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "deep_merge",
+          "callee": "copy.deepcopy",
+          "lineNumber": 29
+        },
+        {
+          "caller": "deep_merge",
+          "callee": "(override or {}).items",
+          "lineNumber": 30
+        },
+        {
+          "caller": "deep_merge",
+          "callee": "isinstance",
+          "lineNumber": 33
+        },
+        {
+          "caller": "deep_merge",
+          "callee": "isinstance",
+          "lineNumber": 34
+        },
+        {
+          "caller": "deep_merge",
+          "callee": "deep_merge",
+          "lineNumber": 36
+        },
+        {
+          "caller": "deep_merge",
+          "callee": "copy.deepcopy",
+          "lineNumber": 38
+        },
+        {
+          "caller": "get",
+          "callee": "dotted_key.split",
+          "lineNumber": 55
+        },
+        {
+          "caller": "get",
+          "callee": "isinstance",
+          "lineNumber": 56
+        },
+        {
+          "caller": "section",
+          "callee": "self._data.get",
+          "lineNumber": 63
+        },
+        {
+          "caller": "section",
+          "callee": "isinstance",
+          "lineNumber": 64
+        },
+        {
+          "caller": "with_overrides",
+          "callee": "Config",
+          "lineNumber": 68
+        },
+        {
+          "caller": "with_overrides",
+          "callee": "copy.deepcopy",
+          "lineNumber": 68
+        },
+        {
+          "caller": "with_overrides",
+          "callee": "Config",
+          "lineNumber": 69
+        },
+        {
+          "caller": "with_overrides",
+          "callee": "deep_merge",
+          "lineNumber": 69
+        },
+        {
+          "caller": "digest",
+          "callee": "self.get",
+          "lineNumber": 74
+        },
+        {
+          "caller": "digest",
+          "callee": "self.get",
+          "lineNumber": 75
+        },
+        {
+          "caller": "digest",
+          "callee": "self.get",
+          "lineNumber": 76
+        },
+        {
+          "caller": "digest",
+          "callee": "self.get",
+          "lineNumber": 77
+        },
+        {
+          "caller": "digest",
+          "callee": "self.get",
+          "lineNumber": 78
+        },
+        {
+          "caller": "load_config",
+          "callee": "os.environ.get",
+          "lineNumber": 95
+        },
+        {
+          "caller": "load_config",
+          "callee": "open",
+          "lineNumber": 98
+        },
+        {
+          "caller": "load_config",
+          "callee": "yaml.safe_load",
+          "lineNumber": 99
+        },
+        {
+          "caller": "load_config",
+          "callee": "isinstance",
+          "lineNumber": 101
+        },
+        {
+          "caller": "load_config",
+          "callee": "ValueError",
+          "lineNumber": 102
+        },
+        {
+          "caller": "load_config",
+          "callee": "type",
+          "lineNumber": 102
+        },
+        {
+          "caller": "load_config",
+          "callee": "deep_merge",
+          "lineNumber": 104
+        },
+        {
+          "caller": "load_config",
+          "callee": "Config",
+          "lineNumber": 105
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 2,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "tests/test_docx.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 45,
+      "nonEmptyLines": 37,
+      "functions": [
+        {
+          "name": "test_docx_loads_and_renders",
+          "startLine": 10,
+          "endLine": 20,
+          "params": [
+            "sample_docx"
+          ]
+        },
+        {
+          "name": "test_docx_font_extraction",
+          "startLine": 23,
+          "endLine": 34,
+          "params": [
+            "sample_docx"
+          ]
+        },
+        {
+          "name": "test_docx_converts_to_pdf_for_structure",
+          "startLine": 37,
+          "endLine": 45,
+          "params": [
+            "sample_docx"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "test_docx_loads_and_renders",
+          "line": 10,
+          "isDefault": false
+        },
+        {
+          "name": "test_docx_font_extraction",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "test_docx_converts_to_pdf_for_structure",
+          "line": 37,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "test_docx_loads_and_renders",
+          "callee": "load_config",
+          "lineNumber": 11
+        },
+        {
+          "caller": "test_docx_loads_and_renders",
+          "callee": "load_document",
+          "lineNumber": 12
+        },
+        {
+          "caller": "test_docx_loads_and_renders",
+          "callee": "render_document",
+          "lineNumber": 16
+        },
+        {
+          "caller": "test_docx_loads_and_renders",
+          "callee": "len",
+          "lineNumber": 17
+        },
+        {
+          "caller": "test_docx_loads_and_renders",
+          "callee": "loaded.close",
+          "lineNumber": 20
+        },
+        {
+          "caller": "test_docx_font_extraction",
+          "callee": "load_config",
+          "lineNumber": 24
+        },
+        {
+          "caller": "test_docx_font_extraction",
+          "callee": "load_document",
+          "lineNumber": 25
+        },
+        {
+          "caller": "test_docx_font_extraction",
+          "callee": "extract_docx_formatting",
+          "lineNumber": 27
+        },
+        {
+          "caller": "test_docx_font_extraction",
+          "callee": "loaded.close",
+          "lineNumber": 29
+        },
+        {
+          "caller": "test_docx_converts_to_pdf_for_structure",
+          "callee": "load_config",
+          "lineNumber": 38
+        },
+        {
+          "caller": "test_docx_converts_to_pdf_for_structure",
+          "callee": "load_document",
+          "lineNumber": 39
+        },
+        {
+          "caller": "test_docx_converts_to_pdf_for_structure",
+          "callee": "loaded.close",
+          "lineNumber": 45
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tests/test_rendering.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 44,
+      "nonEmptyLines": 36,
+      "functions": [
+        {
+          "name": "test_pdf_renders_pages",
+          "startLine": 11,
+          "endLine": 29,
+          "params": [
+            "sample_pdf"
+          ]
+        },
+        {
+          "name": "test_dpi_scales_resolution",
+          "startLine": 32,
+          "endLine": 44,
+          "params": [
+            "sample_pdf"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "test_pdf_renders_pages",
+          "line": 11,
+          "isDefault": false
+        },
+        {
+          "name": "test_dpi_scales_resolution",
+          "line": 32,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "test_pdf_renders_pages",
+          "callee": "load_config",
+          "lineNumber": 12
+        },
+        {
+          "caller": "test_pdf_renders_pages",
+          "callee": "load_document",
+          "lineNumber": 13
+        },
+        {
+          "caller": "test_pdf_renders_pages",
+          "callee": "render_document",
+          "lineNumber": 15
+        },
+        {
+          "caller": "test_pdf_renders_pages",
+          "callee": "loaded.close",
+          "lineNumber": 17
+        },
+        {
+          "caller": "test_pdf_renders_pages",
+          "callee": "len",
+          "lineNumber": 19
+        },
+        {
+          "caller": "test_dpi_scales_resolution",
+          "callee": "load_config",
+          "lineNumber": 33
+        },
+        {
+          "caller": "test_dpi_scales_resolution",
+          "callee": "load_config",
+          "lineNumber": 34
+        },
+        {
+          "caller": "test_dpi_scales_resolution",
+          "callee": "load_document",
+          "lineNumber": 35
+        },
+        {
+          "caller": "test_dpi_scales_resolution",
+          "callee": "load_document",
+          "lineNumber": 36
+        },
+        {
+          "caller": "test_dpi_scales_resolution",
+          "callee": "render_document",
+          "lineNumber": 38
+        },
+        {
+          "caller": "test_dpi_scales_resolution",
+          "callee": "render_document",
+          "lineNumber": 39
+        },
+        {
+          "caller": "test_dpi_scales_resolution",
+          "callee": "low.close",
+          "lineNumber": 41
+        },
+        {
+          "caller": "test_dpi_scales_resolution",
+          "callee": "high.close",
+          "lineNumber": 42
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tests/test_tiling.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 50,
+      "nonEmptyLines": 38,
+      "functions": [
+        {
+          "name": "_gradient_image",
+          "startLine": 11,
+          "endLine": 13,
+          "params": [
+            "h",
+            "w"
+          ]
+        },
+        {
+          "name": "test_tiles_cover_page_with_overlap",
+          "startLine": 16,
+          "endLine": 41,
+          "params": []
+        },
+        {
+          "name": "test_blank_tile_flagged",
+          "startLine": 44,
+          "endLine": 50,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "_gradient_image",
+          "line": 11,
+          "isDefault": false
+        },
+        {
+          "name": "test_tiles_cover_page_with_overlap",
+          "line": 16,
+          "isDefault": false
+        },
+        {
+          "name": "test_blank_tile_flagged",
+          "line": 44,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_gradient_image",
+          "callee": "np.linspace",
+          "lineNumber": 12
+        },
+        {
+          "caller": "_gradient_image",
+          "callee": "np.tile",
+          "lineNumber": 13
+        },
+        {
+          "caller": "test_tiles_cover_page_with_overlap",
+          "callee": "load_config",
+          "lineNumber": 17
+        },
+        {
+          "caller": "test_tiles_cover_page_with_overlap",
+          "callee": "_gradient_image",
+          "lineNumber": 20
+        },
+        {
+          "caller": "test_tiles_cover_page_with_overlap",
+          "callee": "np.stack",
+          "lineNumber": 21
+        },
+        {
+          "caller": "test_tiles_cover_page_with_overlap",
+          "callee": "generate_tiles",
+          "lineNumber": 22
+        },
+        {
+          "caller": "test_tiles_cover_page_with_overlap",
+          "callee": "len",
+          "lineNumber": 24
+        },
+        {
+          "caller": "test_tiles_cover_page_with_overlap",
+          "callee": "list",
+          "lineNumber": 27
+        },
+        {
+          "caller": "test_tiles_cover_page_with_overlap",
+          "callee": "range",
+          "lineNumber": 27
+        },
+        {
+          "caller": "test_tiles_cover_page_with_overlap",
+          "callee": "len",
+          "lineNumber": 27
+        },
+        {
+          "caller": "test_tiles_cover_page_with_overlap",
+          "callee": "int",
+          "lineNumber": 34
+        },
+        {
+          "caller": "test_tiles_cover_page_with_overlap",
+          "callee": "int",
+          "lineNumber": 35
+        },
+        {
+          "caller": "test_tiles_cover_page_with_overlap",
+          "callee": "sorted",
+          "lineNumber": 38
+        },
+        {
+          "caller": "test_tiles_cover_page_with_overlap",
+          "callee": "len",
+          "lineNumber": 39
+        },
+        {
+          "caller": "test_blank_tile_flagged",
+          "callee": "load_config",
+          "lineNumber": 45
+        },
+        {
+          "caller": "test_blank_tile_flagged",
+          "callee": "np.full",
+          "lineNumber": 46
+        },
+        {
+          "caller": "test_blank_tile_flagged",
+          "callee": "np.stack",
+          "lineNumber": 47
+        },
+        {
+          "caller": "test_blank_tile_flagged",
+          "callee": "generate_tiles",
+          "lineNumber": 48
+        },
+        {
+          "caller": "test_blank_tile_flagged",
+          "callee": "all",
+          "lineNumber": 50
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    }
+  ]
+}

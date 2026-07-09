@@ -1,0 +1,174 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 6,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": ".understand-anything/.understandignore",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 44,
+      "nonEmptyLines": 38,
+      "metrics": {}
+    },
+    {
+      "path": "configs/default.yaml",
+      "language": "yaml",
+      "fileCategory": "config",
+      "totalLines": 141,
+      "nonEmptyLines": 127,
+      "sections": [
+        {
+          "heading": "render",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "tiling",
+          "level": 1,
+          "line": 21
+        },
+        {
+          "heading": "features",
+          "level": 1,
+          "line": 30
+        },
+        {
+          "heading": "ocr",
+          "level": 1,
+          "line": 39
+        },
+        {
+          "heading": "analyzers",
+          "level": 1,
+          "line": 50
+        },
+        {
+          "heading": "detectors",
+          "level": 1,
+          "line": 65
+        },
+        {
+          "heading": "output",
+          "level": 1,
+          "line": 118
+        },
+        {
+          "heading": "report",
+          "level": 1,
+          "line": 126
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    },
+    {
+      "path": "examples/example_request.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 14,
+      "nonEmptyLines": 14,
+      "sections": [
+        {
+          "heading": "tool",
+          "level": 1,
+          "line": 2
+        },
+        {
+          "heading": "arguments",
+          "level": 1,
+          "line": 3
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 2
+      }
+    },
+    {
+      "path": "examples/sample_response.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 612,
+      "nonEmptyLines": 612,
+      "sections": [
+        {
+          "heading": "document_id",
+          "level": 1,
+          "line": 2
+        },
+        {
+          "heading": "document_type",
+          "level": 1,
+          "line": 3
+        },
+        {
+          "heading": "summary",
+          "level": 1,
+          "line": 4
+        },
+        {
+          "heading": "page_results",
+          "level": 1,
+          "line": 24
+        },
+        {
+          "heading": "document_findings",
+          "level": 1,
+          "line": 586
+        },
+        {
+          "heading": "warnings",
+          "level": 1,
+          "line": 608
+        },
+        {
+          "heading": "errors",
+          "level": 1,
+          "line": 611
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 7
+      }
+    },
+    {
+      "path": "src/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 8,
+      "nonEmptyLines": 6,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/server/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

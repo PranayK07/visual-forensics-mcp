@@ -1,0 +1,1640 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 12,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "src/analyzers/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 35,
+      "nonEmptyLines": 32,
+      "metrics": {
+        "importCount": 11,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/analyzers/blur.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 26,
+      "nonEmptyLines": 18,
+      "functions": [
+        {
+          "name": "laplacian_variance",
+          "startLine": 15,
+          "endLine": 21,
+          "params": [
+            "image"
+          ]
+        },
+        {
+          "name": "analyze",
+          "startLine": 24,
+          "endLine": 26,
+          "params": [
+            "image"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "laplacian_variance",
+          "line": 15,
+          "isDefault": false
+        },
+        {
+          "name": "analyze",
+          "line": 24,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "laplacian_variance",
+          "callee": "ensure_gray",
+          "lineNumber": 17
+        },
+        {
+          "caller": "laplacian_variance",
+          "callee": "cv2.Laplacian",
+          "lineNumber": 20
+        },
+        {
+          "caller": "laplacian_variance",
+          "callee": "float",
+          "lineNumber": 21
+        },
+        {
+          "caller": "laplacian_variance",
+          "callee": "lap.var",
+          "lineNumber": 21
+        },
+        {
+          "caller": "analyze",
+          "callee": "laplacian_variance",
+          "lineNumber": 26
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/analyzers/contrast.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 37,
+      "nonEmptyLines": 27,
+      "functions": [
+        {
+          "name": "rms_contrast",
+          "startLine": 14,
+          "endLine": 18,
+          "params": [
+            "image"
+          ]
+        },
+        {
+          "name": "michelson_contrast",
+          "startLine": 21,
+          "endLine": 30,
+          "params": [
+            "image"
+          ]
+        },
+        {
+          "name": "analyze",
+          "startLine": 33,
+          "endLine": 37,
+          "params": [
+            "image"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "rms_contrast",
+          "line": 14,
+          "isDefault": false
+        },
+        {
+          "name": "michelson_contrast",
+          "line": 21,
+          "isDefault": false
+        },
+        {
+          "name": "analyze",
+          "line": 33,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "rms_contrast",
+          "callee": "ensure_gray(image).astype",
+          "lineNumber": 15
+        },
+        {
+          "caller": "rms_contrast",
+          "callee": "ensure_gray",
+          "lineNumber": 15
+        },
+        {
+          "caller": "rms_contrast",
+          "callee": "float",
+          "lineNumber": 18
+        },
+        {
+          "caller": "rms_contrast",
+          "callee": "gray.std",
+          "lineNumber": 18
+        },
+        {
+          "caller": "michelson_contrast",
+          "callee": "ensure_gray(image).astype",
+          "lineNumber": 22
+        },
+        {
+          "caller": "michelson_contrast",
+          "callee": "ensure_gray",
+          "lineNumber": 22
+        },
+        {
+          "caller": "michelson_contrast",
+          "callee": "float",
+          "lineNumber": 25
+        },
+        {
+          "caller": "michelson_contrast",
+          "callee": "gray.max",
+          "lineNumber": 25
+        },
+        {
+          "caller": "michelson_contrast",
+          "callee": "float",
+          "lineNumber": 26
+        },
+        {
+          "caller": "michelson_contrast",
+          "callee": "gray.min",
+          "lineNumber": 26
+        },
+        {
+          "caller": "analyze",
+          "callee": "rms_contrast",
+          "lineNumber": 35
+        },
+        {
+          "caller": "analyze",
+          "callee": "michelson_contrast",
+          "lineNumber": 36
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/analyzers/edge_density.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 25,
+      "nonEmptyLines": 18,
+      "functions": [
+        {
+          "name": "edge_density",
+          "startLine": 12,
+          "endLine": 17,
+          "params": [
+            "image",
+            "low",
+            "high"
+          ]
+        },
+        {
+          "name": "analyze",
+          "startLine": 20,
+          "endLine": 25,
+          "params": [
+            "image",
+            "config"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "edge_density",
+          "line": 12,
+          "isDefault": false
+        },
+        {
+          "name": "analyze",
+          "line": 20,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "edge_density",
+          "callee": "ensure_gray",
+          "lineNumber": 13
+        },
+        {
+          "caller": "edge_density",
+          "callee": "cv2.Canny",
+          "lineNumber": 16
+        },
+        {
+          "caller": "edge_density",
+          "callee": "float",
+          "lineNumber": 17
+        },
+        {
+          "caller": "edge_density",
+          "callee": "np.count_nonzero",
+          "lineNumber": 17
+        },
+        {
+          "caller": "edge_density",
+          "callee": "float",
+          "lineNumber": 17
+        },
+        {
+          "caller": "analyze",
+          "callee": "int",
+          "lineNumber": 23
+        },
+        {
+          "caller": "analyze",
+          "callee": "config.get",
+          "lineNumber": 23
+        },
+        {
+          "caller": "analyze",
+          "callee": "int",
+          "lineNumber": 24
+        },
+        {
+          "caller": "analyze",
+          "callee": "config.get",
+          "lineNumber": 24
+        },
+        {
+          "caller": "analyze",
+          "callee": "edge_density",
+          "lineNumber": 25
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/analyzers/entropy.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 28,
+      "nonEmptyLines": 21,
+      "functions": [
+        {
+          "name": "shannon_entropy",
+          "startLine": 11,
+          "endLine": 21,
+          "params": [
+            "image",
+            "bins"
+          ]
+        },
+        {
+          "name": "analyze",
+          "startLine": 24,
+          "endLine": 28,
+          "params": [
+            "image",
+            "config"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "shannon_entropy",
+          "line": 11,
+          "isDefault": false
+        },
+        {
+          "name": "analyze",
+          "line": 24,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "shannon_entropy",
+          "callee": "ensure_gray",
+          "lineNumber": 12
+        },
+        {
+          "caller": "shannon_entropy",
+          "callee": "np.histogram",
+          "lineNumber": 15
+        },
+        {
+          "caller": "shannon_entropy",
+          "callee": "hist.sum",
+          "lineNumber": 16
+        },
+        {
+          "caller": "shannon_entropy",
+          "callee": "hist.astype",
+          "lineNumber": 19
+        },
+        {
+          "caller": "shannon_entropy",
+          "callee": "float",
+          "lineNumber": 21
+        },
+        {
+          "caller": "shannon_entropy",
+          "callee": "np.sum",
+          "lineNumber": 21
+        },
+        {
+          "caller": "shannon_entropy",
+          "callee": "np.log2",
+          "lineNumber": 21
+        },
+        {
+          "caller": "analyze",
+          "callee": "int",
+          "lineNumber": 27
+        },
+        {
+          "caller": "analyze",
+          "callee": "config.get",
+          "lineNumber": 27
+        },
+        {
+          "caller": "analyze",
+          "callee": "shannon_entropy",
+          "lineNumber": 28
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/analyzers/image_scaling.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 46,
+      "nonEmptyLines": 34,
+      "functions": [
+        {
+          "name": "compute_scaling",
+          "startLine": 20,
+          "endLine": 46,
+          "params": [
+            "original_width",
+            "original_height",
+            "display_width_pts",
+            "display_height_pts"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "compute_scaling",
+          "line": 20,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "compute_scaling",
+          "callee": "max",
+          "lineNumber": 26
+        },
+        {
+          "caller": "compute_scaling",
+          "callee": "int",
+          "lineNumber": 26
+        },
+        {
+          "caller": "compute_scaling",
+          "callee": "max",
+          "lineNumber": 27
+        },
+        {
+          "caller": "compute_scaling",
+          "callee": "int",
+          "lineNumber": 27
+        },
+        {
+          "caller": "compute_scaling",
+          "callee": "float",
+          "lineNumber": 28
+        },
+        {
+          "caller": "compute_scaling",
+          "callee": "float",
+          "lineNumber": 29
+        },
+        {
+          "caller": "compute_scaling",
+          "callee": "max",
+          "lineNumber": 37
+        },
+        {
+          "caller": "compute_scaling",
+          "callee": "abs",
+          "lineNumber": 37
+        },
+        {
+          "caller": "compute_scaling",
+          "callee": "abs",
+          "lineNumber": 37
+        },
+        {
+          "caller": "compute_scaling",
+          "callee": "abs",
+          "lineNumber": 38
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/analyzers/noise.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 52,
+      "nonEmptyLines": 41,
+      "functions": [
+        {
+          "name": "noise_sigma",
+          "startLine": 20,
+          "endLine": 32,
+          "params": [
+            "image"
+          ]
+        },
+        {
+          "name": "noise_median_residual",
+          "startLine": 35,
+          "endLine": 42,
+          "params": [
+            "image",
+            "kernel"
+          ]
+        },
+        {
+          "name": "analyze",
+          "startLine": 45,
+          "endLine": 52,
+          "params": [
+            "image",
+            "config"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "noise_sigma",
+          "line": 20,
+          "isDefault": false
+        },
+        {
+          "name": "noise_median_residual",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "analyze",
+          "line": 45,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "noise_sigma",
+          "callee": "ensure_gray(image).astype",
+          "lineNumber": 22
+        },
+        {
+          "caller": "noise_sigma",
+          "callee": "ensure_gray",
+          "lineNumber": 22
+        },
+        {
+          "caller": "noise_sigma",
+          "callee": "np.array",
+          "lineNumber": 25
+        },
+        {
+          "caller": "noise_sigma",
+          "callee": "cv2.filter2D",
+          "lineNumber": 28
+        },
+        {
+          "caller": "noise_sigma",
+          "callee": "np.sum",
+          "lineNumber": 30
+        },
+        {
+          "caller": "noise_sigma",
+          "callee": "np.abs",
+          "lineNumber": 30
+        },
+        {
+          "caller": "noise_sigma",
+          "callee": "np.sqrt",
+          "lineNumber": 31
+        },
+        {
+          "caller": "noise_sigma",
+          "callee": "float",
+          "lineNumber": 32
+        },
+        {
+          "caller": "noise_median_residual",
+          "callee": "ensure_gray",
+          "lineNumber": 36
+        },
+        {
+          "caller": "noise_median_residual",
+          "callee": "cv2.medianBlur",
+          "lineNumber": 40
+        },
+        {
+          "caller": "noise_median_residual",
+          "callee": "gray.astype",
+          "lineNumber": 41
+        },
+        {
+          "caller": "noise_median_residual",
+          "callee": "smoothed.astype",
+          "lineNumber": 41
+        },
+        {
+          "caller": "noise_median_residual",
+          "callee": "float",
+          "lineNumber": 42
+        },
+        {
+          "caller": "noise_median_residual",
+          "callee": "residual.std",
+          "lineNumber": 42
+        },
+        {
+          "caller": "analyze",
+          "callee": "int",
+          "lineNumber": 48
+        },
+        {
+          "caller": "analyze",
+          "callee": "config.get",
+          "lineNumber": 48
+        },
+        {
+          "caller": "analyze",
+          "callee": "noise_sigma",
+          "lineNumber": 50
+        },
+        {
+          "caller": "analyze",
+          "callee": "noise_median_residual",
+          "lineNumber": 51
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/analyzers/ocr.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 106,
+      "nonEmptyLines": 85,
+      "classes": [
+        {
+          "name": "OCRResult",
+          "startLine": 24,
+          "endLine": 28,
+          "methods": [],
+          "properties": [
+            "ocr_confidence",
+            "word_count",
+            "char_count",
+            "available"
+          ]
+        },
+        {
+          "name": "OCREngine",
+          "startLine": 31,
+          "endLine": 106,
+          "methods": [
+            "__init__",
+            "_config_string",
+            "analyze"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "OCRResult",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "OCREngine",
+          "line": 31,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__init__",
+          "callee": "config.get",
+          "lineNumber": 36
+        },
+        {
+          "caller": "__init__",
+          "callee": "int",
+          "lineNumber": 37
+        },
+        {
+          "caller": "__init__",
+          "callee": "config.get",
+          "lineNumber": 37
+        },
+        {
+          "caller": "__init__",
+          "callee": "int",
+          "lineNumber": 38
+        },
+        {
+          "caller": "__init__",
+          "callee": "config.get",
+          "lineNumber": 38
+        },
+        {
+          "caller": "__init__",
+          "callee": "float",
+          "lineNumber": 39
+        },
+        {
+          "caller": "__init__",
+          "callee": "config.get",
+          "lineNumber": 39
+        },
+        {
+          "caller": "__init__",
+          "callee": "int",
+          "lineNumber": 40
+        },
+        {
+          "caller": "__init__",
+          "callee": "config.get",
+          "lineNumber": 40
+        },
+        {
+          "caller": "__init__",
+          "callee": "config.get",
+          "lineNumber": 44
+        },
+        {
+          "caller": "__init__",
+          "callee": "str",
+          "lineNumber": 49
+        },
+        {
+          "caller": "__init__",
+          "callee": "pytesseract.get_tesseract_version",
+          "lineNumber": 49
+        },
+        {
+          "caller": "__init__",
+          "callee": "logger.info",
+          "lineNumber": 51
+        },
+        {
+          "caller": "__init__",
+          "callee": "logger.warning",
+          "lineNumber": 53
+        },
+        {
+          "caller": "analyze",
+          "callee": "OCRResult",
+          "lineNumber": 62
+        },
+        {
+          "caller": "analyze",
+          "callee": "ensure_gray",
+          "lineNumber": 64
+        },
+        {
+          "caller": "analyze",
+          "callee": "OCRResult",
+          "lineNumber": 66
+        },
+        {
+          "caller": "analyze",
+          "callee": "pytesseract.image_to_data",
+          "lineNumber": 69
+        },
+        {
+          "caller": "analyze",
+          "callee": "self._config_string",
+          "lineNumber": 72
+        },
+        {
+          "caller": "analyze",
+          "callee": "logger.warning",
+          "lineNumber": 77
+        },
+        {
+          "caller": "analyze",
+          "callee": "OCRResult",
+          "lineNumber": 78
+        },
+        {
+          "caller": "analyze",
+          "callee": "zip",
+          "lineNumber": 83
+        },
+        {
+          "caller": "analyze",
+          "callee": "data.get",
+          "lineNumber": 83
+        },
+        {
+          "caller": "analyze",
+          "callee": "data.get",
+          "lineNumber": 83
+        },
+        {
+          "caller": "analyze",
+          "callee": "float",
+          "lineNumber": 85
+        },
+        {
+          "caller": "analyze",
+          "callee": "(text or \"\").strip",
+          "lineNumber": 88
+        },
+        {
+          "caller": "analyze",
+          "callee": "confidences.append",
+          "lineNumber": 93
+        },
+        {
+          "caller": "analyze",
+          "callee": "len",
+          "lineNumber": 95
+        },
+        {
+          "caller": "analyze",
+          "callee": "OCRResult",
+          "lineNumber": 98
+        },
+        {
+          "caller": "analyze",
+          "callee": "float",
+          "lineNumber": 100
+        },
+        {
+          "caller": "analyze",
+          "callee": "np.mean",
+          "lineNumber": 100
+        },
+        {
+          "caller": "analyze",
+          "callee": "OCRResult",
+          "lineNumber": 101
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 2,
+        "functionCount": 0,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "src/analyzers/sharpness.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 39,
+      "nonEmptyLines": 29,
+      "functions": [
+        {
+          "name": "tenengrad",
+          "startLine": 15,
+          "endLine": 22,
+          "params": [
+            "image"
+          ]
+        },
+        {
+          "name": "mean_gradient",
+          "startLine": 25,
+          "endLine": 32,
+          "params": [
+            "image"
+          ]
+        },
+        {
+          "name": "analyze",
+          "startLine": 35,
+          "endLine": 39,
+          "params": [
+            "image"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "tenengrad",
+          "line": 15,
+          "isDefault": false
+        },
+        {
+          "name": "mean_gradient",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "analyze",
+          "line": 35,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "tenengrad",
+          "callee": "ensure_gray",
+          "lineNumber": 16
+        },
+        {
+          "caller": "tenengrad",
+          "callee": "cv2.Sobel",
+          "lineNumber": 19
+        },
+        {
+          "caller": "tenengrad",
+          "callee": "cv2.Sobel",
+          "lineNumber": 20
+        },
+        {
+          "caller": "tenengrad",
+          "callee": "float",
+          "lineNumber": 22
+        },
+        {
+          "caller": "tenengrad",
+          "callee": "fm.mean",
+          "lineNumber": 22
+        },
+        {
+          "caller": "mean_gradient",
+          "callee": "ensure_gray",
+          "lineNumber": 26
+        },
+        {
+          "caller": "mean_gradient",
+          "callee": "cv2.Sobel",
+          "lineNumber": 29
+        },
+        {
+          "caller": "mean_gradient",
+          "callee": "cv2.Sobel",
+          "lineNumber": 30
+        },
+        {
+          "caller": "mean_gradient",
+          "callee": "np.sqrt",
+          "lineNumber": 31
+        },
+        {
+          "caller": "mean_gradient",
+          "callee": "float",
+          "lineNumber": 32
+        },
+        {
+          "caller": "mean_gradient",
+          "callee": "mag.mean",
+          "lineNumber": 32
+        },
+        {
+          "caller": "analyze",
+          "callee": "tenengrad",
+          "lineNumber": 37
+        },
+        {
+          "caller": "analyze",
+          "callee": "mean_gradient",
+          "lineNumber": 38
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/analyzers/visual_engine.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 102,
+      "nonEmptyLines": 87,
+      "functions": [
+        {
+          "name": "text_density",
+          "startLine": 21,
+          "endLine": 48,
+          "params": [
+            "image",
+            "config"
+          ]
+        },
+        {
+          "name": "compute_tile_metrics",
+          "startLine": 51,
+          "endLine": 87,
+          "params": [
+            "image_gray",
+            "image_rgb",
+            "config",
+            "ocr_engine",
+            "blank"
+          ]
+        },
+        {
+          "name": "compute_page_metrics",
+          "startLine": 90,
+          "endLine": 102,
+          "params": [
+            "image_gray",
+            "config"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "text_density",
+          "line": 21,
+          "isDefault": false
+        },
+        {
+          "name": "compute_tile_metrics",
+          "line": 51,
+          "isDefault": false
+        },
+        {
+          "name": "compute_page_metrics",
+          "line": 90,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "text_density",
+          "callee": "ensure_gray",
+          "lineNumber": 27
+        },
+        {
+          "caller": "text_density",
+          "callee": "int",
+          "lineNumber": 30
+        },
+        {
+          "caller": "text_density",
+          "callee": "config.get",
+          "lineNumber": 30
+        },
+        {
+          "caller": "text_density",
+          "callee": "int",
+          "lineNumber": 31
+        },
+        {
+          "caller": "text_density",
+          "callee": "config.get",
+          "lineNumber": 31
+        },
+        {
+          "caller": "text_density",
+          "callee": "max",
+          "lineNumber": 34
+        },
+        {
+          "caller": "text_density",
+          "callee": "cv2.threshold",
+          "lineNumber": 38
+        },
+        {
+          "caller": "text_density",
+          "callee": "cv2.adaptiveThreshold",
+          "lineNumber": 40
+        },
+        {
+          "caller": "text_density",
+          "callee": "float",
+          "lineNumber": 48
+        },
+        {
+          "caller": "text_density",
+          "callee": "np.count_nonzero",
+          "lineNumber": 48
+        },
+        {
+          "caller": "text_density",
+          "callee": "float",
+          "lineNumber": 48
+        },
+        {
+          "caller": "compute_tile_metrics",
+          "callee": "int",
+          "lineNumber": 59
+        },
+        {
+          "caller": "compute_tile_metrics",
+          "callee": "config.get",
+          "lineNumber": 59
+        },
+        {
+          "caller": "compute_tile_metrics",
+          "callee": "metrics.update",
+          "lineNumber": 62
+        },
+        {
+          "caller": "compute_tile_metrics",
+          "callee": "blur.analyze",
+          "lineNumber": 62
+        },
+        {
+          "caller": "compute_tile_metrics",
+          "callee": "metrics.update",
+          "lineNumber": 63
+        },
+        {
+          "caller": "compute_tile_metrics",
+          "callee": "sharpness.analyze",
+          "lineNumber": 63
+        },
+        {
+          "caller": "compute_tile_metrics",
+          "callee": "metrics.update",
+          "lineNumber": 64
+        },
+        {
+          "caller": "compute_tile_metrics",
+          "callee": "contrast.analyze",
+          "lineNumber": 64
+        },
+        {
+          "caller": "compute_tile_metrics",
+          "callee": "metrics.update",
+          "lineNumber": 65
+        },
+        {
+          "caller": "compute_tile_metrics",
+          "callee": "entropy.analyze",
+          "lineNumber": 65
+        },
+        {
+          "caller": "compute_tile_metrics",
+          "callee": "metrics.update",
+          "lineNumber": 66
+        },
+        {
+          "caller": "compute_tile_metrics",
+          "callee": "edge_density.analyze",
+          "lineNumber": 66
+        },
+        {
+          "caller": "compute_tile_metrics",
+          "callee": "metrics.update",
+          "lineNumber": 67
+        },
+        {
+          "caller": "compute_tile_metrics",
+          "callee": "noise.analyze",
+          "lineNumber": 67
+        },
+        {
+          "caller": "compute_tile_metrics",
+          "callee": "text_density",
+          "lineNumber": 68
+        },
+        {
+          "caller": "compute_tile_metrics",
+          "callee": "ocr_engine.analyze",
+          "lineNumber": 71
+        },
+        {
+          "caller": "compute_tile_metrics",
+          "callee": "metrics.items",
+          "lineNumber": 82
+        },
+        {
+          "caller": "compute_tile_metrics",
+          "callee": "isinstance",
+          "lineNumber": 83
+        },
+        {
+          "caller": "compute_tile_metrics",
+          "callee": "safe_round",
+          "lineNumber": 84
+        },
+        {
+          "caller": "compute_page_metrics",
+          "callee": "int",
+          "lineNumber": 95
+        },
+        {
+          "caller": "compute_page_metrics",
+          "callee": "config.get",
+          "lineNumber": 95
+        },
+        {
+          "caller": "compute_page_metrics",
+          "callee": "metrics.update",
+          "lineNumber": 97
+        },
+        {
+          "caller": "compute_page_metrics",
+          "callee": "blur.analyze",
+          "lineNumber": 97
+        },
+        {
+          "caller": "compute_page_metrics",
+          "callee": "metrics.update",
+          "lineNumber": 98
+        },
+        {
+          "caller": "compute_page_metrics",
+          "callee": "contrast.analyze",
+          "lineNumber": 98
+        },
+        {
+          "caller": "compute_page_metrics",
+          "callee": "metrics.update",
+          "lineNumber": 99
+        },
+        {
+          "caller": "compute_page_metrics",
+          "callee": "entropy.analyze",
+          "lineNumber": 99
+        },
+        {
+          "caller": "compute_page_metrics",
+          "callee": "metrics.update",
+          "lineNumber": 100
+        },
+        {
+          "caller": "compute_page_metrics",
+          "callee": "edge_density.analyze",
+          "lineNumber": 100
+        },
+        {
+          "caller": "compute_page_metrics",
+          "callee": "text_density",
+          "lineNumber": 101
+        },
+        {
+          "caller": "compute_page_metrics",
+          "callee": "safe_round",
+          "lineNumber": 102
+        },
+        {
+          "caller": "compute_page_metrics",
+          "callee": "isinstance",
+          "lineNumber": 102
+        },
+        {
+          "caller": "compute_page_metrics",
+          "callee": "metrics.items",
+          "lineNumber": 102
+        }
+      ],
+      "metrics": {
+        "importCount": 9,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/utils/image_ops.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 65,
+      "nonEmptyLines": 53,
+      "functions": [
+        {
+          "name": "ensure_gray",
+          "startLine": 17,
+          "endLine": 40,
+          "params": [
+            "img"
+          ]
+        },
+        {
+          "name": "safe_round",
+          "startLine": 43,
+          "endLine": 50,
+          "params": [
+            "value",
+            "decimals"
+          ]
+        },
+        {
+          "name": "robust_zscores",
+          "startLine": 53,
+          "endLine": 65,
+          "params": [
+            "values"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "ensure_gray",
+          "line": 17,
+          "isDefault": false
+        },
+        {
+          "name": "safe_round",
+          "line": 43,
+          "isDefault": false
+        },
+        {
+          "name": "robust_zscores",
+          "line": 53,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ensure_gray",
+          "callee": "ValueError",
+          "lineNumber": 20
+        },
+        {
+          "caller": "ensure_gray",
+          "callee": "np.asarray",
+          "lineNumber": 21
+        },
+        {
+          "caller": "ensure_gray",
+          "callee": "cv2.cvtColor",
+          "lineNumber": 28
+        },
+        {
+          "caller": "ensure_gray",
+          "callee": "ValueError",
+          "lineNumber": 36
+        },
+        {
+          "caller": "ensure_gray",
+          "callee": "np.clip(gray, 0, 255).astype",
+          "lineNumber": 39
+        },
+        {
+          "caller": "ensure_gray",
+          "callee": "np.clip",
+          "lineNumber": 39
+        },
+        {
+          "caller": "safe_round",
+          "callee": "float",
+          "lineNumber": 47
+        },
+        {
+          "caller": "safe_round",
+          "callee": "np.isfinite",
+          "lineNumber": 48
+        },
+        {
+          "caller": "safe_round",
+          "callee": "round",
+          "lineNumber": 50
+        },
+        {
+          "caller": "robust_zscores",
+          "callee": "np.asarray",
+          "lineNumber": 58
+        },
+        {
+          "caller": "robust_zscores",
+          "callee": "float",
+          "lineNumber": 61
+        },
+        {
+          "caller": "robust_zscores",
+          "callee": "arr.mean",
+          "lineNumber": 61
+        },
+        {
+          "caller": "robust_zscores",
+          "callee": "float",
+          "lineNumber": 62
+        },
+        {
+          "caller": "robust_zscores",
+          "callee": "arr.std",
+          "lineNumber": 62
+        },
+        {
+          "caller": "robust_zscores",
+          "callee": "np.zeros_like",
+          "lineNumber": 64
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tests/test_analyzers.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 84,
+      "nonEmptyLines": 68,
+      "functions": [
+        {
+          "name": "_text_like_image",
+          "startLine": 14,
+          "endLine": 17,
+          "params": []
+        },
+        {
+          "name": "test_blur_computation_sharp_vs_blurred",
+          "startLine": 20,
+          "endLine": 26,
+          "params": []
+        },
+        {
+          "name": "test_image_scaling_detection",
+          "startLine": 29,
+          "endLine": 41,
+          "params": []
+        },
+        {
+          "name": "test_font_extraction_from_pdf",
+          "startLine": 44,
+          "endLine": 56,
+          "params": [
+            "sample_pdf"
+          ]
+        },
+        {
+          "name": "test_entropy_and_edge_density_ranges",
+          "startLine": 59,
+          "endLine": 68,
+          "params": []
+        },
+        {
+          "name": "test_ocr_confidence_extraction_graceful",
+          "startLine": 71,
+          "endLine": 84,
+          "params": [
+            "fast_options"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "_text_like_image",
+          "line": 14,
+          "isDefault": false
+        },
+        {
+          "name": "test_blur_computation_sharp_vs_blurred",
+          "line": 20,
+          "isDefault": false
+        },
+        {
+          "name": "test_image_scaling_detection",
+          "line": 29,
+          "isDefault": false
+        },
+        {
+          "name": "test_font_extraction_from_pdf",
+          "line": 44,
+          "isDefault": false
+        },
+        {
+          "name": "test_entropy_and_edge_density_ranges",
+          "line": 59,
+          "isDefault": false
+        },
+        {
+          "name": "test_ocr_confidence_extraction_graceful",
+          "line": 71,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_text_like_image",
+          "callee": "np.random.default_rng",
+          "lineNumber": 16
+        },
+        {
+          "caller": "_text_like_image",
+          "callee": "(rng.integers(0, 2, size=(256, 256)) * 255).astype",
+          "lineNumber": 17
+        },
+        {
+          "caller": "_text_like_image",
+          "callee": "rng.integers",
+          "lineNumber": 17
+        },
+        {
+          "caller": "test_blur_computation_sharp_vs_blurred",
+          "callee": "_text_like_image",
+          "lineNumber": 21
+        },
+        {
+          "caller": "test_blur_computation_sharp_vs_blurred",
+          "callee": "cv2.GaussianBlur",
+          "lineNumber": 22
+        },
+        {
+          "caller": "test_blur_computation_sharp_vs_blurred",
+          "callee": "blur.analyze",
+          "lineNumber": 23
+        },
+        {
+          "caller": "test_blur_computation_sharp_vs_blurred",
+          "callee": "blur.analyze",
+          "lineNumber": 24
+        },
+        {
+          "caller": "test_image_scaling_detection",
+          "callee": "image_scaling.compute_scaling",
+          "lineNumber": 30
+        },
+        {
+          "caller": "test_image_scaling_detection",
+          "callee": "abs",
+          "lineNumber": 36
+        },
+        {
+          "caller": "test_image_scaling_detection",
+          "callee": "abs",
+          "lineNumber": 37
+        },
+        {
+          "caller": "test_image_scaling_detection",
+          "callee": "abs",
+          "lineNumber": 40
+        },
+        {
+          "caller": "test_image_scaling_detection",
+          "callee": "abs",
+          "lineNumber": 41
+        },
+        {
+          "caller": "test_font_extraction_from_pdf",
+          "callee": "load_config",
+          "lineNumber": 45
+        },
+        {
+          "caller": "test_font_extraction_from_pdf",
+          "callee": "load_document",
+          "lineNumber": 46
+        },
+        {
+          "caller": "test_font_extraction_from_pdf",
+          "callee": "font_analysis.analyze_page_fonts",
+          "lineNumber": 49
+        },
+        {
+          "caller": "test_font_extraction_from_pdf",
+          "callee": "loaded.close",
+          "lineNumber": 51
+        },
+        {
+          "caller": "test_font_extraction_from_pdf",
+          "callee": "len",
+          "lineNumber": 53
+        },
+        {
+          "caller": "test_font_extraction_from_pdf",
+          "callee": "len",
+          "lineNumber": 56
+        },
+        {
+          "caller": "test_font_extraction_from_pdf",
+          "callee": "f[\"name\"].split",
+          "lineNumber": 56
+        },
+        {
+          "caller": "test_entropy_and_edge_density_ranges",
+          "callee": "np.full",
+          "lineNumber": 60
+        },
+        {
+          "caller": "test_entropy_and_edge_density_ranges",
+          "callee": "(np.random.default_rng(1).integers(0, 256, (128, 128))).astype",
+          "lineNumber": 61
+        },
+        {
+          "caller": "test_entropy_and_edge_density_ranges",
+          "callee": "np.random.default_rng(1).integers",
+          "lineNumber": 61
+        },
+        {
+          "caller": "test_entropy_and_edge_density_ranges",
+          "callee": "np.random.default_rng",
+          "lineNumber": 61
+        },
+        {
+          "caller": "test_entropy_and_edge_density_ranges",
+          "callee": "entropy.shannon_entropy",
+          "lineNumber": 62
+        },
+        {
+          "caller": "test_entropy_and_edge_density_ranges",
+          "callee": "entropy.shannon_entropy",
+          "lineNumber": 63
+        },
+        {
+          "caller": "test_entropy_and_edge_density_ranges",
+          "callee": "edge_density.edge_density",
+          "lineNumber": 65
+        },
+        {
+          "caller": "test_entropy_and_edge_density_ranges",
+          "callee": "edge_density.edge_density",
+          "lineNumber": 66
+        },
+        {
+          "caller": "test_ocr_confidence_extraction_graceful",
+          "callee": "load_config",
+          "lineNumber": 73
+        },
+        {
+          "caller": "test_ocr_confidence_extraction_graceful",
+          "callee": "OCREngine",
+          "lineNumber": 74
+        },
+        {
+          "caller": "test_ocr_confidence_extraction_graceful",
+          "callee": "engine.analyze",
+          "lineNumber": 75
+        },
+        {
+          "caller": "test_ocr_confidence_extraction_graceful",
+          "callee": "_text_like_image",
+          "lineNumber": 75
+        },
+        {
+          "caller": "test_ocr_confidence_extraction_graceful",
+          "callee": "isinstance",
+          "lineNumber": 76
+        }
+      ],
+      "metrics": {
+        "importCount": 9,
+        "exportCount": 6,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    }
+  ]
+}

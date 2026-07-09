@@ -1,0 +1,82 @@
+{
+  "projectRoot": "c:\\Users\\prana\\Documents\\Github\\New folder\\visual-forensics-mcp",
+  "batchFiles": [
+    {"path": "src/analyzers/__init__.py", "language": "python", "sizeLines": 35, "fileCategory": "code"},
+    {"path": "src/analyzers/blur.py", "language": "python", "sizeLines": 26, "fileCategory": "code"},
+    {"path": "src/analyzers/contrast.py", "language": "python", "sizeLines": 37, "fileCategory": "code"},
+    {"path": "src/analyzers/edge_density.py", "language": "python", "sizeLines": 25, "fileCategory": "code"},
+    {"path": "src/analyzers/entropy.py", "language": "python", "sizeLines": 28, "fileCategory": "code"},
+    {"path": "src/analyzers/image_scaling.py", "language": "python", "sizeLines": 46, "fileCategory": "code"},
+    {"path": "src/analyzers/noise.py", "language": "python", "sizeLines": 52, "fileCategory": "code"},
+    {"path": "src/analyzers/ocr.py", "language": "python", "sizeLines": 106, "fileCategory": "code"},
+    {"path": "src/analyzers/sharpness.py", "language": "python", "sizeLines": 39, "fileCategory": "code"},
+    {"path": "src/analyzers/visual_engine.py", "language": "python", "sizeLines": 102, "fileCategory": "code"},
+    {"path": "src/utils/image_ops.py", "language": "python", "sizeLines": 65, "fileCategory": "code"},
+    {"path": "tests/test_analyzers.py", "language": "python", "sizeLines": 84, "fileCategory": "code"}
+  ],
+  "batchImportData": {
+    "src/analyzers/__init__.py": [
+      "src/analyzers/blur.py",
+      "src/analyzers/contrast.py",
+      "src/analyzers/edge_density.py",
+      "src/analyzers/entropy.py",
+      "src/analyzers/font_analysis.py",
+      "src/analyzers/image_scaling.py",
+      "src/analyzers/noise.py",
+      "src/analyzers/ocr.py",
+      "src/analyzers/pdf_structure.py",
+      "src/analyzers/sharpness.py",
+      "src/analyzers/visual_engine.py"
+    ],
+    "src/analyzers/blur.py": [
+      "src/utils/image_ops.py"
+    ],
+    "src/analyzers/contrast.py": [
+      "src/utils/image_ops.py"
+    ],
+    "src/analyzers/edge_density.py": [
+      "src/utils/config.py",
+      "src/utils/image_ops.py"
+    ],
+    "src/analyzers/entropy.py": [
+      "src/utils/config.py",
+      "src/utils/image_ops.py"
+    ],
+    "src/analyzers/image_scaling.py": [],
+    "src/analyzers/noise.py": [
+      "src/utils/config.py",
+      "src/utils/image_ops.py"
+    ],
+    "src/analyzers/ocr.py": [
+      "src/utils/config.py",
+      "src/utils/image_ops.py",
+      "src/utils/logging.py"
+    ],
+    "src/analyzers/sharpness.py": [
+      "src/utils/image_ops.py"
+    ],
+    "src/analyzers/visual_engine.py": [
+      "src/analyzers/blur.py",
+      "src/analyzers/contrast.py",
+      "src/analyzers/edge_density.py",
+      "src/analyzers/entropy.py",
+      "src/analyzers/noise.py",
+      "src/analyzers/ocr.py",
+      "src/analyzers/sharpness.py",
+      "src/utils/config.py",
+      "src/utils/image_ops.py"
+    ],
+    "src/utils/image_ops.py": [],
+    "tests/test_analyzers.py": [
+      "src/analyzers/__init__.py",
+      "src/analyzers/blur.py",
+      "src/analyzers/edge_density.py",
+      "src/analyzers/entropy.py",
+      "src/analyzers/font_analysis.py",
+      "src/analyzers/image_scaling.py",
+      "src/analyzers/ocr.py",
+      "src/render/__init__.py",
+      "src/utils/config.py"
+    ]
+  }
+}

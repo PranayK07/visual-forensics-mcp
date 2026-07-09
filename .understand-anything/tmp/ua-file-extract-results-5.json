@@ -1,0 +1,526 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 3,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "examples/generate_examples.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 68,
+      "nonEmptyLines": 51,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 32,
+          "endLine": 64,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 32,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "os.path.join",
+          "lineNumber": 33
+        },
+        {
+          "caller": "main",
+          "callee": "os.path.join",
+          "lineNumber": 34
+        },
+        {
+          "caller": "main",
+          "callee": "build_sample_pdf",
+          "lineNumber": 35
+        },
+        {
+          "caller": "main",
+          "callee": "build_sample_docx",
+          "lineNumber": 36
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 37
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 38
+        },
+        {
+          "caller": "main",
+          "callee": "analyze_document",
+          "lineNumber": 41
+        },
+        {
+          "caller": "main",
+          "callee": "os.path.join",
+          "lineNumber": 43
+        },
+        {
+          "caller": "main",
+          "callee": "open",
+          "lineNumber": 44
+        },
+        {
+          "caller": "main",
+          "callee": "json.dump",
+          "lineNumber": 45
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 46
+        },
+        {
+          "caller": "main",
+          "callee": "pdf_path.replace",
+          "lineNumber": 51
+        },
+        {
+          "caller": "main",
+          "callee": "os.path.join",
+          "lineNumber": 55
+        },
+        {
+          "caller": "main",
+          "callee": "open",
+          "lineNumber": 56
+        },
+        {
+          "caller": "main",
+          "callee": "json.dump",
+          "lineNumber": 57
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 58
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 60
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tests/builders.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 101,
+      "nonEmptyLines": 78,
+      "functions": [
+        {
+          "name": "_png_bytes",
+          "startLine": 17,
+          "endLine": 23,
+          "params": [
+            "rgb"
+          ]
+        },
+        {
+          "name": "_checker",
+          "startLine": 26,
+          "endLine": 33,
+          "params": [
+            "width",
+            "height"
+          ]
+        },
+        {
+          "name": "build_sample_pdf",
+          "startLine": 36,
+          "endLine": 63,
+          "params": [
+            "path"
+          ]
+        },
+        {
+          "name": "build_scanned_like_pdf",
+          "startLine": 66,
+          "endLine": 74,
+          "params": [
+            "path"
+          ]
+        },
+        {
+          "name": "build_sample_docx",
+          "startLine": 77,
+          "endLine": 101,
+          "params": [
+            "path"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "_png_bytes",
+          "line": 17,
+          "isDefault": false
+        },
+        {
+          "name": "_checker",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "build_sample_pdf",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "build_scanned_like_pdf",
+          "line": 66,
+          "isDefault": false
+        },
+        {
+          "name": "build_sample_docx",
+          "line": 77,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_png_bytes",
+          "callee": "fitz.Pixmap",
+          "lineNumber": 19
+        },
+        {
+          "caller": "_png_bytes",
+          "callee": "fitz.IRect",
+          "lineNumber": 20
+        },
+        {
+          "caller": "_png_bytes",
+          "callee": "pix.set_rect",
+          "lineNumber": 22
+        },
+        {
+          "caller": "_png_bytes",
+          "callee": "bytes",
+          "lineNumber": 22
+        },
+        {
+          "caller": "_png_bytes",
+          "callee": "np.ascontiguousarray(rgb).tobytes",
+          "lineNumber": 22
+        },
+        {
+          "caller": "_png_bytes",
+          "callee": "np.ascontiguousarray",
+          "lineNumber": 22
+        },
+        {
+          "caller": "_png_bytes",
+          "callee": "pix.tobytes",
+          "lineNumber": 23
+        },
+        {
+          "caller": "_checker",
+          "callee": "np.zeros",
+          "lineNumber": 28
+        },
+        {
+          "caller": "_checker",
+          "callee": "max",
+          "lineNumber": 29
+        },
+        {
+          "caller": "_checker",
+          "callee": "range",
+          "lineNumber": 30
+        },
+        {
+          "caller": "_checker",
+          "callee": "range",
+          "lineNumber": 31
+        },
+        {
+          "caller": "build_sample_pdf",
+          "callee": "fitz.open",
+          "lineNumber": 38
+        },
+        {
+          "caller": "build_sample_pdf",
+          "callee": "doc.new_page",
+          "lineNumber": 39
+        },
+        {
+          "caller": "build_sample_pdf",
+          "callee": "range",
+          "lineNumber": 43
+        },
+        {
+          "caller": "build_sample_pdf",
+          "callee": "page.insert_text",
+          "lineNumber": 44
+        },
+        {
+          "caller": "build_sample_pdf",
+          "callee": "page.insert_text",
+          "lineNumber": 53
+        },
+        {
+          "caller": "build_sample_pdf",
+          "callee": "_checker",
+          "lineNumber": 57
+        },
+        {
+          "caller": "build_sample_pdf",
+          "callee": "fitz.Rect",
+          "lineNumber": 58
+        },
+        {
+          "caller": "build_sample_pdf",
+          "callee": "page.insert_image",
+          "lineNumber": 59
+        },
+        {
+          "caller": "build_sample_pdf",
+          "callee": "_png_bytes",
+          "lineNumber": 59
+        },
+        {
+          "caller": "build_sample_pdf",
+          "callee": "doc.save",
+          "lineNumber": 61
+        },
+        {
+          "caller": "build_sample_pdf",
+          "callee": "doc.close",
+          "lineNumber": 62
+        },
+        {
+          "caller": "build_scanned_like_pdf",
+          "callee": "fitz.open",
+          "lineNumber": 68
+        },
+        {
+          "caller": "build_scanned_like_pdf",
+          "callee": "doc.new_page",
+          "lineNumber": 69
+        },
+        {
+          "caller": "build_scanned_like_pdf",
+          "callee": "_checker",
+          "lineNumber": 70
+        },
+        {
+          "caller": "build_scanned_like_pdf",
+          "callee": "page.insert_image",
+          "lineNumber": 71
+        },
+        {
+          "caller": "build_scanned_like_pdf",
+          "callee": "_png_bytes",
+          "lineNumber": 71
+        },
+        {
+          "caller": "build_scanned_like_pdf",
+          "callee": "doc.save",
+          "lineNumber": 72
+        },
+        {
+          "caller": "build_scanned_like_pdf",
+          "callee": "doc.close",
+          "lineNumber": 73
+        },
+        {
+          "caller": "build_sample_docx",
+          "callee": "docx.Document",
+          "lineNumber": 82
+        },
+        {
+          "caller": "build_sample_docx",
+          "callee": "d.add_heading",
+          "lineNumber": 83
+        },
+        {
+          "caller": "build_sample_docx",
+          "callee": "range",
+          "lineNumber": 84
+        },
+        {
+          "caller": "build_sample_docx",
+          "callee": "d.add_paragraph",
+          "lineNumber": 85
+        },
+        {
+          "caller": "build_sample_docx",
+          "callee": "d.add_paragraph",
+          "lineNumber": 91
+        },
+        {
+          "caller": "build_sample_docx",
+          "callee": "p.add_run",
+          "lineNumber": 92
+        },
+        {
+          "caller": "build_sample_docx",
+          "callee": "Pt",
+          "lineNumber": 94
+        },
+        {
+          "caller": "build_sample_docx",
+          "callee": "_checker",
+          "lineNumber": 97
+        },
+        {
+          "caller": "build_sample_docx",
+          "callee": "d.add_picture",
+          "lineNumber": 98
+        },
+        {
+          "caller": "build_sample_docx",
+          "callee": "io.BytesIO",
+          "lineNumber": 98
+        },
+        {
+          "caller": "build_sample_docx",
+          "callee": "_png_bytes",
+          "lineNumber": 98
+        },
+        {
+          "caller": "build_sample_docx",
+          "callee": "d.save",
+          "lineNumber": 100
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tests/conftest.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 43,
+      "nonEmptyLines": 30,
+      "functions": [
+        {
+          "name": "sample_pdf",
+          "startLine": 23,
+          "endLine": 25,
+          "params": [
+            "tmp_path_factory"
+          ]
+        },
+        {
+          "name": "scanned_pdf",
+          "startLine": 29,
+          "endLine": 31,
+          "params": [
+            "tmp_path_factory"
+          ]
+        },
+        {
+          "name": "sample_docx",
+          "startLine": 35,
+          "endLine": 37,
+          "params": [
+            "tmp_path_factory"
+          ]
+        },
+        {
+          "name": "fast_options",
+          "startLine": 41,
+          "endLine": 43,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "sample_pdf",
+          "line": 22,
+          "isDefault": false
+        },
+        {
+          "name": "scanned_pdf",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "sample_docx",
+          "line": 34,
+          "isDefault": false
+        },
+        {
+          "name": "fast_options",
+          "line": 40,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "sample_pdf",
+          "callee": "tmp_path_factory.mktemp",
+          "lineNumber": 24
+        },
+        {
+          "caller": "sample_pdf",
+          "callee": "build_sample_pdf",
+          "lineNumber": 25
+        },
+        {
+          "caller": "sample_pdf",
+          "callee": "str",
+          "lineNumber": 25
+        },
+        {
+          "caller": "scanned_pdf",
+          "callee": "tmp_path_factory.mktemp",
+          "lineNumber": 30
+        },
+        {
+          "caller": "scanned_pdf",
+          "callee": "build_scanned_like_pdf",
+          "lineNumber": 31
+        },
+        {
+          "caller": "scanned_pdf",
+          "callee": "str",
+          "lineNumber": 31
+        },
+        {
+          "caller": "sample_docx",
+          "callee": "tmp_path_factory.mktemp",
+          "lineNumber": 36
+        },
+        {
+          "caller": "sample_docx",
+          "callee": "build_sample_docx",
+          "lineNumber": 37
+        },
+        {
+          "caller": "sample_docx",
+          "callee": "str",
+          "lineNumber": 37
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    }
+  ]
+}

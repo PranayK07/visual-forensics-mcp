@@ -1,0 +1,540 @@
+{
+  "nodes": [
+    {
+      "id": "file:src/analyzers/font_analysis.py",
+      "type": "file",
+      "name": "font_analysis.py",
+      "filePath": "src/analyzers/font_analysis.py",
+      "summary": "Computes deterministic per-tile or per-page visual/structure metrics.",
+      "tags": [
+        "analyzer",
+        "metrics"
+      ],
+      "complexity": "moderate",
+      "language": "python"
+    },
+    {
+      "id": "function:src/analyzers/font_analysis.py:analyze_page_fonts",
+      "type": "function",
+      "name": "analyze_page_fonts",
+      "filePath": "src/analyzers/font_analysis.py",
+      "summary": "Function `analyze_page_fonts` in src/analyzers/font_analysis.py.",
+      "tags": [
+        "analyzer",
+        "metrics",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 29,
+      "endLine": 67
+    },
+    {
+      "id": "function:src/analyzers/font_analysis.py:aggregate_fonts",
+      "type": "function",
+      "name": "aggregate_fonts",
+      "filePath": "src/analyzers/font_analysis.py",
+      "summary": "Function `aggregate_fonts` in src/analyzers/font_analysis.py.",
+      "tags": [
+        "analyzer",
+        "metrics",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 70,
+      "endLine": 82
+    },
+    {
+      "id": "file:src/analyzers/pdf_structure.py",
+      "type": "file",
+      "name": "pdf_structure.py",
+      "filePath": "src/analyzers/pdf_structure.py",
+      "summary": "Computes deterministic per-tile or per-page visual/structure metrics.",
+      "tags": [
+        "analyzer",
+        "metrics"
+      ],
+      "complexity": "moderate",
+      "language": "python"
+    },
+    {
+      "id": "function:src/analyzers/pdf_structure.py:analyze_page_structure",
+      "type": "function",
+      "name": "analyze_page_structure",
+      "filePath": "src/analyzers/pdf_structure.py",
+      "summary": "Function `analyze_page_structure` in src/analyzers/pdf_structure.py.",
+      "tags": [
+        "analyzer",
+        "metrics",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 57,
+      "endLine": 157
+    },
+    {
+      "id": "function:src/analyzers/pdf_structure.py:pikepdf_object_summary",
+      "type": "function",
+      "name": "pikepdf_object_summary",
+      "filePath": "src/analyzers/pdf_structure.py",
+      "summary": "Function `pikepdf_object_summary` in src/analyzers/pdf_structure.py.",
+      "tags": [
+        "analyzer",
+        "metrics",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 160,
+      "endLine": 194
+    },
+    {
+      "id": "file:src/render/docx_renderer.py",
+      "type": "file",
+      "name": "docx_renderer.py",
+      "filePath": "src/render/docx_renderer.py",
+      "summary": "Rendering of DOCX pages is handled by :mod:`pdf_renderer` (PyMuPDF opens DOCX",
+      "tags": [
+        "render",
+        "loader"
+      ],
+      "complexity": "moderate",
+      "language": "python"
+    },
+    {
+      "id": "function:src/render/docx_renderer.py:extract_docx_formatting",
+      "type": "function",
+      "name": "extract_docx_formatting",
+      "filePath": "src/render/docx_renderer.py",
+      "summary": "Function `extract_docx_formatting` in src/render/docx_renderer.py.",
+      "tags": [
+        "render",
+        "loader",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 18,
+      "endLine": 99
+    },
+    {
+      "id": "file:src/server/__main__.py",
+      "type": "file",
+      "name": "__main__.py",
+      "filePath": "src/server/__main__.py",
+      "summary": "FastMCP server entry exposing the analyze_document tool over stdio/SSE.",
+      "tags": [
+        "mcp",
+        "entry-point",
+        "fastmcp"
+      ],
+      "complexity": "simple",
+      "language": "python"
+    },
+    {
+      "id": "file:src/server/app.py",
+      "type": "file",
+      "name": "app.py",
+      "filePath": "src/server/app.py",
+      "summary": "FastMCP server entry exposing the analyze_document tool over stdio/SSE.",
+      "tags": [
+        "mcp",
+        "entry-point",
+        "fastmcp"
+      ],
+      "complexity": "simple",
+      "language": "python"
+    },
+    {
+      "id": "function:src/server/app.py:analyze_document",
+      "type": "function",
+      "name": "analyze_document",
+      "filePath": "src/server/app.py",
+      "summary": "Function `analyze_document` in src/server/app.py.",
+      "tags": [
+        "mcp",
+        "entry-point",
+        "fastmcp",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 46,
+      "endLine": 52
+    },
+    {
+      "id": "function:src/server/app.py:build_server",
+      "type": "function",
+      "name": "build_server",
+      "filePath": "src/server/app.py",
+      "summary": "Function `build_server` in src/server/app.py.",
+      "tags": [
+        "mcp",
+        "entry-point",
+        "fastmcp",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 55,
+      "endLine": 57
+    },
+    {
+      "id": "function:src/server/app.py:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "src/server/app.py",
+      "summary": "Function `main` in src/server/app.py.",
+      "tags": [
+        "mcp",
+        "entry-point",
+        "fastmcp",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 60,
+      "endLine": 62
+    },
+    {
+      "id": "file:src/utils/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "src/utils/__init__.py",
+      "summary": "from .config import Config, load_config, deep_merge",
+      "tags": [
+        "module"
+      ],
+      "complexity": "simple",
+      "language": "python"
+    },
+    {
+      "id": "file:src/utils/geometry.py",
+      "type": "file",
+      "name": "geometry.py",
+      "filePath": "src/utils/geometry.py",
+      "summary": "from __future__ import annotations",
+      "tags": [
+        "module"
+      ],
+      "complexity": "simple",
+      "language": "python"
+    },
+    {
+      "id": "function:src/utils/geometry.py:area",
+      "type": "function",
+      "name": "area",
+      "filePath": "src/utils/geometry.py",
+      "summary": "Function `area` in src/utils/geometry.py.",
+      "tags": [
+        "module",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 6,
+      "endLine": 9
+    },
+    {
+      "id": "function:src/utils/geometry.py:intersection",
+      "type": "function",
+      "name": "intersection",
+      "filePath": "src/utils/geometry.py",
+      "summary": "Function `intersection` in src/utils/geometry.py.",
+      "tags": [
+        "module",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 12,
+      "endLine": 19
+    },
+    {
+      "id": "function:src/utils/geometry.py:iou",
+      "type": "function",
+      "name": "iou",
+      "filePath": "src/utils/geometry.py",
+      "summary": "Function `iou` in src/utils/geometry.py.",
+      "tags": [
+        "module",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 22,
+      "endLine": 27
+    },
+    {
+      "id": "function:src/utils/geometry.py:center",
+      "type": "function",
+      "name": "center",
+      "filePath": "src/utils/geometry.py",
+      "summary": "Function `center` in src/utils/geometry.py.",
+      "tags": [
+        "module",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 30,
+      "endLine": 31
+    },
+    {
+      "id": "function:src/utils/geometry.py:scale_bbox",
+      "type": "function",
+      "name": "scale_bbox",
+      "filePath": "src/utils/geometry.py",
+      "summary": "Function `scale_bbox` in src/utils/geometry.py.",
+      "tags": [
+        "module",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 34,
+      "endLine": 35
+    },
+    {
+      "id": "file:src/utils/logging.py",
+      "type": "file",
+      "name": "logging.py",
+      "filePath": "src/utils/logging.py",
+      "summary": "MCP servers communicate over stdout (stdio transport), so all diagnostic",
+      "tags": [
+        "module"
+      ],
+      "complexity": "simple",
+      "language": "python"
+    },
+    {
+      "id": "function:src/utils/logging.py:get_logger",
+      "type": "function",
+      "name": "get_logger",
+      "filePath": "src/utils/logging.py",
+      "summary": "Function `get_logger` in src/utils/logging.py.",
+      "tags": [
+        "module",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 30,
+      "endLine": 33
+    },
+    {
+      "id": "file:tests/test_mcp.py",
+      "type": "file",
+      "name": "test_mcp.py",
+      "filePath": "tests/test_mcp.py",
+      "summary": "Automated test module validating pipeline behavior (test_mcp.py).",
+      "tags": [
+        "test",
+        "pytest"
+      ],
+      "complexity": "simple",
+      "language": "python"
+    },
+    {
+      "id": "function:tests/test_mcp.py:test_tool_registered",
+      "type": "function",
+      "name": "test_tool_registered",
+      "filePath": "tests/test_mcp.py",
+      "summary": "Function `test_tool_registered` in tests/test_mcp.py.",
+      "tags": [
+        "test",
+        "pytest",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 30,
+      "endLine": 37
+    },
+    {
+      "id": "function:tests/test_mcp.py:test_mcp_analyze_document_invocation",
+      "type": "function",
+      "name": "test_mcp_analyze_document_invocation",
+      "filePath": "tests/test_mcp.py",
+      "summary": "Function `test_mcp_analyze_document_invocation` in tests/test_mcp.py.",
+      "tags": [
+        "test",
+        "pytest",
+        "function"
+      ],
+      "complexity": "simple",
+      "startLine": 40,
+      "endLine": 56
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:src/analyzers/font_analysis.py",
+      "target": "function:src/analyzers/font_analysis.py:analyze_page_fonts",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/analyzers/font_analysis.py",
+      "target": "function:src/analyzers/font_analysis.py:aggregate_fonts",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/analyzers/font_analysis.py",
+      "target": "file:src/utils/logging.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/pdf_structure.py",
+      "target": "function:src/analyzers/pdf_structure.py:analyze_page_structure",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/analyzers/pdf_structure.py",
+      "target": "function:src/analyzers/pdf_structure.py:pikepdf_object_summary",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/analyzers/pdf_structure.py",
+      "target": "file:src/analyzers/font_analysis.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/pdf_structure.py",
+      "target": "file:src/analyzers/image_scaling.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/pdf_structure.py",
+      "target": "file:src/utils/config.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/pdf_structure.py",
+      "target": "file:src/utils/geometry.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/analyzers/pdf_structure.py",
+      "target": "file:src/utils/logging.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/render/docx_renderer.py",
+      "target": "function:src/render/docx_renderer.py:extract_docx_formatting",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/render/docx_renderer.py",
+      "target": "file:src/utils/logging.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/server/__main__.py",
+      "target": "file:src/server/app.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/server/app.py",
+      "target": "function:src/server/app.py:analyze_document",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/server/app.py",
+      "target": "function:src/server/app.py:build_server",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/server/app.py",
+      "target": "function:src/server/app.py:main",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/server/app.py",
+      "target": "file:src/tools/analyze.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/server/app.py",
+      "target": "file:src/utils/logging.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/utils/__init__.py",
+      "target": "file:src/utils/config.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/utils/__init__.py",
+      "target": "file:src/utils/logging.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/utils/geometry.py",
+      "target": "function:src/utils/geometry.py:area",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/utils/geometry.py",
+      "target": "function:src/utils/geometry.py:intersection",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/utils/geometry.py",
+      "target": "function:src/utils/geometry.py:iou",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/utils/geometry.py",
+      "target": "function:src/utils/geometry.py:center",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/utils/geometry.py",
+      "target": "function:src/utils/geometry.py:scale_bbox",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/utils/logging.py",
+      "target": "function:src/utils/logging.py:get_logger",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/utils/logging.py",
+      "target": "file:src/utils/logging.py",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tests/test_mcp.py",
+      "target": "function:tests/test_mcp.py:test_tool_registered",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/test_mcp.py",
+      "target": "function:tests/test_mcp.py:test_mcp_analyze_document_invocation",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/test_mcp.py",
+      "target": "file:src/server/app.py",
+      "type": "imports",
+      "weight": 0.7
+    }
+  ],
+  "batchIndex": 4
+}

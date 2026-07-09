@@ -1,0 +1,686 @@
+{
+  "nodes": [
+    {
+      "id": "file:src/detectors/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "src/detectors/__init__.py",
+      "summary": "Package barrel that re-exports all forensic detector modules (blur, compression, DPI, font, OCR confidence, stretch, structure) for unified import by the analysis pipeline.",
+      "tags": [
+        "entry-point",
+        "barrel",
+        "detectors"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/detectors/_common.py",
+      "type": "file",
+      "name": "_common.py",
+      "filePath": "src/detectors/_common.py",
+      "summary": "Shared detector utilities implementing z-score based outlier detection on tile metrics and standardized Finding construction for page-level forensic signals.",
+      "tags": [
+        "utility",
+        "detectors",
+        "validation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/detectors/blur_detector.py",
+      "type": "file",
+      "name": "blur_detector.py",
+      "filePath": "src/detectors/blur_detector.py",
+      "summary": "Detects abnormally blurry document regions by flagging tiles whose blur score falls below page-level z-score thresholds.",
+      "tags": [
+        "detectors",
+        "forensics",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/detectors/compression_detector.py",
+      "type": "file",
+      "name": "compression_detector.py",
+      "filePath": "src/detectors/compression_detector.py",
+      "summary": "Identifies compression artifacts by applying two-sided z-score analysis on tile compression metrics to surface anomalous regions.",
+      "tags": [
+        "detectors",
+        "forensics",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/detectors/dpi_detector.py",
+      "type": "file",
+      "name": "dpi_detector.py",
+      "filePath": "src/detectors/dpi_detector.py",
+      "summary": "Flags embedded images with effective DPI below configured thresholds, indicating upscaled or low-resolution content inserted into the document.",
+      "tags": [
+        "detectors",
+        "forensics",
+        "service"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/detectors/font_detector.py",
+      "type": "file",
+      "name": "font_detector.py",
+      "filePath": "src/detectors/font_detector.py",
+      "summary": "Detects rare or suspicious fonts across the document by comparing aggregated font usage against minimum span-count and rarity thresholds.",
+      "tags": [
+        "detectors",
+        "forensics",
+        "service"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/detectors/ocr_confidence_detector.py",
+      "type": "file",
+      "name": "ocr_confidence_detector.py",
+      "filePath": "src/detectors/ocr_confidence_detector.py",
+      "summary": "Surfaces tiles with unusually low OCR confidence scores, indicating potentially manipulated or low-quality text regions.",
+      "tags": [
+        "detectors",
+        "forensics",
+        "ocr"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/detectors/stretch_detector.py",
+      "type": "file",
+      "name": "stretch_detector.py",
+      "filePath": "src/detectors/stretch_detector.py",
+      "summary": "Detects non-uniform scaling of embedded images by comparing horizontal and vertical scale factors against configured stretch thresholds.",
+      "tags": [
+        "detectors",
+        "forensics",
+        "service"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/detectors/_common.py:collect_metric",
+      "type": "function",
+      "name": "collect_metric",
+      "filePath": "src/detectors/_common.py",
+      "lineRange": [
+        23,
+        46
+      ],
+      "summary": "Extracts a named metric from tiles that meet minimum text-density requirements, returning aligned index and value arrays for z-score analysis.",
+      "tags": [
+        "utility",
+        "detectors",
+        "metrics"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/detectors/_common.py:low_side_zscore_findings",
+      "type": "function",
+      "name": "low_side_zscore_findings",
+      "filePath": "src/detectors/_common.py",
+      "lineRange": [
+        49,
+        97
+      ],
+      "summary": "Generates Finding objects for tiles whose metric values fall significantly below the page mean, with optional absolute floor filtering.",
+      "tags": [
+        "detectors",
+        "validation",
+        "forensics"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/detectors/_common.py:two_sided_zscore_findings",
+      "type": "function",
+      "name": "two_sided_zscore_findings",
+      "filePath": "src/detectors/_common.py",
+      "lineRange": [
+        100,
+        131
+      ],
+      "summary": "Flags tiles with metric values deviating in either direction from the page mean using absolute z-score thresholds.",
+      "tags": [
+        "detectors",
+        "validation",
+        "forensics"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/detectors/_common.py:_make_finding",
+      "type": "function",
+      "name": "_make_finding",
+      "filePath": "src/detectors/_common.py",
+      "lineRange": [
+        134,
+        163
+      ],
+      "summary": "Constructs a standardized Finding instance with rounded metrics, confidence score, and explanatory text from a tile and detection context.",
+      "tags": [
+        "utility",
+        "serialization",
+        "detectors"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/detectors/blur_detector.py:detect",
+      "type": "function",
+      "name": "detect",
+      "filePath": "src/detectors/blur_detector.py",
+      "lineRange": [
+        14,
+        33
+      ],
+      "summary": "Entry point for blur detection that reads detector config and delegates to low-side z-score analysis on tile blur scores.",
+      "tags": [
+        "detectors",
+        "forensics",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/detectors/compression_detector.py:detect",
+      "type": "function",
+      "name": "detect",
+      "filePath": "src/detectors/compression_detector.py",
+      "lineRange": [
+        15,
+        31
+      ],
+      "summary": "Entry point for compression artifact detection using two-sided z-score analysis on tile compression metrics.",
+      "tags": [
+        "detectors",
+        "forensics",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/detectors/dpi_detector.py:detect",
+      "type": "function",
+      "name": "detect",
+      "filePath": "src/detectors/dpi_detector.py",
+      "lineRange": [
+        16,
+        61
+      ],
+      "summary": "Evaluates each embedded image's effective DPI against minimum thresholds and emits low_dpi findings with confidence scaled by deficit.",
+      "tags": [
+        "detectors",
+        "forensics",
+        "service"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/detectors/font_detector.py:detect",
+      "type": "function",
+      "name": "detect",
+      "filePath": "src/detectors/font_detector.py",
+      "lineRange": [
+        18,
+        77
+      ],
+      "summary": "Identifies rare fonts and excessive font diversity across the document, emitting rare_font and too_many_fonts findings.",
+      "tags": [
+        "detectors",
+        "forensics",
+        "service"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/detectors/ocr_confidence_detector.py:detect",
+      "type": "function",
+      "name": "detect",
+      "filePath": "src/detectors/ocr_confidence_detector.py",
+      "lineRange": [
+        14,
+        34
+      ],
+      "summary": "Detects tiles with abnormally low OCR confidence by applying low-side z-score analysis on ocr_confidence tile metrics.",
+      "tags": [
+        "detectors",
+        "forensics",
+        "ocr"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/detectors/stretch_detector.py:detect",
+      "type": "function",
+      "name": "detect",
+      "filePath": "src/detectors/stretch_detector.py",
+      "lineRange": [
+        15,
+        59
+      ],
+      "summary": "Flags embedded images with asymmetric scale_x and scale_y values indicating non-uniform stretching or squashing.",
+      "tags": [
+        "detectors",
+        "forensics",
+        "service"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:src/detectors/__init__.py",
+      "target": "file:src/detectors/blur_detector.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/detectors/__init__.py",
+      "target": "file:src/detectors/compression_detector.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/detectors/__init__.py",
+      "target": "file:src/detectors/dpi_detector.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/detectors/__init__.py",
+      "target": "file:src/detectors/font_detector.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/detectors/__init__.py",
+      "target": "file:src/detectors/ocr_confidence_detector.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/detectors/__init__.py",
+      "target": "file:src/detectors/stretch_detector.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/detectors/__init__.py",
+      "target": "file:src/detectors/structure_detector.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/detectors/_common.py",
+      "target": "file:src/schemas/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/detectors/blur_detector.py",
+      "target": "file:src/detectors/_common.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/detectors/blur_detector.py",
+      "target": "file:src/schemas/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/detectors/blur_detector.py",
+      "target": "file:src/utils/config.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/detectors/compression_detector.py",
+      "target": "file:src/detectors/_common.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/detectors/compression_detector.py",
+      "target": "file:src/schemas/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/detectors/compression_detector.py",
+      "target": "file:src/utils/config.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/detectors/dpi_detector.py",
+      "target": "file:src/schemas/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/detectors/dpi_detector.py",
+      "target": "file:src/utils/config.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/detectors/font_detector.py",
+      "target": "file:src/schemas/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/detectors/font_detector.py",
+      "target": "file:src/utils/config.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/detectors/ocr_confidence_detector.py",
+      "target": "file:src/detectors/_common.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/detectors/ocr_confidence_detector.py",
+      "target": "file:src/schemas/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/detectors/ocr_confidence_detector.py",
+      "target": "file:src/utils/config.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/detectors/stretch_detector.py",
+      "target": "file:src/schemas/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/detectors/stretch_detector.py",
+      "target": "file:src/utils/config.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/detectors/_common.py",
+      "target": "function:src/detectors/_common.py:collect_metric",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/detectors/_common.py",
+      "target": "function:src/detectors/_common.py:low_side_zscore_findings",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/detectors/_common.py",
+      "target": "function:src/detectors/_common.py:two_sided_zscore_findings",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/detectors/_common.py",
+      "target": "function:src/detectors/_common.py:_make_finding",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/detectors/blur_detector.py",
+      "target": "function:src/detectors/blur_detector.py:detect",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/detectors/compression_detector.py",
+      "target": "function:src/detectors/compression_detector.py:detect",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/detectors/dpi_detector.py",
+      "target": "function:src/detectors/dpi_detector.py:detect",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/detectors/font_detector.py",
+      "target": "function:src/detectors/font_detector.py:detect",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/detectors/ocr_confidence_detector.py",
+      "target": "function:src/detectors/ocr_confidence_detector.py:detect",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/detectors/stretch_detector.py",
+      "target": "function:src/detectors/stretch_detector.py:detect",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/detectors/_common.py",
+      "target": "function:src/detectors/_common.py:collect_metric",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/detectors/_common.py",
+      "target": "function:src/detectors/_common.py:low_side_zscore_findings",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/detectors/_common.py",
+      "target": "function:src/detectors/_common.py:two_sided_zscore_findings",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/detectors/_common.py",
+      "target": "function:src/detectors/_common.py:_make_finding",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/detectors/blur_detector.py",
+      "target": "function:src/detectors/blur_detector.py:detect",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/detectors/compression_detector.py",
+      "target": "function:src/detectors/compression_detector.py:detect",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/detectors/dpi_detector.py",
+      "target": "function:src/detectors/dpi_detector.py:detect",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/detectors/font_detector.py",
+      "target": "function:src/detectors/font_detector.py:detect",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/detectors/ocr_confidence_detector.py",
+      "target": "function:src/detectors/ocr_confidence_detector.py:detect",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/detectors/stretch_detector.py",
+      "target": "function:src/detectors/stretch_detector.py:detect",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/detectors/_common.py:low_side_zscore_findings",
+      "target": "function:src/detectors/_common.py:collect_metric",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/detectors/_common.py:low_side_zscore_findings",
+      "target": "function:src/detectors/_common.py:_make_finding",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/detectors/_common.py:two_sided_zscore_findings",
+      "target": "function:src/detectors/_common.py:collect_metric",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/detectors/_common.py:two_sided_zscore_findings",
+      "target": "function:src/detectors/_common.py:_make_finding",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/detectors/_common.py:_make_finding",
+      "target": "class:src/schemas/models.py:Finding",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/detectors/blur_detector.py:detect",
+      "target": "function:src/detectors/_common.py:low_side_zscore_findings",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/detectors/compression_detector.py:detect",
+      "target": "function:src/detectors/_common.py:two_sided_zscore_findings",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/detectors/ocr_confidence_detector.py:detect",
+      "target": "function:src/detectors/_common.py:low_side_zscore_findings",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/detectors/dpi_detector.py:detect",
+      "target": "class:src/schemas/models.py:Finding",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/detectors/font_detector.py:detect",
+      "target": "class:src/schemas/models.py:Finding",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/detectors/stretch_detector.py:detect",
+      "target": "class:src/schemas/models.py:Finding",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/detectors/blur_detector.py",
+      "target": "file:tests/test_detectors.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/detectors/dpi_detector.py",
+      "target": "file:tests/test_detectors.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/detectors/font_detector.py",
+      "target": "file:tests/test_detectors.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/detectors/stretch_detector.py",
+      "target": "file:tests/test_detectors.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}
