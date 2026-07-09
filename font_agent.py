@@ -137,7 +137,8 @@ def main() -> None:
         print(f"Loaded existing result: {args.result}")
     else:
         print(f"Analyzing fonts: {args.document}")
-        result = analyze_document(args.document, FONT_ONLY_OPTIONS)
+        batch = analyze_document(args.document, FONT_ONLY_OPTIONS)
+        result = batch["results"][0]
         result_path = os.path.splitext(args.document)[0] + " - fonts result.json"
         with open(result_path, "w", encoding="utf-8") as fh:
             json.dump(result, fh, indent=2)
