@@ -58,10 +58,23 @@ def _document_id(path: str) -> str:
 
 
 def analyze_document(
+    document_paths: list[str] | str,
+    options: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Run the full forensic pipeline for each document and return results."""
+    if isinstance(document_paths, str):
+        document_paths = [document_paths]
+    if not isinstance(document_paths, list) or not all(isinstance(p, str) for p in document_paths):
+        raise TypeError("document_paths must be a list of file path strings")
+    results = [_analyze_single_document(path, options) for path in document_paths]
+    return {"results": results}
+
+
+def _analyze_single_document(
     document_path: str,
     options: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    """Run the full forensic pipeline and return a schema-valid dict."""
+    """Run the full forensic pipeline for one document and return a schema-valid dict."""
     warnings: list[str] = []
     errors: list[str] = []
 

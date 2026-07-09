@@ -172,25 +172,29 @@ visual-forensics-mcp
 The server exposes a single primary tool:
 
 ```python
-analyze_document(document_path: str, options: dict | None = None)
+analyze_document(document_paths: list[str], options: dict | None = None)
 ```
 
-It returns a JSON object with this exact top-level shape:
+It returns a JSON object with a `results` array. Each element has this shape:
 
 ```json
 {
-  "document_id": "...",
-  "document_type": "...",
-  "summary": {},
-  "page_results": [],
-  "document_findings": [],
-  "warnings": [],
-  "errors": []
+  "results": [
+    {
+      "document_id": "...",
+      "document_type": "...",
+      "summary": {},
+      "page_results": [],
+      "document_findings": [],
+      "warnings": [],
+      "errors": []
+    }
+  ]
 }
 ```
 
-Every **finding** (in `page_results[].findings` and `document_findings`) has the
-required schema:
+Every **finding** (in `results[].page_results[].findings` and
+`results[].document_findings`) has the required schema:
 
 ```json
 {
@@ -245,9 +249,9 @@ stdio MCP server** in your UiPath agent / MCP client configuration:
 
 Typical agent flow:
 
-1. UiPath downloads / locates the document and resolves a local file path.
-2. The agent calls `analyze_document` with that path (and optional `options`).
-3. The agent reads `summary`, `page_results[].findings`, and
+1. UiPath downloads / locates the document(s) and resolves local file paths.
+2. The agent calls `analyze_document` with those paths (and optional `options`).
+3. The agent reads each result's `summary`, `page_results[].findings`, and
    `document_findings`, and applies its own business rules / human-in-the-loop
    logic to decide what to do next.
 
@@ -260,7 +264,7 @@ the same evidence — ideal for auditable, repeatable RPA workflows.
 {
   "tool": "analyze_document",
   "arguments": {
-    "document_path": "C:/docs/invoice.pdf",
+    "document_paths": ["C:/docs/invoice.pdf", "C:/docs/receipt.pdf"],
     "options": { "render": { "dpi": 200 }, "features": { "enable_ocr": true } }
   }
 }
@@ -273,52 +277,56 @@ raster insert and one rare-font line):
 
 ```json
 {
-  "document_id": "5f34550e05450828",
-  "document_type": "pdf",
-  "summary": {
-    "page_count": 1,
-    "tile_count": 20,
-    "finding_count": 4,
-    "findings_by_type": {
-      "resolution_anomaly": 1,
-      "image_stretch": 1,
-      "raster_in_vector_anomaly": 1,
-      "font_mismatch": 1
-    },
-    "ocr_available": false,
-    "pdf_structure_available": true
-  },
-  "page_results": [
+  "results": [
     {
-      "page": 1,
-      "width": 1700,
-      "height": 2200,
-      "dpi": 200.0,
-      "is_vector": true,
-      "findings": [
+      "document_id": "5f34550e05450828",
+      "document_type": "pdf",
+      "summary": {
+        "page_count": 1,
+        "tile_count": 20,
+        "finding_count": 4,
+        "findings_by_type": {
+          "resolution_anomaly": 1,
+          "image_stretch": 1,
+          "raster_in_vector_anomaly": 1,
+          "font_mismatch": 1
+        },
+        "ocr_available": false,
+        "pdf_structure_available": true
+      },
+      "page_results": [
         {
-          "type": "image_stretch",
           "page": 1,
-          "bbox": [888.89, 833.33, 1444.44, 1166.67],
-          "metrics": { "scale_x": 5.0, "scale_y": 3.0, "stretch_ratio": 0.4, "xref": 32 },
-          "confidence": 0.4,
-          "explanation": "Embedded image is scaled non-uniformly (horizontal and vertical scale factors differ), distorting the image."
+          "width": 1700,
+          "height": 2200,
+          "dpi": 200.0,
+          "is_vector": true,
+          "findings": [
+            {
+              "type": "image_stretch",
+              "page": 1,
+              "bbox": [888.89, 833.33, 1444.44, 1166.67],
+              "metrics": { "scale_x": 5.0, "scale_y": 3.0, "stretch_ratio": 0.4, "xref": 32 },
+              "confidence": 0.4,
+              "explanation": "Embedded image is scaled non-uniformly (horizontal and vertical scale factors differ), distorting the image."
+            }
+          ]
         }
-      ]
+      ],
+      "document_findings": [
+        {
+          "type": "font_mismatch",
+          "page": 0,
+          "bbox": [0, 0, 0, 0],
+          "metrics": { "font": "Times-Roman", "span_count": 1, "share": 0.04 },
+          "confidence": 0.6,
+          "explanation": "A font family is used on only a small fraction of text spans, an unusual change versus the dominant fonts."
+        }
+      ],
+      "warnings": ["Tesseract OCR binary not available; OCR metrics and the OCR-confidence detector are disabled for this run."],
+      "errors": []
     }
-  ],
-  "document_findings": [
-    {
-      "type": "font_mismatch",
-      "page": 0,
-      "bbox": [0, 0, 0, 0],
-      "metrics": { "font": "Times-Roman", "span_count": 1, "share": 0.04 },
-      "confidence": 0.6,
-      "explanation": "A font family is used on only a small fraction of text spans, an unusual change versus the dominant fonts."
-    }
-  ],
-  "warnings": ["Tesseract OCR binary not available; OCR metrics and the OCR-confidence detector are disabled for this run."],
-  "errors": []
+  ]
 }
 ```
 

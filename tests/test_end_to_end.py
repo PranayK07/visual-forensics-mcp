@@ -20,7 +20,7 @@ def _validate_findings(result: dict):
 
 
 def test_end_to_end_pdf(sample_pdf, fast_options):
-    result = analyze_document(sample_pdf, fast_options)
+    result = analyze_document([sample_pdf], fast_options)["results"][0]
 
     # Schema-valid (re-parse through pydantic).
     AnalysisResult.model_validate(result)
@@ -50,7 +50,7 @@ def test_end_to_end_pdf(sample_pdf, fast_options):
 
 
 def test_end_to_end_docx(sample_docx, fast_options):
-    result = analyze_document(sample_docx, fast_options)
+    result = analyze_document([sample_docx], fast_options)["results"][0]
     AnalysisResult.model_validate(result)
     assert result["document_type"] == "docx"
     assert result["errors"] == []
@@ -61,10 +61,22 @@ def test_end_to_end_docx(sample_docx, fast_options):
 
 def test_end_to_end_scanned_pdf(scanned_pdf, fast_options):
     """Image-only PDFs must analyze without errors (no text/vector layer)."""
-    result = analyze_document(scanned_pdf, fast_options)
+    result = analyze_document([scanned_pdf], fast_options)["results"][0]
     AnalysisResult.model_validate(result)
     assert result["errors"] == []
     assert result["summary"]["page_count"] == 1
     page = result["page_results"][0]
     # A full-page raster => high raster coverage, not flagged as vector insert.
     assert page["page_metrics"]
+
+
+def test_end_to_end_multiple_documents(sample_pdf, sample_docx, fast_options):
+    batch = analyze_document([sample_pdf, sample_docx], fast_options)
+    assert len(batch["results"]) == 2
+    pdf_result, docx_result = batch["results"]
+    assert pdf_result["document_type"] == "pdf"
+    assert docx_result["document_type"] == "docx"
+    assert pdf_result["errors"] == []
+    assert docx_result["errors"] == []
+    AnalysisResult.model_validate(pdf_result)
+    AnalysisResult.model_validate(docx_result)

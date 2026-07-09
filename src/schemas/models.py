@@ -1,17 +1,21 @@
 """Pydantic models that define the deterministic JSON contract.
 
 These models are the single source of truth for the shape of the data returned
-by the ``analyze_document`` MCP tool. The top-level :class:`AnalysisResult`
-matches the schema required by the UiPath agent::
+by the ``analyze_document`` MCP tool. The top-level :class:`BatchAnalysisResult`
+wraps one :class:`AnalysisResult` per input document::
 
     {
-      "document_id": "...",
-      "document_type": "...",
-      "summary": {},
-      "page_results": [],
-      "document_findings": [],
-      "warnings": [],
-      "errors": []
+      "results": [
+        {
+          "document_id": "...",
+          "document_type": "...",
+          "summary": {},
+          "page_results": [],
+          "document_findings": [],
+          "warnings": [],
+          "errors": []
+        }
+      ]
     }
 """
 
@@ -125,7 +129,7 @@ class AnalysisSummary(BaseModel):
 
 
 class AnalysisResult(BaseModel):
-    """Top-level response returned by ``analyze_document``."""
+    """Per-document analysis output."""
 
     document_id: str
     document_type: str
@@ -134,3 +138,9 @@ class AnalysisResult(BaseModel):
     document_findings: list[Finding] = Field(default_factory=list)
     warnings: list[str] = Field(default_factory=list)
     errors: list[str] = Field(default_factory=list)
+
+
+class BatchAnalysisResult(BaseModel):
+    """Top-level response returned by ``analyze_document``."""
+
+    results: list[AnalysisResult] = Field(default_factory=list)

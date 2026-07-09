@@ -5,7 +5,7 @@ from __future__ import annotations
 import pytest
 from pydantic import ValidationError
 
-from src.schemas.models import AnalysisResult, Finding, PageResult
+from src.schemas.models import AnalysisResult, BatchAnalysisResult, Finding, PageResult
 
 
 def test_finding_requires_four_element_bbox():
@@ -51,3 +51,17 @@ def test_analysis_result_roundtrip():
     reparsed = AnalysisResult.model_validate(dumped)
     assert reparsed.document_id == "abc123"
     assert reparsed.document_findings[0].metrics["blur_score"] == 12.4
+
+
+def test_batch_analysis_result_roundtrip():
+    single = AnalysisResult(
+        document_id="abc123",
+        document_type="pdf",
+        page_results=[PageResult(page=1, width=100, height=200, dpi=400)],
+    )
+    batch = BatchAnalysisResult(results=[single])
+    dumped = batch.model_dump()
+    assert "results" in dumped
+    assert len(dumped["results"]) == 1
+    reparsed = BatchAnalysisResult.model_validate(dumped)
+    assert reparsed.results[0].document_id == "abc123"

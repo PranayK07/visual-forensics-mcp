@@ -38,17 +38,18 @@ def main() -> None:
     print(f"Wrote {docx_path}")
 
     options = {"render": {"dpi": 200}, "features": {"enable_ocr": True}}
-    result = analyze_document(pdf_path, options)
+    batch = analyze_document([pdf_path], options)
+    result = batch["results"][0]
 
     response_path = os.path.join(HERE, "sample_response.json")
     with open(response_path, "w", encoding="utf-8") as fh:
-        json.dump(result, fh, indent=2)
+        json.dump(batch, fh, indent=2)
     print(f"Wrote {response_path}")
 
     request = {
         "tool": "analyze_document",
         "arguments": {
-            "document_path": pdf_path.replace("\\", "/"),
+            "document_paths": [pdf_path.replace("\\", "/")],
             "options": options,
         },
     }
