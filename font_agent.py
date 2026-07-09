@@ -153,20 +153,31 @@ def main() -> None:
 
     # DOCX inputs are annotated on their converted-PDF rendition.
     input_pdf = args.document
-    if os.path.splitext(args.document)[1].lower() != ".pdf":
-        import fitz  # PyMuPDF
+    tmp_converted: str | None = None
+    try:
+        if os.path.splitext(args.document)[1].lower() != ".pdf":
+            import fitz  # PyMuPDF
+            import tempfile
 
-        converted = os.path.splitext(args.document)[0] + " - converted.pdf"
-        with fitz.open(args.document) as doc:
-            pdf_bytes = doc.convert_to_pdf()
-        with open(converted, "wb") as fh:
-            fh.write(pdf_bytes)
-        input_pdf = converted
-        print(f"Converted to PDF for annotation: {converted}")
+            fd, tmp_converted = tempfile.mkstemp(
+                suffix=".pdf", prefix="font_agent_converted_"
+            )
+            os.close(fd)
+            with fitz.open(args.document) as doc:
+                pdf_bytes = doc.convert_to_pdf()
+            with open(tmp_converted, "wb") as fh:
+                fh.write(pdf_bytes)
+            input_pdf = tmp_converted
+            print(f"Converted to PDF for annotation: {tmp_converted}")
 
-    config = load_config(overrides=FONT_ONLY_OPTIONS)
-    out = annotate_document(input_pdf, result, out, config)
-
+        config = load_config(overrides=FONT_ONLY_OPTIONS)
+        out = annotate_document(input_pdf, result, out, config)
+    finally:
+        if tmp_converted:
+            try:
+                os.remove(tmp_converted)
+            except OSError:
+                pass
     report = build_font_report(result)
     print_font_report(report)
     print(f"\nAnnotated PDF : {out}")
