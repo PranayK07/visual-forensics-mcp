@@ -184,19 +184,30 @@ def analyze_document(
         # Located font outliers need the document-wide dominant font, so they
         # run as a second pass once every page's fonts have been aggregated.
         if pdf_doc is not None:
+            outlier_fonts = aggregated_fonts
+            # For DOCX, aggregated_fonts may include python-docx formatting (original
+            # font names) in addition to the converted-PDF rendition used for span
+            # locations. Base dominance for located outliers on the converted-PDF
+            # fonts to avoid false positives from font substitution.
+            if loaded.doc_type == "docx":
+                outlier_fonts = font_analysis.aggregate_fonts(
+                    [[f.model_dump() for f in p.fonts] for p in page_results]
+                )
+
             for page_result in page_results:
                 idx = page_result.page - 1
                 if idx < 0 or idx >= pdf_doc.page_count:
                     continue
                 try:
                     pts_to_px = page_result.dpi / 72.0
-                    spans = font_analysis.extract_font_spans(
-                        pdf_doc[idx], pts_to_px
-                    )
+                    spans = font_analysis.extract_font_spans(pdf_doc[idx], pts_to_px)
                     page_result.findings.extend(
                         font_outlier_detector.detect(
-                            spans, aggregated_fonts, page_result.page,
-                            pts_to_px, config,
+                            spans,
+                            outlier_fonts,
+                            page_result.page,
+                            pts_to_px,
+                            config,
                         )
                     )
                     page_result.findings = page_result.findings[:max_findings]
