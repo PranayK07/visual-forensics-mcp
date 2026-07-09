@@ -37,7 +37,9 @@ def _merge_regions(
     for span in sorted(spans, key=lambda s: (s["bbox"][1], s["bbox"][0])):
         x1, y1, x2, y2 = span["bbox"]
         merged = False
-        for region in regions:
+        i = 0
+        while i < len(regions):
+            region = regions[i]
             rx1, ry1, rx2, ry2 = region["bbox"]
             if (
                 x1 <= rx2 + gap_px
@@ -51,8 +53,40 @@ def _merge_regions(
                 region["text"] += " " + span["text"]
                 region["sizes"].add(span["size"])
                 region["span_count"] += 1
+
+                # Collapse any regions that became connected by this merge.
+                j = 0
+                while j < len(regions):
+                    if j == i:
+                        j += 1
+                        continue
+                    other = regions[j]
+                    ox1, oy1, ox2, oy2 = other["bbox"]
+                    nrx1, nry1, nrx2, nry2 = region["bbox"]
+                    if (
+                        ox1 <= nrx2 + gap_px
+                        and ox2 >= nrx1 - gap_px
+                        and oy1 <= nry2 + gap_px
+                        and oy2 >= nry1 - gap_px
+                    ):
+                        region["bbox"] = [
+                            min(nrx1, ox1),
+                            min(nry1, oy1),
+                            max(nrx2, ox2),
+                            max(nry2, oy2),
+                        ]
+                        region["text"] += " " + other["text"]
+                        region["sizes"].update(other["sizes"])
+                        region["span_count"] += other["span_count"]
+                        regions.pop(j)
+                        if j < i:
+                            i -= 1
+                        continue
+                    j += 1
+
                 merged = True
                 break
+            i += 1
         if not merged:
             regions.append(
                 {
