@@ -9,6 +9,7 @@ from .models import (
     PageResult,
     AnalysisSummary,
     AnalysisResult,
+    BatchAnalysisResult,
 )
 
 __all__ = [
@@ -20,4 +21,5 @@ __all__ = [
     "PageResult",
     "AnalysisSummary",
     "AnalysisResult",
+    "BatchAnalysisResult",
 ]

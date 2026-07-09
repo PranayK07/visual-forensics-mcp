@@ -21,6 +21,7 @@ from ..detectors import (
     compression_detector,
     dpi_detector,
     font_detector,
+    font_outlier_detector,
     ocr_confidence_detector,
     stretch_detector,
     structure_detector,
@@ -57,10 +58,23 @@ def _document_id(path: str) -> str:
 
 
 def analyze_document(
+    document_paths: list[str] | str,
+    options: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Run the full forensic pipeline for each document and return results."""
+    if isinstance(document_paths, str):
+        document_paths = [document_paths]
+    if not isinstance(document_paths, list) or not all(isinstance(p, str) for p in document_paths):
+        raise TypeError("document_paths must be a list of file path strings")
+    results = [_analyze_single_document(path, options) for path in document_paths]
+    return {"results": results}
+
+
+def _analyze_single_document(
     document_path: str,
     options: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    """Run the full forensic pipeline and return a schema-valid dict."""
+    """Run the full forensic pipeline for one document and return a schema-valid dict."""
     warnings: list[str] = []
     errors: list[str] = []
 
@@ -179,6 +193,42 @@ def analyze_document(
             )
         except Exception as exc:
             warnings.append(f"Font detector failed: {exc}")
+
+        # Located font outliers need the document-wide dominant font, so they
+        # run as a second pass once every page's fonts have been aggregated.
+        if pdf_doc is not None:
+            outlier_fonts = aggregated_fonts
+            # For DOCX, aggregated_fonts may include python-docx formatting (original
+            # font names) in addition to the converted-PDF rendition used for span
+            # locations. Base dominance for located outliers on the converted-PDF
+            # fonts to avoid false positives from font substitution.
+            if loaded.doc_type == "docx":
+                outlier_fonts = font_analysis.aggregate_fonts(
+                    [[f.model_dump() for f in p.fonts] for p in page_results]
+                )
+
+            for page_result in page_results:
+                idx = page_result.page - 1
+                if idx < 0 or idx >= pdf_doc.page_count:
+                    continue
+                try:
+                    pts_to_px = page_result.dpi / 72.0
+                    spans = font_analysis.extract_font_spans(pdf_doc[idx], pts_to_px)
+                    page_result.findings.extend(
+                        font_outlier_detector.detect(
+                            spans,
+                            outlier_fonts,
+                            page_result.page,
+                            pts_to_px,
+                            config,
+                        )
+                    )
+                    page_result.findings = page_result.findings[:max_findings]
+                except Exception as exc:
+                    warnings.append(
+                        f"Font outlier detection failed on page "
+                        f"{page_result.page}: {exc}"
+                    )
 
     # ---- summary -----------------------------------------------------------
     finding_count = sum(len(p.findings) for p in page_results) + len(document_findings)

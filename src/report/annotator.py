@@ -41,6 +41,7 @@ TYPE_COLORS: dict[str, tuple[float, float, float]] = {
     "ocr_confidence_anomaly": (0.90, 0.35, 0.60),   # pink
     "object_overlap_anomaly": (0.55, 0.35, 0.10),   # brown
     "font_mismatch": (0.40, 0.40, 0.40),            # gray (document-level)
+    "font_outlier": (0.85, 0.05, 0.25),             # crimson (located)
 }
 DEFAULT_COLOR = (0.20, 0.20, 0.20)
 
@@ -68,6 +69,9 @@ _METRIC_LABELS: dict[str, str] = {
     "span_count": "spans",
     "distinct_font_families": "font families",
     "font": "font",
+    "dominant_font": "dominant font",
+    "sizes": "sizes",
+    "text": "text",
 }
 
 # Which metrics to surface (in order) per finding type.
@@ -80,6 +84,7 @@ _TYPE_METRICS: dict[str, list[str]] = {
     "raster_in_vector_anomaly": ["raster_coverage", "span_count"],
     "object_overlap_anomaly": ["iou"],
     "font_mismatch": ["font", "share", "distinct_font_families", "span_count"],
+    "font_outlier": ["font", "dominant_font", "share", "text"],
 }
 
 
@@ -252,6 +257,118 @@ def _draw_risk_badge(page: "fitz.Page", risk: dict[str, Any], fontsize: float) -
     )
 
 
+def collect_font_summary(result: dict[str, Any]) -> dict[str, Any] | None:
+    """Roll up document font usage for the top-of-page banner.
+
+    Returns ``{"dominant": {...}, "others": [{...}]}`` where each entry carries
+    the font name, span count, usage share, the pages it was flagged on, and
+    the strongest font-outlier confidence, or ``None`` when no font data exists.
+    """
+    counts: dict[str, int] = {}
+    for page in result.get("page_results", []):
+        for font in page.get("fonts", []):
+            name = font.get("name", "(unknown)")
+            counts[name] = counts.get(name, 0) + int(font.get("span_count", 0))
+    total = sum(counts.values())
+    if not counts or total == 0:
+        return None
+
+    confidence: dict[str, float] = {}
+    pages: dict[str, set[int]] = {}
+    for page in result.get("page_results", []):
+        for f in page.get("findings", []):
+            if f.get("type") != "font_outlier":
+                continue
+            name = f.get("metrics", {}).get("font")
+            if not name:
+                continue
+            conf = float(f.get("confidence", 0.0))
+            confidence[name] = max(confidence.get(name, 0.0), conf)
+            pages.setdefault(name, set()).add(int(f.get("page", 0)))
+
+    ordered = sorted(counts.items(), key=lambda kv: kv[1], reverse=True)
+    dominant_name, dominant_count = ordered[0]
+
+    def _entry(name: str, count: int) -> dict[str, Any]:
+        return {
+            "name": name,
+            "span_count": count,
+            "share": count / total,
+            "confidence": confidence.get(name),
+            "pages": sorted(pages.get(name, set())),
+        }
+
+    return {
+        "dominant": _entry(dominant_name, dominant_count),
+        "others": [_entry(n, c) for n, c in ordered[1:]],
+        "total_spans": total,
+    }
+
+
+def _draw_font_banner(
+    page: "fitz.Page",
+    font_summary: dict[str, Any],
+    fontsize: float,
+) -> None:
+    """State the dominant font (and any other detected fonts) atop the page."""
+    dominant = font_summary["dominant"]
+    lines = [
+        f"DOMINANT FONT: {dominant['name']}  "
+        f"({dominant['share']:.1%} of text)"
+    ]
+    for other in font_summary["others"]:
+        conf = other.get("confidence")
+        conf_txt = f", conf {conf:.2f}" if conf is not None else ""
+        page_list = other.get("pages") or []
+        pages_txt = (
+            "  [pages " + ", ".join(str(p) for p in page_list) + "]"
+            if page_list else ""
+        )
+        lines.append(
+            f"Other font: {other['name']}  "
+            f"({other['share']:.1%} of text{conf_txt}){pages_txt}"
+        )
+
+    fontname = "helv"
+    pad = 4.0
+    line_h = fontsize + 3.0
+    max_w = max(
+        fitz.get_text_length(ln, fontname=fontname, fontsize=fontsize)
+        for ln in lines
+    )
+    box_w = min(max_w + 2 * pad, page.rect.width * 0.66)
+    box_h = line_h * len(lines) + 2 * pad
+    x, y = 12.0, 12.0
+
+    rect = fitz.Rect(x, y, x + box_w, y + box_h)
+    page.draw_rect(rect, color=(0.2, 0.2, 0.2), fill=(1, 1, 1),
+                   fill_opacity=0.9, width=0.75)
+    header_color = (0.1, 0.35, 0.15)
+    outlier_color = TYPE_COLORS["font_outlier"]
+    max_text_w = box_w - 2 * pad
+
+    def _fit(text: str, fn: str) -> str:
+        if fitz.get_text_length(text, fontname=fn, fontsize=fontsize) <= max_text_w:
+            return text
+        trimmed = text
+        while trimmed and fitz.get_text_length(
+            trimmed + "…", fontname=fn, fontsize=fontsize
+        ) > max_text_w:
+            trimmed = trimmed[:-1]
+        return (trimmed + "…") if trimmed else text
+
+    for i, ln in enumerate(lines):
+        color = header_color if i == 0 else outlier_color
+        fn = "hebo" if i == 0 else fontname
+        page.insert_text(
+            (x + pad, y + pad + fontsize + i * line_h),
+            _fit(ln, fn),
+            fontname=fn,
+            fontsize=fontsize,
+            color=color,
+        )
+
+
 def _group_findings(findings: list[dict[str, Any]]) -> dict[tuple, list[dict]]:
     """Group findings that share (rounded) bbox so labels don't overlap."""
     groups: dict[tuple, list[dict]] = {}
@@ -269,6 +386,8 @@ def _add_cover_page(
     result: dict[str, Any],
     risk: dict[str, Any],
     badge_fontsize: float,
+    font_summary: dict[str, Any] | None = None,
+    add_badge: bool = True,
 ) -> None:
     first = doc[0]
     width, height = first.rect.width, first.rect.height
@@ -279,7 +398,8 @@ def _add_cover_page(
     page.insert_text((margin, y), "Visual Document Forensics — Annotated Report",
                      fontname="hebo", fontsize=18, color=(0.1, 0.1, 0.1))
     y += 10
-    _draw_risk_badge(page, risk, badge_fontsize + 2)
+    if add_badge:
+        _draw_risk_badge(page, risk, badge_fontsize + 2)
 
     y += 30
     page.insert_text((margin, y), f"Document ID: {result.get('document_id', '')}",
@@ -298,6 +418,39 @@ def _add_cover_page(
         f"{factors.get('finding_count')} finding(s).",
         fontname="helv", fontsize=10, color=(0.2, 0.2, 0.2),
     )
+
+    # Font usage: dominant font first, then every other detected font.
+    if font_summary is not None:
+        y += 28
+        page.insert_text((margin, y), "Font usage", fontname="hebo",
+                         fontsize=12, color=(0.1, 0.1, 0.1))
+        y += 18
+        dom = font_summary["dominant"]
+        page.insert_text(
+            (margin, y),
+            f"Dominant font: {dom['name']}  —  {dom['share']:.1%} of text "
+            f"({dom['span_count']} spans)",
+            fontname="hebo", fontsize=10, color=(0.1, 0.35, 0.15),
+        )
+        y += 16
+        outlier_color = TYPE_COLORS["font_outlier"]
+        for other in font_summary["others"]:
+            conf = other.get("confidence")
+            conf_txt = f", confidence {conf:.2f}" if conf is not None else ""
+            page_list = other.get("pages") or []
+            pages_txt = (
+                "  — boxed on page(s) " + ", ".join(str(p) for p in page_list)
+                if page_list else ""
+            )
+            page.insert_text(
+                (margin, y),
+                f"Other font: {other['name']}  —  {other['share']:.1%} of text "
+                f"({other['span_count']} spans{conf_txt}){pages_txt}",
+                fontname="helv", fontsize=10, color=outlier_color,
+            )
+            y += 14
+            if y > height - margin:
+                break
 
     # Findings by type.
     y += 28
@@ -364,6 +517,8 @@ def annotate_document(
     badge_fs = float(draw_cfg.get("badge_fontsize", 12.0))
     min_conf = float(draw_cfg.get("min_confidence_to_draw", 0.0))
     add_cover = bool(draw_cfg.get("add_cover_page", True))
+    add_banner = bool(draw_cfg.get("add_font_banner", True))
+    add_badge = bool(draw_cfg.get("add_risk_badge", True))
 
     if output_path is None:
         base, ext = os.path.splitext(input_pdf_path)
@@ -371,6 +526,7 @@ def annotate_document(
 
     doc = fitz.open(input_pdf_path)
     risk = compute_fraud_risk(result, config)
+    font_summary = collect_font_summary(result) if add_banner else None
 
     page_results = {p["page"]: p for p in result.get("page_results", [])}
 
@@ -396,21 +552,32 @@ def annotate_document(
             color = TYPE_COLORS.get(top["type"], DEFAULT_COLOR)
             page.draw_rect(rect, color=color, width=box_width)
 
-            header = f"{_pretty_type(top['type'])}  c={top.get('confidence')}"
             body: list[str] = []
             for f in group:
                 if f is not top:
                     body.append(f"+ {_pretty_type(f['type'])} c={f.get('confidence')}")
-            for ln in _metric_lines(top):
-                body.append(ln)
+            if top["type"] == "font_outlier":
+                # Compact label: the top-of-page banner already carries the
+                # detail, so the box only names the font and its confidence.
+                header = (
+                    f"Font: {top.get('metrics', {}).get('font', '?')}  "
+                    f"c={top.get('confidence')}"
+                )
+            else:
+                header = f"{_pretty_type(top['type'])}  c={top.get('confidence')}"
+                for ln in _metric_lines(top):
+                    body.append(ln)
 
             anchor = (rect.x0, max(2.0, rect.y0 - (label_fs + 6) * (len(body) + 1)))
             _draw_label_block(page, anchor, header, body, color, label_fs)
 
-        _draw_risk_badge(page, risk, badge_fs)
+        if add_badge:
+            _draw_risk_badge(page, risk, badge_fs)
+        if font_summary is not None:
+            _draw_font_banner(page, font_summary, label_fs)
 
     if add_cover and doc.page_count > 0:
-        _add_cover_page(doc, result, risk, badge_fs)
+        _add_cover_page(doc, result, risk, badge_fs, font_summary, add_badge)
 
     doc.save(output_path, garbage=3, deflate=True)
     doc.close()

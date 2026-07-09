@@ -67,6 +67,50 @@ def analyze_page_fonts(page: "fitz.Page") -> dict[str, Any]:
     return {"fonts": fonts, "span_count": spans}
 
 
+def extract_font_spans(
+    page: "fitz.Page",
+    pts_to_px: float = 1.0,
+) -> list[dict[str, Any]]:
+    """Return every non-empty text span on the page with its font and location.
+
+    Each entry::
+
+        {
+          "font": "Times-Roman",
+          "size": 11.0,
+          "bbox": [x1, y1, x2, y2],   # rendered pixel coordinates
+          "text": "the span text",
+        }
+
+    ``bbox`` values are converted from PDF points to rendered pixels using
+    ``pts_to_px`` (= render_dpi / 72) so they line up with every other finding
+    coordinate in the pipeline. Whitespace-only spans are skipped.
+    """
+    out: list[dict[str, Any]] = []
+    try:
+        data = page.get_text("dict")
+    except Exception as exc:  # pragma: no cover - defensive
+        logger.warning("get_text failed on page: %s", exc)
+        return out
+
+    for block in data.get("blocks", []):
+        for line in block.get("lines", []):
+            for span in line.get("spans", []):
+                text = span.get("text", "")
+                bbox = span.get("bbox")
+                if not text.strip() or not bbox or len(bbox) != 4:
+                    continue
+                out.append(
+                    {
+                        "font": _normalise_font_name(span.get("font", "")),
+                        "size": round(float(span.get("size", 0.0)), 2),
+                        "bbox": [float(v) * pts_to_px for v in bbox],
+                        "text": text,
+                    }
+                )
+    return out
+
+
 def aggregate_fonts(page_font_lists: list[list[dict[str, Any]]]) -> list[dict[str, Any]]:
     """Merge per-page font lists into a document-level list."""
     counts: dict[str, int] = defaultdict(int)
