@@ -338,6 +338,80 @@ python -m examples.generate_examples
 
 ---
 
+## Batch annotation (claim-set folders)
+
+Both CLI tools accept **one file**, **one claim-set folder**, or a **claims root**
+whose subfolders are claim sets. Each claim set is analyzed as a batch and gets
+its own output folder so related documents stay together.
+
+### Input layout
+
+```text
+claims/                          ← pass this path (claims root)
+├── claim_001/                   ← one claim set
+│   ├── invoice.pdf
+│   ├── estimate.pdf
+│   └── notes.docx
+└── claim_002/
+    ├── police_report.pdf
+    └── photos_summary.pdf
+```
+
+You can also pass a single claim-set folder (`claims/claim_001/`) or a lone file.
+
+Supported extensions: `.pdf`, `.docx`. Other files in the folder are ignored.
+
+### Output layout
+
+```bash
+# Claims root → mirrored claim folders under --out-dir
+python annotate_report.py "claims/" --out-dir "annotated/"
+python font_agent.py "claims/" --out-dir "annotated_fonts/"
+
+# Single claim set → all of that claim's outputs go directly in --out-dir
+python annotate_report.py "claims/claim_001/" --out-dir "annotated/claim_001/"
+
+# Defaults (no --out-dir): writes beside a file, or to "<folder>_annotated/"
+python annotate_report.py "claims/claim_001/"
+# → claims/claim_001_annotated/<stem> - annotated.pdf
+# → claims/claim_001_annotated/<stem> - result.json
+```
+
+Example after `python annotate_report.py claims/ --out-dir annotated/`
+(claims root → one output folder per claim set):
+
+```text
+annotated/
+├── claim_001/
+│   ├── invoice - annotated.pdf
+│   ├── invoice - result.json
+│   ├── estimate - annotated.pdf
+│   ├── estimate - result.json
+│   ├── notes - annotated.pdf
+│   └── notes - result.json
+└── claim_002/
+    ├── police_report - annotated.pdf
+    ├── police_report - result.json
+    ├── photos_summary - annotated.pdf
+    └── photos_summary - result.json
+```
+
+`font_agent.py` uses the same folder mirroring; filenames use
+`<stem> - fonts annotated.pdf` and `<stem> - fonts result.json`.
+
+| Flag | Meaning |
+| --- | --- |
+| `input_path` (positional) | File, claim-set folder, or claims root |
+| `--out-dir` | Root directory for all annotated outputs |
+| `--out` | Exact PDF path (**single file only**) |
+| `--result` | Reuse an existing analysis JSON (**single file only**) |
+
+The MCP tool `analyze_document` already accepts multiple paths and returns
+`{"results": [...]}` (JSON only — no annotated PDFs). Use the CLIs above when
+you need annotated copies per claim set.
+
+---
+
 ## Font consistency agent (`font_agent.py`)
 
 A standalone command-line agent that answers one question: **where does this
@@ -345,10 +419,12 @@ document depart from its own font?**
 
 ```bash
 python font_agent.py "path/to/document.pdf"
+python font_agent.py "path/to/claim_set/" --out-dir "path/to/out/"
+python font_agent.py "path/to/claims_root/" --out-dir "path/to/out/"
 ```
 
 It determines the document's **dominant font** (the most common family by text
-span count) and produces `"<document> - fonts annotated.pdf"` in which:
+span count) and produces `"<stem> - fonts annotated.pdf"` in which:
 
 - a banner at the **top of every page** states the dominant font, plus every
   other font detected with its usage share, detection confidence, and the
@@ -423,4 +499,3 @@ PDF.
 Anomalies are flagged using per-page z-scores and/or absolute floors, all read
 from `configs/default.yaml`. Confidence is a monotonic function of the measured
 deviation, not a probability of fraud.
-```

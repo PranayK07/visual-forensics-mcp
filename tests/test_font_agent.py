@@ -149,7 +149,6 @@ def test_font_agent_annotates_pdf(sample_pdf, tmp_path, capsys):
         assert "DOMINANT FONT: Helvetica" in page_text
         assert "Other font:" in page_text
 
-
 def test_annotate_without_banner_or_badge(sample_pdf, fast_options, tmp_path):
     result = analyze_document(sample_pdf, fast_options)["results"][0]
     config = load_config(overrides={
