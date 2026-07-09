@@ -345,12 +345,25 @@ def _draw_font_banner(
                    fill_opacity=0.9, width=0.75)
     header_color = (0.1, 0.35, 0.15)
     outlier_color = TYPE_COLORS["font_outlier"]
+    max_text_w = box_w - 2 * pad
+
+    def _fit(text: str, fn: str) -> str:
+        if fitz.get_text_length(text, fontname=fn, fontsize=fontsize) <= max_text_w:
+            return text
+        trimmed = text
+        while trimmed and fitz.get_text_length(
+            trimmed + "…", fontname=fn, fontsize=fontsize
+        ) > max_text_w:
+            trimmed = trimmed[:-1]
+        return (trimmed + "…") if trimmed else text
+
     for i, ln in enumerate(lines):
         color = header_color if i == 0 else outlier_color
+        fn = "hebo" if i == 0 else fontname
         page.insert_text(
             (x + pad, y + pad + fontsize + i * line_h),
-            ln,
-            fontname="hebo" if i == 0 else fontname,
+            _fit(ln, fn),
+            fontname=fn,
             fontsize=fontsize,
             color=color,
         )
