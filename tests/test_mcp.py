@@ -7,7 +7,7 @@ import json
 
 from fastmcp import Client
 
-from src.server.app import mcp
+from src.server.app import analyze_document, mcp
 
 
 def _extract_payload(call_result):
@@ -57,3 +57,9 @@ def test_mcp_analyze_document_invocation(sample_pdf, fast_options):
     assert isinstance(result["warnings"], list)
     assert isinstance(result["errors"], list)
     assert result["errors"] == []
+
+
+def test_server_analyze_document_accepts_string_path(sample_pdf, fast_options):
+    payload = analyze_document(sample_pdf, fast_options)
+    assert "results" in payload
+    assert len(payload["results"]) == 1

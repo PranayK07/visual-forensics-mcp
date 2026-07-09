@@ -45,10 +45,16 @@ mcp = FastMCP(
     ),
 )
 def analyze_document(
-    document_paths: list[str],
+    document_paths: list[str] | str,
     options: Optional[dict[str, Any]] = None,
 ) -> dict[str, Any]:
     """MCP tool entry point. Delegates to the deterministic pipeline."""
+    if isinstance(document_paths, str):
+        document_paths = [document_paths]
+    if not isinstance(document_paths, list) or not all(
+        isinstance(path, str) for path in document_paths
+    ):
+        raise TypeError("document_paths must be a list of file path strings")
     logger.info("analyze_document called: %d document(s)", len(document_paths))
     return _analyze_document(document_paths, options)
 
