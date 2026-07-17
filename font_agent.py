@@ -1,14 +1,14 @@
 """Font consistency agent: box every place a document departs from its font.
 
-Analyzes PDF/DOCX files and produces annotated copies in which:
+Analyzes supported evidence files and produces annotated copies in which:
 
 * the document's most common (dominant) font is stated in a banner at the top
-  of every page and on the cover page;
+  of every page;
 * every other font detected is listed in that same banner with its usage
   share, detection confidence, and the pages it occurs on; and
-* each region of text set in a non-dominant font gets a bounding box drawn
-  exactly where it sits on the page, labelled with the font name and the
-  detection confidence.
+* each region whose non-dominant family meets the configured confidence gate
+  gets a bounding box drawn exactly where it sits on the page, labelled with
+  the font name and measured-deviation confidence.
 
 Accepts a single file, a claim-set folder, or a claims root whose subfolders
 are claim sets. Outputs mirror claim-set folders under ``--out-dir``.
@@ -23,9 +23,11 @@ Usage:
     python font_agent.py "path/to/document.pdf" --out "path/to/out.pdf"
     python font_agent.py "path/to/document.pdf" --result existing_result.json
 
-Produces (per document):
-    "<stem> - fonts annotated.pdf"
-    "<stem> - fonts result.json"    (unless --result was given for a single file)
+Produces (per claim set):
+    report.md
+    json_results/claim_result.json
+    json_results/<stem> - fonts result.json
+    annotated_visuals/<stem> - fonts annotated.pdf
 """
 
 from __future__ import annotations
@@ -40,7 +42,10 @@ _ROOT = os.path.dirname(os.path.abspath(__file__))
 if _ROOT not in sys.path:
     sys.path.insert(0, _ROOT)
 
+from src.render import convert_to_pdf_path, detect_type  # noqa: E402
 from src.report.annotator import collect_font_summary, annotate_document  # noqa: E402
+from src.report.markdown_report import write_markdown_report  # noqa: E402
+from src.report.statistics import aggregate_claim_statistics  # noqa: E402
 from src.tools.analyze import analyze_document  # noqa: E402
 from src.utils.claim_batch import (  # noqa: E402
     annotated_pdf_path,
@@ -66,12 +71,7 @@ FONT_ONLY_OPTIONS: dict = {
         "compression": {"enabled": False},
         "structure": {"enabled": False},
     },
-    "report": {
-        "draw": {
-            "add_font_banner": True,
-            "add_risk_badge": False,
-        },
-    },
+    "report": {"draw": {"add_font_banner": True}},
 }
 
 
@@ -130,17 +130,19 @@ def print_font_report(report: dict) -> None:
 
 
 def _convert_to_pdf(document_path: str) -> tuple[str, str | None]:
-    if os.path.splitext(document_path)[1].lower() == ".pdf":
+    if detect_type(document_path) == "pdf":
         return document_path, None
-
-    import fitz  # PyMuPDF
 
     fd, tmp_path = tempfile.mkstemp(suffix=".pdf", prefix="font_agent_converted_")
     os.close(fd)
-    with fitz.open(document_path) as doc:
-        pdf_bytes = doc.convert_to_pdf()
-    with open(tmp_path, "wb") as fh:
-        fh.write(pdf_bytes)
+    try:
+        convert_to_pdf_path(document_path, tmp_path)
+    except Exception:
+        try:
+            os.remove(tmp_path)
+        except OSError:
+            pass
+        raise
     return tmp_path, tmp_path
 
 
@@ -188,7 +190,7 @@ def main() -> None:
     parser.add_argument(
         "input_path",
         help=(
-            "Path to a PDF/DOCX file, a claim-set folder of documents, "
+            "Path to a supported evidence file, a claim-set folder of documents, "
             "or a claims root whose subfolders are claim sets."
         ),
     )
@@ -196,8 +198,8 @@ def main() -> None:
         "--out-dir",
         default=None,
         help=(
-            "Directory for annotated outputs. Defaults to the input file's "
-            "folder, or to '<folder>_annotated' beside a claim-set / claims root."
+            "Result-bundle directory. Defaults to '<input-name>_result' beside "
+            "the input file, claim set, or claims root."
         ),
     )
     parser.add_argument(
@@ -241,32 +243,56 @@ def main() -> None:
 
         if args.result and is_single_file:
             with open(args.result, "r", encoding="utf-8") as fh:
-                result = json.load(fh)
+                loaded_result = json.load(fh)
+            if isinstance(loaded_result, dict) and "results" in loaded_result:
+                result = loaded_result["results"][0]
+            else:
+                result = loaded_result
             print(f"Loaded existing result: {args.result}")
-            _process_document(
-                claim.documents[0], result, claim_dir, out_override=args.out
+            statistics = aggregate_claim_statistics(
+                [result], document_labels=[os.path.basename(claim.documents[0])]
             )
-            continue
+            result["statistics"] = statistics["documents"][0]
+            batch = {
+                "schema_version": "2.0",
+                "statistics": statistics,
+                "results": [result],
+            }
+        else:
+            print(f"Analyzing fonts for {len(claim.documents)} document(s)…")
+            batch = analyze_document(list(claim.documents), FONT_ONLY_OPTIONS)
 
-        print(f"Analyzing fonts for {len(claim.documents)} document(s)…")
-        batch = analyze_document(list(claim.documents), FONT_ONLY_OPTIONS)
         results = batch["results"]
         if len(results) != len(claim.documents):
             raise SystemExit(
                 f"Expected {len(claim.documents)} results, got {len(results)}"
             )
 
+        report_path = write_markdown_report(
+            batch["statistics"],
+            os.path.join(claim_dir, "report.md"),
+            claim_name=claim.name,
+        )
+        print(f"Wrote claim statistics: {report_path}")
+
+        json_dir = ensure_dir(os.path.join(claim_dir, "json_results"))
+        annotated_dir = ensure_dir(os.path.join(claim_dir, "annotated_visuals"))
+        claim_json_path = os.path.join(json_dir, "claim_result.json")
+        with open(claim_json_path, "w", encoding="utf-8") as fh:
+            json.dump(batch, fh, indent=2, allow_nan=False)
+        print(f"Wrote claim JSON: {claim_json_path}")
+
         for document_path, result in zip(claim.documents, results):
             result_path = result_json_path(
-                document_path, claim_dir, suffix="fonts result"
+                document_path, json_dir, suffix="fonts result"
             )
             with open(result_path, "w", encoding="utf-8") as fh:
-                json.dump(result, fh, indent=2)
+                json.dump(result, fh, indent=2, allow_nan=False)
             print(f"Wrote analysis: {result_path}")
             _process_document(
                 document_path,
                 result,
-                claim_dir,
+                annotated_dir,
                 out_override=args.out if is_single_file else None,
             )
 

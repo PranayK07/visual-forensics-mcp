@@ -8,15 +8,32 @@ Callers may pass:
 * a claims root whose immediate subfolders are claim sets.
 
 Outputs mirror the claim-set name under ``--out-dir`` (or a sibling
-``<name>_annotated`` folder when ``--out-dir`` is omitted).
+``<name>_result`` folder when ``--out-dir`` is omitted).
 """
 
 from __future__ import annotations
 
 import os
+import ntpath
 from dataclasses import dataclass
 
-SUPPORTED_EXTENSIONS = {".pdf", ".docx"}
+SUPPORTED_EXTENSIONS = {
+    ".pdf",
+    ".docx",
+    ".png",
+    ".jpg",
+    ".jpeg",
+    ".tif",
+    ".tiff",
+    ".bmp",
+    ".webp",
+    ".gif",
+}
+
+
+def supported_extensions_label() -> str:
+    """Human-readable extension list for discovery errors and CLI help."""
+    return ", ".join(sorted(SUPPORTED_EXTENSIONS))
 
 
 @dataclass(frozen=True)
@@ -61,7 +78,7 @@ def discover_claim_sets(path: str) -> list[ClaimSet]:
         if not is_supported_document(path):
             raise SystemExit(
                 f"Unsupported file type: {path} "
-                f"(expected {', '.join(sorted(SUPPORTED_EXTENSIONS))})"
+                f"(expected {supported_extensions_label()})"
             )
         stem = os.path.splitext(os.path.basename(path))[0]
         return [ClaimSet(name=stem, documents=(path,), source_dir=None)]
@@ -75,6 +92,7 @@ def discover_claim_sets(path: str) -> list[ClaimSet]:
         if os.path.isdir(os.path.join(path, name))
         and not name.startswith(".")
         and not name.endswith("_annotated")
+        and not name.endswith("_result")
     )
     claim_subdirs = [
         (d, list_documents_in_dir(d)) for d in subdirs if list_documents_in_dir(d)
@@ -105,7 +123,7 @@ def discover_claim_sets(path: str) -> list[ClaimSet]:
 
     if not top_docs:
         raise SystemExit(
-            f"No PDF/DOCX documents found under: {path}\n"
+            f"No supported evidence files found under: {path}\n"
             "Pass a file, a claim-set folder of documents, or a parent folder "
             "whose subfolders are claim sets."
         )
@@ -120,11 +138,12 @@ def discover_claim_sets(path: str) -> list[ClaimSet]:
 
 
 def default_out_dir(input_path: str) -> str:
-    """Sibling ``<name>_annotated`` directory for folder inputs."""
+    """Sibling ``<name>_result`` directory for file or folder inputs."""
     path = os.path.abspath(input_path)
     if os.path.isfile(path):
-        return os.path.dirname(path)
-    return path.rstrip("/\\") + "_annotated"
+        stem = os.path.splitext(os.path.basename(path))[0]
+        return os.path.join(os.path.dirname(path), f"{stem}_result")
+    return path.rstrip("/\\") + "_result"
 
 
 def claim_output_dir(claim: ClaimSet, out_dir: str, input_path: str) -> str:
@@ -148,12 +167,14 @@ def claim_output_dir(claim: ClaimSet, out_dir: str, input_path: str) -> str:
 
 
 def annotated_pdf_path(document_path: str, output_dir: str, suffix: str = "annotated") -> str:
-    stem = os.path.splitext(os.path.basename(document_path))[0]
+    # ntpath.basename also handles POSIX separators and prevents a Windows
+    # source directory from leaking into the output name on Linux/macOS.
+    stem = os.path.splitext(ntpath.basename(document_path))[0]
     return os.path.join(output_dir, f"{stem} - {suffix}.pdf")
 
 
 def result_json_path(document_path: str, output_dir: str, suffix: str = "result") -> str:
-    stem = os.path.splitext(os.path.basename(document_path))[0]
+    stem = os.path.splitext(ntpath.basename(document_path))[0]
     return os.path.join(output_dir, f"{stem} - {suffix}.json")
 
 

@@ -1,8 +1,8 @@
 """Visual and structural analyzers.
 
 Each analyzer computes a single, deterministic, measurable metric. Analyzers
-never make fraud judgements; they only produce numbers. Detectors consume those
-numbers and flag deviations.
+only produce numbers and leave decisions to downstream consumers. Detectors
+consume those numbers and flag deviations.
 """
 
 from . import (

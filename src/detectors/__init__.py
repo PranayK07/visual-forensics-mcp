@@ -1,8 +1,8 @@
 """Anomaly detectors.
 
 Detectors translate analyzer measurements into :class:`Finding` objects. They
-report measurable deviations only -- never fraud judgements. Every threshold is
-read from configuration.
+report measurable deviations only and leave decisions to downstream consumers.
+Every threshold is read from configuration.
 """
 
 from . import (

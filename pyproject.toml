@@ -28,8 +28,12 @@ test = ["pytest>=8.0"]
 [project.scripts]
 visual-forensics-mcp = "src.server.app:main"
 
-[tool.setuptools]
-packages = ["src"]
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
+
+[tool.setuptools.package-data]
+src = ["configs/*.yaml"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

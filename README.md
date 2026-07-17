@@ -1,15 +1,16 @@
 # Visual Document Forensics MCP Server
 
 A production-ready **Python MCP server** that performs **deterministic visual and
-structural analysis** of PDF and DOCX documents.
+structural analysis** of PDF, DOCX, and raster-image evidence. Supported raster
+formats are PNG, JPEG, TIFF, BMP, WebP, and GIF (including multi-frame files).
 
 It is designed to be called by a **UiPath agent**. The agent does the reasoning
 and decision-making; this server does only one thing: extract **measurable
 visual evidence** that *UiPath Analyze File* cannot reliably provide.
 
-> The server **never** determines fraud. It reports metrics and *measurable
-> anomalies* (blur, OCR confidence, effective DPI, image stretch, font usage,
-> structural inconsistencies) and leaves all interpretation to the agent.
+> The server reports metrics and *measurable anomalies* (blur, OCR confidence,
+> effective DPI, image stretch, font usage, structural inconsistencies) and
+> leaves all interpretation and decision-making to the downstream agent.
 
 ## Guarantees
 
@@ -33,7 +34,7 @@ Document
     ↓
 MCP Tool Call            src/server/app.py        (FastMCP, stdio transport)
     ↓
-Document Loader          src/render/loader.py     (detect PDF/DOCX, open handles)
+Document Loader          src/render/loader.py     (detect PDF/DOCX/raster by signature)
     ↓
 Page Renderer            src/render/pdf_renderer.py (PyMuPDF, configurable DPI)
     ↓
@@ -46,7 +47,9 @@ PDF Structure Engine     src/analyzers/pdf_structure.py (images, scaling, DPI,
     ↓                                              fonts, objects; pikepdf check)
 Evidence Aggregator      src/tools/analyze.py     (detectors + rollup)
     ↓
-JSON Response            src/schemas/models.py    (pydantic-validated contract)
+Statistics Aggregator    src/report/statistics.py (document + claim distributions)
+    ↓
+JSON / Markdown          src/schemas + src/report (validated data + inline SVG graphs)
     ↓
 UiPath Agent
 ```
@@ -58,11 +61,12 @@ visual-forensics-mcp/
 ├── src/
 │   ├── server/      # FastMCP server (analyze_document tool)
 │   ├── tools/       # analysis orchestrator (the pipeline)
-│   ├── render/      # document loader + PDF/DOCX rendering
+│   ├── render/      # document loader, conversion, and page rendering
 │   ├── tiling/      # overlapping tile generation
 │   ├── analyzers/   # deterministic metric computation
 │   ├── detectors/   # anomaly detection from metrics
-│   ├── schemas/     # pydantic output contract
+│   ├── schemas/     # pydantic evidence and statistics contracts
+│   ├── report/      # factual Markdown report + PDF visual overlays
 │   └── utils/       # config, logging, geometry, image ops
 ├── tests/           # pytest suite (unit + end-to-end)
 ├── configs/         # default.yaml (all thresholds live here)
@@ -123,9 +127,9 @@ warning and `summary.ocr_available = false`.
 
 ## Configuration
 
-All tunables — including **every threshold** — live in
-[`configs/default.yaml`](configs/default.yaml). There are **no hardcoded
-thresholds** anywhere in the analysis or detection code.
+The canonical tunables and detector thresholds live in
+[`configs/default.yaml`](configs/default.yaml). Defensive code defaults mirror
+that file so incomplete custom configurations remain usable.
 
 Key settings:
 
@@ -175,15 +179,27 @@ The server exposes a single primary tool:
 analyze_document(document_paths: list[str], options: dict | None = None)
 ```
 
-It returns a JSON object with a `results` array. Each element has this shape:
+It returns schema version `2.0`, claim-level statistics, and a `results` array.
+Every result also carries its own statistics. Statistics are computed before
+optional tile-detail suppression, so `output.include_tile_metrics: false` does
+not remove the aggregate measurements.
 
 ```json
 {
+  "schema_version": "2.0",
+  "statistics": {
+    "document_count": 2,
+    "overall_metrics": {},
+    "documents": [],
+    "methodology": {}
+  },
   "results": [
     {
       "document_id": "...",
+      "document_name": "invoice.pdf",
       "document_type": "...",
       "summary": {},
+      "statistics": {"metrics": {}},
       "page_results": [],
       "document_findings": [],
       "warnings": [],
@@ -192,6 +208,13 @@ It returns a JSON object with a `results` array. Each element has this shape:
   ]
 }
 ```
+
+For each numeric metric, the statistics contract includes valid/missing/nonfinite
+counts, mean, median, exact mode when one is meaningful, min/max/range, sample
+variance and standard deviation, percentiles, IQR, MAD, coefficient of variation,
+bias-corrected skewness, unbiased excess kurtosis, Tukey fences/outlier counts,
+and deterministic histogram bins. Claim statistics include both pooled
+observations and the distribution of per-document means.
 
 Every **finding** (in `results[].page_results[].findings` and
 `results[].document_findings`) has the required schema:
@@ -277,9 +300,25 @@ raster insert and one rare-font line):
 
 ```json
 {
+  "schema_version": "2.0",
+  "statistics": {
+    "document_count": 1,
+    "overall_metrics": {
+      "tile.blur_score": {
+        "pooled": {
+          "finite_count": 14,
+          "mean": 3580.016092857142,
+          "median": 2721.7989500000003,
+          "modes": [],
+          "mode_method": "none_all_values_unique"
+        }
+      }
+    }
+  },
   "results": [
     {
       "document_id": "5f34550e05450828",
+      "document_name": "sample.pdf",
       "document_type": "pdf",
       "summary": {
         "page_count": 1,
@@ -289,7 +328,7 @@ raster insert and one rare-font line):
           "resolution_anomaly": 1,
           "image_stretch": 1,
           "raster_in_vector_anomaly": 1,
-          "font_mismatch": 1
+          "font_outlier": 1
         },
         "ocr_available": false,
         "pdf_structure_available": true
@@ -313,16 +352,7 @@ raster insert and one rare-font line):
           ]
         }
       ],
-      "document_findings": [
-        {
-          "type": "font_mismatch",
-          "page": 0,
-          "bbox": [0, 0, 0, 0],
-          "metrics": { "font": "Times-Roman", "span_count": 1, "share": 0.04 },
-          "confidence": 0.6,
-          "explanation": "A font family is used on only a small fraction of text spans, an unusual change versus the dominant fonts."
-        }
-      ],
+      "document_findings": [],
       "warnings": ["Tesseract OCR binary not available; OCR metrics and the OCR-confidence detector are disabled for this run."],
       "errors": []
     }
@@ -359,56 +389,70 @@ claims/                          ← pass this path (claims root)
 
 You can also pass a single claim-set folder (`claims/claim_001/`) or a lone file.
 
-Supported extensions: `.pdf`, `.docx`. Other files in the folder are ignored.
+Supported extensions: `.pdf`, `.docx`, `.png`, `.jpg`, `.jpeg`, `.tif`,
+`.tiff`, `.bmp`, `.webp`, and `.gif`. File signatures are checked when loading;
+unsupported files in a folder are ignored.
 
 ### Output layout
 
 ```bash
 # Claims root → mirrored claim folders under --out-dir
-python annotate_report.py "claims/" --out-dir "annotated/"
-python font_agent.py "claims/" --out-dir "annotated_fonts/"
+python annotate_report.py "claims/" --out-dir "results/"
+python font_agent.py "claims/" --out-dir "font_results/"
 
-# Single claim set → all of that claim's outputs go directly in --out-dir
-python annotate_report.py "claims/claim_001/" --out-dir "annotated/claim_001/"
+# Single claim set → its evidence bundle goes directly in --out-dir
+python annotate_report.py "claims/claim_001/" --out-dir "results/claim_001/"
 
-# Defaults (no --out-dir): writes beside a file, or to "<folder>_annotated/"
+# Default: writes to a sibling "<input-name>_result/" directory
 python annotate_report.py "claims/claim_001/"
-# → claims/claim_001_annotated/<stem> - annotated.pdf
-# → claims/claim_001_annotated/<stem> - result.json
+# → claims/claim_001_result/
 ```
 
-Example after `python annotate_report.py claims/ --out-dir annotated/`
+Example after `python annotate_report.py claims/ --out-dir results/`
 (claims root → one output folder per claim set):
 
 ```text
-annotated/
+results/
 ├── claim_001/
-│   ├── invoice - annotated.pdf
-│   ├── invoice - result.json
-│   ├── estimate - annotated.pdf
-│   ├── estimate - result.json
-│   ├── notes - annotated.pdf
-│   └── notes - result.json
+│   ├── report.md
+│   ├── json_results/
+│   │   ├── claim_result.json
+│   │   ├── invoice - result.json
+│   │   ├── estimate - result.json
+│   │   └── notes - result.json
+│   └── annotated_visuals/
+│       ├── invoice - annotated.pdf
+│       ├── estimate - annotated.pdf
+│       └── notes - annotated.pdf
 └── claim_002/
-    ├── police_report - annotated.pdf
-    ├── police_report - result.json
-    ├── photos_summary - annotated.pdf
-    └── photos_summary - result.json
+    ├── report.md
+    ├── json_results/
+    │   ├── claim_result.json
+    │   ├── police_report - result.json
+    │   └── photos_summary - result.json
+    └── annotated_visuals/
+        ├── police_report - annotated.pdf
+        └── photos_summary - annotated.pdf
 ```
 
-`font_agent.py` uses the same folder mirroring; filenames use
-`<stem> - fonts annotated.pdf` and `<stem> - fonts result.json`.
+`report.md` is self-contained: overall claim graphs and statistics come first,
+followed by per-document sections. Its graphs are inline SVG, so each claim
+bundle has exactly the two subfolders shown above. The report and JSON are
+measurement-only: they do not assign a score, severity label, intent, or verdict.
+
+`font_agent.py` uses the same bundle and folder mirroring; its per-document
+filenames use `<stem> - fonts annotated.pdf` and `<stem> - fonts result.json`.
 
 | Flag | Meaning |
 | --- | --- |
 | `input_path` (positional) | File, claim-set folder, or claims root |
-| `--out-dir` | Root directory for all annotated outputs |
+| `--out-dir` | Root directory for result bundles |
 | `--out` | Exact PDF path (**single file only**) |
 | `--result` | Reuse an existing analysis JSON (**single file only**) |
 
-The MCP tool `analyze_document` already accepts multiple paths and returns
-`{"results": [...]}` (JSON only — no annotated PDFs). Use the CLIs above when
-you need annotated copies per claim set.
+The MCP tool `analyze_document` accepts multiple paths and returns the same
+claim/document statistics in JSON (without annotated PDFs). Use the CLIs when
+you need the on-disk bundle and visual overlays.
 
 ---
 
@@ -429,11 +473,9 @@ span count) and produces `"<stem> - fonts annotated.pdf"` in which:
 - a banner at the **top of every page** states the dominant font, plus every
   other font detected with its usage share, detection confidence, and the
   pages it appears on;
-- every region of text set in a non-dominant font gets a **crimson bounding
-  box exactly where it sits on the page**, labelled with the font name and the
-  detection confidence;
-- the cover page carries the same font summary for the whole document.
-
+- every region whose non-dominant family meets the confidence gate gets a
+  **crimson bounding box exactly where it sits on the page**, labelled with the
+  font name and measured-deviation confidence.
 The console output mirrors the annotation — dominant font, every other font,
 and each boxed region with its page, confidence, pixel bbox, and text snippet:
 
@@ -441,9 +483,9 @@ and each boxed region with its page, confidence, pixel bbox, and text snippet:
 === Font Report ===
 Dominant font : Calibri  (37.2% of text, 16 spans)
 Other fonts   :
-  - TimesLTPro-Bold           23.3% of text   confidence 0.62   pages 1, 2
+  - TimesLTPro-Bold           23.3% of text   not boxed   -
   - Alegreya-Regular           2.3% of text   confidence 0.94   pages 1
-Boxed regions : 20
+Boxed regions : 1
   - page 1  font 'Alegreya-Regular'  conf 0.94  bbox [810, 1755, 1205, 1831] px  text: 'NH-2026-001847'
   ...
 ```
@@ -452,10 +494,14 @@ Only the font detectors run (visual/OCR/image analysis is switched off), so the
 agent is fast. The same evidence is available programmatically: the pipeline
 emits `font_outlier` findings in `page_results[].findings`, each carrying
 `bbox`, `confidence`, and `metrics.font` / `metrics.dominant_font`. Confidence
-is deterministic: `dominant_spans / (dominant_spans + font_spans)`, so a single
-inserted line in a foreign font scores near 1.0. Thresholds live under
-`detectors.font_outlier` in `configs/default.yaml`; the banner and badge are
-toggled via `report.draw.add_font_banner` / `report.draw.add_risk_badge`.
+is deterministic: `dominant_spans / (dominant_spans + font_spans)`, so a font
+family with very few spans relative to the dominant family scores near 1.0.
+Thresholds live under
+`detectors.font_outlier` in `configs/default.yaml`; located findings must meet
+the configurable `min_confidence` (0.90 by default). Common weight/style names
+such as Times New Roman, Times New Roman Bold, and Times New Roman Italic are
+normalised to one family before their usage distribution is measured. The font
+banner is toggled via `report.draw.add_font_banner`.
 
 DOCX inputs work too: they are converted to PDF in memory for analysis, and
 the annotated copy is written from that rendition. Note that PyMuPDF's DOCX
@@ -474,11 +520,11 @@ font banner and the compact font-outlier boxes by default.
 pytest -q
 ```
 
-The suite covers PDF rendering, DOCX loading, tile generation, blur computation,
-OCR confidence extraction (graceful path), image-scaling detection, font
-extraction, font-outlier location and the font agent, schema validation, MCP
-invocation, and a complete end-to-end run for PDF, DOCX, and scanned/image-only
-PDF.
+The suite covers PDF/DOCX/raster loading and rendering, multi-frame and EXIF
+handling, tile generation, analyzer calculations, OCR's graceful unavailable
+path, image scaling, font normalization and located font findings, descriptive
+statistics and SVG report generation, exact bundle layout, packaged-config
+consistency, schema validation, MCP invocation, and complete end-to-end runs.
 
 ---
 
@@ -498,4 +544,4 @@ PDF.
 
 Anomalies are flagged using per-page z-scores and/or absolute floors, all read
 from `configs/default.yaml`. Confidence is a monotonic function of the measured
-deviation, not a probability of fraud.
+deviation; it is supplied as evidence for downstream interpretation.

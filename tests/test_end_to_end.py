@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import json
+
 from src.schemas.models import AnalysisResult
 from src.tools.analyze import analyze_document
 
@@ -80,3 +82,26 @@ def test_end_to_end_multiple_documents(sample_pdf, sample_docx, fast_options):
     assert docx_result["errors"] == []
     AnalysisResult.model_validate(pdf_result)
     AnalysisResult.model_validate(docx_result)
+    assert batch["schema_version"] == "2.0"
+    assert batch["statistics"]["document_count"] == 2
+    assert "tile.blur_score" in batch["statistics"]["overall_metrics"]
+    assert pdf_result["statistics"]["metrics"]["tile.blur_score"]["mean"] is not None
+    assert docx_result["statistics"]["metrics"]["tile.blur_score"]["median"] is not None
+    assert "fraud" not in json.dumps(batch).lower()
+
+
+def test_statistics_survive_tile_metric_suppression(sample_pdf, fast_options):
+    options = {
+        **fast_options,
+        "output": {"include_tile_metrics": False},
+    }
+    batch = analyze_document([sample_pdf], options)
+    result = batch["results"][0]
+
+    assert all(page["tiles"] == [] for page in result["page_results"])
+    statistics = result["statistics"]["metrics"]["tile.blur_score"]
+    assert statistics["finite_count"] > 0
+    assert statistics["mean"] is not None
+    assert batch["statistics"]["overall_metrics"]["tile.blur_score"]["pooled"][
+        "median"
+    ] is not None

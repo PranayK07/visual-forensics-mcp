@@ -76,3 +76,14 @@ def test_font_detector_rare_font():
     ]
     findings = font_detector.detect(fonts, config)
     assert any(f.metrics.get("font") == "Comic Sans" for f in findings)
+
+
+def test_font_detector_suppresses_weak_deviation():
+    config = load_config(overrides={
+        "detectors": {"font": {"min_confidence": 0.9}}
+    })
+    fonts = [
+        {"name": "Helvetica", "span_count": 95, "sizes": [11.0]},
+        {"name": "Courier", "span_count": 5, "sizes": [11.0]},
+    ]
+    assert font_detector.detect(fonts, config) == []

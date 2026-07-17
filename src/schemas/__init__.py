@@ -11,6 +11,15 @@ from .models import (
     AnalysisResult,
     BatchAnalysisResult,
 )
+from .statistics import (
+    ClaimMetricStatistics,
+    ClaimStatistics,
+    DocumentStatistics,
+    HistogramBin,
+    MetricStatistics,
+    OutlierSummary,
+    StatisticsMethodology,
+)
 
 __all__ = [
     "BBox",
@@ -22,4 +31,11 @@ __all__ = [
     "AnalysisSummary",
     "AnalysisResult",
     "BatchAnalysisResult",
+    "HistogramBin",
+    "OutlierSummary",
+    "MetricStatistics",
+    "DocumentStatistics",
+    "ClaimMetricStatistics",
+    "StatisticsMethodology",
+    "ClaimStatistics",
 ]

@@ -82,9 +82,31 @@ def test_font_outlier_respects_min_doc_spans():
     assert font_outlier_detector.detect(spans, aggregated, 1, 1.0, config) == []
 
 
+def test_font_outlier_requires_configured_confidence():
+    config = load_config(overrides={
+        "detectors": {"font_outlier": {"min_confidence": 0.9}}
+    })
+    aggregated = [
+        {"name": "Helvetica", "span_count": 80, "sizes": [11.0]},
+        {"name": "Courier", "span_count": 20, "sizes": [11.0]},
+    ]
+    spans = [_span("Courier", 0, 0)]
+    assert font_outlier_detector.detect(spans, aggregated, 1, 1.0, config) == []
+
+
 # ---------------------------------------------------------------------------
 # Span extraction
 # ---------------------------------------------------------------------------
+
+def test_font_name_normalisation_groups_style_variants():
+    normalise = font_analysis._normalise_font_name
+    assert normalise("ABCDEF+TimesNewRomanPS-BoldMT") == "TimesNewRoman"
+    assert normalise("TimesNewRomanPSMT") == "TimesNewRoman"
+    assert normalise("Times New Roman Bold") == "Times New Roman"
+    assert normalise("Times New Roman") == "Times New Roman"
+    assert normalise("Arial-BoldItalicMT") == "Arial"
+    assert normalise("Alegreya-Regular") == "Alegreya"
+    assert normalise("Alegreya-Sans") == "Alegreya-Sans"
 
 def test_extract_font_spans_scales_to_pixels(sample_pdf):
     with fitz.open(sample_pdf) as doc:
@@ -141,21 +163,17 @@ def test_font_agent_annotates_pdf(sample_pdf, tmp_path, capsys):
     assert "Boxed regions :" in console
 
     with fitz.open(out_pdf) as doc:
-        # Cover page + the original page.
-        assert doc.page_count == 2
-        cover_text = doc[0].get_text()
-        assert "Dominant font: Helvetica" in cover_text
-        page_text = doc[1].get_text()
+        assert doc.page_count == 1
+        page_text = doc[0].get_text()
         assert "DOMINANT FONT: Helvetica" in page_text
-        assert "Other font:" in page_text
+        assert "Observed font:" in page_text
 
-def test_annotate_without_banner_or_badge(sample_pdf, fast_options, tmp_path):
+def test_annotate_without_banner(sample_pdf, fast_options, tmp_path):
     result = analyze_document(sample_pdf, fast_options)["results"][0]
     config = load_config(overrides={
-        "report": {"draw": {"add_font_banner": False, "add_risk_badge": False}}
+        "report": {"draw": {"add_font_banner": False}}
     })
     out = annotate_document(sample_pdf, result, str(tmp_path / "plain.pdf"), config)
     with fitz.open(out) as doc:
         text = "".join(p.get_text() for p in doc)
     assert "DOMINANT FONT" not in text
-    assert "FRAUD RISK" not in text

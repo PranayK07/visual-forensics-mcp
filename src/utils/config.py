@@ -1,9 +1,9 @@
 """Configuration loading and merging.
 
 The configuration is a plain nested dict loaded from ``configs/default.yaml``.
-Callers may override any subset of values at request time. There are no
-hardcoded thresholds anywhere else in the codebase; every tunable lives in the
-YAML file and flows through this module.
+Callers may override any subset of values at request time. The YAML file is the
+canonical threshold set; defensive defaults in analyzers and detectors mirror
+it for incomplete custom configurations.
 """
 
 from __future__ import annotations
@@ -15,8 +15,15 @@ from typing import Any
 
 import yaml
 
+_PACKAGE_ROOT = Path(__file__).resolve().parents[1]
+_REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
+_PACKAGED_CONFIG_PATH = _PACKAGE_ROOT / "configs" / "default.yaml"
+_SOURCE_CONFIG_PATH = _REPOSITORY_ROOT / "configs" / "default.yaml"
 _DEFAULT_CONFIG_PATH = (
-    Path(__file__).resolve().parents[2] / "configs" / "default.yaml"
+    _SOURCE_CONFIG_PATH
+    if (_REPOSITORY_ROOT / "pyproject.toml").is_file()
+    and _SOURCE_CONFIG_PATH.is_file()
+    else _PACKAGED_CONFIG_PATH
 )
 
 

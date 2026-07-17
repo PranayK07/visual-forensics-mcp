@@ -1,7 +1,7 @@
 """Stretch anomaly detector.
 
-Flags embedded images whose horizontal and vertical scale factors differ
-significantly (non-uniform scaling), which distorts an inserted image.
+Flags embedded images whose horizontal and vertical scale factors differ by
+more than the configured non-uniform scaling threshold.
 """
 
 from __future__ import annotations
@@ -51,8 +51,9 @@ def detect(
                     },
                     confidence=round(conf, 4),
                     explanation=(
-                        "Embedded image is scaled non-uniformly (horizontal and "
-                        "vertical scale factors differ), distorting the image."
+                        "Embedded image horizontal and vertical scale factors "
+                        f"differ by {stretch_ratio:.1%}; the configured "
+                        f"threshold is {ratio_threshold:.1%}."
                     ),
                 )
             )

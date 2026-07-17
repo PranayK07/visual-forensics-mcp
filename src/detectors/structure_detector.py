@@ -2,9 +2,8 @@
 
 Flags two structural conditions per page:
 
-* a raster region embedded inside an otherwise vector page (text/vector page
-  with a localised image insert); and
-* strongly overlapping / stacked images (unusual layering).
+* a raster region embedded inside a page that also contains vector text; and
+* images whose intersection-over-union meets the configured overlap threshold.
 """
 
 from __future__ import annotations
@@ -49,8 +48,9 @@ def detect(
                     },
                     confidence=round(min(1.0, 0.4 + coverage), 4),
                     explanation=(
-                        "A raster image region is embedded inside an otherwise "
-                        "vector/text page, which can indicate a pasted insert."
+                        f"Page contains vector text and a raster image covering "
+                        f"{coverage:.1%} of the page; the configured coverage "
+                        f"range is {cov_min:.1%} to {cov_max:.1%}."
                     ),
                 )
             )
@@ -70,8 +70,9 @@ def detect(
                     },
                     confidence=round(min(1.0, float(ov.get("iou", 0.0))), 4),
                     explanation=(
-                        "Two embedded images strongly overlap (unusual layering "
-                        "/ stacking of raster objects)."
+                        f"Two embedded-image bounding boxes have intersection-"
+                        f"over-union {float(ov.get('iou', 0.0)):.3f}; the "
+                        f"configured threshold is {overlap_iou:.3f}."
                     ),
                 )
             )

@@ -29,9 +29,11 @@ from ..detectors import (
 from ..render import load_document
 from ..render.docx_renderer import extract_docx_formatting
 from ..render.pdf_renderer import render_document
+from ..report.statistics import aggregate_claim_statistics
 from ..schemas.models import (
     AnalysisResult,
     AnalysisSummary,
+    BatchAnalysisResult,
     EmbeddedImageInfo,
     Finding,
     FontInfo,
@@ -61,13 +63,53 @@ def analyze_document(
     document_paths: list[str] | str,
     options: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    """Run the full forensic pipeline for each document and return results."""
+    """Run the full forensic pipeline and return factual document/claim statistics."""
     if isinstance(document_paths, str):
         document_paths = [document_paths]
     if not isinstance(document_paths, list) or not all(isinstance(p, str) for p in document_paths):
         raise TypeError("document_paths must be a list of file path strings")
-    results = [_analyze_single_document(path, options) for path in document_paths]
-    return {"results": results}
+    # Statistics require the underlying tile observations even when callers do
+    # not want the large per-tile arrays in the final JSON. Analyze with tiles
+    # retained, aggregate first, then honor the output suppression preference.
+    requested_include_tiles = True
+    try:
+        config_path = (options or {}).get("config_path") if options else None
+        requested_overrides = dict(options or {})
+        requested_overrides.pop("config_path", None)
+        requested_config = load_config(
+            path=config_path, overrides=requested_overrides
+        )
+        requested_include_tiles = bool(
+            requested_config.get("output.include_tile_metrics", True)
+        )
+    except Exception:
+        # Per-document analysis returns the authoritative configuration error.
+        pass
+
+    analysis_options = dict(options or {})
+    output_options = dict(analysis_options.get("output") or {})
+    output_options["include_tile_metrics"] = True
+    analysis_options["output"] = output_options
+
+    results = [
+        _analyze_single_document(path, analysis_options) for path in document_paths
+    ]
+    claim_statistics = aggregate_claim_statistics(
+        results, document_labels=[os.path.basename(path) for path in document_paths]
+    )
+    for result, document_statistics in zip(
+        results, claim_statistics.get("documents", [])
+    ):
+        result["statistics"] = document_statistics
+
+    if not requested_include_tiles:
+        for result in results:
+            for page in result.get("page_results", []):
+                page["tiles"] = []
+
+    return BatchAnalysisResult(
+        results=results, statistics=claim_statistics
+    ).model_dump(mode="json")
 
 
 def _analyze_single_document(
@@ -87,6 +129,7 @@ def _analyze_single_document(
     except Exception as exc:
         return AnalysisResult(
             document_id="",
+            document_name=os.path.basename(document_path),
             document_type="unknown",
             errors=[f"Failed to load configuration: {exc}"],
         ).model_dump()
@@ -100,6 +143,7 @@ def _analyze_single_document(
         logger.exception("Document load failed")
         return AnalysisResult(
             document_id=doc_id,
+            document_name=os.path.basename(document_path),
             document_type="unknown",
             errors=[f"Failed to load document: {exc}"],
         ).model_dump()
@@ -135,6 +179,7 @@ def _analyze_single_document(
         loaded.close()
         return AnalysisResult(
             document_id=doc_id,
+            document_name=os.path.basename(document_path),
             document_type=loaded.doc_type,
             warnings=warnings,
             errors=[f"Failed to render document: {exc}"],
@@ -253,6 +298,7 @@ def _analyze_single_document(
 
     result = AnalysisResult(
         document_id=doc_id,
+        document_name=os.path.basename(document_path),
         document_type=loaded.doc_type,
         summary=summary,
         page_results=page_results,

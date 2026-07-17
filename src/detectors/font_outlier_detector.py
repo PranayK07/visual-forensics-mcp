@@ -10,8 +10,8 @@ dominant one::
 
     confidence = dominant_span_count / (dominant_span_count + font_span_count)
 
-so a single inserted line in a foreign font scores near 1.0, while a 50/50
-split between two fonts scores 0.5 for each region.
+so a family with a small span count relative to the dominant family scores near
+1.0, while a 50/50 split between two families scores 0.5 for each region.
 """
 
 from __future__ import annotations
@@ -117,6 +117,7 @@ def detect(
         return []
     min_doc_spans = int(cfg.get("min_doc_spans", 10))
     max_share = float(cfg.get("max_share", 0.5))
+    min_confidence = float(cfg.get("min_confidence", 0.9))
     merge_gap_pts = float(cfg.get("merge_gap_pts", 9.0))
     max_regions = int(cfg.get("max_regions_per_page", 40))
     ignore = {str(n) for n in cfg.get("ignore_fonts", [])}
@@ -152,6 +153,8 @@ def detect(
         share = doc_count / total_spans if total_spans else 0.0
         denom = dominant_count + doc_count
         confidence = dominant_count / denom if denom else 0.0
+        if confidence < min_confidence:
+            continue
         for region in _merge_regions(spans, gap_px):
             text = region["text"].strip()
             if len(text) > _TEXT_SNIPPET_LEN:

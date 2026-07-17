@@ -1,8 +1,7 @@
 """Resolution / effective-DPI anomaly detector.
 
-Flags embedded images whose effective DPI is far below the page render DPI or
-below an absolute floor -- a low-resolution insert placed into a high-resolution
-document.
+Flags embedded images whose effective DPI is below the configured ratio or
+absolute resolution thresholds.
 """
 
 from __future__ import annotations
@@ -49,12 +48,16 @@ def detect(
                         "effective_dpi_y": round(eff_y, 2),
                         "render_dpi": round(float(render_dpi), 2),
                         "dpi_ratio": round(ratio, 4),
+                        "ratio_threshold": ratio_threshold,
+                        "absolute_min_dpi": absolute_min,
                         "xref": img.get("xref"),
                     },
                     confidence=round(conf, 4),
                     explanation=(
-                        "Embedded image effective resolution is significantly "
-                        "lower than the surrounding document resolution."
+                        f"Minimum embedded-image effective resolution is {eff:.2f} "
+                        f"DPI ({ratio:.4f} of render DPI); configured comparisons "
+                        f"are ratio below {ratio_threshold:.4f} or effective DPI "
+                        f"below {absolute_min:.2f}."
                     ),
                 )
             )

@@ -12,7 +12,14 @@ def shannon_entropy(image: np.ndarray, bins: int = 256) -> float:
     gray = ensure_gray(image)
     if gray.size == 0:
         return 0.0
-    hist, _ = np.histogram(gray, bins=bins, range=(0, 256))
+    # Build the fixed-range histogram explicitly.  NumPy 2.2 on Python 3.14
+    # can produce a 257-element internal bincount for ``np.histogram`` at the
+    # upper uint8 boundary.  Explicit index scaling is both deterministic and
+    # correct for any positive configured bin count.
+    bins = max(1, int(bins))
+    values = gray.reshape(-1).astype(np.int64, copy=False)
+    indices = np.minimum((values * bins) // 256, bins - 1)
+    hist = np.bincount(indices, minlength=bins)[:bins]
     total = hist.sum()
     if total == 0:
         return 0.0

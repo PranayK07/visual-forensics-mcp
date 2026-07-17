@@ -2,7 +2,7 @@
   "tool": "analyze_document",
   "arguments": {
     "document_paths": [
-      "C:/Users/prana/Documents/Github/New folder/visual-forensics-mcp/examples/sample.pdf"
+      "examples/sample.pdf"
     ],
     "options": {
       "render": {

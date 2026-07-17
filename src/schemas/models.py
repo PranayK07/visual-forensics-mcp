@@ -21,9 +21,11 @@ wraps one :class:`AnalysisResult` per input document::
 
 from __future__ import annotations
 
-from typing import Any, Optional
+from typing import Any, Literal, Optional
 
 from pydantic import BaseModel, Field, field_validator
+
+from .statistics import ClaimStatistics, DocumentStatistics
 
 # A bbox is always [x1, y1, x2, y2] in the coordinate space named by its owner.
 BBox = list[float]
@@ -32,8 +34,8 @@ BBox = list[float]
 class Finding(BaseModel):
     """A single measurable anomaly.
 
-    Findings never assert fraud. They report a measurable deviation together
-    with the metrics that produced it, leaving interpretation to the agent.
+    Findings report a measurable deviation together with the metrics that
+    produced it, leaving interpretation to the downstream agent.
     """
 
     type: str = Field(..., description="Anomaly type, e.g. 'blur_anomaly'.")
@@ -132,10 +134,17 @@ class AnalysisResult(BaseModel):
     """Per-document analysis output."""
 
     document_id: str
+    document_name: str = Field(
+        "", description="Source filename only; no directory path is exposed."
+    )
     document_type: str
     summary: AnalysisSummary = Field(default_factory=AnalysisSummary)
     page_results: list[PageResult] = Field(default_factory=list)
     document_findings: list[Finding] = Field(default_factory=list)
+    statistics: DocumentStatistics | None = Field(
+        default=None,
+        description="Descriptive distributions for every numeric metric measured.",
+    )
     warnings: list[str] = Field(default_factory=list)
     errors: list[str] = Field(default_factory=list)
 
@@ -143,4 +152,9 @@ class AnalysisResult(BaseModel):
 class BatchAnalysisResult(BaseModel):
     """Top-level response returned by ``analyze_document``."""
 
+    schema_version: Literal["2.0"] = "2.0"
+    statistics: ClaimStatistics | None = Field(
+        default=None,
+        description="Pooled claim-set statistics and per-document distributions.",
+    )
     results: list[AnalysisResult] = Field(default_factory=list)

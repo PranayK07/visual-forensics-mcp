@@ -22,12 +22,13 @@ logger = get_logger("server")
 mcp = FastMCP(
     name="visual-forensics-mcp",
     instructions=(
-        "Deterministic visual and structural forensics for PDF and DOCX "
+        "Deterministic visual and structural evidence for PDF, DOCX, and "
+        "raster-image "
         "documents. Call `analyze_document` with one or more local file paths "
         "to obtain measurable visual evidence (blur, OCR confidence, effective "
-        "DPI, image stretch, font usage, structural anomalies). This server "
-        "never makes fraud judgements; it returns metrics and measurable "
-        "anomalies for an agent to reason over."
+        "DPI, image stretch, font usage, structural deviations) plus per-document "
+        "and pooled descriptive statistics. The server returns facts only for "
+        "a downstream agent to interpret."
     ),
 )
 
@@ -35,13 +36,14 @@ mcp = FastMCP(
 @mcp.tool(
     name="analyze_document",
     description=(
-        "Analyze one or more local PDF or DOCX files and return deterministic "
+        "Analyze one or more local PDF, DOCX, PNG, JPEG, TIFF, BMP, WebP, or GIF "
+        "files and return deterministic "
         "visual and structural forensic evidence as JSON. `document_paths` is "
         "an array of absolute or relative paths on the machine running this "
         "server. `options` optionally overrides configuration (e.g. "
         "{'render': {'dpi': 300}, 'features': {'enable_ocr': false}}). Returns "
-        "a `results` array; each element has document_id, document_type, "
-        "summary, page_results, document_findings, warnings, and errors."
+        "claim-level `statistics` and a `results` array; each result contains "
+        "document statistics, page metrics, findings, warnings, and errors."
     ),
 )
 def analyze_document(
@@ -66,7 +68,7 @@ def build_server() -> FastMCP:
 
 def main() -> None:
     """Console entry point: run the server over stdio."""
-    mcp.run(transport="streamable-http", host="0.0.0.0", port=8765)
+    mcp.run(transport="stdio")
 
 
 

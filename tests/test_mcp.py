@@ -57,6 +57,9 @@ def test_mcp_analyze_document_invocation(sample_pdf, fast_options):
     assert isinstance(result["warnings"], list)
     assert isinstance(result["errors"], list)
     assert result["errors"] == []
+    assert payload["schema_version"] == "2.0"
+    assert payload["statistics"]["document_count"] == 1
+    assert result["statistics"]["metrics"]
 
 
 def test_server_analyze_document_accepts_string_path(sample_pdf, fast_options):

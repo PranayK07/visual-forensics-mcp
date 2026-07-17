@@ -1,0 +1,98 @@
+# Visual Document Forensics MCP - packaged default configuration
+# Keep this file synchronized with ../../configs/default.yaml.
+
+render:
+  dpi: 400
+  max_pages: 0
+  colorspace: "rgb"
+  max_pixels: 40000000
+
+tiling:
+  tile_size: 512
+  tile_overlap: 0.20
+  min_tile_fraction: 0.30
+  blank_std_threshold: 3.0
+
+features:
+  enable_ocr: true
+  enable_pdf_analysis: true
+  enable_visual_analysis: true
+  enable_detectors: true
+
+ocr:
+  language: "eng"
+  tesseract_cmd: ""
+  psm: 6
+  oem: 3
+  min_word_confidence: 0
+  timeout: 20
+
+analyzers:
+  edge_density:
+    canny_low: 50
+    canny_high: 150
+  entropy:
+    histogram_bins: 256
+  noise:
+    median_kernel: 3
+  text_density:
+    binarization_block: 35
+    binarization_c: 10
+
+detectors:
+  blur:
+    enabled: true
+    min_text_density: 0.02
+    z_threshold: 2.0
+    absolute_floor: 0.0
+    min_neighbors: 4
+  ocr_confidence:
+    enabled: true
+    min_text_density: 0.05
+    z_threshold: 2.0
+    absolute_floor: 40.0
+    min_neighbors: 4
+  dpi:
+    enabled: true
+    ratio_threshold: 0.5
+    absolute_min_dpi: 150.0
+  font:
+    enabled: true
+    rare_font_max_share: 0.05
+    max_expected_families: 4
+    min_spans: 20
+    min_confidence: 0.90
+  font_outlier:
+    enabled: true
+    min_doc_spans: 10
+    max_share: 0.5
+    min_confidence: 0.90
+    merge_gap_pts: 9.0
+    max_regions_per_page: 40
+    ignore_fonts: []
+  stretch:
+    enabled: true
+    ratio_threshold: 0.10
+    min_display_px: 16
+  compression:
+    enabled: true
+    min_text_density: 0.02
+    z_threshold: 2.5
+    min_neighbors: 4
+  structure:
+    enabled: true
+    raster_coverage_min: 0.02
+    raster_coverage_max: 0.85
+    overlap_iou_threshold: 0.6
+
+output:
+  include_tile_metrics: true
+  max_findings_per_page: 200
+  round_decimals: 4
+
+report:
+  draw:
+    box_width: 2.0
+    label_fontsize: 8.0
+    min_confidence_to_draw: 0.0
+    add_font_banner: true

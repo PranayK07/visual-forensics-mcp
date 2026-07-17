@@ -1,10 +1,9 @@
 # Visual Document Forensics MCP - default configuration
 #
-# Every threshold and tunable parameter lives here. There are NO hardcoded
-# thresholds anywhere in the analysis or detection code. Override any subset of
-# these values by passing an `options` dict to the `analyze_document` MCP tool,
-# or by pointing the server at a different YAML file via the
-# VISUAL_FORENSICS_CONFIG environment variable.
+# This is the canonical set of thresholds and tunable parameters. Override any
+# subset by passing an `options` dict to the `analyze_document` MCP tool, or by
+# pointing the server at a different YAML file via the VISUAL_FORENSICS_CONFIG
+# environment variable. Defensive code defaults mirror these values.
 
 # ---------------------------------------------------------------------------
 # Rendering
@@ -91,6 +90,7 @@ detectors:
     rare_font_max_share: 0.05   # fonts used on <= this share of spans are rare
     max_expected_families: 4    # more distinct families than this is flagged
     min_spans: 20               # need this many spans before judging
+    min_confidence: 0.90         # emit only strong measured deviations
 
   # Font outlier: text set in any font other than the document's dominant
   # (most common) font family, located precisely on the page.
@@ -98,6 +98,7 @@ detectors:
     enabled: true
     min_doc_spans: 10           # need this many spans in the document to judge
     max_share: 0.5              # fonts above this usage share are co-dominant
+    min_confidence: 0.90         # only locate high-confidence rare families
     merge_gap_pts: 9.0          # merge same-font spans closer than this (points)
     max_regions_per_page: 40    # safety cap on boxed regions per page
     ignore_fonts: []            # font family names to never flag
@@ -131,23 +132,11 @@ output:
   round_decimals: 4
 
 # ---------------------------------------------------------------------------
-# Annotated report (PDF mark-up)
+# Annotated visual overlay (PDF mark-up)
 # ---------------------------------------------------------------------------
 report:
-  # Overall fraud-risk score is a transparent weighted blend of the strongest
-  # finding, the number of distinct anomaly types, and the total finding count.
-  # score01 = clamp(w_max_conf*max_conf + w_types*types + w_count*count, 0, 1)
-  risk:
-    w_max_confidence: 0.6
-    w_distinct_types: 0.08
-    w_finding_count: 0.02
-    high_threshold: 66          # score (0-100) at/above this => HIGH
-    medium_threshold: 33        # score (0-100) at/above this => MEDIUM
   draw:
     box_width: 2.0              # bounding-box line width (points)
     label_fontsize: 8.0
-    badge_fontsize: 12.0
     min_confidence_to_draw: 0.0 # skip findings weaker than this in the mark-up
-    add_cover_page: true        # prepend a summary / legend / risk cover page
     add_font_banner: true       # state dominant + other fonts atop every page
-    add_risk_badge: true        # print the fraud-risk badge on every page

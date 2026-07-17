@@ -43,13 +43,13 @@ def main() -> None:
 
     response_path = os.path.join(HERE, "sample_response.json")
     with open(response_path, "w", encoding="utf-8") as fh:
-        json.dump(batch, fh, indent=2)
+        json.dump(batch, fh, indent=2, allow_nan=False)
     print(f"Wrote {response_path}")
 
     request = {
         "tool": "analyze_document",
         "arguments": {
-            "document_paths": [pdf_path.replace("\\", "/")],
+            "document_paths": ["examples/sample.pdf"],
             "options": options,
         },
     }
